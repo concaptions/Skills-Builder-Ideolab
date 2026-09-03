@@ -138,7 +138,8 @@ Uploaded source, poster shown, 16:9, full controls, captions on, transcript coll
 
 These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
 
-- Every option here is buildable. Modal playback uses `:target`, a playlist is a radio group with one panel per video, a background video is `autoplay muted loop playsinline` on a `video` element, and the transcript is a `details` element.
+- **Modal playback.** Leave it out and use inline instead. `:target` can open the overlay, but the modal has to trap focus, close on Escape, return focus to the play button and pause the video on close, and none of those is possible here.
+- Everything else is buildable. A playlist is a radio group with one panel per video, a background video is `autoplay muted loop playsinline` on a `video` element, the click to load poster uses `:target`, and the transcript is a `details` element.
 
 ## Images
 

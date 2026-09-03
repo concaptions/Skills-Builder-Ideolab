@@ -53,6 +53,8 @@ Middle of the page, after the offer is understood and before the closing call to
 - The fixed frame around each image. The image scales inside the frame on hover, the frame itself never resizes, otherwise the grid reflows and every other tile jumps.
 - The `width` and `height` attributes on each image. Removing them makes the page shift as images load.
 - Alt text. Every image needs a description of what it shows, and a purely decorative image takes an empty alt attribute.
+- The filters being a radio group. One `<input type="radio">` per category, all sharing a `name`, each with a `<label for="...">` that is the visible chip. That is what gives arrow key navigation, a single tab stop and an announced selected state with no script.
+- The inputs and the grid staying siblings. The chosen category is matched with the general sibling combinator, so the grid is hidden down to one category by rules of the shape `#filter-kitchens:checked ~ .grid > li:not([data-cat="kitchens"]) { display: none }`, with each tile carrying its own `data-cat`. Nest the inputs inside the chip row and every rule stops reaching the grid.
 - The identifier prefix, unless it is changed consistently. The filters are driven by ids, so two copies of this block on one page need different prefixes.
 - The reduced motion rules.
 
@@ -131,16 +133,18 @@ Nine images, three columns, standard gap, square crop, captions hidden, manual o
 
 ## What breaks this section
 
-1. **Zooming the frame instead of the image.** The cell grows, the grid reflows, and every other image jumps.
-2. **Mixed ratios in a fixed grid.** Rows end ragged. Use masonry for mixed ratios, or crop to one ratio.
-3. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
-4. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
+1. **Buttons as the filter chips.** A `<button>` does nothing on its own. Something has to listen to the click, and there is no script here, so the gallery renders looking correct and every chip is dead: the grid never narrows. The chips are radio inputs and their labels.
+2. **Zooming the frame instead of the image.** The cell grows, the grid reflows, and every other image jumps.
+3. **Mixed ratios in a fixed grid.** Rows end ragged. Use masonry for mixed ratios, or crop to one ratio.
+4. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
+5. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
 
 ## What a static block cannot do
 
 These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
 
-- **Mouse dragging a carousel.** Not available, for the same reason as any scroll rail. Touch and trackpad work. The lightbox uses `:target` and needs no script.
+- **Mouse dragging a carousel.** Not available, for the same reason as any scroll rail. Touch and trackpad work.
+- **The lightbox.** Leave it out. `:target` can open an overlay, but it cannot trap focus, cannot close on Escape and cannot return focus to the thumbnail, so a keyboard visitor is left tabbing behind the overlay with no way back. An overlay that traps people is worse than no overlay. The filters are the static answer to the same need.
 
 ## Images
 

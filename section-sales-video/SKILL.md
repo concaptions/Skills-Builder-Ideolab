@@ -137,7 +137,7 @@ These blocks carry no JavaScript. A few of the options above have no static equi
 
 - **A CTA that appears after a timestamp, or when the video ends.** Neither is possible without a script. Show the CTA from the first moment. It is the safer choice anyway, because nobody has to finish the video to act.
 - **A live countdown.** Not available. State the deadline as text.
-- Modal playback is fine, built with `:target`, and the transcript is a `details` element.
+- **Modal playback.** Leave it out and use inline instead. The modal has to trap focus, close on Escape and return focus when it closes, and none of that is possible without a script. The click to load poster and the transcript are fine, using `:target` and a `details` element.
 
 ## Images
 
