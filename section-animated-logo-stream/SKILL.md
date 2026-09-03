@@ -119,6 +119,16 @@ One row, 28px logo height, standard spacing, moving left, slow speed, monochrome
 2. **Setting a common width.** Wide wordmarks squash and square monograms tower over everything else. Fix the height instead.
 3. **No pause and no reduced-motion stop.** Permanent movement in the corner of the eye makes the rest of the page harder to read.
 
+## Images
+
+Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.
+
+Never pull a photograph from a stock site. A link to Unsplash, Pexels, Shutterstock or any other outside address is wrong on two counts: it is not the customer's business in the picture, and the block stops working the moment that address changes.
+
+If no photograph has been supplied yet, keep the placeholder that ships inside the block. It is drawn in the page itself, so it needs nothing from outside, it takes the theme colors, and it holds the right shape so the layout does not move when the real photograph arrives.
+
+Give every image an `alt` description of what is in it, and a `width` and `height`, so the page does not jump as it loads.
+
 ## Color
 
 Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

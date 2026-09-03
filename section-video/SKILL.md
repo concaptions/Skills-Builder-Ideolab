@@ -121,6 +121,16 @@ Uploaded source, poster shown, 16:9, full controls, captions on, transcript coll
 2. **Autoplay with sound.** Browsers block it, so the video silently does not start and the section looks broken.
 3. **A play button that is a styled div.** It cannot be reached by keyboard, so the video cannot be played at all without a mouse.
 
+## Images
+
+Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.
+
+Never pull a photograph from a stock site. A link to Unsplash, Pexels, Shutterstock or any other outside address is wrong on two counts: it is not the customer's business in the picture, and the block stops working the moment that address changes.
+
+If no photograph has been supplied yet, keep the placeholder that ships inside the block. It is drawn in the page itself, so it needs nothing from outside, it takes the theme colors, and it holds the right shape so the layout does not move when the real photograph arrives.
+
+Give every image an `alt` description of what is in it, and a `width` and `height`, so the page does not jump as it loads.
+
 ## Color
 
 Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

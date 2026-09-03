@@ -123,6 +123,16 @@ Nine images, three columns, standard gap, square crop, captions hidden, manual o
 3. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
 4. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
 
+## Images
+
+Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.
+
+Never pull a photograph from a stock site. A link to Unsplash, Pexels, Shutterstock or any other outside address is wrong on two counts: it is not the customer's business in the picture, and the block stops working the moment that address changes.
+
+If no photograph has been supplied yet, keep the placeholder that ships inside the block. It is drawn in the page itself, so it needs nothing from outside, it takes the theme colors, and it holds the right shape so the layout does not move when the real photograph arrives.
+
+Give every image an `alt` description of what is in it, and a `width` and `height`, so the page does not jump as it loads.
+
 ## Color
 
 Use the page's theme tokens. Never hardcode a hex value or a fixed palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

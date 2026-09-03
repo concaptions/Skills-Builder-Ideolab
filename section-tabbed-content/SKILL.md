@@ -121,6 +121,16 @@ Three tabs, first open, tabs above, text with image, click activation, descripti
 2. **Hiding panels with `opacity: 0` or `display` alone in CSS.** The hidden content stays in the tab order, so tabbing lands on invisible links. Use the `hidden` attribute. One trap comes with it: a Tailwind display class such as `grid` or `flex` on the panel **beats** the browser's own `[hidden] { display: none }` rule, so the panel stays on screen with the attribute set. Add `[hidden] { display: none !important }` to the page once, and the attribute works everywhere.
 3. **Panels of different heights with no minimum.** The whole page below the section jumps every time a tab is pressed.
 
+## Images
+
+Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.
+
+Never pull a photograph from a stock site. A link to Unsplash, Pexels, Shutterstock or any other outside address is wrong on two counts: it is not the customer's business in the picture, and the block stops working the moment that address changes.
+
+If no photograph has been supplied yet, keep the placeholder that ships inside the block. It is drawn in the page itself, so it needs nothing from outside, it takes the theme colors, and it holds the right shape so the layout does not move when the real photograph arrives.
+
+Give every image an `alt` description of what is in it, and a `width` and `height`, so the page does not jump as it loads.
+
 ## Color
 
 Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.
