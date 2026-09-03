@@ -130,3 +130,7 @@ Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette co
 The tokens are `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`. Use them as Tailwind classes: `bg-surface`, `bg-muted`, `bg-bgdark`, `text-textdark`, `text-textmute`, `text-accent`, `border-accent`.
 
 Do not invent CSS variable names such as `var(--color-surface)` or `var(--color-border)`. Nothing on the page defines them, so the browser throws the declaration away and that color, border or shape renders as nothing at all. Do not use `text-current/60` either, because an opacity modifier has no effect on `currentColor` and the text comes out at full strength.
+
+A token is not readable just because it is a token. `text-textdark` on `bg-bgdark` is near black on near black, measured at 1.05 to 1, and the words simply are not there. `text-textmute` on `bg-bgdark` reaches 3.93 to 1, which is still short.
+
+On a dark panel, body text is `text-surface`. Use a lowered opacity of `text-surface` for the quieter line rather than reaching for `text-textmute`. Every piece of text has to reach 4.5 to 1 against the color actually behind it, which is the nearest ancestor that paints a background, not the page.

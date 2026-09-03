@@ -117,9 +117,15 @@ Three tabs, first open, tabs above, text with image, click activation, descripti
 
 ## What breaks this section
 
-1. **Divs with click handlers instead of `role="tab"` buttons.** Nothing is reachable by keyboard and no screen reader can tell there are other panels.
-2. **Hiding panels with `opacity: 0` or `display` alone in CSS.** The hidden content stays in the tab order, so tabbing lands on invisible links. Use the `hidden` attribute. One trap comes with it: a Tailwind display class such as `grid` or `flex` on the panel **beats** the browser's own `[hidden] { display: none }` rule, so the panel stays on screen with the attribute set. Add `[hidden] { display: none !important }` to the page once, and the attribute works everywhere.
-3. **Panels of different heights with no minimum.** The whole page below the section jumps every time a tab is pressed.
+1. **Buttons, or divs with click handlers, as the tabs.** A `<button role="tab">` does nothing on its own. Something has to listen to the click, and there is no script here, so the section renders looking correct and the tabs are dead: every press leaves the first panel on screen. The tabs are radio inputs and their labels. The browser does the switching.
+
+2. **Hiding panels with the `hidden` attribute.** Same trap. Nothing can remove the attribute without a script, so whichever panel starts hidden is hidden forever. Hide a panel with `visibility: hidden` alongside `opacity: 0`, and reveal it with the checked input: `#tab-2:checked ~ .panels .panel-2 { opacity: 1; visibility: visible }`. `visibility: hidden` is the part that matters, because it also takes the panel's links out of the tab order. `opacity: 0` on its own does not, and tabbing then lands on invisible links.
+
+3. **Nesting the inputs inside a tab bar.** The general sibling combinator only reaches forward across true siblings, so the inputs and the panel container must be children of the same element. Nest the inputs one level deeper and every panel silently renders blank, with the tabs still looking right.
+
+4. **Positioning the panels absolutely.** An absolutely positioned panel is out of the flow, so the section measures as though it had no panels at all. The content then hangs below the section and whatever comes next on the page is drawn straight over it. Stack the panels in the flow instead, in one grid cell (`grid-area: 1 / 1`), which also keeps them the same size.
+
+5. **Panels of different heights with no minimum.** The whole page below the section jumps every time a tab is pressed. Set a minimum height from the tallest panel.
 
 ## Images
 
@@ -138,3 +144,7 @@ Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette co
 The tokens are `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`. Use them as Tailwind classes: `bg-surface`, `bg-muted`, `bg-bgdark`, `text-textdark`, `text-textmute`, `text-accent`, `border-accent`.
 
 Do not invent CSS variable names such as `var(--color-surface)` or `var(--color-border)`. Nothing on the page defines them, so the browser throws the declaration away and that color, border or shape renders as nothing at all. Do not use `text-current/60` either, because an opacity modifier has no effect on `currentColor` and the text comes out at full strength.
+
+A token is not readable just because it is a token. `text-textdark` on `bg-bgdark` is near black on near black, measured at 1.05 to 1, and the words simply are not there. `text-textmute` on `bg-bgdark` reaches 3.93 to 1, which is still short.
+
+On a dark panel, body text is `text-surface`. Use a lowered opacity of `text-surface` for the quieter line rather than reaching for `text-textmute`. Every piece of text has to reach 4.5 to 1 against the color actually behind it, which is the nearest ancestor that paints a background, not the page.
