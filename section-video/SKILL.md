@@ -19,7 +19,38 @@ One `<section>` element, and nothing else.
 - Color an SVG with a presentation attribute as well as a class. `<rect fill="#f6f7f9" class="fill-muted">` takes the theme color wherever the stylesheet is loaded and falls back to the attribute where it is not. With only the class, an unresolved fill computes to solid black, and the placeholder becomes a black rectangle sitting over the layout. That happens on a page without the stylesheet, and again in the moment before it arrives.
 - Write `fill="none"` on any path that is stroke only. A path with no fill is filled solid black. That is the SVG default, not a fault in the browser.
 
-**What the page already provides.** Nothing is assumed. The block ships the CSS its own classes need, inside `@layer ideolab-fallback`, so it renders correctly in a plain HTML viewer with no stylesheet at all. A layered declaration loses to an unlayered one, so a page that already loads Tailwind still overrides every line of it and the page stays in charge. That was measured rather than assumed: each block was rendered with Tailwind and with nothing at all, and every element matched on 29 computed properties and on geometry, at 1280px and at 390px.
+**Write the block's own base layer.** Tailwind utilities carry the detail, but a plain HTML viewer has no Tailwind, and a block built only from utilities arrives there as unstyled text on a white page. So write the few declarations that carry the block's shape into its own stylesheet as well. The block then reads correctly in a viewer and on a real page both.
+
+Put them inside `@layer vid-base { }`. This matters: a layered declaration loses to an unlayered one whatever its specificity or its order, so Tailwind on a real page still wins every one of them, and the layer only shows through where there is no Tailwind. Without the layer, a rule such as `.vid h2` would outrank `.text-4xl` and the block would start overriding the page.
+
+Start with the five reset lines. Tailwind normally supplies these, and without them the list markers show through, the type falls back to a serif, and the content runs wider than the screen. That was measured: a first attempt without them put a block 36px past the right edge of a 1280px viewport.
+
+    @layer vid-base {
+      .vid,.vid *,.vid *::before,.vid *::after{box-sizing:border-box}
+      .vid{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .vid h1,.vid h2,.vid h3,.vid h4,.vid p,.vid figure,.vid blockquote{margin:0}
+      .vid ul,.vid ol{margin:0;padding:0;list-style:none}
+      .vid img,.vid svg,.vid video{display:block;max-width:100%}
+
+Then the block's own shape. Cover these and nothing more.
+
+- The section: background color, text color, horizontal and vertical padding.
+- The inner wrapper: maximum width, centered. Name the wrapper class you actually used, not one from this example.
+- Every row, column or grid the layout depends on: display, columns, gap.
+- The heading and the body copy: font size, weight, line height.
+- Shapes a reader would notice at a glance: border radius, border color.
+
+      .vid{background-color:rgb(var(--vid-surface));color:rgb(var(--vid-ink));padding:5rem 1.25rem}
+      .vid .vid-wrap{max-width:64rem;margin-inline:auto}
+      .vid .vid-row{display:grid;gap:2.5rem}
+      .vid h2{font-size:2.25rem;line-height:1.15;font-weight:600}
+      .vid h3{font-size:1.25rem;font-weight:600}
+      .vid p{font-size:1rem;line-height:1.625}
+    }
+
+About twelve declarations in all. Do not try to restate every utility you used. This is the block's skeleton, not a second copy of Tailwind. The exact spacing scale, the small type sizes and the hover states stay in the utilities where they belong.
+
+**Nothing else is assumed.** The block does not expect the page to define a color, a font, a helper class or a shared stylesheet. If the page loads Tailwind the block is complete; if it does not, the base layer keeps it readable and in shape.
 
 This skill is self-contained. Do not read, reference or depend on any other skill, and do not assume that a shared stylesheet, a motion system, a component library or a set of helper classes exists somewhere. If something is not described here, it is not available.
 
