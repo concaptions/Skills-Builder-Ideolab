@@ -135,6 +135,17 @@ The tokens are `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`
 
 Do not invent CSS variable names such as `var(--color-surface)` or `var(--color-border)`. Nothing on the page defines them, so the browser throws the declaration away and that color, border or shape renders as nothing at all. Do not use `text-current/60` either, because an opacity modifier has no effect on `currentColor` and the text comes out at full strength.
 
-A token is not readable just because it is a token. `text-textdark` on `bg-bgdark` is near black on near black, measured at 1.05 to 1, and the words simply are not there. `text-textmute` on `bg-bgdark` reaches 3.93 to 1, which is still short.
+A token is not readable just because it is a token. Every piece of text has to reach 4.5 to 1 against the color actually behind it, which is the nearest ancestor that paints a background rather than the page. Large text, meaning 24px, or 18.66px when it is bold, needs 3 to 1.
 
-On a dark panel, body text is `text-surface`. Use a lowered opacity of `text-surface` for the quieter line rather than reaching for `text-textmute`. Every piece of text has to reach 4.5 to 1 against the color actually behind it, which is the nearest ancestor that paints a background, not the page.
+These four pairs are measured and they fail, so do not reach for them.
+
+| Text | Background | Measured |
+| --- | --- | --- |
+| `text-textdark` | `bg-bgdark` | 1.05 to 1, near black on near black |
+| `text-accent` | `bg-bgdark` | 3.62 to 1, the accent is a dark blue and it sinks into a dark panel |
+| `text-textmute` | `bg-bgdark` | 3.93 to 1 |
+| `text-textmute` | `bg-muted` | 4.44 to 1, although the same token clears on `bg-surface` at 4.76 to 1 |
+
+On a dark panel, set text in `text-surface` and use a lowered opacity of it for the quieter line. The accent still works there as a button's background, where white sits on it at 6.3 to 1. On a muted panel, use a lowered opacity of `text-textdark` for quiet copy.
+
+A tint such as `bg-accent/10` is mostly the color behind it, so judge contrast against the composited result, not against the accent itself.
