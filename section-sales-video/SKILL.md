@@ -118,6 +118,14 @@ Uploaded source, poster shown, full controls, CTA immediately, destination check
 2. **A countdown that resets on refresh.** It teaches the visitor the urgency is fake, which undermines the rest of the page.
 3. **A sticky mini-player with no close control.** It covers content on a phone and cannot be got rid of.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **A CTA that appears after a timestamp, or when the video ends.** Neither is possible without a script. Show the CTA from the first moment. It is the safer choice anyway, because nobody has to finish the video to act.
+- **A live countdown.** Not available. State the deadline as text.
+- Modal playback is fine, built with `:target`, and the transcript is a `details` element.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

@@ -126,6 +126,14 @@ Inherit brand palette, illustration style, icon language, typography, texture, a
 2. **Prompting for a look instead of a meaning.** The output is decoration, and the reader learns nothing.
 3. **Hotspots on hover only.** They are unreachable for every visitor on a phone.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Revealing hotspots as the graphic enters view** is scroll-linked. See below. Hotspots themselves work on hover and on focus with no script.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

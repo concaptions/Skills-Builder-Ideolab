@@ -127,6 +127,12 @@ Three tabs, first open, tabs above, text with image, click activation, descripti
 
 5. **Panels of different heights with no minimum.** The whole page below the section jumps every time a tab is pressed. Set a minimum height from the tallest panel.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Automatic rotation.** Not available. The tabs respond to a click and to the arrow keys, which is what the radio group gives. Rotation would also have needed to pause on hover, stop on selection and stop off screen, none of which is possible here.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

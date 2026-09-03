@@ -115,6 +115,12 @@ Three steps, numbered, horizontal, icon per step, title with a line, scroll prog
 2. **Scaling the active step.** Its neighbors shift every time the active step changes, and the whole row jitters as the reader scrolls.
 3. **Automatic progression with no pause.** The reader loses their place while reading, and there is no way to go back.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- Every option here is buildable with no script. The progress indicator is static markup and the steps need no interaction.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

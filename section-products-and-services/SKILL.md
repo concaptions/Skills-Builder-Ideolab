@@ -117,6 +117,12 @@ Six items, three columns, matched card height, 4:3 image, standard density, imag
 2. **Stacking every hover effect.** Lift plus zoom plus tilt plus glow at once reads as a bug. One primary, one supporting, no more.
 3. **A button inside a linked card.** It nests an interactive control inside a link, which breaks keyboard use. Make the card a link, or the card a container with one link inside, not both.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Mouse dragging a carousel.** Not available. Touch and trackpad work. Category tabs are a radio group and need no script.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

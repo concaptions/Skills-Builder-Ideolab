@@ -119,6 +119,12 @@ Six items, none open on load, multiple open, text content, icon shown, whole row
 2. **Leaving out `overflow: hidden` on the inner wrapper.** The answer is visible through the closed row, which looks like a rendering fault.
 3. **A div with a click handler instead of a button.** The row cannot be opened by keyboard, and nothing announces that it expands.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **The image-changing accordion** only works if the panels are a radio group rather than `details` elements, because a sibling selector can then reach the image. With `details` the image cannot react to which panel is open.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

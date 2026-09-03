@@ -120,6 +120,16 @@ Five cards, standard width, no overlap, left to right, snap to each card, arrows
 2. **No peek of the next card.** Nothing signals that the row moves, so most visitors never scroll it.
 3. **Rebuilding drag in JavaScript.** A native `overflow-x-auto` container already handles drag, swipe, momentum, keyboard and focus scrolling. A custom implementation loses most of that.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Mouse dragging.** Not available. The rail is a real scroll container, so a touch swipe, a trackpad and the keyboard all work; a mouse can use the arrows and the scrollbar.
+- **Scroll-controlled movement**, where the page's vertical scroll drives the cards sideways, is scroll-linked. See below.
+- **Arrows** must be links pointing at each card's id. The browser then scrolls the rail itself, with no script. A button with no handler does nothing.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

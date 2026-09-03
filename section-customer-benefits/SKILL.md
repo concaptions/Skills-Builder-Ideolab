@@ -83,7 +83,7 @@ Gradient result words, large outcome statements, color-stepped lines, or highlig
 ## Motion
 
 - **Entrance:** sequential benefit reveal, which is a fade and rise staggered by 60ms in reading order, at `standard` intensity.
-- **Count-up results** run once, when the metric first enters view, over roughly 1 to 1.5 seconds. The final value must be present in the markup so it is readable if the script never runs, and the element carries `aria-live="off"` so a screen reader is not read a stream of changing digits.
+- **Count-up results** run once, when the metric first enters view, over roughly 1 to 1.5 seconds. There is no script here, so the counting cannot happen. Print the final value as text.
 - **Animated checkmarks** draw once on entrance. They do not repeat.
 - **Connecting-line draw** is scroll-linked, so it counts as the page's one major showcase effect.
 - **Hover spotlight** is a background tint or glow on the hovered card, at `subtle` intensity. It never moves the card and the metric at the same time.
@@ -109,8 +109,17 @@ Three benefits, three columns, equal-height cards, icon shown, standard text len
 ## What breaks this section
 
 1. **Writing features as benefits.** "Automated SMS replies" is a feature. "Nobody waits for a callback" is the benefit. If the line does not say what the reader gets, it is in the wrong section.
-2. **Starting a count-up from an empty element.** The number is missing until the script runs, and missing forever for anyone whose script fails. Put the final value in the markup.
+2. **Leaving a metric empty for a count-up to fill in.** Nothing will ever fill it. Put the final value in the markup and leave it there.
 3. **A metric with no proof.** An unsupported percentage reads as marketing and lowers trust in the rest of the page.
+
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Count-up results.** There is no static equivalent. Print the final number as text. It is the number that matters, not the counting.
+- **Connecting-line draw** is scroll-linked. See below.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
 
 ## Images
 

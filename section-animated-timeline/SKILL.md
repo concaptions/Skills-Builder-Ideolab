@@ -119,6 +119,15 @@ Five milestones, year dates, oldest first, vertical, date and label and descript
 2. **Scaling the whole milestone row when it activates.** Everything below it shifts, and the page jitters all the way down.
 3. **A roadmap with no "as of" date.** Six months later it reads as a list of things that never happened.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Number counts up.** There is no static equivalent. Print the final value as text.
+- **Line grows** and **dot activates** are scroll-linked. See below.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

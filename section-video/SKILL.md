@@ -121,6 +121,12 @@ Uploaded source, poster shown, 16:9, full controls, captions on, transcript coll
 2. **Autoplay with sound.** Browsers block it, so the video silently does not start and the section looks broken.
 3. **A play button that is a styled div.** It cannot be reached by keyboard, so the video cannot be played at all without a mouse.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- Every option here is buildable. Modal playback uses `:target`, a playlist is a radio group with one panel per video, a background video is `autoplay muted loop playsinline` on a `video` element, and the transcript is a `details` element.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

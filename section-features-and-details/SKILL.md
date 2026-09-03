@@ -113,6 +113,14 @@ Six features, label with description, two columns, checklist-with-visual layout,
 2. **A comparison table built from divs.** It looks right and is unusable with a screen reader, because no cell knows which column it belongs to.
 3. **Hotspots that only respond to hover.** Half the visitors are on a phone and can never open them.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Highlighting the feature that matches the sticky visual as you scroll** is scroll-linked. See below. The sticky visual itself is `position: sticky` and needs nothing.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

@@ -100,7 +100,7 @@ How each stacking motion is built:
 | Blur | The covered card takes a small `filter: blur`. Costly on mobile, keep the radius low |
 | Compress | The covered card loses height, so the stack squeezes together |
 
-Scale, rotate, fade, blur and compress all need the covered card's state to follow scroll position, so they need `IntersectionObserver` or GSAP ScrollTrigger. Plain layering does not. **Prefer layering** unless the design specifically calls for another.
+Scale, rotate, fade, blur and compress all need the covered card's state to follow scroll position, so each is scroll-linked and carries the support caveat below. Plain layering is pure CSS and needs nothing. **Prefer layering** unless the design specifically calls for another.
 
 Do not add tilt, glow or a border draw here. The stacking is the effect.
 
@@ -127,6 +127,14 @@ Three cards, image-and-copy stack layout, matched height, editorial card style, 
 1. **A bottom margin on the sticky wrapper.** It shortens the distance the card stays pinned, so the card slides up past the offset before the next one arrives and the stack visibly breaks. Put spacing on the card itself or on the container, never on the sticky wrapper.
 2. **Different card heights.** A short card cannot cover a tall one, and the reader sees the previous card's edge behind it.
 3. **Leaving sticky on at mobile widths.** Use the `lg:` prefix so it only applies from 1024px.
+
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Scale, rotate, fade, blur and compress on the covered card.** Each needs the covered card's state to follow the scroll position, so each is scroll-linked. See below. Plain layering needs nothing at all and is the default for this reason.
+
+**Scroll-linked motion.** Anything whose state has to follow the scroll position uses `animation-timeline: view()` inside an `@supports` block. Firefox does not support it, so write the finished state as the default and let the animation be the enhancement. Never use a library or an observer for this.
 
 ## Images
 

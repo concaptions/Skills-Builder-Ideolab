@@ -119,6 +119,12 @@ One row, 28px logo height, standard spacing, moving left, slow speed, monochrome
 2. **Setting a common width.** Wide wordmarks squash and square monograms tower over everything else. Fix the height instead.
 3. **No pause and no reduced-motion stop.** Permanent movement in the corner of the eye makes the rest of the page harder to read.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Drag to scrub the row.** The stream is a CSS animation and cannot be dragged. If the row is also a real scroll container, a touch swipe and a trackpad still work, but mouse dragging does not. Pause on hover and on focus is pure CSS and stays.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.

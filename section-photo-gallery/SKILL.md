@@ -123,6 +123,12 @@ Nine images, three columns, standard gap, square crop, captions hidden, manual o
 3. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
 4. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
 
+## What a static block cannot do
+
+These blocks carry no JavaScript. A few of the options above have no static equivalent, so build the nearest thing that does work and leave the rest out. Never ship a control that looks alive and does nothing when it is pressed.
+
+- **Mouse dragging a carousel.** Not available, for the same reason as any scroll rail. Touch and trackpad work. The lightbox uses `:target` and needs no script.
+
 ## Images
 
 Every image belongs to the customer. Use the photographs, logos and artwork supplied in the brief.
