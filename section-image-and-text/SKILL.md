@@ -10,7 +10,7 @@ description: A general-purpose storytelling section pairing written content with
 One `<section>` element, and nothing else.
 
 - No `<!doctype>`, `<html>`, `<head>` or `<body>`. The block is dropped into a page that already exists.
-- No markdown code fence around it, and no commentary before or after it. Return the HTML itself. A stray ``` renders as visible text on the page, and inside a grid it becomes an extra item that pushes the layout out of shape.
+- No markdown code fence around it, and no commentary before or after it. Return the HTML itself. A leftover fence marker renders as visible text on the page, and inside a grid it becomes an extra item that pushes the layout out of shape.
 - No `<script>`, no event handlers, no `hidden` attributes waiting to be toggled. Nothing here can run.
 - No external files of any kind: no image addresses, no icon library, no web font.
 - Everything the section needs lives inside that one element, including its own `<style>` block. That stylesheet is expected, not a last resort. Tailwind utilities carry most of the work, but a relationship between elements cannot be written as a utility, and the ones this set depends on all live in the stylesheet: `:checked ~`, `details[open]`, `:target`, `@keyframes`, `animation-timeline` and the `prefers-reduced-motion` rule. Prefix your own class names so they cannot collide with the rest of the page.
