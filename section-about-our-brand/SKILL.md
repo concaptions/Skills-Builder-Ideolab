@@ -16,6 +16,11 @@ One `<section>` element, and nothing else.
 - Everything the section needs lives inside that one element, including its own `<style>` block. That stylesheet is expected, not a last resort. Tailwind utilities carry most of the work, but a relationship between elements cannot be written as a utility, and the ones this set depends on all live in the stylesheet: `:checked ~`, `details[open]`, `:target`, `@keyframes`, `animation-timeline` and the `prefers-reduced-motion` rule. Prefix your own class names so they cannot collide with the rest of the page.
 - The section carries its own horizontal padding and its own maximum width. Drop that wrapper and the content runs to both edges of the screen.
 
+- Color an SVG with a presentation attribute as well as a class. `<rect fill="#f6f7f9" class="fill-muted">` takes the theme color wherever the stylesheet is loaded and falls back to the attribute where it is not. With only the class, an unresolved fill computes to solid black, and the placeholder becomes a black rectangle sitting over the layout. That happens on a page without the stylesheet, and again in the moment before it arrives.
+- Write `fill="none"` on any path that is stroke only. A path with no fill is filled solid black. That is the SVG default, not a fault in the browser.
+
+**What the page already provides.** The page loads Tailwind and defines six theme colors: `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`. The block uses those and assumes nothing else. It does not ship Tailwind and it does not ship the colors, so dropped into a page that has neither it renders as plain unstyled HTML with its structure and its text intact. That is the expected result, it is not a fault in the block, and a viewer with no stylesheet is not a useful place to judge one.
+
 This skill is self-contained. Do not read, reference or depend on any other skill, and do not assume that a shared stylesheet, a motion system, a component library or a set of helper classes exists somewhere. If something is not described here, it is not available.
 
 ## What it is for

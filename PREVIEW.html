@@ -666,7 +666,9 @@ tailwind.config = { theme: { extend: { colors: {
           <!-- boiler -->
           <rect x="60" y="70" width="110" height="130" rx="16" fill="#fff" stroke="#2563eb" stroke-width="3"/>
           <circle cx="115" cy="120" r="22" fill="none" stroke="#2563eb" stroke-width="3"/>
-          <path d="M104 120h22M115 109v22" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <!-- fill="none" on every stroke only path. Without it the path is
+               filled solid black, which is the SVG default. -->
+          <path d="M104 120h22M115 109v22" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
           <text x="115" y="180" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Boiler</text>
 
           <!-- cylinder. The label sits inside the shape, as it does on the
@@ -676,11 +678,11 @@ tailwind.config = { theme: { extend: { colors: {
 
           <!-- manifold -->
           <rect x="180" y="250" width="140" height="60" rx="14" fill="#fff" stroke="#b45309" stroke-width="3"/>
-          <path d="M200 250v-30M240 250v-30M280 250v-30" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+          <path d="M200 250v-30M240 250v-30M280 250v-30" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
           <text x="250" y="290" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Manifold</text>
 
           <!-- flow lines -->
-          <path d="M170 110h140" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+          <path d="M170 110h140" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
           <path d="M115 200v80h65" stroke="#b45309" stroke-width="3" stroke-linecap="round" fill="none"/>
           <path d="M355 210v70h-35" stroke="#047857" stroke-width="3" stroke-linecap="round" fill="none"/>
         </svg>
@@ -1731,10 +1733,14 @@ tailwind.config = { theme: { extend: { colors: {
         <div class="overflow-hidden rounded-3xl bg-muted">
           <svg viewBox="0 0 400 500" class="block h-auto w-full" role="img"
                aria-label="Placeholder in the shape of the portrait photograph the reference showed, a staircase seen from the hall">
-            <!-- Colored with fill and stroke utilities, so the placeholder
-                 follows the page's theme rather than carrying a fixed hex. -->
-            <rect width="400" height="500" class="fill-muted"/>
-            <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
+            <!-- The utility class follows the page's theme and wins wherever
+                 Tailwind is loaded. The presentation attribute beside it is the
+                 fallback: without it, an unstyled fill falls back to solid
+                 black and the placeholder becomes a black rectangle over the
+                 layout. Belt and braces, and it also covers the moment before
+                 the stylesheet has loaded. -->
+            <rect width="400" height="500" fill="#f6f7f9" class="fill-muted"/>
+            <g fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
               <!-- floor, then the step profile, then the newel posts, the
                    handrail above the nosings, and a baluster off each tread. -->
               <path d="M34 440H60" opacity="0.35"/>
@@ -1742,6 +1748,8 @@ tailwind.config = { theme: { extend: { colors: {
               <path d="M60 440V350" opacity="0.6"/>
               <path d="M340 240V150" opacity="0.6"/>
               <path d="M60 350L340 150" opacity="0.6"/>
+              <!-- Every path here is stroke only, so the group carries
+                   fill="none". A path with no fill is filled black. -->
               <g opacity="0.35">
                 <path d="M120 390V307"/>
                 <path d="M180 340V264"/>

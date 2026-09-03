@@ -53,7 +53,9 @@
           <!-- boiler -->
           <rect x="60" y="70" width="110" height="130" rx="16" fill="#fff" stroke="#2563eb" stroke-width="3"/>
           <circle cx="115" cy="120" r="22" fill="none" stroke="#2563eb" stroke-width="3"/>
-          <path d="M104 120h22M115 109v22" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <!-- fill="none" on every stroke only path. Without it the path is
+               filled solid black, which is the SVG default. -->
+          <path d="M104 120h22M115 109v22" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
           <text x="115" y="180" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Boiler</text>
 
           <!-- cylinder. The label sits inside the shape, as it does on the
@@ -63,11 +65,11 @@
 
           <!-- manifold -->
           <rect x="180" y="250" width="140" height="60" rx="14" fill="#fff" stroke="#b45309" stroke-width="3"/>
-          <path d="M200 250v-30M240 250v-30M280 250v-30" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+          <path d="M200 250v-30M240 250v-30M280 250v-30" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
           <text x="250" y="290" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Manifold</text>
 
           <!-- flow lines -->
-          <path d="M170 110h140" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+          <path d="M170 110h140" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
           <path d="M115 200v80h65" stroke="#b45309" stroke-width="3" stroke-linecap="round" fill="none"/>
           <path d="M355 210v70h-35" stroke="#047857" stroke-width="3" stroke-linecap="round" fill="none"/>
         </svg>

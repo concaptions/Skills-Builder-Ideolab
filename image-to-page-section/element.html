@@ -88,10 +88,14 @@
         <div class="overflow-hidden rounded-3xl bg-muted">
           <svg viewBox="0 0 400 500" class="block h-auto w-full" role="img"
                aria-label="Placeholder in the shape of the portrait photograph the reference showed, a staircase seen from the hall">
-            <!-- Colored with fill and stroke utilities, so the placeholder
-                 follows the page's theme rather than carrying a fixed hex. -->
-            <rect width="400" height="500" class="fill-muted"/>
-            <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
+            <!-- The utility class follows the page's theme and wins wherever
+                 Tailwind is loaded. The presentation attribute beside it is the
+                 fallback: without it, an unstyled fill falls back to solid
+                 black and the placeholder becomes a black rectangle over the
+                 layout. Belt and braces, and it also covers the moment before
+                 the stylesheet has loaded. -->
+            <rect width="400" height="500" fill="#f6f7f9" class="fill-muted"/>
+            <g fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
               <!-- floor, then the step profile, then the newel posts, the
                    handrail above the nosings, and a baluster off each tread. -->
               <path d="M34 440H60" opacity="0.35"/>
@@ -99,6 +103,8 @@
               <path d="M60 440V350" opacity="0.6"/>
               <path d="M340 240V150" opacity="0.6"/>
               <path d="M60 350L340 150" opacity="0.6"/>
+              <!-- Every path here is stroke only, so the group carries
+                   fill="none". A path with no fill is filled black. -->
               <g opacity="0.35">
                 <path d="M120 390V307"/>
                 <path d="M180 340V264"/>
