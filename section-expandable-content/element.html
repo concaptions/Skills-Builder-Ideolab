@@ -15,9 +15,78 @@
   Every class in this block is prefixed exp- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="exp bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="exp-title">
+<section class="exp exp-bg-surface px-5 py-20 exp-text-ink sm:px-8 lg:py-28" aria-labelledby="exp-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .exp, .exp *, .exp::before, .exp *::before, .exp::after, .exp *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .exp, .exp *, .exp::after, .exp *::after, .exp::before, .exp *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .exp::after, .exp *::after, .exp::before, .exp *::before{--tw-content:'';}
+      .exp{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .exp h1, .exp h2, .exp h3, .exp h4, .exp h5, .exp h6{font-size:inherit;font-weight:inherit;}
+      .exp summary{display:list-item;}
+      .exp blockquote, .exp dd, .exp dl, .exp figure, .exp h1, .exp h2, .exp h3, .exp h4, .exp h5, .exp h6, .exp hr, .exp p, .exp pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .exp audio, .exp canvas, .exp embed, .exp iframe, .exp img, .exp object, .exp svg, .exp video{display:block;vertical-align:middle;}
+      .exp.mx-auto, .exp .mx-auto{margin-left:auto;margin-right:auto;}
+      .exp.mb-12, .exp .mb-12{margin-bottom:3rem;}
+      .exp.mb-3, .exp .mb-3{margin-bottom:0.75rem;}
+      .exp.mt-4, .exp .mt-4{margin-top:1rem;}
+      .exp.flex, .exp .flex{display:flex;}
+      .exp.h-5, .exp .h-5{height:1.25rem;}
+      .exp.w-5, .exp .w-5{width:1.25rem;}
+      .exp.max-w-3xl, .exp .max-w-3xl{max-width:48rem;}
+      .exp.shrink-0, .exp .shrink-0{flex-shrink:0;}
+      .exp.items-center, .exp .items-center{align-items:center;}
+      .exp.justify-between, .exp .justify-between{justify-content:space-between;}
+      .exp.gap-4, .exp .gap-4{row-gap:1rem;column-gap:1rem;}
+      .exp.divide-y > :not([hidden]) ~ :not([hidden]), .exp .divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse));}
+      .exp.divide-black\/10 > :not([hidden]) ~ :not([hidden]), .exp .divide-black\/10 > :not([hidden]) ~ :not([hidden]){border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .exp.border-y, .exp .border-y{border-top-width:1px;border-bottom-width:1px;}
+      .exp.border-black\/10, .exp .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .exp.px-5, .exp .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .exp.py-20, .exp .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .exp.py-5, .exp .py-5{padding-top:1.25rem;padding-bottom:1.25rem;}
+      .exp.pb-5, .exp .pb-5{padding-bottom:1.25rem;}
+      .exp.pr-9, .exp .pr-9{padding-right:2.25rem;}
+      .exp.text-left, .exp .text-left{text-align:left;}
+      .exp.text-center, .exp .text-center{text-align:center;}
+      .exp.text-4xl, .exp .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .exp.text-base, .exp .text-base{font-size:1rem;line-height:1.5rem;}
+      .exp.text-lg, .exp .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .exp.text-xs, .exp .text-xs{font-size:0.75rem;line-height:1rem;}
+      .exp.font-medium, .exp .font-medium{font-weight:500;}
+      .exp.font-semibold, .exp .font-semibold{font-weight:600;}
+      .exp.uppercase, .exp .uppercase{text-transform:uppercase;}
+      .exp.leading-relaxed, .exp .leading-relaxed{line-height:1.625;}
+      .exp.leading-tight, .exp .leading-tight{line-height:1.25;}
+      .exp.tracking-\[0\.2em\], .exp .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.exp.sm\:px-8, .exp .sm\:px-8{padding-left:2rem;padding-right:2rem;}.exp.sm\:text-5xl, .exp .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 1024px){.exp.lg\:py-28, .exp .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .exp{
+      --exp-surface:255 255 255;  /* card and panel faces */
+      --exp-band:246 247 249;  /* the quiet band behind content */
+      --exp-ink:15 23 42;  /* headings and primary copy */
+      --exp-soft:100 116 139;  /* supporting copy */
+      --exp-accent:37 99 235;  /* the one emphasis colour */
+      --exp-deep:11 18 32;  /* the dark ground */
+    }
+    .exp.exp-bg-surface, .exp .exp-bg-surface{background-color:rgb(var(--exp-surface))}
+    .exp.exp-text-accent, .exp .exp-text-accent{color:rgb(var(--exp-accent))}
+    .exp.exp-text-ink, .exp .exp-text-ink{color:rgb(var(--exp-ink))}
+    .exp.exp-text-soft, .exp .exp-text-soft{color:rgb(var(--exp-soft))}
+
     .exp .exp-rise{animation:exp-rise 420ms cubic-bezier(.16,1,.3,1) both}
     @keyframes exp-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -45,9 +114,9 @@
   <div class="mx-auto max-w-3xl">
 
     <header class="mb-12 text-center exp-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Questions</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] exp-text-accent">Questions</p>
       <h2 id="exp-title" class="text-4xl font-semibold leading-tight sm:text-5xl">The things people ask first</h2>
-      <p class="mt-4 text-base leading-relaxed text-textmute">If your question is not here, send it over and you will get a straight answer the same day.</p>
+      <p class="mt-4 text-base leading-relaxed exp-text-soft">If your question is not here, send it over and you will get a straight answer the same day.</p>
     </header>
 
     <div class="divide-y divide-black/10 border-y border-black/10">
@@ -55,41 +124,41 @@
       <details name="exp-faq" class="exp-rise" style="animation-delay:0ms">
         <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
           <span>How quickly can you start?</span>
-          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="exp-chevron h-5 w-5 shrink-0 exp-text-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
-        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Small jobs are usually booked within the same week. Anything that needs materials ordering runs to about two weeks, and you get the date in writing before we start.</p></div></div>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed exp-text-soft">Small jobs are usually booked within the same week. Anything that needs materials ordering runs to about two weeks, and you get the date in writing before we start.</p></div></div>
       </details>
 
       <details name="exp-faq" class="exp-rise" style="animation-delay:60ms">
         <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
           <span>Is the quote fixed, or does it move?</span>
-          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="exp-chevron h-5 w-5 shrink-0 exp-text-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
-        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Fixed. The price you agree is the price you pay. If we find something genuinely unexpected behind a wall we stop, show you, and agree the cost before carrying on.</p></div></div>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed exp-text-soft">Fixed. The price you agree is the price you pay. If we find something genuinely unexpected behind a wall we stop, show you, and agree the cost before carrying on.</p></div></div>
       </details>
 
       <details name="exp-faq" class="exp-rise" style="animation-delay:120ms">
         <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
           <span>Do you clear up afterwards?</span>
-          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="exp-chevron h-5 w-5 shrink-0 exp-text-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
-        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Every time. Dust sheets go down before the first tool comes out, and waste leaves with us on the day rather than sitting in your driveway.</p></div></div>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed exp-text-soft">Every time. Dust sheets go down before the first tool comes out, and waste leaves with us on the day rather than sitting in your driveway.</p></div></div>
       </details>
 
       <details name="exp-faq" class="exp-rise" style="animation-delay:180ms">
         <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
           <span>What if something goes wrong later?</span>
-          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="exp-chevron h-5 w-5 shrink-0 exp-text-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
-        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Workmanship is guaranteed for two years and parts carry the manufacturer's own cover. One phone call and we come back out, at no charge.</p></div></div>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed exp-text-soft">Workmanship is guaranteed for two years and parts carry the manufacturer's own cover. One phone call and we come back out, at no charge.</p></div></div>
       </details>
 
       <details name="exp-faq" class="exp-rise" style="animation-delay:240ms">
         <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
           <span>Which areas do you cover?</span>
-          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="exp-chevron h-5 w-5 shrink-0 exp-text-soft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
-        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Anywhere within about forty minutes of the workshop. If you are slightly outside that, ask anyway, because it often still works out.</p></div></div>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed exp-text-soft">Anywhere within about forty minutes of the workshop. If you are slightly outside that, ask anyway, because it often still works out.</p></div></div>
       </details>
 
     </div>

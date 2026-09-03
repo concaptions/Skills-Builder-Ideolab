@@ -18,9 +18,59 @@
   Every class in this block is prefixed als- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="als bg-surface px-5 py-16 text-textdark sm:px-8 lg:py-20" aria-labelledby="als-title">
+<section class="als als-bg-surface px-5 py-16 als-text-ink sm:px-8 lg:py-20" aria-labelledby="als-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .als, .als *, .als::before, .als *::before, .als::after, .als *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .als, .als *, .als::after, .als *::after, .als::before, .als *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .als::after, .als *::after, .als::before, .als *::before{--tw-content:'';}
+      .als{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .als blockquote, .als dd, .als dl, .als figure, .als h1, .als h2, .als h3, .als h4, .als h5, .als h6, .als hr, .als p, .als pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .als menu, .als ol, .als ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .als.mx-auto, .als .mx-auto{margin-left:auto;margin-right:auto;}
+      .als.mb-10, .als .mb-10{margin-bottom:2.5rem;}
+      .als.flex, .als .flex{display:flex;}
+      .als.max-w-6xl, .als .max-w-6xl{max-width:72rem;}
+      .als.shrink-0, .als .shrink-0{flex-shrink:0;}
+      .als.items-center, .als .items-center{align-items:center;}
+      .als.gap-16, .als .gap-16{row-gap:4rem;column-gap:4rem;}
+      .als.px-5, .als .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .als.py-16, .als .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .als.pr-16, .als .pr-16{padding-right:4rem;}
+      .als.text-center, .als .text-center{text-align:center;}
+      .als.text-xl, .als .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .als.text-xs, .als .text-xs{font-size:0.75rem;line-height:1rem;}
+      .als.font-semibold, .als .font-semibold{font-weight:600;}
+      .als.uppercase, .als .uppercase{text-transform:uppercase;}
+      .als.tracking-\[0\.2em\], .als .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      .als.tracking-tight, .als .tracking-tight{letter-spacing:-0.025em;}
+      @media (min-width: 640px){.als.sm\:px-8, .als .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+      @media (min-width: 1024px){.als.lg\:py-20, .als .lg\:py-20{padding-top:5rem;padding-bottom:5rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .als{
+      --als-surface:255 255 255;  /* card and panel faces */
+      --als-band:246 247 249;  /* the quiet band behind content */
+      --als-ink:15 23 42;  /* headings and primary copy */
+      --als-soft:100 116 139;  /* supporting copy */
+      --als-accent:37 99 235;  /* the one emphasis colour */
+      --als-deep:11 18 32;  /* the dark ground */
+    }
+    .als.als-bg-surface, .als .als-bg-surface{background-color:rgb(var(--als-surface))}
+    .als.als-text-ink, .als .als-text-ink{color:rgb(var(--als-ink))}
+    .als.als-text-soft, .als .als-text-soft{color:rgb(var(--als-soft))}
+
     .als .als-viewport{
       overflow:hidden;
       /* Both edges fade out, so logos enter and leave rather than being cut. */
@@ -47,7 +97,7 @@
 
   <div class="mx-auto max-w-6xl">
 
-    <p id="als-title" class="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Trusted by teams at</p>
+    <p id="als-title" class="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] als-text-soft">Trusted by teams at</p>
 
     <div class="als-viewport">
       <div class="als-track">

@@ -17,9 +17,64 @@
   Every class in this block is prefixed atl- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="atl bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="atl-title">
+<section class="atl atl-bg-surface px-5 py-20 atl-text-ink sm:px-8 lg:py-28" aria-labelledby="atl-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .atl, .atl *, .atl::before, .atl *::before, .atl::after, .atl *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .atl, .atl *, .atl::after, .atl *::after, .atl::before, .atl *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .atl::after, .atl *::after, .atl::before, .atl *::before{--tw-content:'';}
+      .atl{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .atl h1, .atl h2, .atl h3, .atl h4, .atl h5, .atl h6{font-size:inherit;font-weight:inherit;}
+      .atl blockquote, .atl dd, .atl dl, .atl figure, .atl h1, .atl h2, .atl h3, .atl h4, .atl h5, .atl h6, .atl hr, .atl p, .atl pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .atl menu, .atl ol, .atl ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .atl.mx-auto, .atl .mx-auto{margin-left:auto;margin-right:auto;}
+      .atl.mb-1, .atl .mb-1{margin-bottom:0.25rem;}
+      .atl.mb-16, .atl .mb-16{margin-bottom:4rem;}
+      .atl.mb-2, .atl .mb-2{margin-bottom:0.5rem;}
+      .atl.mb-3, .atl .mb-3{margin-bottom:0.75rem;}
+      .atl.max-w-2xl, .atl .max-w-2xl{max-width:42rem;}
+      .atl.max-w-4xl, .atl .max-w-4xl{max-width:56rem;}
+      .atl.space-y-12 > :not([hidden]) ~ :not([hidden]), .atl .space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse));}
+      .atl.px-5, .atl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .atl.py-20, .atl .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .atl.text-center, .atl .text-center{text-align:center;}
+      .atl.text-4xl, .atl .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .atl.text-sm, .atl .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .atl.text-xl, .atl .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .atl.text-xs, .atl .text-xs{font-size:0.75rem;line-height:1rem;}
+      .atl.font-semibold, .atl .font-semibold{font-weight:600;}
+      .atl.uppercase, .atl .uppercase{text-transform:uppercase;}
+      .atl.leading-relaxed, .atl .leading-relaxed{line-height:1.625;}
+      .atl.leading-tight, .atl .leading-tight{line-height:1.25;}
+      .atl.tracking-\[0\.2em\], .atl .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.atl.sm\:px-8, .atl .sm\:px-8{padding-left:2rem;padding-right:2rem;}.atl.sm\:text-5xl, .atl .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 1024px){.atl.lg\:py-28, .atl .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .atl{
+      --atl-surface:255 255 255;  /* card and panel faces */
+      --atl-band:246 247 249;  /* the quiet band behind content */
+      --atl-ink:15 23 42;  /* headings and primary copy */
+      --atl-soft:100 116 139;  /* supporting copy */
+      --atl-accent:37 99 235;  /* the one emphasis colour */
+      --atl-deep:11 18 32;  /* the dark ground */
+    }
+    .atl.atl-bg-surface, .atl .atl-bg-surface{background-color:rgb(var(--atl-surface))}
+    .atl.atl-text-accent, .atl .atl-text-accent{color:rgb(var(--atl-accent))}
+    .atl.atl-text-ink, .atl .atl-text-ink{color:rgb(var(--atl-ink))}
+    .atl.atl-text-soft, .atl .atl-text-soft{color:rgb(var(--atl-soft))}
+
     .atl .atl-list{position:relative}
 
     /* The spine. On mobile it runs down the left, on desktop down the middle. */
@@ -60,7 +115,7 @@
   <div class="mx-auto max-w-4xl">
 
     <header class="mx-auto mb-16 max-w-2xl text-center">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our story</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] atl-text-accent">Our story</p>
       <h2 id="atl-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Eighteen years, one van at a time</h2>
     </header>
 
@@ -68,37 +123,37 @@
 
       <li class="atl-item">
         <span class="atl-dot" aria-hidden="true"></span>
-        <p class="mb-1 text-sm font-semibold text-accent">2008</p>
+        <p class="mb-1 text-sm font-semibold atl-text-accent">2008</p>
         <h3 class="mb-2 text-xl font-semibold">One van, one phone</h3>
-        <p class="text-sm leading-relaxed text-textmute">Started with a second hand van and a landline in the spare room. Every job came from somebody telling somebody else.</p>
+        <p class="text-sm leading-relaxed atl-text-soft">Started with a second hand van and a landline in the spare room. Every job came from somebody telling somebody else.</p>
       </li>
 
       <li class="atl-item">
         <span class="atl-dot" aria-hidden="true"></span>
-        <p class="mb-1 text-sm font-semibold text-accent">2013</p>
+        <p class="mb-1 text-sm font-semibold atl-text-accent">2013</p>
         <h3 class="mb-2 text-xl font-semibold">The first workshop</h3>
-        <p class="text-sm leading-relaxed text-textmute">A unit on the industrial estate meant parts on the shelf instead of a trip to the merchant halfway through every job.</p>
+        <p class="text-sm leading-relaxed atl-text-soft">A unit on the industrial estate meant parts on the shelf instead of a trip to the merchant halfway through every job.</p>
       </li>
 
       <li class="atl-item">
         <span class="atl-dot" aria-hidden="true"></span>
-        <p class="mb-1 text-sm font-semibold text-accent">2017</p>
+        <p class="mb-1 text-sm font-semibold atl-text-accent">2017</p>
         <h3 class="mb-2 text-xl font-semibold">Four engineers, one standard</h3>
-        <p class="text-sm leading-relaxed text-textmute">Grew the team without changing how the work is done. Everybody trains in house before they are let near a customer's home.</p>
+        <p class="text-sm leading-relaxed atl-text-soft">Grew the team without changing how the work is done. Everybody trains in house before they are let near a customer's home.</p>
       </li>
 
       <li class="atl-item">
         <span class="atl-dot" aria-hidden="true"></span>
-        <p class="mb-1 text-sm font-semibold text-accent">2021</p>
+        <p class="mb-1 text-sm font-semibold atl-text-accent">2021</p>
         <h3 class="mb-2 text-xl font-semibold">Fixed pricing across the board</h3>
-        <p class="text-sm leading-relaxed text-textmute">Stopped charging by the day. Every job quoted in writing, so nobody has to wonder what the final number will be.</p>
+        <p class="text-sm leading-relaxed atl-text-soft">Stopped charging by the day. Every job quoted in writing, so nobody has to wonder what the final number will be.</p>
       </li>
 
       <li class="atl-item">
         <span class="atl-dot" aria-hidden="true"></span>
-        <p class="mb-1 text-sm font-semibold text-accent">Today</p>
+        <p class="mb-1 text-sm font-semibold atl-text-accent">Today</p>
         <h3 class="mb-2 text-xl font-semibold">Eleven people, same promise</h3>
-        <p class="text-sm leading-relaxed text-textmute">Still answering our own phone, and still finishing on the day we said we would.</p>
+        <p class="text-sm leading-relaxed atl-text-soft">Still answering our own phone, and still finishing on the day we said we would.</p>
       </li>
 
     </ol>

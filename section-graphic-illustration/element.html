@@ -18,9 +18,86 @@
   Every class in this block is prefixed gil- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="gil bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="gil-title">
+<section class="gil gil-bg-surface px-5 py-20 gil-text-ink sm:px-8 lg:py-28" aria-labelledby="gil-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .gil, .gil *, .gil::before, .gil *::before, .gil::after, .gil *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .gil, .gil *, .gil::after, .gil *::after, .gil::before, .gil *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .gil::after, .gil *::after, .gil::before, .gil *::before{--tw-content:'';}
+      .gil{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .gil h1, .gil h2, .gil h3, .gil h4, .gil h5, .gil h6{font-size:inherit;font-weight:inherit;}
+      .gil a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .gil blockquote, .gil dd, .gil dl, .gil figure, .gil h1, .gil h2, .gil h3, .gil h4, .gil h5, .gil h6, .gil hr, .gil p, .gil pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .gil menu, .gil ol, .gil ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .gil audio, .gil canvas, .gil embed, .gil iframe, .gil img, .gil object, .gil svg, .gil video{display:block;vertical-align:middle;}
+      .gil.mx-auto, .gil .mx-auto{margin-left:auto;margin-right:auto;}
+      .gil.mb-14, .gil .mb-14{margin-bottom:3.5rem;}
+      .gil.mb-3, .gil .mb-3{margin-bottom:0.75rem;}
+      .gil.mt-12, .gil .mt-12{margin-top:3rem;}
+      .gil.block, .gil .block{display:block;}
+      .gil.flex, .gil .flex{display:flex;}
+      .gil.grid, .gil .grid{display:grid;}
+      .gil.h-7, .gil .h-7{height:1.75rem;}
+      .gil.w-7, .gil .w-7{width:1.75rem;}
+      .gil.w-full, .gil .w-full{width:100%;}
+      .gil.max-w-2xl, .gil .max-w-2xl{max-width:42rem;}
+      .gil.max-w-5xl, .gil .max-w-5xl{max-width:64rem;}
+      .gil.shrink-0, .gil .shrink-0{flex-shrink:0;}
+      .gil.place-items-center, .gil .place-items-center{align-items:center;justify-items:center;}
+      .gil.items-center, .gil .items-center{align-items:center;}
+      .gil.gap-12, .gil .gap-12{row-gap:3rem;column-gap:3rem;}
+      .gil.gap-4, .gil .gap-4{row-gap:1rem;column-gap:1rem;}
+      .gil.space-y-3 > :not([hidden]) ~ :not([hidden]), .gil .space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse));}
+      .gil.rounded-2xl, .gil .rounded-2xl{border-top-left-radius:1rem;border-top-right-radius:1rem;border-bottom-right-radius:1rem;border-bottom-left-radius:1rem;}
+      .gil.rounded-full, .gil .rounded-full{border-top-left-radius:9999px;border-top-right-radius:9999px;border-bottom-right-radius:9999px;border-bottom-left-radius:9999px;}
+      .gil.border, .gil .border{border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;}
+      .gil.border-black\/10, .gil .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .gil.bg-amber-700, .gil .bg-amber-700{--tw-bg-opacity:1;background-color:rgb(180 83 9 / var(--tw-bg-opacity, 1));}
+      .gil.bg-emerald-700, .gil .bg-emerald-700{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1));}
+      .gil.bg-violet-700, .gil .bg-violet-700{--tw-bg-opacity:1;background-color:rgb(109 40 217 / var(--tw-bg-opacity, 1));}
+      .gil.p-4, .gil .p-4{padding-top:1rem;padding-right:1rem;padding-bottom:1rem;padding-left:1rem;}
+      .gil.px-5, .gil .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .gil.py-20, .gil .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .gil.text-center, .gil .text-center{text-align:center;}
+      .gil.text-4xl, .gil .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .gil.text-sm, .gil .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .gil.text-xs, .gil .text-xs{font-size:0.75rem;line-height:1rem;}
+      .gil.font-semibold, .gil .font-semibold{font-weight:600;}
+      .gil.uppercase, .gil .uppercase{text-transform:uppercase;}
+      .gil.leading-relaxed, .gil .leading-relaxed{line-height:1.625;}
+      .gil.leading-tight, .gil .leading-tight{line-height:1.25;}
+      .gil.tracking-\[0\.2em\], .gil .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      .gil.text-white, .gil .text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1));}
+      @media (min-width: 640px){.gil.sm\:px-8, .gil .sm\:px-8{padding-left:2rem;padding-right:2rem;}.gil.sm\:text-5xl, .gil .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 768px){.gil.md\:grid-cols-\[1fr_20rem\], .gil .md\:grid-cols-\[1fr_20rem\]{grid-template-columns:1fr 20rem;}}
+      @media (min-width: 1024px){.gil.lg\:py-28, .gil .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .gil{
+      --gil-surface:255 255 255;  /* card and panel faces */
+      --gil-band:246 247 249;  /* the quiet band behind content */
+      --gil-ink:15 23 42;  /* headings and primary copy */
+      --gil-soft:100 116 139;  /* supporting copy */
+      --gil-accent:37 99 235;  /* the one emphasis colour */
+      --gil-deep:11 18 32;  /* the dark ground */
+    }
+    .gil.gil-bg-accent, .gil .gil-bg-accent{background-color:rgb(var(--gil-accent))}
+    .gil.gil-bg-surface, .gil .gil-bg-surface{background-color:rgb(var(--gil-surface))}
+    .gil.gil-text-accent, .gil .gil-text-accent{color:rgb(var(--gil-accent))}
+    .gil.gil-text-ink, .gil .gil-text-ink{color:rgb(var(--gil-ink))}
+    .gil.gil-text-soft, .gil .gil-text-soft{color:rgb(var(--gil-soft))}
+
     .gil .gil-rise{animation:gil-rise 460ms cubic-bezier(.16,1,.3,1) both}
     @keyframes gil-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
@@ -37,7 +114,7 @@
   <div class="mx-auto max-w-5xl">
 
     <header class="mx-auto mb-14 max-w-2xl text-center gil-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">How the system fits together</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] gil-text-accent">How the system fits together</p>
       <h2 id="gil-title" class="text-4xl font-semibold leading-tight sm:text-5xl">What is actually behind the wall</h2>
     </header>
 
@@ -78,33 +155,33 @@
       <ol class="space-y-3">
         <li class="gil-rise" style="animation-delay:60ms">
           <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
-            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent text-xs font-semibold text-white" aria-hidden="true">1</span>
-            <span><span class="block text-sm font-semibold">The boiler</span><span class="block text-sm leading-relaxed text-textmute">Sized to the house, not to the old one it replaced.</span></span>
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full gil-bg-accent text-xs font-semibold text-white" aria-hidden="true">1</span>
+            <span><span class="block text-sm font-semibold">The boiler</span><span class="block text-sm leading-relaxed gil-text-soft">Sized to the house, not to the old one it replaced.</span></span>
           </a>
         </li>
         <li class="gil-rise" style="animation-delay:120ms">
           <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
             <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-700 text-xs font-semibold text-white" aria-hidden="true">2</span>
-            <span><span class="block text-sm font-semibold">The cylinder</span><span class="block text-sm leading-relaxed text-textmute">Holds enough for two showers back to back without a cold run.</span></span>
+            <span><span class="block text-sm font-semibold">The cylinder</span><span class="block text-sm leading-relaxed gil-text-soft">Holds enough for two showers back to back without a cold run.</span></span>
           </a>
         </li>
         <li class="gil-rise" style="animation-delay:180ms">
           <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
             <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-amber-700 text-xs font-semibold text-white" aria-hidden="true">3</span>
-            <span><span class="block text-sm font-semibold">The manifold</span><span class="block text-sm leading-relaxed text-textmute">One place to isolate a single room instead of draining the lot.</span></span>
+            <span><span class="block text-sm font-semibold">The manifold</span><span class="block text-sm leading-relaxed gil-text-soft">One place to isolate a single room instead of draining the lot.</span></span>
           </a>
         </li>
         <li class="gil-rise" style="animation-delay:240ms">
           <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
             <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-violet-700 text-xs font-semibold text-white" aria-hidden="true">4</span>
-            <span><span class="block text-sm font-semibold">Balanced flow</span><span class="block text-sm leading-relaxed text-textmute">Every radiator set on commissioning so no room runs cold.</span></span>
+            <span><span class="block text-sm font-semibold">Balanced flow</span><span class="block text-sm leading-relaxed gil-text-soft">Every radiator set on commissioning so no room runs cold.</span></span>
           </a>
         </li>
       </ol>
 
     </div>
 
-    <p class="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-textmute gil-rise" style="animation-delay:300ms">Schematic only. Your survey drawing will show the actual pipe runs for your property.</p>
+    <p class="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed gil-text-soft gil-rise" style="animation-delay:300ms">Schematic only. Your survey drawing will show the actual pipe runs for your property.</p>
 
   </div>
 </section>

@@ -20,9 +20,83 @@
   Every class in this block is prefixed hsc- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="hsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="hsc-title">
+<section class="hsc hsc-bg-surface px-5 py-20 hsc-text-ink sm:px-8 lg:py-28" aria-labelledby="hsc-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .hsc, .hsc *, .hsc::before, .hsc *::before, .hsc::after, .hsc *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .hsc, .hsc *, .hsc::after, .hsc *::after, .hsc::before, .hsc *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .hsc::after, .hsc *::after, .hsc::before, .hsc *::before{--tw-content:'';}
+      .hsc{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .hsc h1, .hsc h2, .hsc h3, .hsc h4, .hsc h5, .hsc h6{font-size:inherit;font-weight:inherit;}
+      .hsc blockquote, .hsc dd, .hsc dl, .hsc figure, .hsc h1, .hsc h2, .hsc h3, .hsc h4, .hsc h5, .hsc h6, .hsc hr, .hsc p, .hsc pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .hsc menu, .hsc ol, .hsc ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .hsc.mx-auto, .hsc .mx-auto{margin-left:auto;margin-right:auto;}
+      .hsc.mb-10, .hsc .mb-10{margin-bottom:2.5rem;}
+      .hsc.mb-2, .hsc .mb-2{margin-bottom:0.5rem;}
+      .hsc.mb-3, .hsc .mb-3{margin-bottom:0.75rem;}
+      .hsc.flex, .hsc .flex{display:flex;}
+      .hsc.aspect-\[16\/10\], .hsc .aspect-\[16\/10\]{aspect-ratio:16 / 10;}
+      .hsc.w-\[19rem\], .hsc .w-\[19rem\]{width:19rem;}
+      .hsc.max-w-6xl, .hsc .max-w-6xl{max-width:72rem;}
+      .hsc.max-w-xl, .hsc .max-w-xl{max-width:36rem;}
+      .hsc.flex-wrap, .hsc .flex-wrap{flex-wrap:wrap;}
+      .hsc.items-end, .hsc .items-end{align-items:flex-end;}
+      .hsc.justify-between, .hsc .justify-between{justify-content:space-between;}
+      .hsc.gap-4, .hsc .gap-4{row-gap:1rem;column-gap:1rem;}
+      .hsc.overflow-hidden, .hsc .overflow-hidden{overflow-x:hidden;overflow-y:hidden;}
+      .hsc.rounded-3xl, .hsc .rounded-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem;border-bottom-right-radius:1.5rem;border-bottom-left-radius:1.5rem;}
+      .hsc.border, .hsc .border{border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;}
+      .hsc.border-black\/10, .hsc .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .hsc.bg-gradient-to-br, .hsc .bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops));}
+      .hsc.from-amber-500\/20, .hsc .from-amber-500\/20{--tw-gradient-from:rgb(245 158 11 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .hsc.from-emerald-500\/20, .hsc .from-emerald-500\/20{--tw-gradient-from:rgb(16 185 129 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .hsc.from-rose-500\/20, .hsc .from-rose-500\/20{--tw-gradient-from:rgb(244 63 94 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(244 63 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .hsc.from-violet-500\/20, .hsc .from-violet-500\/20{--tw-gradient-from:rgb(139 92 246 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(139 92 246 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .hsc.to-amber-500\/5, .hsc .to-amber-500\/5{--tw-gradient-to:rgb(245 158 11 / 0.05) var(--tw-gradient-to-position);}
+      .hsc.to-emerald-500\/5, .hsc .to-emerald-500\/5{--tw-gradient-to:rgb(16 185 129 / 0.05) var(--tw-gradient-to-position);}
+      .hsc.to-rose-500\/5, .hsc .to-rose-500\/5{--tw-gradient-to:rgb(244 63 94 / 0.05) var(--tw-gradient-to-position);}
+      .hsc.to-violet-500\/5, .hsc .to-violet-500\/5{--tw-gradient-to:rgb(139 92 246 / 0.05) var(--tw-gradient-to-position);}
+      .hsc.p-6, .hsc .p-6{padding-top:1.5rem;padding-right:1.5rem;padding-bottom:1.5rem;padding-left:1.5rem;}
+      .hsc.px-5, .hsc .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .hsc.py-20, .hsc .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .hsc.text-4xl, .hsc .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .hsc.text-sm, .hsc .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .hsc.text-xl, .hsc .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .hsc.text-xs, .hsc .text-xs{font-size:0.75rem;line-height:1rem;}
+      .hsc.font-semibold, .hsc .font-semibold{font-weight:600;}
+      .hsc.uppercase, .hsc .uppercase{text-transform:uppercase;}
+      .hsc.leading-relaxed, .hsc .leading-relaxed{line-height:1.625;}
+      .hsc.leading-tight, .hsc .leading-tight{line-height:1.25;}
+      .hsc.tracking-\[0\.18em\], .hsc .tracking-\[0\.18em\]{letter-spacing:0.18em;}
+      .hsc.tracking-\[0\.2em\], .hsc .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.hsc.sm\:w-\[22rem\], .hsc .sm\:w-\[22rem\]{width:22rem;}.hsc.sm\:px-8, .hsc .sm\:px-8{padding-left:2rem;padding-right:2rem;}.hsc.sm\:text-5xl, .hsc .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 1024px){.hsc.lg\:py-28, .hsc .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .hsc{
+      --hsc-surface:255 255 255;  /* card and panel faces */
+      --hsc-band:246 247 249;  /* the quiet band behind content */
+      --hsc-ink:15 23 42;  /* headings and primary copy */
+      --hsc-soft:100 116 139;  /* supporting copy */
+      --hsc-accent:37 99 235;  /* the one emphasis colour */
+      --hsc-deep:11 18 32;  /* the dark ground */
+    }
+    .hsc.hsc-bg-surface, .hsc .hsc-bg-surface{background-color:rgb(var(--hsc-surface))}
+    .hsc.hsc-text-accent, .hsc .hsc-text-accent{color:rgb(var(--hsc-accent))}
+    .hsc.hsc-text-ink, .hsc .hsc-text-ink{color:rgb(var(--hsc-ink))}
+    .hsc.hsc-text-soft, .hsc .hsc-text-soft{color:rgb(var(--hsc-soft))}
+
     .hsc .hsc-rail{
       display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;
       scroll-padding-left:1.25rem;padding-bottom:1.25rem;
@@ -42,63 +116,64 @@
       .hsc .hsc-card{transition:none}
       .hsc .hsc-card:hover{transform:none}
     }
-  </style>
+      .hsc.hsc-art, .hsc .hsc-art{background-image:linear-gradient(to bottom right,rgb(var(--hsc-accent)/.20),rgb(var(--hsc-accent)/.05))}
+</style>
 
   <div class="mx-auto max-w-6xl">
 
     <header class="mb-10 flex flex-wrap items-end justify-between gap-4 hsc-rise">
       <div class="max-w-xl">
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Case studies</p>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] hsc-text-accent">Case studies</p>
         <h2 id="hsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Work we were proud to hand over</h2>
       </div>
-      <p class="text-sm text-textmute">Scroll or swipe to see more</p>
+      <p class="text-sm hsc-text-soft">Scroll or swipe to see more</p>
     </header>
 
     <!-- tabindex makes the rail reachable, so arrow keys scroll it. -->
     <ul class="hsc-rail hsc-rise" tabindex="0" role="group" aria-label="Case studies, scroll horizontally" style="animation-delay:80ms">
 
       <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
-        <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        <div class="aspect-[16/10] hsc-art"></div>
         <div class="p-6">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Bathroom</p>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] hsc-text-soft">Bathroom</p>
           <h3 class="mb-2 text-xl font-semibold">A loft ensuite in nine days</h3>
-          <p class="text-sm leading-relaxed text-textmute">Awkward eaves, no existing waste run, and a tight staircase. Finished a day early.</p>
+          <p class="text-sm leading-relaxed hsc-text-soft">Awkward eaves, no existing waste run, and a tight staircase. Finished a day early.</p>
         </div>
       </li>
 
       <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
         <div class="aspect-[16/10] bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
         <div class="p-6">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Heating</p>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] hsc-text-soft">Heating</p>
           <h3 class="mb-2 text-xl font-semibold">Whole house, no lost heat</h3>
-          <p class="text-sm leading-relaxed text-textmute">Boiler swapped and every radiator rebalanced without the family moving out for a night.</p>
+          <p class="text-sm leading-relaxed hsc-text-soft">Boiler swapped and every radiator rebalanced without the family moving out for a night.</p>
         </div>
       </li>
 
       <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
         <div class="aspect-[16/10] bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
         <div class="p-6">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Kitchen</p>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] hsc-text-soft">Kitchen</p>
           <h3 class="mb-2 text-xl font-semibold">An island with hidden waste</h3>
-          <p class="text-sm leading-relaxed text-textmute">Feeds and waste run under a solid floor so nothing boxed in and nothing on show.</p>
+          <p class="text-sm leading-relaxed hsc-text-soft">Feeds and waste run under a solid floor so nothing boxed in and nothing on show.</p>
         </div>
       </li>
 
       <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
         <div class="aspect-[16/10] bg-gradient-to-br from-rose-500/20 to-rose-500/5"></div>
         <div class="p-6">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Commercial</p>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] hsc-text-soft">Commercial</p>
           <h3 class="mb-2 text-xl font-semibold">A cafe that never shut</h3>
-          <p class="text-sm leading-relaxed text-textmute">Full replumb done overnight across four visits, so not a single trading hour was lost.</p>
+          <p class="text-sm leading-relaxed hsc-text-soft">Full replumb done overnight across four visits, so not a single trading hour was lost.</p>
         </div>
       </li>
 
       <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
         <div class="aspect-[16/10] bg-gradient-to-br from-violet-500/20 to-violet-500/5"></div>
         <div class="p-6">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Access</p>
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] hsc-text-soft">Access</p>
           <h3 class="mb-2 text-xl font-semibold">Level access, same footprint</h3>
-          <p class="text-sm leading-relaxed text-textmute">A step free wet room fitted into the original room size, with no extension needed.</p>
+          <p class="text-sm leading-relaxed hsc-text-soft">A step free wet room fitted into the original room size, with no extension needed.</p>
         </div>
       </li>
 

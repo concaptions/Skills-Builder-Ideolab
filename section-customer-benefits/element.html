@@ -14,9 +14,76 @@
   Every class in this block is prefixed cbn- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="cbn bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="cbn-title">
+<section class="cbn cbn-bg-surface px-5 py-20 cbn-text-ink sm:px-8 lg:py-28" aria-labelledby="cbn-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .cbn, .cbn *, .cbn::before, .cbn *::before, .cbn::after, .cbn *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .cbn, .cbn *, .cbn::after, .cbn *::after, .cbn::before, .cbn *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .cbn::after, .cbn *::after, .cbn::before, .cbn *::before{--tw-content:'';}
+      .cbn{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .cbn h1, .cbn h2, .cbn h3, .cbn h4, .cbn h5, .cbn h6{font-size:inherit;font-weight:inherit;}
+      .cbn blockquote, .cbn dd, .cbn dl, .cbn figure, .cbn h1, .cbn h2, .cbn h3, .cbn h4, .cbn h5, .cbn h6, .cbn hr, .cbn p, .cbn pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .cbn menu, .cbn ol, .cbn ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .cbn audio, .cbn canvas, .cbn embed, .cbn iframe, .cbn img, .cbn object, .cbn svg, .cbn video{display:block;vertical-align:middle;}
+      .cbn.mx-auto, .cbn .mx-auto{margin-left:auto;margin-right:auto;}
+      .cbn.mb-14, .cbn .mb-14{margin-bottom:3.5rem;}
+      .cbn.mb-2, .cbn .mb-2{margin-bottom:0.5rem;}
+      .cbn.mb-3, .cbn .mb-3{margin-bottom:0.75rem;}
+      .cbn.mb-4, .cbn .mb-4{margin-bottom:1rem;}
+      .cbn.mt-4, .cbn .mt-4{margin-top:1rem;}
+      .cbn.grid, .cbn .grid{display:grid;}
+      .cbn.h-11, .cbn .h-11{height:2.75rem;}
+      .cbn.h-5, .cbn .h-5{height:1.25rem;}
+      .cbn.w-11, .cbn .w-11{width:2.75rem;}
+      .cbn.w-5, .cbn .w-5{width:1.25rem;}
+      .cbn.max-w-2xl, .cbn .max-w-2xl{max-width:42rem;}
+      .cbn.max-w-6xl, .cbn .max-w-6xl{max-width:72rem;}
+      .cbn.place-items-center, .cbn .place-items-center{align-items:center;justify-items:center;}
+      .cbn.gap-x-10, .cbn .gap-x-10{column-gap:2.5rem;}
+      .cbn.gap-y-12, .cbn .gap-y-12{row-gap:3rem;}
+      .cbn.rounded-xl, .cbn .rounded-xl{border-top-left-radius:0.75rem;border-top-right-radius:0.75rem;border-bottom-right-radius:0.75rem;border-bottom-left-radius:0.75rem;}
+      .cbn.px-5, .cbn .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .cbn.py-20, .cbn .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .cbn.text-center, .cbn .text-center{text-align:center;}
+      .cbn.text-4xl, .cbn .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .cbn.text-base, .cbn .text-base{font-size:1rem;line-height:1.5rem;}
+      .cbn.text-lg, .cbn .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .cbn.text-sm, .cbn .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .cbn.text-xs, .cbn .text-xs{font-size:0.75rem;line-height:1rem;}
+      .cbn.font-semibold, .cbn .font-semibold{font-weight:600;}
+      .cbn.uppercase, .cbn .uppercase{text-transform:uppercase;}
+      .cbn.leading-relaxed, .cbn .leading-relaxed{line-height:1.625;}
+      .cbn.leading-tight, .cbn .leading-tight{line-height:1.25;}
+      .cbn.tracking-\[0\.2em\], .cbn .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.cbn.sm\:grid-cols-2, .cbn .sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0px, 1fr));}.cbn.sm\:px-8, .cbn .sm\:px-8{padding-left:2rem;padding-right:2rem;}.cbn.sm\:text-5xl, .cbn .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 1024px){.cbn.lg\:grid-cols-3, .cbn .lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0px, 1fr));}.cbn.lg\:py-28, .cbn .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .cbn{
+      --cbn-surface:255 255 255;  /* card and panel faces */
+      --cbn-band:246 247 249;  /* the quiet band behind content */
+      --cbn-ink:15 23 42;  /* headings and primary copy */
+      --cbn-soft:100 116 139;  /* supporting copy */
+      --cbn-accent:37 99 235;  /* the one emphasis colour */
+      --cbn-deep:11 18 32;  /* the dark ground */
+    }
+    .cbn.cbn-bg-accent-10, .cbn .cbn-bg-accent-10{background-color:rgb(var(--cbn-accent) / .10)}
+    .cbn.cbn-bg-surface, .cbn .cbn-bg-surface{background-color:rgb(var(--cbn-surface))}
+    .cbn.cbn-text-accent, .cbn .cbn-text-accent{color:rgb(var(--cbn-accent))}
+    .cbn.cbn-text-ink, .cbn .cbn-text-ink{color:rgb(var(--cbn-ink))}
+    .cbn.cbn-text-soft, .cbn .cbn-text-soft{color:rgb(var(--cbn-soft))}
+
     .cbn .cbn-rise{animation:cbn-rise 420ms cubic-bezier(.16,1,.3,1) both}
     @keyframes cbn-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
     @media (prefers-reduced-motion: reduce){ .cbn .cbn-rise{animation:none} }
@@ -25,59 +92,59 @@
   <div class="mx-auto max-w-6xl">
 
     <header class="mx-auto mb-14 max-w-2xl text-center cbn-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What you get</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] cbn-text-accent">What you get</p>
       <h2 id="cbn-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Six reasons people stay with us</h2>
-      <p class="mt-4 text-base leading-relaxed text-textmute">Not a feature list. These are the things customers tell us actually made the difference.</p>
+      <p class="mt-4 text-base leading-relaxed cbn-text-soft">Not a feature list. These are the things customers tell us actually made the difference.</p>
     </header>
 
     <ul class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
 
       <li class="cbn-rise" style="animation-delay:0ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">No waiting three weeks for a price</h3>
-        <p class="text-sm leading-relaxed text-textmute">A written quote lands within two working days of the visit, so you can make a decision while the job is still fresh in your head.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">A written quote lands within two working days of the visit, so you can make a decision while the job is still fresh in your head.</p>
       </li>
 
       <li class="cbn-rise" style="animation-delay:60ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">The price does not move</h3>
-        <p class="text-sm leading-relaxed text-textmute">What you agree is what you pay. No day rate creeping upward and no line items appearing at the end that nobody mentioned.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">What you agree is what you pay. No day rate creeping upward and no line items appearing at the end that nobody mentioned.</p>
       </li>
 
       <li class="cbn-rise" style="animation-delay:120ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">You get a time, not a day</h3>
-        <p class="text-sm leading-relaxed text-textmute">A two hour arrival window, confirmed the day before. You do not lose a day of work waiting for a van that might come.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">A two hour arrival window, confirmed the day before. You do not lose a day of work waiting for a van that might come.</p>
       </li>
 
       <li class="cbn-rise" style="animation-delay:180ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">Covered for two years</h3>
-        <p class="text-sm leading-relaxed text-textmute">Workmanship is guaranteed and parts carry the manufacturer's own cover. One call and somebody comes back out at no charge.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">Workmanship is guaranteed and parts carry the manufacturer's own cover. One call and somebody comes back out at no charge.</p>
       </li>
 
       <li class="cbn-rise" style="animation-delay:240ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 16l4-8 4 5 4-9"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">Your home stays liveable</h3>
-        <p class="text-sm leading-relaxed text-textmute">Sheets down, waste out the same day, water back on every evening. You keep using the house while the work is going on.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">Sheets down, waste out the same day, water back on every evening. You keep using the house while the work is going on.</p>
       </li>
 
       <li class="cbn-rise" style="animation-delay:300ms">
-        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl cbn-bg-accent-10 cbn-text-accent" aria-hidden="true">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </span>
         <h3 class="mb-2 text-lg font-semibold">Someone answers the phone</h3>
-        <p class="text-sm leading-relaxed text-textmute">A real person, seven days a week, who can actually tell you where your job is up to rather than promising to find out.</p>
+        <p class="text-sm leading-relaxed cbn-text-soft">A real person, seven days a week, who can actually tell you where your job is up to rather than promising to find out.</p>
       </li>
 
     </ul>

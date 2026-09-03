@@ -17,9 +17,103 @@
   Every class in this block is prefixed pns- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="pns bg-muted px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pns-title">
+<section class="pns pns-bg-band px-5 py-20 pns-text-ink sm:px-8 lg:py-28" aria-labelledby="pns-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .pns, .pns *, .pns::before, .pns *::before, .pns::after, .pns *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .pns, .pns *, .pns::after, .pns *::after, .pns::before, .pns *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .pns::after, .pns *::after, .pns::before, .pns *::before{--tw-content:'';}
+      .pns{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .pns h1, .pns h2, .pns h3, .pns h4, .pns h5, .pns h6{font-size:inherit;font-weight:inherit;}
+      .pns a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .pns blockquote, .pns dd, .pns dl, .pns figure, .pns h1, .pns h2, .pns h3, .pns h4, .pns h5, .pns h6, .pns hr, .pns p, .pns pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .pns menu, .pns ol, .pns ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pns.absolute, .pns .absolute{position:absolute;}
+      .pns.relative, .pns .relative{position:relative;}
+      .pns.-top-3, .pns .-top-3{top:-0.75rem;}
+      .pns.left-8, .pns .left-8{left:2rem;}
+      .pns.mx-auto, .pns .mx-auto{margin-left:auto;margin-right:auto;}
+      .pns.mb-14, .pns .mb-14{margin-bottom:3.5rem;}
+      .pns.mb-2, .pns .mb-2{margin-bottom:0.5rem;}
+      .pns.mb-3, .pns .mb-3{margin-bottom:0.75rem;}
+      .pns.mb-6, .pns .mb-6{margin-bottom:1.5rem;}
+      .pns.mb-8, .pns .mb-8{margin-bottom:2rem;}
+      .pns.mt-4, .pns .mt-4{margin-top:1rem;}
+      .pns.mt-auto, .pns .mt-auto{margin-top:auto;}
+      .pns.block, .pns .block{display:block;}
+      .pns.flex, .pns .flex{display:flex;}
+      .pns.grid, .pns .grid{display:grid;}
+      .pns.h-full, .pns .h-full{height:100%;}
+      .pns.max-w-2xl, .pns .max-w-2xl{max-width:42rem;}
+      .pns.max-w-6xl, .pns .max-w-6xl{max-width:72rem;}
+      .pns.flex-col, .pns .flex-col{flex-direction:column;}
+      .pns.items-stretch, .pns .items-stretch{align-items:stretch;}
+      .pns.gap-6, .pns .gap-6{row-gap:1.5rem;column-gap:1.5rem;}
+      .pns.space-y-2 > :not([hidden]) ~ :not([hidden]), .pns .space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse));}
+      .pns.rounded-3xl, .pns .rounded-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem;border-bottom-right-radius:1.5rem;border-bottom-left-radius:1.5rem;}
+      .pns.rounded-full, .pns .rounded-full{border-top-left-radius:9999px;border-top-right-radius:9999px;border-bottom-right-radius:9999px;border-bottom-left-radius:9999px;}
+      .pns.border, .pns .border{border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;}
+      .pns.border-2, .pns .border-2{border-top-width:2px;border-right-width:2px;border-bottom-width:2px;border-left-width:2px;}
+      .pns.border-black\/10, .pns .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .pns.border-black\/15, .pns .border-black\/15{border-top-color:rgba(0, 0, 0, 0.15);border-right-color:rgba(0, 0, 0, 0.15);border-bottom-color:rgba(0, 0, 0, 0.15);border-left-color:rgba(0, 0, 0, 0.15);}
+      .pns.p-8, .pns .p-8{padding-top:2rem;padding-right:2rem;padding-bottom:2rem;padding-left:2rem;}
+      .pns.px-3, .pns .px-3{padding-left:0.75rem;padding-right:0.75rem;}
+      .pns.px-5, .pns .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .pns.px-6, .pns .px-6{padding-left:1.5rem;padding-right:1.5rem;}
+      .pns.py-1, .pns .py-1{padding-top:0.25rem;padding-bottom:0.25rem;}
+      .pns.py-20, .pns .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .pns.py-3, .pns .py-3{padding-top:0.75rem;padding-bottom:0.75rem;}
+      .pns.text-center, .pns .text-center{text-align:center;}
+      .pns.text-3xl, .pns .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .pns.text-4xl, .pns .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .pns.text-base, .pns .text-base{font-size:1rem;line-height:1.5rem;}
+      .pns.text-sm, .pns .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .pns.text-xl, .pns .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .pns.text-xs, .pns .text-xs{font-size:0.75rem;line-height:1rem;}
+      .pns.font-semibold, .pns .font-semibold{font-weight:600;}
+      .pns.uppercase, .pns .uppercase{text-transform:uppercase;}
+      .pns.leading-relaxed, .pns .leading-relaxed{line-height:1.625;}
+      .pns.leading-tight, .pns .leading-tight{line-height:1.25;}
+      .pns.tracking-\[0\.14em\], .pns .tracking-\[0\.14em\]{letter-spacing:0.14em;}
+      .pns.tracking-\[0\.2em\], .pns .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      .pns.text-white, .pns .text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1));}
+      .pns.shadow-lg, .pns .shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);}
+      @media (min-width: 640px){.pns.sm\:px-8, .pns .sm\:px-8{padding-left:2rem;padding-right:2rem;}.pns.sm\:text-5xl, .pns .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 768px){.pns.md\:grid-cols-3, .pns .md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0px, 1fr));}}
+      @media (min-width: 1024px){.pns.lg\:py-28, .pns .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .pns{
+      --pns-surface:255 255 255;  /* card and panel faces */
+      --pns-band:246 247 249;  /* the quiet band behind content */
+      --pns-ink:15 23 42;  /* headings and primary copy */
+      --pns-soft:100 116 139;  /* supporting copy */
+      --pns-accent:37 99 235;  /* the one emphasis colour */
+      --pns-deep:11 18 32;  /* the dark ground */
+    }
+    .pns.pns-bg-accent, .pns .pns-bg-accent{background-color:rgb(var(--pns-accent))}
+    .pns.pns-bg-band, .pns .pns-bg-band{background-color:rgb(var(--pns-band))}
+    .pns.pns-bg-surface, .pns .pns-bg-surface{background-color:rgb(var(--pns-surface))}
+    .pns.pns-border-accent, .pns .pns-border-accent{border-color:rgb(var(--pns-accent))}
+    .pns.pns-text-accent, .pns .pns-text-accent{color:rgb(var(--pns-accent))}
+    .pns.pns-text-ink, .pns .pns-text-ink{color:rgb(var(--pns-ink))}
+    .pns.pns-text-ink-70, .pns .pns-text-ink-70{color:rgb(var(--pns-ink) / .70)}
+    .pns.pns-text-soft, .pns .pns-text-soft{color:rgb(var(--pns-soft))}
+
     .pns .pns-rise{animation:pns-rise 420ms cubic-bezier(.16,1,.3,1) both}
     @keyframes pns-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -36,19 +130,19 @@
   <div class="mx-auto max-w-6xl">
 
     <header class="mx-auto mb-14 max-w-2xl text-center pns-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Services</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] pns-text-accent">Services</p>
       <h2 id="pns-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Three ways we can help</h2>
-      <p class="mt-4 text-base leading-relaxed text-textdark/70">Every price below is a starting figure from a real job. You get an exact number after the visit.</p>
+      <p class="mt-4 text-base leading-relaxed pns-text-ink-70">Every price below is a starting figure from a real job. You get an exact number after the visit.</p>
     </header>
 
     <ul class="grid items-stretch gap-6 md:grid-cols-3">
 
       <li class="pns-rise" style="animation-delay:0ms">
-        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 pns-bg-surface p-8">
           <h3 class="mb-2 text-xl font-semibold">Repairs and call outs</h3>
-          <p class="mb-6 text-sm leading-relaxed text-textmute">Something has stopped working and you need it back today.</p>
-          <p class="mb-6"><span class="text-3xl font-semibold">£95</span> <span class="text-sm text-textmute">first hour, parts at cost</span></p>
-          <ul class="mb-8 space-y-2 text-sm text-textmute">
+          <p class="mb-6 text-sm leading-relaxed pns-text-soft">Something has stopped working and you need it back today.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£95</span> <span class="text-sm pns-text-soft">first hour, parts at cost</span></p>
+          <ul class="mb-8 space-y-2 text-sm pns-text-soft">
             <li>Two hour arrival window</li>
             <li>Seven days a week</li>
             <li>Fee quoted before we set off</li>
@@ -58,26 +152,26 @@
       </li>
 
       <li class="pns-rise" style="animation-delay:80ms">
-        <article class="pns-card relative flex h-full flex-col rounded-3xl border-2 border-accent bg-surface p-8 shadow-lg">
-          <span class="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">Most booked</span>
+        <article class="pns-card relative flex h-full flex-col rounded-3xl border-2 pns-border-accent pns-bg-surface p-8 shadow-lg">
+          <span class="absolute -top-3 left-8 rounded-full pns-bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">Most booked</span>
           <h3 class="mb-2 text-xl font-semibold">Full bathroom fit</h3>
-          <p class="mb-6 text-sm leading-relaxed text-textmute">Stripped back and rebuilt by one team, start to finish.</p>
-          <p class="mb-6"><span class="text-3xl font-semibold">£4,200</span> <span class="text-sm text-textmute">from, fixed in writing</span></p>
-          <ul class="mb-8 space-y-2 text-sm text-textmute">
+          <p class="mb-6 text-sm leading-relaxed pns-text-soft">Stripped back and rebuilt by one team, start to finish.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£4,200</span> <span class="text-sm pns-text-soft">from, fixed in writing</span></p>
+          <ul class="mb-8 space-y-2 text-sm pns-text-soft">
             <li>Design visit and written quote</li>
             <li>Strip out and disposal included</li>
             <li>Most rooms done in eight days</li>
           </ul>
-          <a href="#contact" class="mt-auto block rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold text-white">Get a fixed quote</a>
+          <a href="#contact" class="mt-auto block rounded-full pns-bg-accent px-6 py-3 text-center text-sm font-semibold text-white">Get a fixed quote</a>
         </article>
       </li>
 
       <li class="pns-rise" style="animation-delay:160ms">
-        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 pns-bg-surface p-8">
           <h3 class="mb-2 text-xl font-semibold">Boiler replacement</h3>
-          <p class="mb-6 text-sm leading-relaxed text-textmute">A new combi fitted, registered and running the same day.</p>
-          <p class="mb-6"><span class="text-3xl font-semibold">£1,850</span> <span class="text-sm text-textmute">from, including the unit</span></p>
-          <ul class="mb-8 space-y-2 text-sm text-textmute">
+          <p class="mb-6 text-sm leading-relaxed pns-text-soft">A new combi fitted, registered and running the same day.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£1,850</span> <span class="text-sm pns-text-soft">from, including the unit</span></p>
+          <ul class="mb-8 space-y-2 text-sm pns-text-soft">
             <li>Same week appointments</li>
             <li>Warranty registered for you</li>
             <li>System flushed and balanced</li>

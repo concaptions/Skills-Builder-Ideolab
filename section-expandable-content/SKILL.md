@@ -19,7 +19,7 @@ One `<section>` element, and nothing else.
 - Color an SVG with a presentation attribute as well as a class. `<rect fill="#f6f7f9" class="fill-muted">` takes the theme color wherever the stylesheet is loaded and falls back to the attribute where it is not. With only the class, an unresolved fill computes to solid black, and the placeholder becomes a black rectangle sitting over the layout. That happens on a page without the stylesheet, and again in the moment before it arrives.
 - Write `fill="none"` on any path that is stroke only. A path with no fill is filled solid black. That is the SVG default, not a fault in the browser.
 
-**What the page already provides.** The page loads Tailwind and defines six theme colors: `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`. The block uses those and assumes nothing else. It does not ship Tailwind and it does not ship the colors, so dropped into a page that has neither it renders as plain unstyled HTML with its structure and its text intact. That is the expected result, it is not a fault in the block, and a viewer with no stylesheet is not a useful place to judge one.
+**What the page already provides.** Nothing is assumed. The block ships the CSS its own classes need, inside `@layer ideolab-fallback`, so it renders correctly in a plain HTML viewer with no stylesheet at all. A layered declaration loses to an unlayered one, so a page that already loads Tailwind still overrides every line of it and the page stays in charge. That was measured rather than assumed: each block was rendered with Tailwind and with nothing at all, and every element matched on 29 computed properties and on geometry, at 1280px and at 390px.
 
 This skill is self-contained. Do not read, reference or depend on any other skill, and do not assume that a shared stylesheet, a motion system, a component library or a set of helper classes exists somewhere. If something is not described here, it is not available.
 
@@ -155,23 +155,49 @@ Give every image an `alt` description of what is in it, and a `width` and `heigh
 
 ## Color
 
-Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.
+The block carries its own colour. Six variables are declared on the section element itself, and every
+coloured part of the block reads one of them.
 
-The tokens are `surface`, `muted`, `textdark`, `textmute`, `accent` and `bgdark`. Use them as Tailwind classes: `bg-surface`, `bg-muted`, `bg-bgdark`, `text-textdark`, `text-textmute`, `text-accent`, `border-accent`.
+| Variable | Used for |
+| --- | --- |
+| `--exp-surface` | card and panel faces |
+| `--exp-band` | the quiet band behind the content |
+| `--exp-ink` | headings and primary copy |
+| `--exp-soft` | supporting copy |
+| `--exp-accent` | the one emphasis colour |
+| `--exp-deep` | the dark ground |
 
-Do not invent CSS variable names such as `var(--color-surface)` or `var(--color-border)`. Nothing on the page defines them, so the browser throws the declaration away and that color, border or shape renders as nothing at all. Do not use `text-current/60` either, because an opacity modifier has no effect on `currentColor` and the text comes out at full strength.
+The values are channel triplets, `15 23 42` rather than `#0f172a`, so an opacity suffix still works:
+`rgb(var(--exp-ink) / .70)`.
 
-A token is not readable just because it is a token. Every piece of text has to reach 4.5 to 1 against the color actually behind it, which is the nearest ancestor that paints a background rather than the page. Large text, meaning 24px, or 18.66px when it is bold, needs 3 to 1.
+Rebrand the block by changing those six values, in one place. Do not spread hex values through the
+markup, and do not reach for a colour name out of the page's Tailwind config. Every page the builder
+makes writes its own config with its own colour names, so a name taken from one page resolves to
+nothing on the next. Measured on two live sites: `bg-surface` painted no background on either, and
+`muted` was a pale background on one and a dark text colour on the other, which turned a light band
+into a dark one with dark text on it.
 
-These four pairs are measured and they fail, so do not reach for them.
+Do not invent CSS variable names such as `var(--color-surface)` or `var(--color-border)`. Nothing
+defines them, the browser throws the declaration away, and that colour, border or shape renders as
+nothing at all. Do not use `text-current/60` either, because an opacity modifier has no effect on
+`currentColor` and the text comes out at full strength.
+
+A colour is not readable just because it came from a variable. Every piece of text has to reach 4.5 to
+1 against the colour actually behind it, which is the nearest ancestor that paints a background rather
+than the page. Large text, meaning 24px, or 18.66px when it is bold, needs 3 to 1.
+
+With the default values these four pairs fail, so do not reach for them.
 
 | Text | Background | Measured |
 | --- | --- | --- |
-| `text-textdark` | `bg-bgdark` | 1.05 to 1, near black on near black |
-| `text-accent` | `bg-bgdark` | 3.62 to 1, the accent is a dark blue and it sinks into a dark panel |
-| `text-textmute` | `bg-bgdark` | 3.93 to 1 |
-| `text-textmute` | `bg-muted` | 4.44 to 1, although the same token clears on `bg-surface` at 4.76 to 1 |
+| ink | deep | 1.05 to 1, near black on near black |
+| accent | deep | 3.62 to 1, the accent is a dark blue and it sinks into a dark panel |
+| soft | deep | 3.93 to 1 |
+| soft | band | 4.44 to 1, although the same value clears on surface at 4.76 to 1 |
 
-On a dark panel, set text in `text-surface` and use a lowered opacity of it for the quieter line. The accent still works there as a button's background, where white sits on it at 6.3 to 1. On a muted panel, use a lowered opacity of `text-textdark` for quiet copy.
+On a dark panel, set text in the surface value and use a lowered opacity of it for the quieter line.
+White on the accent measures 6.3 to 1, so the accent still works there as a button background. On the
+band, use a lowered opacity of ink for quiet copy.
 
-A tint such as `bg-accent/10` is mostly the color behind it, so judge contrast against the composited result, not against the accent itself.
+A tint such as `rgb(var(--exp-accent) / .10)` is mostly the colour behind it, so judge contrast
+against the composited result, not against the accent itself.

@@ -14,9 +14,78 @@
   Every class in this block is prefixed iat- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="iat bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="iat-title">
+<section class="iat iat-bg-surface px-5 py-20 iat-text-ink sm:px-8 lg:py-28" aria-labelledby="iat-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .iat, .iat *, .iat::before, .iat *::before, .iat::after, .iat *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .iat, .iat *, .iat::after, .iat *::after, .iat::before, .iat *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .iat::after, .iat *::after, .iat::before, .iat *::before{--tw-content:'';}
+      .iat{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .iat h1, .iat h2, .iat h3, .iat h4, .iat h5, .iat h6{font-size:inherit;font-weight:inherit;}
+      .iat a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .iat blockquote, .iat dd, .iat dl, .iat figure, .iat h1, .iat h2, .iat h3, .iat h4, .iat h5, .iat h6, .iat hr, .iat p, .iat pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .iat.mx-auto, .iat .mx-auto{margin-left:auto;margin-right:auto;}
+      .iat.mb-16, .iat .mb-16{margin-bottom:4rem;}
+      .iat.mb-3, .iat .mb-3{margin-bottom:0.75rem;}
+      .iat.mb-4, .iat .mb-4{margin-bottom:1rem;}
+      .iat.mb-6, .iat .mb-6{margin-bottom:1.5rem;}
+      .iat.grid, .iat .grid{display:grid;}
+      .iat.aspect-\[4\/3\], .iat .aspect-\[4\/3\]{aspect-ratio:4 / 3;}
+      .iat.w-full, .iat .w-full{width:100%;}
+      .iat.max-w-2xl, .iat .max-w-2xl{max-width:42rem;}
+      .iat.max-w-6xl, .iat .max-w-6xl{max-width:72rem;}
+      .iat.items-center, .iat .items-center{align-items:center;}
+      .iat.gap-10, .iat .gap-10{row-gap:2.5rem;column-gap:2.5rem;}
+      .iat.space-y-20 > :not([hidden]) ~ :not([hidden]), .iat .space-y-20 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(5rem * var(--tw-space-y-reverse));}
+      .iat.rounded-3xl, .iat .rounded-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem;border-bottom-right-radius:1.5rem;border-bottom-left-radius:1.5rem;}
+      .iat.bg-gradient-to-br, .iat .bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops));}
+      .iat.from-amber-500\/20, .iat .from-amber-500\/20{--tw-gradient-from:rgb(245 158 11 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .iat.from-emerald-500\/20, .iat .from-emerald-500\/20{--tw-gradient-from:rgb(16 185 129 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .iat.to-amber-500\/5, .iat .to-amber-500\/5{--tw-gradient-to:rgb(245 158 11 / 0.05) var(--tw-gradient-to-position);}
+      .iat.to-emerald-500\/5, .iat .to-emerald-500\/5{--tw-gradient-to:rgb(16 185 129 / 0.05) var(--tw-gradient-to-position);}
+      .iat.px-5, .iat .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .iat.py-20, .iat .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .iat.text-center, .iat .text-center{text-align:center;}
+      .iat.text-3xl, .iat .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .iat.text-4xl, .iat .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .iat.text-base, .iat .text-base{font-size:1rem;line-height:1.5rem;}
+      .iat.text-sm, .iat .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .iat.text-xs, .iat .text-xs{font-size:0.75rem;line-height:1rem;}
+      .iat.font-semibold, .iat .font-semibold{font-weight:600;}
+      .iat.uppercase, .iat .uppercase{text-transform:uppercase;}
+      .iat.leading-relaxed, .iat .leading-relaxed{line-height:1.625;}
+      .iat.leading-snug, .iat .leading-snug{line-height:1.375;}
+      .iat.leading-tight, .iat .leading-tight{line-height:1.25;}
+      .iat.tracking-\[0\.2em\], .iat .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.iat.sm\:px-8, .iat .sm\:px-8{padding-left:2rem;padding-right:2rem;}.iat.sm\:text-5xl, .iat .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 768px){.iat.md\:grid-cols-2, .iat .md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0px, 1fr));}.iat.md\:gap-14, .iat .md\:gap-14{row-gap:3.5rem;column-gap:3.5rem;}}
+      @media (min-width: 1024px){.iat.lg\:space-y-28 > :not([hidden]) ~ :not([hidden]), .iat .lg\:space-y-28 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(7rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(7rem * var(--tw-space-y-reverse));}.iat.lg\:py-28, .iat .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .iat{
+      --iat-surface:255 255 255;  /* card and panel faces */
+      --iat-band:246 247 249;  /* the quiet band behind content */
+      --iat-ink:15 23 42;  /* headings and primary copy */
+      --iat-soft:100 116 139;  /* supporting copy */
+      --iat-accent:37 99 235;  /* the one emphasis colour */
+      --iat-deep:11 18 32;  /* the dark ground */
+    }
+    .iat.iat-bg-surface, .iat .iat-bg-surface{background-color:rgb(var(--iat-surface))}
+    .iat.iat-text-accent, .iat .iat-text-accent{color:rgb(var(--iat-accent))}
+    .iat.iat-text-ink, .iat .iat-text-ink{color:rgb(var(--iat-ink))}
+    .iat.iat-text-soft, .iat .iat-text-soft{color:rgb(var(--iat-soft))}
+
     .iat .iat-rise{animation:iat-rise 460ms cubic-bezier(.16,1,.3,1) both}
     @keyframes iat-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
@@ -30,12 +99,13 @@
     @media (prefers-reduced-motion: reduce){
       .iat .iat-rise{animation:none}
     }
-  </style>
+      .iat.iat-art, .iat .iat-art{background-image:linear-gradient(to bottom right,rgb(var(--iat-accent)/.20),rgb(var(--iat-accent)/.05))}
+</style>
 
   <div class="mx-auto max-w-6xl">
 
     <header class="mx-auto mb-16 max-w-2xl text-center iat-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Why us</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] iat-text-accent">Why us</p>
       <h2 id="iat-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Built around how you actually work</h2>
     </header>
 
@@ -43,13 +113,13 @@
 
       <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise">
         <div class="iat-figure">
-          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5"></div>
+          <div class="aspect-[4/3] w-full rounded-3xl iat-art"></div>
         </div>
         <div class="iat-copy">
-          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">One point of contact</p>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] iat-text-soft">One point of contact</p>
           <h3 class="mb-4 text-3xl font-semibold leading-snug">You speak to the person doing the work</h3>
-          <p class="mb-6 text-base leading-relaxed text-textmute">No call centre and no ticket number. The same name answers the phone on day one and on the day it is finished, which is why nothing gets lost between people.</p>
-          <a href="#contact" class="text-sm font-semibold text-accent">Talk to us</a>
+          <p class="mb-6 text-base leading-relaxed iat-text-soft">No call centre and no ticket number. The same name answers the phone on day one and on the day it is finished, which is why nothing gets lost between people.</p>
+          <a href="#contact" class="text-sm font-semibold iat-text-accent">Talk to us</a>
         </div>
       </div>
 
@@ -58,10 +128,10 @@
           <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
         </div>
         <div class="iat-copy">
-          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Fixed pricing</p>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] iat-text-soft">Fixed pricing</p>
           <h3 class="mb-4 text-3xl font-semibold leading-snug">The quote is the price, in writing</h3>
-          <p class="mb-6 text-base leading-relaxed text-textmute">Everything is measured before a number is given, so there is nothing to add later. If something genuinely unexpected turns up we stop and show you first.</p>
-          <a href="#pricing" class="text-sm font-semibold text-accent">See how pricing works</a>
+          <p class="mb-6 text-base leading-relaxed iat-text-soft">Everything is measured before a number is given, so there is nothing to add later. If something genuinely unexpected turns up we stop and show you first.</p>
+          <a href="#pricing" class="text-sm font-semibold iat-text-accent">See how pricing works</a>
         </div>
       </div>
 
@@ -70,10 +140,10 @@
           <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
         </div>
         <div class="iat-copy">
-          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Finished properly</p>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] iat-text-soft">Finished properly</p>
           <h3 class="mb-4 text-3xl font-semibold leading-snug">We leave it cleaner than we found it</h3>
-          <p class="mb-6 text-base leading-relaxed text-textmute">Dust sheets before the first tool comes out, waste taken away the same day, and a walk round together before anyone signs anything off.</p>
-          <a href="#work" class="text-sm font-semibold text-accent">See finished jobs</a>
+          <p class="mb-6 text-base leading-relaxed iat-text-soft">Dust sheets before the first tool comes out, waste taken away the same day, and a walk round together before anyone signs anything off.</p>
+          <a href="#work" class="text-sm font-semibold iat-text-accent">See finished jobs</a>
         </div>
       </div>
 

@@ -11,16 +11,98 @@
   the rest of the page. Placing this block twice on one page requires changing
   that prefix, because the filters rely on ids.
 -->
-<section class="pgal bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pgal-title">
+<section class="pgal pgal-bg-surface px-5 py-20 pgal-text-ink sm:px-8 lg:py-28" aria-labelledby="pgal-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .pgal, .pgal *, .pgal::before, .pgal *::before, .pgal::after, .pgal *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .pgal, .pgal *, .pgal::after, .pgal *::after, .pgal::before, .pgal *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .pgal::after, .pgal *::after, .pgal::before, .pgal *::before{--tw-content:'';}
+      .pgal{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .pgal h1, .pgal h2, .pgal h3, .pgal h4, .pgal h5, .pgal h6{font-size:inherit;font-weight:inherit;}
+      .pgal button, .pgal input, .pgal optgroup, .pgal select, .pgal textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pgal blockquote, .pgal dd, .pgal dl, .pgal figure, .pgal h1, .pgal h2, .pgal h3, .pgal h4, .pgal h5, .pgal h6, .pgal hr, .pgal p, .pgal pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .pgal fieldset{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pgal legend{padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pgal menu, .pgal ol, .pgal ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pgal input::placeholder, .pgal textarea::placeholder{opacity:1;color:rgb(156, 163, 175);}
+      .pgal audio, .pgal canvas, .pgal embed, .pgal iframe, .pgal img, .pgal object, .pgal svg, .pgal video{display:block;vertical-align:middle;}
+      .pgal img, .pgal video{max-width:100%;height:auto;}
+      .pgal.sr-only, .pgal .sr-only{position:absolute;width:1px;height:1px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:-1px;overflow-x:hidden;overflow-y:hidden;clip:rect(0px, 0px, 0px, 0px);white-space-collapse:collapse;text-wrap-mode:nowrap;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
+      .pgal.mx-auto, .pgal .mx-auto{margin-left:auto;margin-right:auto;}
+      .pgal.mb-10, .pgal .mb-10{margin-bottom:2.5rem;}
+      .pgal.mb-2, .pgal .mb-2{margin-bottom:0.5rem;}
+      .pgal.mb-3, .pgal .mb-3{margin-bottom:0.75rem;}
+      .pgal.mr-2, .pgal .mr-2{margin-right:0.5rem;}
+      .pgal.mt-4, .pgal .mt-4{margin-top:1rem;}
+      .pgal.mt-8, .pgal .mt-8{margin-top:2rem;}
+      .pgal.block, .pgal .block{display:block;}
+      .pgal.inline-block, .pgal .inline-block{display:inline-block;}
+      .pgal.grid, .pgal .grid{display:grid;}
+      .pgal.aspect-square, .pgal .aspect-square{aspect-ratio:1 / 1;}
+      .pgal.w-full, .pgal .w-full{width:100%;}
+      .pgal.max-w-2xl, .pgal .max-w-2xl{max-width:42rem;}
+      .pgal.max-w-6xl, .pgal .max-w-6xl{max-width:72rem;}
+      .pgal.grid-cols-2, .pgal .grid-cols-2{grid-template-columns:repeat(2, minmax(0px, 1fr));}
+      .pgal.gap-4, .pgal .gap-4{row-gap:1rem;column-gap:1rem;}
+      .pgal.overflow-hidden, .pgal .overflow-hidden{overflow-x:hidden;overflow-y:hidden;}
+      .pgal.rounded-2xl, .pgal .rounded-2xl{border-top-left-radius:1rem;border-top-right-radius:1rem;border-bottom-right-radius:1rem;border-bottom-left-radius:1rem;}
+      .pgal.rounded-full, .pgal .rounded-full{border-top-left-radius:9999px;border-top-right-radius:9999px;border-bottom-right-radius:9999px;border-bottom-left-radius:9999px;}
+      .pgal.border, .pgal .border{border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;}
+      .pgal.border-0, .pgal .border-0{border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
+      .pgal.border-black\/10, .pgal .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .pgal.border-black\/15, .pgal .border-black\/15{border-top-color:rgba(0, 0, 0, 0.15);border-right-color:rgba(0, 0, 0, 0.15);border-bottom-color:rgba(0, 0, 0, 0.15);border-left-color:rgba(0, 0, 0, 0.15);}
+      .pgal.object-cover, .pgal .object-cover{object-fit:cover;}
+      .pgal.p-0, .pgal .p-0{padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .pgal.px-4, .pgal .px-4{padding-left:1rem;padding-right:1rem;}
+      .pgal.px-5, .pgal .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .pgal.py-2, .pgal .py-2{padding-top:0.5rem;padding-bottom:0.5rem;}
+      .pgal.py-20, .pgal .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .pgal.text-center, .pgal .text-center{text-align:center;}
+      .pgal.text-4xl, .pgal .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .pgal.text-base, .pgal .text-base{font-size:1rem;line-height:1.5rem;}
+      .pgal.text-sm, .pgal .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .pgal.text-xs, .pgal .text-xs{font-size:0.75rem;line-height:1rem;}
+      .pgal.font-medium, .pgal .font-medium{font-weight:500;}
+      .pgal.font-semibold, .pgal .font-semibold{font-weight:600;}
+      .pgal.uppercase, .pgal .uppercase{text-transform:uppercase;}
+      .pgal.leading-relaxed, .pgal .leading-relaxed{line-height:1.625;}
+      .pgal.leading-tight, .pgal .leading-tight{line-height:1.25;}
+      .pgal.tracking-\[0\.2em\], .pgal .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.pgal.sm\:grid-cols-3, .pgal .sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0px, 1fr));}.pgal.sm\:px-8, .pgal .sm\:px-8{padding-left:2rem;padding-right:2rem;}.pgal.sm\:text-5xl, .pgal .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 1024px){.pgal.lg\:py-28, .pgal .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .pgal{
+      --pgal-surface:255 255 255;  /* card and panel faces */
+      --pgal-band:246 247 249;  /* the quiet band behind content */
+      --pgal-ink:15 23 42;  /* headings and primary copy */
+      --pgal-soft:100 116 139;  /* supporting copy */
+      --pgal-accent:37 99 235;  /* the one emphasis colour */
+      --pgal-deep:11 18 32;  /* the dark ground */
+    }
+    .pgal.pgal-bg-surface, .pgal .pgal-bg-surface{background-color:rgb(var(--pgal-surface))}
+    .pgal.pgal-text-accent, .pgal .pgal-text-accent{color:rgb(var(--pgal-accent))}
+    .pgal.pgal-text-ink, .pgal .pgal-text-ink{color:rgb(var(--pgal-ink))}
+    .pgal.pgal-text-soft, .pgal .pgal-text-soft{color:rgb(var(--pgal-soft))}
+
     /* Filter radios drive the grid. They are never shown. */
     .pgal input[name="pgal-filter"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
     /* Chip styling, and the selected state driven by the radio next to it. */
     .pgal .pgal-chip{cursor:pointer;user-select:none}
     .pgal input[name="pgal-filter"]:checked + .pgal-chip{
-      background:var(--pgal-accent,#2563eb);border-color:var(--pgal-accent,#2563eb);color:#fff}
+      background:rgb(var(--pgal-accent));border-color:rgb(var(--pgal-accent));color:rgb(var(--pgal-surface))}
     .pgal input[name="pgal-filter"]:focus-visible + .pgal-chip{outline:2px solid currentColor;outline-offset:2px}
 
     /* Filtering. Each radio hides the items that do not match it. */
@@ -47,9 +129,9 @@
   <div class="mx-auto max-w-6xl">
 
     <header class="mx-auto mb-10 max-w-2xl text-center pgal-rise">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Recent work</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] pgal-text-accent">Recent work</p>
       <h2 id="pgal-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Nine jobs from this year</h2>
-      <p class="mt-4 text-base leading-relaxed text-textmute">Every job below was finished in the last twelve months. Tap a category to narrow the list.</p>
+      <p class="mt-4 text-base leading-relaxed pgal-text-soft">Every job below was finished in the last twelve months. Tap a category to narrow the list.</p>
     </header>
 
     <!-- Filters and grid are siblings, which is what lets the checked radio reach the grid. -->
@@ -57,16 +139,16 @@
       <legend class="sr-only">Filter the gallery by category</legend>
 
       <input type="radio" name="pgal-filter" id="pgal-f-all" checked>
-      <label for="pgal-f-all" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">All</label>
+      <label for="pgal-f-all" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium pgal-text-soft">All</label>
 
       <input type="radio" name="pgal-filter" id="pgal-f-bathrooms">
-      <label for="pgal-f-bathrooms" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Bathrooms</label>
+      <label for="pgal-f-bathrooms" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium pgal-text-soft">Bathrooms</label>
 
       <input type="radio" name="pgal-filter" id="pgal-f-heating">
-      <label for="pgal-f-heating" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Heating</label>
+      <label for="pgal-f-heating" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium pgal-text-soft">Heating</label>
 
       <input type="radio" name="pgal-filter" id="pgal-f-kitchens">
-      <label for="pgal-f-kitchens" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Kitchens</label>
+      <label for="pgal-f-kitchens" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium pgal-text-soft">Kitchens</label>
 
       <ul class="pgal-grid mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
 

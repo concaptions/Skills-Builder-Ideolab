@@ -22,9 +22,83 @@
   the rest of the page. Placing this block twice on one page requires changing
   that prefix, because the tabs rely on ids.
 -->
-<section class="tbc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="tbc-title">
+<section class="tbc tbc-bg-surface px-5 py-20 tbc-text-ink sm:px-8 lg:py-28" aria-labelledby="tbc-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .tbc, .tbc *, .tbc::before, .tbc *::before, .tbc::after, .tbc *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .tbc, .tbc *, .tbc::after, .tbc *::after, .tbc::before, .tbc *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .tbc::after, .tbc *::after, .tbc::before, .tbc *::before{--tw-content:'';}
+      .tbc{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .tbc hr{height:0px;color:inherit;border-top-width:1px;}
+      .tbc h1, .tbc h2, .tbc h3, .tbc h4, .tbc h5, .tbc h6{font-size:inherit;font-weight:inherit;}
+      .tbc button, .tbc input, .tbc optgroup, .tbc select, .tbc textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .tbc blockquote, .tbc dd, .tbc dl, .tbc figure, .tbc h1, .tbc h2, .tbc h3, .tbc h4, .tbc h5, .tbc h6, .tbc hr, .tbc p, .tbc pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .tbc fieldset{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .tbc legend{padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .tbc menu, .tbc ol, .tbc ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .tbc input::placeholder, .tbc textarea::placeholder{opacity:1;color:rgb(156, 163, 175);}
+      .tbc.sr-only, .tbc .sr-only{position:absolute;width:1px;height:1px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:-1px;overflow-x:hidden;overflow-y:hidden;clip:rect(0px, 0px, 0px, 0px);white-space-collapse:collapse;text-wrap-mode:nowrap;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
+      .tbc.mx-auto, .tbc .mx-auto{margin-left:auto;margin-right:auto;}
+      .tbc.mb-10, .tbc .mb-10{margin-bottom:2.5rem;}
+      .tbc.mb-3, .tbc .mb-3{margin-bottom:0.75rem;}
+      .tbc.mb-5, .tbc .mb-5{margin-bottom:1.25rem;}
+      .tbc.grid, .tbc .grid{display:grid;}
+      .tbc.aspect-\[4\/3\], .tbc .aspect-\[4\/3\]{aspect-ratio:4 / 3;}
+      .tbc.max-w-2xl, .tbc .max-w-2xl{max-width:42rem;}
+      .tbc.max-w-5xl, .tbc .max-w-5xl{max-width:64rem;}
+      .tbc.items-center, .tbc .items-center{align-items:center;}
+      .tbc.gap-8, .tbc .gap-8{row-gap:2rem;column-gap:2rem;}
+      .tbc.space-y-2 > :not([hidden]) ~ :not([hidden]), .tbc .space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse));}
+      .tbc.rounded-2xl, .tbc .rounded-2xl{border-top-left-radius:1rem;border-top-right-radius:1rem;border-bottom-right-radius:1rem;border-bottom-left-radius:1rem;}
+      .tbc.bg-gradient-to-br, .tbc .bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops));}
+      .tbc.from-amber-500\/20, .tbc .from-amber-500\/20{--tw-gradient-from:rgb(245 158 11 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .tbc.from-emerald-500\/20, .tbc .from-emerald-500\/20{--tw-gradient-from:rgb(16 185 129 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .tbc.from-rose-500\/20, .tbc .from-rose-500\/20{--tw-gradient-from:rgb(244 63 94 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(244 63 94 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to);}
+      .tbc.to-amber-500\/5, .tbc .to-amber-500\/5{--tw-gradient-to:rgb(245 158 11 / 0.05) var(--tw-gradient-to-position);}
+      .tbc.to-emerald-500\/5, .tbc .to-emerald-500\/5{--tw-gradient-to:rgb(16 185 129 / 0.05) var(--tw-gradient-to-position);}
+      .tbc.to-rose-500\/5, .tbc .to-rose-500\/5{--tw-gradient-to:rgb(244 63 94 / 0.05) var(--tw-gradient-to-position);}
+      .tbc.px-5, .tbc .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .tbc.py-20, .tbc .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .tbc.text-center, .tbc .text-center{text-align:center;}
+      .tbc.text-2xl, .tbc .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .tbc.text-4xl, .tbc .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .tbc.text-base, .tbc .text-base{font-size:1rem;line-height:1.5rem;}
+      .tbc.text-sm, .tbc .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .tbc.text-xs, .tbc .text-xs{font-size:0.75rem;line-height:1rem;}
+      .tbc.font-semibold, .tbc .font-semibold{font-weight:600;}
+      .tbc.uppercase, .tbc .uppercase{text-transform:uppercase;}
+      .tbc.leading-relaxed, .tbc .leading-relaxed{line-height:1.625;}
+      .tbc.leading-tight, .tbc .leading-tight{line-height:1.25;}
+      .tbc.tracking-\[0\.2em\], .tbc .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.tbc.sm\:px-8, .tbc .sm\:px-8{padding-left:2rem;padding-right:2rem;}.tbc.sm\:text-5xl, .tbc .sm\:text-5xl{font-size:3rem;line-height:1;}.tbc.sm\:text-base, .tbc .sm\:text-base{font-size:1rem;line-height:1.5rem;}}
+      @media (min-width: 768px){.tbc.md\:grid-cols-2, .tbc .md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0px, 1fr));}}
+      @media (min-width: 1024px){.tbc.lg\:py-28, .tbc .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .tbc{
+      --tbc-surface:255 255 255;  /* card and panel faces */
+      --tbc-band:246 247 249;  /* the quiet band behind content */
+      --tbc-ink:15 23 42;  /* headings and primary copy */
+      --tbc-soft:100 116 139;  /* supporting copy */
+      --tbc-accent:37 99 235;  /* the one emphasis colour */
+      --tbc-deep:11 18 32;  /* the dark ground */
+    }
+    .tbc.tbc-bg-surface, .tbc .tbc-bg-surface{background-color:rgb(var(--tbc-surface))}
+    .tbc.tbc-text-accent, .tbc .tbc-text-accent{color:rgb(var(--tbc-accent))}
+    .tbc.tbc-text-ink, .tbc .tbc-text-ink{color:rgb(var(--tbc-ink))}
+    .tbc.tbc-text-soft, .tbc .tbc-text-soft{color:rgb(var(--tbc-soft))}
+
     /* Flex, not grid. A grid of max-content tracks lets the full width panels
        inflate the track sizes, which pushes the whole section past the
        viewport. Flex items with a 100% basis and min-width 0 cannot do that. */
@@ -57,12 +131,13 @@
     @media (prefers-reduced-motion: reduce){
       .tbc .tbc-panel{transition:none}
     }
-  </style>
+      .tbc.tbc-art, .tbc .tbc-art{background-image:linear-gradient(to bottom right,rgb(var(--tbc-accent)/.20),rgb(var(--tbc-accent)/.05))}
+</style>
 
   <div class="mx-auto max-w-5xl">
 
     <header class="mx-auto mb-10 max-w-2xl text-center">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What we do</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] tbc-text-accent">What we do</p>
       <h2 id="tbc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Four services, one team</h2>
     </header>
 
@@ -70,16 +145,16 @@
       <legend class="sr-only">Choose a service to read about</legend>
 
       <input type="radio" name="tbc-tab" id="tbc-t1" checked>
-      <label for="tbc-t1" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Bathrooms</label>
+      <label for="tbc-t1" class="tbc-label text-sm font-semibold tbc-text-soft sm:text-base">Bathrooms</label>
 
       <input type="radio" name="tbc-tab" id="tbc-t2">
-      <label for="tbc-t2" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Heating</label>
+      <label for="tbc-t2" class="tbc-label text-sm font-semibold tbc-text-soft sm:text-base">Heating</label>
 
       <input type="radio" name="tbc-tab" id="tbc-t3">
-      <label for="tbc-t3" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Kitchens</label>
+      <label for="tbc-t3" class="tbc-label text-sm font-semibold tbc-text-soft sm:text-base">Kitchens</label>
 
       <input type="radio" name="tbc-tab" id="tbc-t4">
-      <label for="tbc-t4" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Emergencies</label>
+      <label for="tbc-t4" class="tbc-label text-sm font-semibold tbc-text-soft sm:text-base">Emergencies</label>
 
       <hr class="tbc-rule">
 
@@ -88,21 +163,21 @@
         <div class="tbc-panel tbc-p1 grid items-center gap-8 md:grid-cols-2">
           <div>
             <h3 class="mb-3 text-2xl font-semibold">Full bathroom fits</h3>
-            <p class="mb-5 text-base leading-relaxed text-textmute">Stripped back, re-plumbed, tiled and finished by one team, so nobody is waiting on anybody else. Most rooms are done inside eight working days.</p>
-            <ul class="space-y-2 text-sm text-textmute">
+            <p class="mb-5 text-base leading-relaxed tbc-text-soft">Stripped back, re-plumbed, tiled and finished by one team, so nobody is waiting on anybody else. Most rooms are done inside eight working days.</p>
+            <ul class="space-y-2 text-sm tbc-text-soft">
               <li>Design visit and a fixed written price</li>
               <li>Wet rooms, walk-in showers and level access</li>
               <li>Old suite removed and taken away</li>
             </ul>
           </div>
-          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5"></div>
+          <div class="aspect-[4/3] rounded-2xl tbc-art"></div>
         </div>
 
         <div class="tbc-panel tbc-p2 grid items-center gap-8 md:grid-cols-2">
           <div>
             <h3 class="mb-3 text-2xl font-semibold">Boilers and heating</h3>
-            <p class="mb-5 text-base leading-relaxed text-textmute">Replacement combis, system upgrades and underfloor loops. Registered engineers, and the paperwork filed for you on the day.</p>
-            <ul class="space-y-2 text-sm text-textmute">
+            <p class="mb-5 text-base leading-relaxed tbc-text-soft">Replacement combis, system upgrades and underfloor loops. Registered engineers, and the paperwork filed for you on the day.</p>
+            <ul class="space-y-2 text-sm tbc-text-soft">
               <li>Same week appointments for a failed boiler</li>
               <li>Manufacturer warranties registered on completion</li>
               <li>Annual servicing reminders if you want them</li>
@@ -114,8 +189,8 @@
         <div class="tbc-panel tbc-p3 grid items-center gap-8 md:grid-cols-2">
           <div>
             <h3 class="mb-3 text-2xl font-semibold">Kitchen plumbing</h3>
-            <p class="mb-5 text-base leading-relaxed text-textmute">Sinks, islands, appliance runs and waste. We work alongside your fitter so the trades are not tripping over each other.</p>
-            <ul class="space-y-2 text-sm text-textmute">
+            <p class="mb-5 text-base leading-relaxed tbc-text-soft">Sinks, islands, appliance runs and waste. We work alongside your fitter so the trades are not tripping over each other.</p>
+            <ul class="space-y-2 text-sm tbc-text-soft">
               <li>Island feeds and concealed waste runs</li>
               <li>Filtered and boiling water taps</li>
               <li>Appliance connection and testing</li>
@@ -127,8 +202,8 @@
         <div class="tbc-panel tbc-p4 grid items-center gap-8 md:grid-cols-2">
           <div>
             <h3 class="mb-3 text-2xl font-semibold">Emergency call outs</h3>
-            <p class="mb-5 text-base leading-relaxed text-textmute">Burst pipes, no heat, no hot water. A real person answers, and you get a time window rather than a vague promise.</p>
-            <ul class="space-y-2 text-sm text-textmute">
+            <p class="mb-5 text-base leading-relaxed tbc-text-soft">Burst pipes, no heat, no hot water. A real person answers, and you get a time window rather than a vague promise.</p>
+            <ul class="space-y-2 text-sm tbc-text-soft">
               <li>Answered seven days a week</li>
               <li>Two hour arrival window given up front</li>
               <li>Call out fee quoted before we set off</li>

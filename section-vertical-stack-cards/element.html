@@ -19,9 +19,79 @@
   Every class in this block is prefixed vsc- so it cannot collide with the
   rest of the page. There are no ids, so this block is safe to place twice.
 -->
-<section class="vsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="vsc-title">
+<section class="vsc vsc-bg-surface px-5 py-20 vsc-text-ink sm:px-8 lg:py-28" aria-labelledby="vsc-title">
 
   <style>
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .vsc, .vsc *, .vsc::before, .vsc *::before, .vsc::after, .vsc *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .vsc, .vsc *, .vsc::after, .vsc *::after, .vsc::before, .vsc *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .vsc::after, .vsc *::after, .vsc::before, .vsc *::before{--tw-content:'';}
+      .vsc{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .vsc h1, .vsc h2, .vsc h3, .vsc h4, .vsc h5, .vsc h6{font-size:inherit;font-weight:inherit;}
+      .vsc blockquote, .vsc dd, .vsc dl, .vsc figure, .vsc h1, .vsc h2, .vsc h3, .vsc h4, .vsc h5, .vsc h6, .vsc hr, .vsc p, .vsc pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .vsc.mx-auto, .vsc .mx-auto{margin-left:auto;margin-right:auto;}
+      .vsc.mb-14, .vsc .mb-14{margin-bottom:3.5rem;}
+      .vsc.mb-3, .vsc .mb-3{margin-bottom:0.75rem;}
+      .vsc.mb-4, .vsc .mb-4{margin-bottom:1rem;}
+      .vsc.inline-block, .vsc .inline-block{display:inline-block;}
+      .vsc.max-w-4xl, .vsc .max-w-4xl{max-width:56rem;}
+      .vsc.max-w-xl, .vsc .max-w-xl{max-width:36rem;}
+      .vsc.space-y-8 > :not([hidden]) ~ :not([hidden]), .vsc .space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse));}
+      .vsc.rounded-3xl, .vsc .rounded-3xl{border-top-left-radius:1.5rem;border-top-right-radius:1.5rem;border-bottom-right-radius:1.5rem;border-bottom-left-radius:1.5rem;}
+      .vsc.rounded-full, .vsc .rounded-full{border-top-left-radius:9999px;border-top-right-radius:9999px;border-bottom-right-radius:9999px;border-bottom-left-radius:9999px;}
+      .vsc.border, .vsc .border{border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px;}
+      .vsc.border-black\/10, .vsc .border-black\/10{border-top-color:rgba(0, 0, 0, 0.1);border-right-color:rgba(0, 0, 0, 0.1);border-bottom-color:rgba(0, 0, 0, 0.1);border-left-color:rgba(0, 0, 0, 0.1);}
+      .vsc.bg-amber-500\/10, .vsc .bg-amber-500\/10{background-color:rgba(245, 158, 11, 0.1);}
+      .vsc.bg-emerald-500\/10, .vsc .bg-emerald-500\/10{background-color:rgba(16, 185, 129, 0.1);}
+      .vsc.bg-violet-500\/10, .vsc .bg-violet-500\/10{background-color:rgba(139, 92, 246, 0.1);}
+      .vsc.p-8, .vsc .p-8{padding-top:2rem;padding-right:2rem;padding-bottom:2rem;padding-left:2rem;}
+      .vsc.px-3, .vsc .px-3{padding-left:0.75rem;padding-right:0.75rem;}
+      .vsc.px-5, .vsc .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .vsc.py-1, .vsc .py-1{padding-top:0.25rem;padding-bottom:0.25rem;}
+      .vsc.py-20, .vsc .py-20{padding-top:5rem;padding-bottom:5rem;}
+      .vsc.text-center, .vsc .text-center{text-align:center;}
+      .vsc.text-2xl, .vsc .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .vsc.text-4xl, .vsc .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .vsc.text-base, .vsc .text-base{font-size:1rem;line-height:1.5rem;}
+      .vsc.text-xs, .vsc .text-xs{font-size:0.75rem;line-height:1rem;}
+      .vsc.font-semibold, .vsc .font-semibold{font-weight:600;}
+      .vsc.uppercase, .vsc .uppercase{text-transform:uppercase;}
+      .vsc.leading-relaxed, .vsc .leading-relaxed{line-height:1.625;}
+      .vsc.leading-tight, .vsc .leading-tight{line-height:1.25;}
+      .vsc.tracking-\[0\.16em\], .vsc .tracking-\[0\.16em\]{letter-spacing:0.16em;}
+      .vsc.tracking-\[0\.2em\], .vsc .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      .vsc.text-amber-700, .vsc .text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1));}
+      .vsc.text-emerald-700, .vsc .text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1));}
+      .vsc.text-violet-700, .vsc .text-violet-700{--tw-text-opacity:1;color:rgb(109 40 217 / var(--tw-text-opacity, 1));}
+      .vsc.shadow-sm, .vsc .shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);}
+      @media (min-width: 640px){.vsc.sm\:p-10, .vsc .sm\:p-10{padding-top:2.5rem;padding-right:2.5rem;padding-bottom:2.5rem;padding-left:2.5rem;}.vsc.sm\:px-8, .vsc .sm\:px-8{padding-left:2rem;padding-right:2rem;}.vsc.sm\:text-3xl, .vsc .sm\:text-3xl{font-size:1.875rem;line-height:2.25rem;}.vsc.sm\:text-5xl, .vsc .sm\:text-5xl{font-size:3rem;line-height:1;}}
+      @media (min-width: 768px){.vsc.md\:space-y-0 > :not([hidden]) ~ :not([hidden]), .vsc .md\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse));}.vsc.md\:pb-8, .vsc .md\:pb-8{padding-bottom:2rem;}}
+      @media (min-width: 1024px){.vsc.lg\:py-28, .vsc .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
+    }
+
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .vsc{
+      --vsc-surface:255 255 255;  /* card and panel faces */
+      --vsc-band:246 247 249;  /* the quiet band behind content */
+      --vsc-ink:15 23 42;  /* headings and primary copy */
+      --vsc-soft:100 116 139;  /* supporting copy */
+      --vsc-accent:37 99 235;  /* the one emphasis colour */
+      --vsc-deep:11 18 32;  /* the dark ground */
+    }
+    .vsc.vsc-bg-surface, .vsc .vsc-bg-surface{background-color:rgb(var(--vsc-surface))}
+    .vsc.vsc-text-accent, .vsc .vsc-text-accent{color:rgb(var(--vsc-accent))}
+    .vsc.vsc-text-ink, .vsc .vsc-text-ink{color:rgb(var(--vsc-ink))}
+    .vsc.vsc-text-soft, .vsc .vsc-text-soft{color:rgb(var(--vsc-soft))}
+
     .vsc .vsc-slot{position:sticky;height:min-content}
     .vsc .vsc-slot:nth-of-type(1){top:5rem;z-index:1}
     .vsc .vsc-slot:nth-of-type(2){top:6.5rem;z-index:2}
@@ -40,12 +110,13 @@
     @media (prefers-reduced-motion: reduce){
       .vsc .vsc-slot{position:static;top:auto}
     }
-  </style>
+      .vsc.vsc-accent-wash, .vsc .vsc-accent-wash{background-color:rgb(var(--vsc-accent)/.06)}
+</style>
 
   <div class="mx-auto max-w-4xl">
 
     <header class="mb-14 text-center">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our promise</p>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] vsc-text-accent">Our promise</p>
       <h2 id="vsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Four things we will not compromise on</h2>
     </header>
 
@@ -55,9 +126,9 @@
 
       <div class="vsc-slot md:pb-8">
         <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
-          <span class="mb-4 inline-block rounded-full bg-accent/[0.06] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent">01</span>
+          <span class="mb-4 inline-block rounded-full vsc-accent-wash px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] vsc-text-accent">01</span>
           <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">One team, start to finish</h3>
-          <p class="max-w-xl text-base leading-relaxed text-textmute">The people who quote the job are the people who do it. Nothing is handed to a subcontractor you have never met, which is why nothing gets lost between visits.</p>
+          <p class="max-w-xl text-base leading-relaxed vsc-text-soft">The people who quote the job are the people who do it. Nothing is handed to a subcontractor you have never met, which is why nothing gets lost between visits.</p>
         </article>
       </div>
 
@@ -65,7 +136,7 @@
         <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
           <span class="mb-4 inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">02</span>
           <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">A price that holds</h3>
-          <p class="max-w-xl text-base leading-relaxed text-textmute">Measured before it is quoted and written down before it is booked. If something genuinely unexpected appears we stop, show you, and agree the cost before carrying on.</p>
+          <p class="max-w-xl text-base leading-relaxed vsc-text-soft">Measured before it is quoted and written down before it is booked. If something genuinely unexpected appears we stop, show you, and agree the cost before carrying on.</p>
         </article>
       </div>
 
@@ -73,7 +144,7 @@
         <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
           <span class="mb-4 inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">03</span>
           <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">Your home stays usable</h3>
-          <p class="max-w-xl text-base leading-relaxed text-textmute">Sheets down before the first tool comes out, waste gone the same day, and water and heating back on every evening without exception.</p>
+          <p class="max-w-xl text-base leading-relaxed vsc-text-soft">Sheets down before the first tool comes out, waste gone the same day, and water and heating back on every evening without exception.</p>
         </article>
       </div>
 
@@ -81,7 +152,7 @@
         <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
           <span class="mb-4 inline-block rounded-full bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">04</span>
           <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">We come back if we need to</h3>
-          <p class="max-w-xl text-base leading-relaxed text-textmute">Two years on workmanship, manufacturer cover on parts, and no argument about whose fault it is. One call and somebody is out to you.</p>
+          <p class="max-w-xl text-base leading-relaxed vsc-text-soft">Two years on workmanship, manufacturer cover on parts, and no argument about whose fault it is. One call and somebody is out to you.</p>
         </article>
       </div>
 
