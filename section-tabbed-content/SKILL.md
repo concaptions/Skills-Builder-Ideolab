@@ -1,0 +1,126 @@
+---
+name: section-tabbed-content
+description: A complete section that organizes related content without making the page excessively long. Use for two to six panels of comparable content behind horizontal, vertical, pill, image-led, card or full-width tabs, each able to change an image, video, mockup or background. Not for content the visitor needs to read all of, and not for a FAQ, which is the expandable content section.
+---
+
+# Tabbed Content
+
+## What it is for
+
+Several comparable blocks of content in one place, with only one shown at a time. It suits parallel options where the visitor cares about one of them.
+
+## When to use it
+
+- There are three to six comparable things, such as services, audiences or plans.
+- The visitor knows which one applies to them, so they will pick rather than read everything.
+- Each panel holds a similar amount of content.
+
+## When not to use it
+
+- The visitor needs to compare panels side by side. Use a table.
+- There are only two options. Show both.
+- The content matters for search. Content in a hidden panel is weaker than content on the page.
+- Panels are wildly different lengths, which makes the section jump as tabs change.
+
+## Where it belongs on the page
+
+Middle of the page, wherever the offer splits into parallel options.
+
+## What may be changed
+
+- Number of tabs, their labels and their panel contents.
+- Tab position, above the panel or down the side.
+- Marker style, underline, pill or plain.
+- Which tab is selected on arrival.
+
+## What must not be changed
+
+- The tabs being a radio group. That is what gives arrow key navigation, a single tab stop and an announced selected state with no script.
+- The inputs and the panel container staying siblings. The selected panel is matched with the general sibling combinator, so nesting the inputs inside another element silently breaks every panel.
+- Panels stacked in one grid cell, so the section does not change height as the visitor moves between tabs.
+- A visible focus ring on each label.
+- The reduced motion rules.
+
+## Settings and Controls
+
+| Setting | Options | Default |
+| --- | --- | --- |
+| Tab count | 2 to 6 | 3 |
+| Labels | Short noun phrases, one or two words each | supplied |
+| Default tab | Which opens on load | first |
+| Tab position | Above, left, right, or below the panel | above |
+| Content types | Text, list, image, video, mockup, cards, or a mix | text with image |
+| Show or hide | Icons, images, descriptions, buttons, arrows, automatic rotation | descriptions, images, buttons |
+| Activation | Click, hover, swipe, or controlled automatic progression | click |
+| Mobile behavior | Accordion, dropdown, or horizontal scroller | horizontal scroller |
+
+**Labels must be readable at a glance.** Six tabs with four-word labels do not fit on one row and wrap into a mess. Two words is the working limit.
+
+**Hover activation is a trap.** It fires as the pointer crosses tabs on the way somewhere else, so the panel flickers, and it does nothing at all on touch. Click is the default for a reason.
+
+**Automatic rotation changes the panel while the reader is reading it.** If it is used, it must pause on hover and on focus, stop permanently once the reader picks a tab, and stop when the section leaves the viewport.
+
+**Keep the panel height stable.** Panels of different lengths make the page jump every time a tab is pressed. Either set a minimum height from the tallest panel, or transition the height.
+
+## Creative Design Options
+
+**Layout**
+
+- Horizontal tabs. A row above the panel. The default.
+- Vertical tabs. A rail down one side, which suits long labels and four or more tabs.
+- Pill tabs. Rounded buttons, with the active one filled.
+- Image-led tabs. Each tab shows a thumbnail rather than text alone.
+- Card tabs. Each tab is a small card with a title and a line.
+- Full-width tab stage. The tabs span the container and the panel sits below, edge to edge.
+
+**Motion**
+
+Sliding indicator, crossfade, shared-image transition, content slide, or height transition.
+
+**Styling**
+
+Underline, pill, segmented control, floating tab rail, gradient active state, or icon navigation.
+
+**Media**
+
+Each tab can change an image, video, illustration, mockup, or background treatment.
+
+## Motion
+
+- **Entrance:** the section fades and rises once. Panels do not animate in each time a tab is pressed beyond a short crossfade, because the reader pressed the tab and is waiting.
+- **Sliding indicator** moves the underline or pill to the active tab in 200ms. Animate `transform`, not `left` or `width`.
+- **Crossfade** is 150 to 200ms. Longer feels unresponsive.
+- **Content slide** moves the panel in from the direction of the tab that was pressed, at `subtle` distance.
+- **Height transition** uses `grid-template-rows` from `0fr` to `1fr`, or a measured height. Do not animate `height: auto`, which does not transition.
+- **Shared-image transition** keeps one image element and swaps the source with a crossfade, rather than replacing the element.
+
+## Responsive and Accessibility
+
+| Width | Behavior |
+| --- | --- |
+| Desktop, 1024px and up | Full layout as chosen |
+| Tablet, 768px to 1023px | Vertical tabs become horizontal. Card tabs shrink to pills |
+| Mobile, under 768px | The chosen mobile behavior: a horizontal scroller with the active tab scrolled into view, an accordion, or a dropdown. Automatic rotation is off |
+
+This section has a required keyboard and semantics contract, which is not optional:
+
+- The tab row is `role="tablist"`, each tab is a `<button role="tab">` with `aria-selected` and `aria-controls`, and each panel is `role="tabpanel"` with `aria-labelledby`.
+- Only the active tab is in the tab order, `tabindex="0"`; the rest are `tabindex="-1"`.
+- Left and right arrow keys move between tabs, Home and End jump to the first and last.
+- Hidden panels use the `hidden` attribute, so their content is not reachable by tab or read out.
+- The panel is labeled by its tab, so a screen-reader user knows which panel they are in.
+- With reduced motion, the indicator jumps rather than slides, crossfades and slides are removed, and automatic rotation does not start.
+
+## Defaults
+
+Three tabs, first open, tabs above, text with image, click activation, descriptions and images and buttons shown, horizontal scroller on mobile, underline styling, sliding indicator with a 180ms crossfade, minimum panel height set from the tallest panel.
+
+## What breaks this section
+
+1. **Divs with click handlers instead of `role="tab"` buttons.** Nothing is reachable by keyboard and no screen reader can tell there are other panels.
+2. **Hiding panels with `opacity: 0` or `display` alone in CSS.** The hidden content stays in the tab order, so tabbing lands on invisible links. Use the `hidden` attribute. One trap comes with it: a Tailwind display class such as `grid` or `flex` on the panel **beats** the browser's own `[hidden] { display: none }` rule, so the panel stays on screen with the attribute set. Add `[hidden] { display: none !important }` to the page once, and the attribute works everywhere.
+3. **Panels of different heights with no minimum.** The whole page below the section jumps every time a tab is pressed.
+
+## Color
+
+Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

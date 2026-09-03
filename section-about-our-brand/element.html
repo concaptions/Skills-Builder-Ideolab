@@ -1,0 +1,69 @@
+<!--
+  About Our Brand section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    two column split, story copy on the left, portrait image on the right with
+    a small stat panel overlapping it, three supporting figures underneath,
+    staggered entrance.
+
+  The stat panel overlaps the image on desktop and drops below it on mobile,
+  because an overlapping panel on a narrow screen covers the face in the
+  photograph.
+
+  Every class in this block is prefixed abr- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="abr bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="abr-title">
+
+  <style>
+    .abr .abr-rise{animation:abr-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes abr-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .abr .abr-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+
+      <div class="abr-rise">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">About us</p>
+        <h2 id="abr-title" class="mb-6 text-4xl font-semibold leading-tight sm:text-5xl">We started because nobody turned up</h2>
+        <div class="space-y-4 text-base leading-relaxed text-textmute">
+          <p>In 2008 the founder waited three weeks for a plumber who never came, fixed the leak himself, and decided that turning up on the day you said you would was a low enough bar to build a business on.</p>
+          <p>Eighteen years later there are eleven of us. The van is newer and the workshop is bigger, but the rule has not changed: we say a date, and we are there on it.</p>
+          <p>We still answer our own phone. If you call at four on a Friday, somebody who knows your job picks up.</p>
+        </div>
+        <a href="#team" class="mt-8 inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white">Meet the team</a>
+      </div>
+
+      <div class="relative abr-rise" style="animation-delay:100ms">
+        <div class="aspect-[4/5] w-full rounded-3xl bg-gradient-to-br from-accent/25 via-accent/10 to-transparent"></div>
+
+        <!-- Overlaps on desktop, sits below on mobile so it never covers a face. -->
+        <div class="mt-6 rounded-2xl border border-black/10 bg-white p-6 shadow-lg lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:w-64">
+          <p class="text-4xl font-semibold leading-none">18</p>
+          <p class="mt-2 text-sm leading-relaxed text-textmute">years doing the same work in the same town</p>
+        </div>
+      </div>
+
+    </div>
+
+    <dl class="mt-20 grid gap-10 border-t border-black/10 pt-12 sm:grid-cols-3">
+      <div class="abr-rise" style="animation-delay:160ms">
+        <dt class="text-3xl font-semibold">11</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">engineers, all trained in house before they see a customer</dd>
+      </div>
+      <div class="abr-rise" style="animation-delay:220ms">
+        <dt class="text-3xl font-semibold">2,400+</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">jobs finished, and the number we came back to fix is on the wall</dd>
+      </div>
+      <div class="abr-rise" style="animation-delay:280ms">
+        <dt class="text-3xl font-semibold">Same day</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">answer on every message, seven days a week</dd>
+      </div>
+    </dl>
+
+  </div>
+</section>

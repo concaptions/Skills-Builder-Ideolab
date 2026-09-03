@@ -1,0 +1,106 @@
+<!--
+  Animated Timeline section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Scroll activation without script is done with CSS scroll driven animation.
+  The important part is the order: every milestone is fully visible by
+  default, and the reveal is only added inside an @supports block. Browsers
+  without animation-timeline therefore show a complete, readable, static
+  timeline rather than a column of invisible text.
+
+  Default configuration shown here:
+    vertical timeline, alternating sides on desktop, single column with the
+    spine on the left on mobile, dated milestones, spine drawn behind the
+    markers.
+
+  Every class in this block is prefixed atl- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="atl bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="atl-title">
+
+  <style>
+    .atl .atl-list{position:relative}
+
+    /* The spine. On mobile it runs down the left, on desktop down the middle. */
+    .atl .atl-list::before{content:"";position:absolute;top:.5rem;bottom:.5rem;
+      left:.6875rem;width:2px;background:rgba(15,23,42,.12)}
+    @media (min-width:768px){
+      .atl .atl-list::before{left:50%;transform:translateX(-50%)}
+    }
+
+    .atl .atl-item{position:relative;padding-left:3rem}
+    .atl .atl-dot{position:absolute;left:0;top:.25rem;width:1.5rem;height:1.5rem;
+      border-radius:9999px;background:#fff;border:2px solid rgb(37 99 235);
+      display:grid;place-items:center}
+    .atl .atl-dot::after{content:"";width:.5rem;height:.5rem;border-radius:9999px;background:rgb(37 99 235)}
+
+    @media (min-width:768px){
+      .atl .atl-item{width:50%;padding-left:0}
+      .atl .atl-item:nth-child(odd){margin-left:0;padding-right:3.5rem;text-align:right}
+      .atl .atl-item:nth-child(even){margin-left:50%;padding-left:3.5rem}
+      .atl .atl-item:nth-child(odd) .atl-dot{left:auto;right:-.75rem}
+      .atl .atl-item:nth-child(even) .atl-dot{left:-.75rem}
+    }
+
+    /* Default state is visible. The reveal is added only where it is supported. */
+    @supports (animation-timeline: view()){
+      @media (prefers-reduced-motion: no-preference){
+        .atl .atl-item{
+          animation:atl-in linear both;
+          animation-timeline:view();
+          /* Ends well before the item reaches the middle, so the last
+             milestone still completes at the bottom of the page. */
+          animation-range:entry 5% cover 28%}
+        @keyframes atl-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+      }
+    }
+  </style>
+
+  <div class="mx-auto max-w-4xl">
+
+    <header class="mx-auto mb-16 max-w-2xl text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our story</p>
+      <h2 id="atl-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Eighteen years, one van at a time</h2>
+    </header>
+
+    <ol class="atl-list space-y-12">
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2008</p>
+        <h3 class="mb-2 text-xl font-semibold">One van, one phone</h3>
+        <p class="text-sm leading-relaxed text-textmute">Started with a second hand van and a landline in the spare room. Every job came from somebody telling somebody else.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2013</p>
+        <h3 class="mb-2 text-xl font-semibold">The first workshop</h3>
+        <p class="text-sm leading-relaxed text-textmute">A unit on the industrial estate meant parts on the shelf instead of a trip to the merchant halfway through every job.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2017</p>
+        <h3 class="mb-2 text-xl font-semibold">Four engineers, one standard</h3>
+        <p class="text-sm leading-relaxed text-textmute">Grew the team without changing how the work is done. Everybody trains in house before they are let near a customer's home.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2021</p>
+        <h3 class="mb-2 text-xl font-semibold">Fixed pricing across the board</h3>
+        <p class="text-sm leading-relaxed text-textmute">Stopped charging by the day. Every job quoted in writing, so nobody has to wonder what the final number will be.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">Today</p>
+        <h3 class="mb-2 text-xl font-semibold">Eleven people, same promise</h3>
+        <p class="text-sm leading-relaxed text-textmute">Still answering our own phone, and still finishing on the day we said we would.</p>
+      </li>
+
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<!--
+  Animated Logo Stream section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The loop is done the only way it can be done without script: the same set of
+  logos is rendered twice inside one track, and the track is translated by
+  exactly minus fifty percent. At the moment it snaps back, the second copy is
+  sitting where the first one started, so the seam is invisible.
+
+  The duplicate copy is marked aria-hidden, otherwise every brand name is
+  announced twice.
+
+  Default configuration shown here:
+    single row, continuous leftward drift, greyscale until hover, edges faded
+    into the page background, pauses when the pointer is over the row.
+
+  Every class in this block is prefixed als- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="als bg-surface px-5 py-16 text-textdark sm:px-8 lg:py-20" aria-labelledby="als-title">
+
+  <style>
+    .als .als-viewport{
+      overflow:hidden;
+      /* Both edges fade out, so logos enter and leave rather than being cut. */
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 8rem,#000 calc(100% - 8rem),transparent);
+      mask-image:linear-gradient(to right,transparent,#000 8rem,#000 calc(100% - 8rem),transparent)}
+
+    .als .als-track{display:flex;width:max-content;animation:als-slide 32s linear infinite}
+    @keyframes als-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Continuous motion must be stoppable. Hover and keyboard focus both do it. */
+    .als .als-viewport:hover .als-track,
+    .als .als-viewport:focus-within .als-track{animation-play-state:paused}
+
+    .als .als-logo{filter:grayscale(1);opacity:.55;transition:filter 240ms ease,opacity 240ms ease}
+    .als .als-logo:hover{filter:none;opacity:1}
+
+    @media (prefers-reduced-motion: reduce){
+      /* No drift at all. The row becomes a static, scrollable strip. */
+      .als .als-track{animation:none;width:auto;overflow-x:auto;flex-wrap:wrap;justify-content:center}
+      .als .als-dup{display:none}
+      .als .als-logo{filter:none;opacity:1;transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <p id="als-title" class="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Trusted by teams at</p>
+
+    <div class="als-viewport">
+      <div class="als-track">
+
+        <ul class="flex shrink-0 items-center gap-16 pr-16">
+          <li class="als-logo text-xl font-semibold tracking-tight">Northgate</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Halden &amp; Co</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Brightwell</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Marrow Lane</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Fenwick</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Oakhurst</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Castellan</li>
+        </ul>
+
+        <!-- Exact duplicate. Hidden from assistive technology so nothing is read twice. -->
+        <ul class="als-dup flex shrink-0 items-center gap-16 pr-16" aria-hidden="true">
+          <li class="als-logo text-xl font-semibold tracking-tight">Northgate</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Halden &amp; Co</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Brightwell</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Marrow Lane</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Fenwick</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Oakhurst</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Castellan</li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</section>

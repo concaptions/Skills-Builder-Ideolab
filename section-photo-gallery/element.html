@@ -1,0 +1,149 @@
+<!--
+  Photo Gallery section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    layout 3 column grid, square crop, category filters on, captions hidden,
+    hover zoom inside a fixed frame, staggered entrance.
+
+  Every id and class in this block is prefixed pgal- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the filters rely on ids.
+-->
+<section class="pgal bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pgal-title">
+
+  <style>
+    /* Filter radios drive the grid. They are never shown. */
+    .pgal input[name="pgal-filter"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+    /* Chip styling, and the selected state driven by the radio next to it. */
+    .pgal .pgal-chip{cursor:pointer;user-select:none}
+    .pgal input[name="pgal-filter"]:checked + .pgal-chip{
+      background:var(--pgal-accent,#2563eb);border-color:var(--pgal-accent,#2563eb);color:#fff}
+    .pgal input[name="pgal-filter"]:focus-visible + .pgal-chip{outline:2px solid currentColor;outline-offset:2px}
+
+    /* Filtering. Each radio hides the items that do not match it. */
+    .pgal #pgal-f-bathrooms:checked ~ .pgal-grid > li:not([data-cat="bathrooms"]),
+    .pgal #pgal-f-heating:checked   ~ .pgal-grid > li:not([data-cat="heating"]),
+    .pgal #pgal-f-kitchens:checked  ~ .pgal-grid > li:not([data-cat="kitchens"]){display:none}
+
+    /* Entrance. Pure CSS, so it needs no observer and no script. */
+    .pgal .pgal-rise{animation:pgal-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes pgal-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* The frame never resizes, so a hover cannot push the grid around. */
+    .pgal .pgal-shot{transition:transform 320ms cubic-bezier(.16,1,.3,1)}
+    .pgal .pgal-tile:hover .pgal-shot,
+    .pgal .pgal-tile:focus-visible .pgal-shot{transform:scale(1.05)}
+
+    @media (prefers-reduced-motion: reduce){
+      .pgal .pgal-rise{animation:none}
+      .pgal .pgal-shot{transition:none}
+      .pgal .pgal-tile:hover .pgal-shot{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-10 max-w-2xl text-center pgal-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Recent work</p>
+      <h2 id="pgal-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Nine jobs from this year</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">Every job below was finished in the last twelve months. Tap a category to narrow the list.</p>
+    </header>
+
+    <!-- Filters and grid are siblings, which is what lets the checked radio reach the grid. -->
+    <fieldset class="mb-10 border-0 p-0">
+      <legend class="sr-only">Filter the gallery by category</legend>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-all" checked>
+      <label for="pgal-f-all" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">All</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-bathrooms">
+      <label for="pgal-f-bathrooms" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Bathrooms</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-heating">
+      <label for="pgal-f-heating" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Heating</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-kitchens">
+      <label for="pgal-f-kitchens" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Kitchens</label>
+
+      <ul class="pgal-grid mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:0ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Wet room with a walk in shower, Ashfield Road"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23dbe4f5'/%3E%3Cstop offset='1' stop-color='%23f2f5fb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%238da4cc' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:40ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Replacement combi boiler in a utility room"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e3ddf3'/%3E%3Cstop offset='1' stop-color='%23f6f4fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%239b8dc4' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:80ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Fitted kitchen with a quartz worktop"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23d8ecdf' /%3E%3Cstop offset='1' stop-color='%23f1f8f3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%2382ab92' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:120ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Family bathroom with a freestanding bath"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f7e6d9'/%3E%3Cstop offset='1' stop-color='%23fdf5ef'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23c99d80' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:160ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Underfloor heating manifold before the screed went down"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23dceaf7'/%3E%3Cstop offset='1' stop-color='%23f0f6fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%2382a2c4' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:200ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Kitchen island with an inset sink"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23eae3f6'/%3E%3Cstop offset='1' stop-color='%23f7f4fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23a292c9' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:240ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Cloakroom with a wall hung basin"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23d9eef0'/%3E%3Cstop offset='1' stop-color='%23f0f9fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%237fa9ad' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:280ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Vertical designer radiator in a hallway"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f5e2e6'/%3E%3Cstop offset='1' stop-color='%23fcf2f4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23c58f99' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:320ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Utility room with fitted storage"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e6e9ee'/%3E%3Cstop offset='1' stop-color='%23f5f6f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23929aa8' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+      </ul>
+    </fieldset>
+
+  </div>
+</section>

@@ -1,0 +1,99 @@
+<!--
+  Features and Details section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A features section answers "what exactly is included", so it is denser and
+  more literal than a benefits section. The specification table at the bottom
+  is the part visitors actually scan, so it stays a real table rather than a
+  grid of divs, which means it can be read out in order.
+
+  Default configuration shown here:
+    lead feature panel, four supporting features in a two by two grid, and a
+    specification table underneath. Table scrolls sideways on small screens
+    instead of squashing.
+
+  Every class in this block is prefixed fad- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="fad bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="fad-title">
+
+  <style>
+    .fad .fad-rise{animation:fad-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes fad-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* A wide table must scroll inside its own box. The page itself must never
+       scroll sideways. */
+    .fad .fad-scroll{overflow-x:auto}
+    .fad .fad-scroll:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:3px;border-radius:1rem}
+
+    @media (prefers-reduced-motion: reduce){ .fad .fad-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mb-14 max-w-2xl fad-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What is included</p>
+      <h2 id="fad-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Everything in the price, listed</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">No asterisks and no optional extras added at the end. If it is on this page, it is in the quote.</p>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+
+      <div class="rounded-3xl bg-bgdark p-8 text-white lg:row-span-2 fad-rise">
+        <span class="mb-6 grid h-11 w-11 place-items-center rounded-xl bg-white/10" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </span>
+        <h3 class="mb-3 text-2xl font-semibold">Full strip out and disposal</h3>
+        <p class="mb-6 text-sm leading-relaxed text-white/70">The old suite comes out, goes in our van, and is disposed of properly with the paperwork to prove it. Nothing sits in your driveway for a fortnight.</p>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li>Waste carrier licensed and logged</li>
+          <li>Floor and stairs protected throughout</li>
+          <li>Skip hire never charged separately</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:60ms">
+        <h3 class="mb-2 text-lg font-semibold">Certified parts only</h3>
+        <p class="text-sm leading-relaxed text-textmute">Named brands with their own warranty, registered to you on the day rather than left for you to do.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:120ms">
+        <h3 class="mb-2 text-lg font-semibold">Notified to building control</h3>
+        <p class="text-sm leading-relaxed text-textmute">Where the work needs it, the certificate is filed for you and a copy lands in your inbox.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:180ms">
+        <h3 class="mb-2 text-lg font-semibold">Water back on nightly</h3>
+        <p class="text-sm leading-relaxed text-textmute">However mid job it looks, you get water and heating back before we leave for the evening.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:240ms">
+        <h3 class="mb-2 text-lg font-semibold">Handover walk round</h3>
+        <p class="text-sm leading-relaxed text-textmute">We go through it together before anything is signed, and anything you are not happy with is put right there and then.</p>
+      </div>
+
+    </div>
+
+    <div class="fad-scroll mt-14 rounded-2xl border border-black/10 fad-rise" tabindex="0" style="animation-delay:300ms">
+      <table class="w-full min-w-[36rem] border-collapse text-left text-sm">
+        <caption class="sr-only">What is included at each level of service</caption>
+        <thead>
+          <tr class="border-b border-black/10 bg-muted/60">
+            <th scope="col" class="px-5 py-4 font-semibold">Included</th>
+            <th scope="col" class="px-5 py-4 font-semibold">Standard</th>
+            <th scope="col" class="px-5 py-4 font-semibold">Full fit</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-black/10 text-textmute">
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Site visit and written quote</th><td class="px-5 py-4">Yes</td><td class="px-5 py-4">Yes</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Strip out and disposal</th><td class="px-5 py-4">Yes</td><td class="px-5 py-4">Yes</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Tiling and finishing</th><td class="px-5 py-4">Priced separately</td><td class="px-5 py-4">Included</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Electrics and extraction</th><td class="px-5 py-4">Priced separately</td><td class="px-5 py-4">Included</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Workmanship guarantee</th><td class="px-5 py-4">2 years</td><td class="px-5 py-4">2 years</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

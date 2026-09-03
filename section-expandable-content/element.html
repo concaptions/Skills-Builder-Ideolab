@@ -1,0 +1,98 @@
+<!--
+  Expandable Content section, an FAQ or accordion.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  It is built on the native details and summary elements, so opening, closing,
+  keyboard operation and screen reader announcement all work with no script.
+  The name attribute on each details element makes the group behave as an
+  accordion, where opening one closes the others.
+
+  Default configuration shown here:
+    single column, one open at a time, first item closed, chevron marker,
+    bordered rows, staggered entrance.
+
+  Every class in this block is prefixed exp- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="exp bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="exp-title">
+
+  <style>
+    .exp .exp-rise{animation:exp-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes exp-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* Remove the browser's default triangle so the chevron below is the only marker. */
+    .exp summary{list-style:none;cursor:pointer}
+    .exp summary::-webkit-details-marker{display:none}
+    .exp summary::marker{content:""}
+
+    .exp summary:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:3px;border-radius:.5rem}
+
+    .exp .exp-chevron{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+    .exp details[open] .exp-chevron{transform:rotate(180deg)}
+
+    /* The answer slides open. grid-template-rows animates where height auto cannot. */
+    .exp .exp-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 260ms cubic-bezier(.16,1,.3,1)}
+    .exp details[open] .exp-body{grid-template-rows:1fr}
+    .exp .exp-body > div{overflow:hidden}
+
+    @media (prefers-reduced-motion: reduce){
+      .exp .exp-rise{animation:none}
+      .exp .exp-chevron,.exp .exp-body{transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-3xl">
+
+    <header class="mb-12 text-center exp-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Questions</p>
+      <h2 id="exp-title" class="text-4xl font-semibold leading-tight sm:text-5xl">The things people ask first</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">If your question is not here, send it over and you will get a straight answer the same day.</p>
+    </header>
+
+    <div class="divide-y divide-black/10 border-y border-black/10">
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:0ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>How quickly can you start?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Small jobs are usually booked within the same week. Anything that needs materials ordering runs to about two weeks, and you get the date in writing before we start.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:60ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Is the quote fixed, or does it move?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Fixed. The price you agree is the price you pay. If we find something genuinely unexpected behind a wall we stop, show you, and agree the cost before carrying on.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:120ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Do you clear up afterwards?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Every time. Dust sheets go down before the first tool comes out, and waste leaves with us on the day rather than sitting in your driveway.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:180ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>What if something goes wrong later?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Workmanship is guaranteed for two years and parts carry the manufacturer's own cover. One phone call and we come back out, at no charge.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:240ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Which areas do you cover?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Anywhere within about forty minutes of the workshop. If you are slightly outside that, ask anyway, because it often still works out.</p></div></div>
+      </details>
+
+    </div>
+
+  </div>
+</section>

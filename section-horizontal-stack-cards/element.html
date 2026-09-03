@@ -1,0 +1,107 @@
+<!--
+  Horizontal Stack Cards section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is a real overflow container with CSS scroll snapping, which is what
+  makes it work with no script at all: it is draggable with a pointer,
+  swipeable on touch, scrollable with a trackpad, and reachable by keyboard
+  because the container itself is focusable. Snapping keeps every card
+  landing squarely rather than half off the edge.
+
+  What is deliberately NOT done here: turning vertical scroll into horizontal
+  movement. That traps the visitor, because they can no longer scroll past the
+  section normally, and on a trackpad it fights them.
+
+  Default configuration shown here:
+    five cards, snap to each card start, edges faded, one and a bit cards
+    visible on mobile so the row is obviously scrollable.
+
+  Every class in this block is prefixed hsc- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="hsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="hsc-title">
+
+  <style>
+    .hsc .hsc-rail{
+      display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;
+      scroll-padding-left:1.25rem;padding-bottom:1.25rem;
+      scrollbar-width:thin}
+    .hsc .hsc-rail > *{scroll-snap-align:start;flex:0 0 auto}
+    .hsc .hsc-rail:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:4px;border-radius:1rem}
+
+    .hsc .hsc-rise{animation:hsc-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes hsc-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .hsc .hsc-card{transition:transform 260ms cubic-bezier(.16,1,.3,1)}
+    .hsc .hsc-card:hover{transform:translateY(-4px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .hsc .hsc-rail{scroll-behavior:auto}
+      .hsc .hsc-rise{animation:none}
+      .hsc .hsc-card{transition:none}
+      .hsc .hsc-card:hover{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mb-10 flex flex-wrap items-end justify-between gap-4 hsc-rise">
+      <div class="max-w-xl">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Case studies</p>
+        <h2 id="hsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Work we were proud to hand over</h2>
+      </div>
+      <p class="text-sm text-textmute">Scroll or swipe to see more</p>
+    </header>
+
+    <!-- tabindex makes the rail reachable, so arrow keys scroll it. -->
+    <ul class="hsc-rail hsc-rise" tabindex="0" role="group" aria-label="Case studies, scroll horizontally" style="animation-delay:80ms">
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Bathroom</p>
+          <h3 class="mb-2 text-xl font-semibold">A loft ensuite in nine days</h3>
+          <p class="text-sm leading-relaxed text-textmute">Awkward eaves, no existing waste run, and a tight staircase. Finished a day early.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Heating</p>
+          <h3 class="mb-2 text-xl font-semibold">Whole house, no lost heat</h3>
+          <p class="text-sm leading-relaxed text-textmute">Boiler swapped and every radiator rebalanced without the family moving out for a night.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Kitchen</p>
+          <h3 class="mb-2 text-xl font-semibold">An island with hidden waste</h3>
+          <p class="text-sm leading-relaxed text-textmute">Feeds and waste run under a solid floor so nothing boxed in and nothing on show.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-rose-500/20 to-rose-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Commercial</p>
+          <h3 class="mb-2 text-xl font-semibold">A cafe that never shut</h3>
+          <p class="text-sm leading-relaxed text-textmute">Full replumb done overnight across four visits, so not a single trading hour was lost.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-violet-500/20 to-violet-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Access</p>
+          <h3 class="mb-2 text-xl font-semibold">Level access, same footprint</h3>
+          <p class="text-sm leading-relaxed text-textmute">A step free wet room fitted into the original room size, with no extension needed.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>

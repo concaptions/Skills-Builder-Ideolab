@@ -1,0 +1,82 @@
+<!--
+  Image and Text section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    three alternating rows, image left on the first row and the side swapping
+    each row, text vertically centred, staggered entrance, stacks image above
+    text on mobile.
+
+  The alternating side is done with a single nth-child rule rather than by
+  hand marking each row, so adding or removing a row keeps the rhythm.
+
+  Every class in this block is prefixed iat- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="iat bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="iat-title">
+
+  <style>
+    .iat .iat-rise{animation:iat-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes iat-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+    /* Every second row puts the picture on the right. On mobile the picture is
+       always first, because a wall of text with no image above it reads badly. */
+    @media (min-width:768px){
+      .iat .iat-row:nth-child(even) .iat-figure{order:2}
+      .iat .iat-row:nth-child(even) .iat-copy{order:1}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .iat .iat-rise{animation:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-16 max-w-2xl text-center iat-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Why us</p>
+      <h2 id="iat-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Built around how you actually work</h2>
+    </header>
+
+    <div class="space-y-20 lg:space-y-28">
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">One point of contact</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">You speak to the person doing the work</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">No call centre and no ticket number. The same name answers the phone on day one and on the day it is finished, which is why nothing gets lost between people.</p>
+          <a href="#contact" class="text-sm font-semibold text-accent">Talk to us</a>
+        </div>
+      </div>
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise" style="animation-delay:80ms">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Fixed pricing</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">The quote is the price, in writing</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">Everything is measured before a number is given, so there is nothing to add later. If something genuinely unexpected turns up we stop and show you first.</p>
+          <a href="#pricing" class="text-sm font-semibold text-accent">See how pricing works</a>
+        </div>
+      </div>
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise" style="animation-delay:160ms">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Finished properly</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">We leave it cleaner than we found it</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">Dust sheets before the first tool comes out, waste taken away the same day, and a walk round together before anyone signs anything off.</p>
+          <a href="#work" class="text-sm font-semibold text-accent">See finished jobs</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

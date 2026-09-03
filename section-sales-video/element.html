@@ -1,0 +1,84 @@
+<!--
+  Sales Video section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is not the plain video section. A sales video sits inside an offer: the
+  player on one side, the reason to act on the other, and a call to action
+  that is visible from the first moment rather than revealed after the video
+  ends. A visitor who is already convinced should never have to sit through
+  four minutes to find the button.
+
+  Click to load again, done with :target, so no third party embed is fetched
+  until the visitor presses play. The iframe src is a placeholder, replace it
+  with the real embed URL.
+
+  Default configuration shown here:
+    dark offer panel, player left, offer and call to action right, benefit
+    list beneath the heading, single primary action.
+
+  Every id and class in this block is prefixed svd- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the play state relies on an id.
+-->
+<section class="svd bg-bgdark px-5 py-20 text-white sm:px-8 lg:py-28" aria-labelledby="svd-title">
+
+  <style>
+    .svd .svd-player{display:none}
+    .svd #svd-play:target .svd-player{display:block}
+    .svd #svd-play:target .svd-poster{display:none}
+
+    .svd .svd-poster{position:relative;display:block;width:100%}
+    .svd .svd-poster:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:1.25rem}
+
+    .svd .svd-btn{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+    .svd .svd-poster:hover .svd-btn{transform:scale(1.08)}
+
+    @media (prefers-reduced-motion: reduce){
+      .svd .svd-btn{transition:none}
+      .svd .svd-poster:hover .svd-btn{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+    <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+
+      <div id="svd-play" class="overflow-hidden rounded-3xl border border-white/15 bg-black/40">
+        <a href="#svd-play" class="svd-poster group" aria-label="Play the video, how a fixed quote is put together">
+          <span class="block aspect-video w-full bg-gradient-to-br from-accent/40 via-accent/15 to-transparent"></span>
+          <span class="absolute inset-0 grid place-items-center">
+            <span class="svd-btn grid h-20 w-20 place-items-center rounded-full bg-white shadow-2xl" aria-hidden="true">
+              <svg class="ml-1 h-8 w-8 text-textdark" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </span>
+          <span class="absolute bottom-4 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-medium">4 min 12 sec</span>
+        </a>
+
+        <div class="svd-player">
+          <iframe class="aspect-video w-full" src="about:blank"
+            title="How a fixed quote is put together"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Watch first</p>
+        <h2 id="svd-title" class="mb-5 text-4xl font-semibold leading-tight sm:text-5xl">See exactly how your price is worked out</h2>
+        <p class="mb-7 text-base leading-relaxed text-white/70">Four minutes, filmed on a real survey. You will see every measurement that goes into the number, and every place where other firms usually add an extra later.</p>
+
+        <ul class="mb-9 space-y-3 text-sm text-white/85">
+          <li class="flex gap-3"><span class="mt-1 text-accent" aria-hidden="true">&#10003;</span> Where the cost actually comes from</li>
+          <li class="flex gap-3"><span class="mt-1 text-accent" aria-hidden="true">&#10003;</span> The three things that change a quote</li>
+          <li class="flex gap-3"><span class="mt-1 text-accent" aria-hidden="true">&#10003;</span> What we will never charge you for</li>
+        </ul>
+
+        <!-- Visible from the first moment. Nobody has to finish the video to act. -->
+        <a href="#contact" class="inline-block rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white">Book your free survey</a>
+        <p class="mt-3 text-xs text-white/50">Usually within five working days. No obligation to book the work.</p>
+      </div>
+
+    </div>
+  </div>
+</section>

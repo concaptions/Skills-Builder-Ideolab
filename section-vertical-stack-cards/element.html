@@ -1,0 +1,90 @@
+<!--
+  Vertical Stack Cards section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The stacking is CSS position sticky and nothing else. Each card sticks at a
+  slightly lower offset than the one before it, so as the page scrolls the
+  cards come to rest on top of each other like a pile of paper. The rising
+  z-index is what puts each new card over the previous one.
+
+  Two things that break this if changed: a bottom margin on the sticky
+  wrapper, and any ancestor with overflow hidden, because sticky stops working
+  inside one.
+
+  Default configuration shown here:
+    four cards, sticky pile, 5rem top offset stepping down 1.5rem per card,
+    solid card faces so the one underneath is fully covered.
+
+  Every class in this block is prefixed vsc- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="vsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="vsc-title">
+
+  <style>
+    .vsc .vsc-slot{position:sticky;height:min-content}
+    .vsc .vsc-slot:nth-of-type(1){top:5rem;z-index:1}
+    .vsc .vsc-slot:nth-of-type(2){top:6.5rem;z-index:2}
+    .vsc .vsc-slot:nth-of-type(3){top:8rem;z-index:3}
+    .vsc .vsc-slot:nth-of-type(4){top:9.5rem;z-index:4}
+
+    /* The face must be opaque, otherwise the card underneath shows through. */
+    .vsc .vsc-card{background:#fff}
+
+    @media (max-width:767px){
+      /* Below the breakpoint the pile becomes a plain list. A stack of sticky
+         cards on a short screen leaves almost nothing visible. */
+      .vsc .vsc-slot{position:static;top:auto}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .vsc .vsc-slot{position:static;top:auto}
+    }
+  </style>
+
+  <div class="mx-auto max-w-4xl">
+
+    <header class="mb-14 text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our promise</p>
+      <h2 id="vsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Four things we will not compromise on</h2>
+    </header>
+
+    <!-- No bottom margin on the slots. A margin under a sticky element ends its
+         stick early and the pile falls apart. Spacing is done with padding. -->
+    <div class="space-y-8 md:space-y-0">
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent">01</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">One team, start to finish</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">The people who quote the job are the people who do it. Nothing is handed to a subcontractor you have never met, which is why nothing gets lost between visits.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">02</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">A price that holds</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Measured before it is quoted and written down before it is booked. If something genuinely unexpected appears we stop, show you, and agree the cost before carrying on.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">03</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">Your home stays usable</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Sheets down before the first tool comes out, waste gone the same day, and water and heating back on every evening without exception.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">04</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">We come back if we need to</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Two years on workmanship, manufacturer cover on parts, and no argument about whose fault it is. One call and somebody is out to you.</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>

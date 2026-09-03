@@ -1,0 +1,120 @@
+---
+name: section-about-our-brand
+description: A complete brand-story section that explains identity, origin, values, leadership, or purpose. Use when a page needs to say who the business is and why it exists, as an about block on a homepage or the main body of an about page. Not for listing what the business sells, and not for customer outcomes.
+---
+
+# About Our Brand
+
+## What it is for
+
+The story behind the business, told so a stranger can decide whether these are people they want in their home or handling their money. It carries credibility, not features.
+
+## When to use it
+
+- The business competes on trust, longevity or the people themselves rather than on price.
+- There is a real story: why it started, what changed, what the owner refuses to do.
+- Real figures exist, such as years trading, jobs completed or team size.
+- The visitor is comparing two similar suppliers and needs a reason to prefer one.
+
+## When not to use it
+
+- There is nothing specific to say. A paragraph of "we are passionate about quality" is worse than no section at all.
+- The claims cannot be evidenced. Invented figures are the fastest way to lose a sale.
+- The page already has a team section doing the same job.
+
+## Where it belongs on the page
+
+Lower middle of the page, after the offer and the proof, before the closing call to action. It answers "who are these people" once the visitor already cares what they sell.
+
+## What may be changed
+
+- Story copy, headline and eyebrow.
+- The number, position and wording of the supporting figures.
+- Image aspect, and whether the stat panel overlaps the image or sits under it.
+- Whether the layout is image left or image right.
+
+## What must not be changed
+
+- The stat panel dropping below the image on mobile. Overlapping it on a narrow screen covers the subject of the photograph.
+- Real, checkable figures. If a number cannot be evidenced, remove it rather than soften it.
+- The reduced motion rules.
+
+## Settings and Controls
+
+| Setting | Options | Default |
+| --- | --- | --- |
+| Story depth | Single block, short summary, or multi-part narrative | single block |
+| Show or hide | Headline, supporting copy, founder image, quote, values, button, supporting media | headline, supporting copy, founder image, values |
+| Item count | Number of values, milestones or story parts | 3 |
+| Content width | Narrow, contained, or full width | contained |
+| Section height | Auto, fixed, or full viewport | auto |
+| Image ratio | Square, 4:3, 3:2, portrait, or 16:9 | portrait |
+| Text-to-image ratio | Equal, text-led, or image-led | equal |
+| Alignment | Left, centered, or split | left |
+| Padding | Compact, standard, or generous | standard |
+| Background source | Brand color, image, video, or no background media | no background media |
+
+**Story depth is the setting that matters most.** *Single block* is one headline and one or two paragraphs. *Short summary* is a headline and a single tight paragraph, used when the section is a stop on the way to a full about page. *Multi-part narrative* breaks the story into two or three chapters, each with its own subheading, and is the only depth that needs the section to be tall.
+
+**A background video or image needs the text to stay readable.** Put a scrim between the media and the copy, and set the focal point so a face or a horizon is not sitting behind a headline.
+
+## Creative Design Options
+
+**Layout**
+
+- Story with image. Copy one side, a photograph the other. The default and the safest.
+- Founder spotlight. A portrait carries the section, with the story and a signed quote beside it.
+- Editorial statement. Wide measure, large type, no image, laid out like a magazine opening.
+- Values grid. A short intro over a grid of named values, each with an icon and a line.
+- Manifesto. A sequence of short declarative lines, centered, each on its own row.
+- Story-and-milestones layout. The narrative on one side, dated milestones running down the other.
+
+**Typography**
+
+Gradient-highlighted words, oversized quote, layered headline, or multi-tone line treatment.
+
+Apply one, and apply it to the same element throughout. A gradient on the headline and an oversized quote in the same section fight each other.
+
+**Imagery**
+
+Full-bleed image, overlapping portrait, framed photograph, soft background image, or image collage.
+
+**Motion**
+
+Image parallax, staggered values, line-by-line story reveal, animated quote, or subtle background movement.
+
+## Motion
+
+- **Entrance:** the section fades and rises as one, at `standard` intensity. With the values grid or milestones, stagger the items by 60ms.
+- **Line-by-line story reveal** applies to the headline only. Body paragraphs appear immediately and are never animated in.
+- **Image parallax and subtle background movement** are scroll-linked, so they count as the page's one major showcase effect. Do not use them on a page that already has a sticky stack or a scroll-driven story.
+- **Animated quote** means the quote mark or the attribution line reveals after the quote text, not the quote animating letter by letter.
+- **Hover:** the image takes the default 2 to 4 percent zoom.
+
+## Responsive and Accessibility
+
+| Width | Behavior |
+| --- | --- |
+| Desktop, 1024px and up | Full layout as chosen |
+| Tablet, 768px to 1023px | Split layouts become one column. Values grid drops to two columns |
+| Mobile, under 768px | One column, image above text. Values grid becomes one column. Parallax is switched off |
+
+- The headline uses a real heading level in sequence. Value names are headings too, not styled text.
+- A founder photograph needs alt text naming the person and their role, not "founder image".
+- A quote uses `<blockquote>` with `<cite>` for the attribution.
+- With reduced motion, parallax and background movement stop, the story reveal is removed, and all content is visible immediately.
+- Text over a background image or video must clear the contrast threshold with the scrim applied, not without it.
+
+## Defaults
+
+Single block story, story-with-image layout, image right, portrait ratio, equal text-to-image, left aligned, contained width, standard padding, no background media, three values shown, framed photograph, standard fade-and-rise entrance with staggered values, image hover zoom.
+
+## What breaks this section
+
+1. **Fixing the section height with a long story.** The copy overflows or gets clipped. Use `auto` height unless the story is genuinely short.
+2. **Animating the body paragraphs in.** The reader arrives at an empty column and waits. Only the headline reveals.
+3. **A background image with no scrim.** It reads fine on the designer's photo and fails on the customer's.
+
+## Color
+
+Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

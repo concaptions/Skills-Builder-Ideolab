@@ -1,0 +1,123 @@
+---
+name: section-sales-video
+description: A conversion-focused video section that combines the sales video with offer and CTA behavior. Use for a VSL with an offer panel, benefits, price, guarantee, countdown or form, where the CTA can appear immediately, after a timestamp, or after the video completes. Not for a general brand or explainer video, which is the video section.
+---
+
+# Sales Video
+
+## What it is for
+
+A video that sits inside an offer. The player on one side, the reason to act on the other, and a call to action visible from the first moment rather than revealed at the end.
+
+## When to use it
+
+- The offer genuinely benefits from being shown or explained by a person.
+- The video was made for selling, not a general brand film.
+- The video is under about five minutes.
+
+## When not to use it
+
+- The video is the only place the offer is explained. Most visitors will not watch it, so the page must work with the sound off and the video unplayed.
+- It is a brand film with no offer attached. That is a plain video section.
+- There is no call to action to attach to it.
+
+## Where it belongs on the page
+
+Upper middle for a landing page, where it carries the main argument. Never below the final call to action.
+
+## What may be changed
+
+- The embed URL, poster, duration label and the benefit list.
+- Which side the player sits on.
+- Panel background, light or dark.
+- Call to action wording and the reassurance line under it.
+
+## What must not be changed
+
+- The call to action being visible before the video plays. Someone already convinced should never have to watch four minutes to find the button.
+- Click to load. No third party embed should be fetched until the visitor presses play, which keeps the page fast and stops the video host tracking people who never watched.
+- A descriptive title on the iframe.
+- The reduced motion rules.
+
+## Settings and Controls
+
+| Setting | Options | Default |
+| --- | --- | --- |
+| Video source | Uploaded file, YouTube, Vimeo, or another external player | uploaded file |
+| Poster image | Uploaded, a frame from the video, or none | uploaded |
+| Controls | Full controls, minimal, or none | full controls |
+| CTA timing | Immediately, after a timestamp, or after video completion | immediately |
+| Button destination | Checkout, form, booking, or another page | checkout |
+| Chapters | List of timestamps with labels, or none | none |
+| Completion behavior | Show the offer, replay, go to checkout, or do nothing | show the offer |
+| Show or hide | Headline, benefits, price, guarantee, urgency message, countdown, form, CTA | headline, benefits, price, guarantee, CTA |
+| Sticky mini-player | On when the main player scrolls out of view, or off | off |
+| Mobile playback | Inline, modal, or the native player | inline |
+| Captions | Track file, burned in, or none | track file |
+| Transcript | Shown, collapsed, or hidden | collapsed |
+
+**Delaying the CTA has a real cost.** A visitor who already knows they want it has nothing to click. If the CTA is delayed, keep a quieter link visible from the start, such as a text link to the same destination.
+
+**A sticky mini-player must be dismissible.** A video that follows the visitor down the page with no close control is the most complained-about pattern on the web. Give it a close button and remember the choice for the session.
+
+**A countdown must be honest.** A timer that resets on refresh, or an evergreen deadline that never actually expires, is a deceptive pattern. If the deadline is real, use the real date. If there is no deadline, do not show a countdown.
+
+## Creative Design Options
+
+**Layout**
+
+- Centered VSL. The video alone with the offer beneath. The default.
+- Video with offer panel. Player one side, a price and CTA card the other.
+- Video and benefits. Player above, benefit checks beneath.
+- Sticky video. The player pins while the offer scrolls past.
+- Video with CTA beneath. A wide player with a single large button under it.
+
+**Conversion treatment**
+
+Delayed offer reveal, highlighted guarantee, animated benefit checks, or featured CTA card.
+
+**Motion**
+
+Poster transition, play-state change, progress animation, chapter transition, or CTA entrance.
+
+**Styling**
+
+Theater background, premium frame, gradient offer panel, floating proof badges, or illuminated CTA.
+
+## Motion
+
+- **Entrance:** the player and offer arrive together as one fade and rise at `standard` intensity.
+- **CTA entrance**, when the CTA is timed, is a fade and rise at `expressive` intensity, once. It never flashes or pulses repeatedly.
+- **Progress animation** reflects real playback position. It is never decorative movement pretending to be progress.
+- **Chapter transition** highlights the active chapter in the list. Change color and weight only, do not resize the row.
+- **Poster transition** scales the poster out as playback starts.
+- **Illuminated CTA and button shine** are opt in and run once on the CTA's entrance, not on a loop.
+
+## Responsive and Accessibility
+
+| Width | Behavior |
+| --- | --- |
+| Desktop, 1024px and up | Full layout as chosen. Sticky player and offer panel active |
+| Tablet, 768px to 1023px | Offer panel moves beneath the video. Sticky is switched off |
+| Mobile, under 768px | One column, video first, offer beneath, CTA full width. Sticky mini-player only if it can be dismissed with a large enough control |
+
+- The CTA is a real link or button with text that says what happens, such as "Start the free trial", not "Click here".
+- Captions are provided. A sales video without captions loses every visitor who is watching without sound.
+- A timed CTA must still be reachable by keyboard the moment it appears, and its arrival is announced with `aria-live="polite"`.
+- A countdown is readable text with a real deadline, and it announces politely rather than on every tick.
+- The guarantee and price are text, never an image, so they can be read by assistive technology and translated.
+- With reduced motion, the CTA appears without animation, the poster transition and any shine are removed, and the progress bar updates without easing.
+
+## Defaults
+
+Uploaded source, poster shown, full controls, CTA immediately, destination checkout, no chapters, show the offer on completion, headline and benefits and price and guarantee and CTA shown, sticky mini-player off, inline playback, captions on, centered VSL layout, featured CTA card, standard fade-and-rise entrance.
+
+## What breaks this section
+
+1. **Hiding the only CTA behind a timer.** A visitor who arrives ready to buy has nothing to click, and most will not sit through the video to find out.
+2. **A countdown that resets on refresh.** It teaches the visitor the urgency is fake, which undermines the rest of the page.
+3. **A sticky mini-player with no close control.** It covers content on a phone and cannot be got rid of.
+
+## Color
+
+Use the page's theme tokens. Never hardcode a hex value or a Tailwind palette color, because this section has to work on a dark editorial page and a light clinical one without being rewritten.

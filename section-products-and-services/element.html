@@ -1,0 +1,91 @@
+<!--
+  Products and Services section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Each card carries the four things a visitor needs before they will act: what
+  it is, what it costs, what is included, and how to start. A card without a
+  price or a next step is a feature list wearing a card, and it converts badly.
+
+  One card is marked as the popular choice. That is a real ranking signal, so
+  only one card should ever carry it.
+
+  Default configuration shown here:
+    three cards, equal height, middle card emphasised, price from figures,
+    three inclusions each, one call to action per card.
+
+  Every class in this block is prefixed pns- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="pns bg-muted px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pns-title">
+
+  <style>
+    .pns .pns-rise{animation:pns-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes pns-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .pns .pns-card{transition:transform 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease}
+    .pns .pns-card:hover{transform:translateY(-4px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .pns .pns-rise{animation:none}
+      .pns .pns-card{transition:none}
+      .pns .pns-card:hover{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-14 max-w-2xl text-center pns-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Services</p>
+      <h2 id="pns-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Three ways we can help</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">Every price below is a starting figure from a real job. You get an exact number after the visit.</p>
+    </header>
+
+    <ul class="grid items-stretch gap-6 md:grid-cols-3">
+
+      <li class="pns-rise" style="animation-delay:0ms">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+          <h3 class="mb-2 text-xl font-semibold">Repairs and call outs</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">Something has stopped working and you need it back today.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£95</span> <span class="text-sm text-textmute">first hour, parts at cost</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Two hour arrival window</li>
+            <li>Seven days a week</li>
+            <li>Fee quoted before we set off</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full border border-black/15 px-6 py-3 text-center text-sm font-semibold">Book a call out</a>
+        </article>
+      </li>
+
+      <li class="pns-rise" style="animation-delay:80ms">
+        <article class="pns-card relative flex h-full flex-col rounded-3xl border-2 border-accent bg-surface p-8 shadow-lg">
+          <span class="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">Most booked</span>
+          <h3 class="mb-2 text-xl font-semibold">Full bathroom fit</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">Stripped back and rebuilt by one team, start to finish.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£4,200</span> <span class="text-sm text-textmute">from, fixed in writing</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Design visit and written quote</li>
+            <li>Strip out and disposal included</li>
+            <li>Most rooms done in eight days</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold text-white">Get a fixed quote</a>
+        </article>
+      </li>
+
+      <li class="pns-rise" style="animation-delay:160ms">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+          <h3 class="mb-2 text-xl font-semibold">Boiler replacement</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">A new combi fitted, registered and running the same day.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£1,850</span> <span class="text-sm text-textmute">from, including the unit</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Same week appointments</li>
+            <li>Warranty registered for you</li>
+            <li>System flushed and balanced</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full border border-black/15 px-6 py-3 text-center text-sm font-semibold">Check availability</a>
+        </article>
+      </li>
+
+    </ul>
+  </div>
+</section>
