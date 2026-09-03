@@ -54,7 +54,18 @@ Middle of the page, after the offer is understood and before the closing call to
 - The `width` and `height` attributes on each image. Removing them makes the page shift as images load.
 - Alt text. Every image needs a description of what it shows, and a purely decorative image takes an empty alt attribute.
 - The filters being a radio group. One `<input type="radio">` per category, all sharing a `name`, each with a `<label for="...">` that is the visible chip. That is what gives arrow key navigation, a single tab stop and an announced selected state with no script.
-- The inputs and the grid staying siblings. The chosen category is matched with the general sibling combinator, so the grid is hidden down to one category by rules of the shape `#filter-kitchens:checked ~ .grid > li:not([data-cat="kitchens"]) { display: none }`, with each tile carrying its own `data-cat`. Nest the inputs inside the chip row and every rule stops reaching the grid.
+- The inputs and the grid staying siblings. The chosen category is matched with the general sibling combinator, so one rule per category hides everything that does not belong to it:
+
+  `#filter-kitchens:checked ~ .grid > li:not([data-cat="kitchens"]) { display: none }`
+
+  Four things have to line up, and if any one of them does not, the gallery renders looking perfect while every chip is dead:
+
+  1. The inputs come before the grid and share a parent with it. Nest them inside the chip row and no rule reaches the grid.
+  2. Each tile is a **direct child** of the grid. One extra wrapper between them and `>` stops matching.
+  3. Each tile carries its own `data-cat` on the tile itself, not on something inside it.
+  4. The element named in the selector is the element you actually used. The example says `li` because the grid is a list. Build the grid from `figure` elements and the selector must say `figure`, or it matches nothing at all and says nothing about it.
+
+  The check: with a category selected, fewer tiles are on screen than with All selected. If the count never changes, the selector is not reaching the tiles.
 - The identifier prefix, unless it is changed consistently. The filters are driven by ids, so two copies of this block on one page need different prefixes.
 - The reduced motion rules.
 
@@ -134,10 +145,11 @@ Nine images, three columns, standard gap, square crop, captions hidden, manual o
 ## What breaks this section
 
 1. **Buttons as the filter chips.** A `<button>` does nothing on its own. Something has to listen to the click, and there is no script here, so the gallery renders looking correct and every chip is dead: the grid never narrows. The chips are radio inputs and their labels.
-2. **Zooming the frame instead of the image.** The cell grows, the grid reflows, and every other image jumps.
-3. **Mixed ratios in a fixed grid.** Rows end ragged. Use masonry for mixed ratios, or crop to one ratio.
-4. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
-5. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
+2. **A selector that names an element the grid does not use.** The same dead gallery, from the other direction. CSS does not report a selector that matches nothing, so this looks identical to working code. Whatever element the tiles are, the rule has to name that element, and the tiles have to be direct children of the grid.
+3. **Zooming the frame instead of the image.** The cell grows, the grid reflows, and every other image jumps.
+4. **Mixed ratios in a fixed grid.** Rows end ragged. Use masonry for mixed ratios, or crop to one ratio.
+5. **Duplicate identifiers.** The filters are driven by ids. Two copies of this block on one page with the same prefix means clicking a filter in one gallery silently filters the other.
+6. **A lightbox without focus handling.** Tab moves behind the overlay onto the page underneath and there is no way back.
 
 ## What a static block cannot do
 
