@@ -13,7 +13,7 @@ One `<section>` element, and nothing else.
 - No markdown code fence around it, and no commentary before or after it. Return the HTML itself. A stray ``` renders as visible text on the page, and inside a grid it becomes an extra item that pushes the layout out of shape.
 - No `<script>`, no event handlers, no `hidden` attributes waiting to be toggled. Nothing here can run.
 - No external files of any kind: no image addresses, no icon library, no web font.
-- Everything the section needs lives inside that one element, including any `<style>` it uses. Prefix your own class names so they cannot collide with the rest of the page.
+- Everything the section needs lives inside that one element, including its own `<style>` block. That stylesheet is expected, not a last resort. Tailwind utilities carry most of the work, but a relationship between elements cannot be written as a utility, and the ones this set depends on all live in the stylesheet: `:checked ~`, `details[open]`, `:target`, `@keyframes`, `animation-timeline` and the `prefers-reduced-motion` rule. Prefix your own class names so they cannot collide with the rest of the page.
 - The section carries its own horizontal padding and its own maximum width. Drop that wrapper and the content runs to both edges of the screen.
 
 This skill is self-contained. Do not read, reference or depend on any other skill, and do not assume that a shared stylesheet, a motion system, a component library or a set of helper classes exists somewhere. If something is not described here, it is not available.
