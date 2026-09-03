@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Builder Sections</title>
+
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  surface:'#ffffff', muted:'#f6f7f9', textdark:'#0f172a',
+  textmute:'#64748b', accent:'#2563eb', bgdark:'#0b1220'
+} } } }
+</script>
+
+<style>
+  html{scroll-behavior:smooth}
+  html,body{margin:0}
+  body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  [hidden]{display:none !important}
+
+  .pv-top{position:sticky;top:0;z-index:60;background:#0b1220;color:#fff;
+    padding:.7rem 1.1rem;display:flex;flex-wrap:wrap;gap:.3rem .85rem;align-items:baseline;
+    font-size:.76rem;box-shadow:0 1px 0 rgba(255,255,255,.09)}
+  .pv-top strong{font-size:.86rem;font-weight:600;margin-right:.6rem}
+  .pv-top a{color:#93c5fd;text-decoration:none}
+  .pv-top a:hover{color:#fff}
+
+  .pv-bar{background:#111827;color:#fff;padding:.5rem 1.1rem;font-size:.78rem;
+    display:flex;align-items:baseline;gap:.7rem;scroll-margin-top:3.2rem}
+  .pv-num{opacity:.45;font-variant-numeric:tabular-nums;font-size:.72rem}
+  .pv-name{font-weight:600;letter-spacing:.02em}
+</style>
+</head>
+<body class="bg-surface text-textdark antialiased">
+
+<div class="pv-top">
+  <strong>17 sections</strong>
+  <a href="#p01">About Our Brand</a>
+  <a href="#p02">Animated Logo Stream</a>
+  <a href="#p03">Animated Timeline</a>
+  <a href="#p04">Customer Benefits</a>
+  <a href="#p05">Expandable Content</a>
+  <a href="#p06">Features and Details</a>
+  <a href="#p07">Graphic Illustration</a>
+  <a href="#p08">Horizontal Stack Cards</a>
+  <a href="#p09">How It Works</a>
+  <a href="#p10">Image and Text</a>
+  <a href="#p11">Photo Gallery</a>
+  <a href="#p12">Products and Services</a>
+  <a href="#p13">Sales Video</a>
+  <a href="#p14">Tabbed Content</a>
+  <a href="#p15">Vertical Stack Cards</a>
+  <a href="#p16">Video</a>
+  <a href="#p17">Image to Page Section</a>
+</div>
+
+<div class="pv-bar" id="p01"><span class="pv-num">01</span><span class="pv-name">About Our Brand</span></div>
+<!--
+  About Our Brand section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    two column split, story copy on the left, portrait image on the right with
+    a small stat panel overlapping it, three supporting figures underneath,
+    staggered entrance.
+
+  The stat panel overlaps the image on desktop and drops below it on mobile,
+  because an overlapping panel on a narrow screen covers the face in the
+  photograph.
+
+  Every class in this block is prefixed abr- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="abr bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="abr-title">
+
+  <style>
+    .abr .abr-rise{animation:abr-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes abr-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .abr .abr-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+
+      <div class="abr-rise">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">About us</p>
+        <h2 id="abr-title" class="mb-6 text-4xl font-semibold leading-tight sm:text-5xl">We started because nobody turned up</h2>
+        <div class="space-y-4 text-base leading-relaxed text-textmute">
+          <p>In 2008 the founder waited three weeks for a plumber who never came, fixed the leak himself, and decided that turning up on the day you said you would was a low enough bar to build a business on.</p>
+          <p>Eighteen years later there are eleven of us. The van is newer and the workshop is bigger, but the rule has not changed: we say a date, and we are there on it.</p>
+          <p>We still answer our own phone. If you call at four on a Friday, somebody who knows your job picks up.</p>
+        </div>
+        <a href="#team" class="mt-8 inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white">Meet the team</a>
+      </div>
+
+      <div class="relative abr-rise" style="animation-delay:100ms">
+        <div class="aspect-[4/5] w-full rounded-3xl bg-gradient-to-br from-accent/25 via-accent/10 to-transparent"></div>
+
+        <!-- Overlaps on desktop, sits below on mobile so it never covers a face. -->
+        <div class="mt-6 rounded-2xl border border-black/10 bg-white p-6 shadow-lg lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:w-64">
+          <p class="text-4xl font-semibold leading-none">18</p>
+          <p class="mt-2 text-sm leading-relaxed text-textmute">years doing the same work in the same town</p>
+        </div>
+      </div>
+
+    </div>
+
+    <dl class="mt-20 grid gap-10 border-t border-black/10 pt-12 sm:grid-cols-3">
+      <div class="abr-rise" style="animation-delay:160ms">
+        <dt class="text-3xl font-semibold">11</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">engineers, all trained in house before they see a customer</dd>
+      </div>
+      <div class="abr-rise" style="animation-delay:220ms">
+        <dt class="text-3xl font-semibold">2,400+</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">jobs finished, and the number we came back to fix is on the wall</dd>
+      </div>
+      <div class="abr-rise" style="animation-delay:280ms">
+        <dt class="text-3xl font-semibold">Same day</dt>
+        <dd class="mt-2 text-sm leading-relaxed text-textmute">answer on every message, seven days a week</dd>
+      </div>
+    </dl>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p02"><span class="pv-num">02</span><span class="pv-name">Animated Logo Stream</span></div>
+<!--
+  Animated Logo Stream section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The loop is done the only way it can be done without script: the same set of
+  logos is rendered twice inside one track, and the track is translated by
+  exactly minus fifty percent. At the moment it snaps back, the second copy is
+  sitting where the first one started, so the seam is invisible.
+
+  The duplicate copy is marked aria-hidden, otherwise every brand name is
+  announced twice.
+
+  Default configuration shown here:
+    single row, continuous leftward drift, greyscale until hover, edges faded
+    into the page background, pauses when the pointer is over the row.
+
+  Every class in this block is prefixed als- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="als bg-surface px-5 py-16 text-textdark sm:px-8 lg:py-20" aria-labelledby="als-title">
+
+  <style>
+    .als .als-viewport{
+      overflow:hidden;
+      /* Both edges fade out, so logos enter and leave rather than being cut. */
+      -webkit-mask-image:linear-gradient(to right,transparent,#000 8rem,#000 calc(100% - 8rem),transparent);
+      mask-image:linear-gradient(to right,transparent,#000 8rem,#000 calc(100% - 8rem),transparent)}
+
+    .als .als-track{display:flex;width:max-content;animation:als-slide 32s linear infinite}
+    @keyframes als-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Continuous motion must be stoppable. Hover and keyboard focus both do it. */
+    .als .als-viewport:hover .als-track,
+    .als .als-viewport:focus-within .als-track{animation-play-state:paused}
+
+    .als .als-logo{filter:grayscale(1);opacity:.55;transition:filter 240ms ease,opacity 240ms ease}
+    .als .als-logo:hover{filter:none;opacity:1}
+
+    @media (prefers-reduced-motion: reduce){
+      /* No drift at all. The row becomes a static, scrollable strip. */
+      .als .als-track{animation:none;width:auto;overflow-x:auto;flex-wrap:wrap;justify-content:center}
+      .als .als-dup{display:none}
+      .als .als-logo{filter:none;opacity:1;transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <p id="als-title" class="mb-10 text-center text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Trusted by teams at</p>
+
+    <div class="als-viewport">
+      <div class="als-track">
+
+        <ul class="flex shrink-0 items-center gap-16 pr-16">
+          <li class="als-logo text-xl font-semibold tracking-tight">Northgate</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Halden &amp; Co</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Brightwell</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Marrow Lane</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Fenwick</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Oakhurst</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Castellan</li>
+        </ul>
+
+        <!-- Exact duplicate. Hidden from assistive technology so nothing is read twice. -->
+        <ul class="als-dup flex shrink-0 items-center gap-16 pr-16" aria-hidden="true">
+          <li class="als-logo text-xl font-semibold tracking-tight">Northgate</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Halden &amp; Co</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Brightwell</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Marrow Lane</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Fenwick</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Oakhurst</li>
+          <li class="als-logo text-xl font-semibold tracking-tight">Castellan</li>
+        </ul>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p03"><span class="pv-num">03</span><span class="pv-name">Animated Timeline</span></div>
+<!--
+  Animated Timeline section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Scroll activation without script is done with CSS scroll driven animation.
+  The important part is the order: every milestone is fully visible by
+  default, and the reveal is only added inside an @supports block. Browsers
+  without animation-timeline therefore show a complete, readable, static
+  timeline rather than a column of invisible text.
+
+  Default configuration shown here:
+    vertical timeline, alternating sides on desktop, single column with the
+    spine on the left on mobile, dated milestones, spine drawn behind the
+    markers.
+
+  Every class in this block is prefixed atl- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="atl bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="atl-title">
+
+  <style>
+    .atl .atl-list{position:relative}
+
+    /* The spine. On mobile it runs down the left, on desktop down the middle. */
+    .atl .atl-list::before{content:"";position:absolute;top:.5rem;bottom:.5rem;
+      left:.6875rem;width:2px;background:rgba(15,23,42,.12)}
+    @media (min-width:768px){
+      .atl .atl-list::before{left:50%;transform:translateX(-50%)}
+    }
+
+    .atl .atl-item{position:relative;padding-left:3rem}
+    .atl .atl-dot{position:absolute;left:0;top:.25rem;width:1.5rem;height:1.5rem;
+      border-radius:9999px;background:#fff;border:2px solid rgb(37 99 235);
+      display:grid;place-items:center}
+    .atl .atl-dot::after{content:"";width:.5rem;height:.5rem;border-radius:9999px;background:rgb(37 99 235)}
+
+    @media (min-width:768px){
+      .atl .atl-item{width:50%;padding-left:0}
+      .atl .atl-item:nth-child(odd){margin-left:0;padding-right:3.5rem;text-align:right}
+      .atl .atl-item:nth-child(even){margin-left:50%;padding-left:3.5rem}
+      .atl .atl-item:nth-child(odd) .atl-dot{left:auto;right:-.75rem}
+      .atl .atl-item:nth-child(even) .atl-dot{left:-.75rem}
+    }
+
+    /* Default state is visible. The reveal is added only where it is supported. */
+    @supports (animation-timeline: view()){
+      @media (prefers-reduced-motion: no-preference){
+        .atl .atl-item{
+          animation:atl-in linear both;
+          animation-timeline:view();
+          /* Ends well before the item reaches the middle, so the last
+             milestone still completes at the bottom of the page. */
+          animation-range:entry 5% cover 28%}
+        @keyframes atl-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+      }
+    }
+  </style>
+
+  <div class="mx-auto max-w-4xl">
+
+    <header class="mx-auto mb-16 max-w-2xl text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our story</p>
+      <h2 id="atl-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Eighteen years, one van at a time</h2>
+    </header>
+
+    <ol class="atl-list space-y-12">
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2008</p>
+        <h3 class="mb-2 text-xl font-semibold">One van, one phone</h3>
+        <p class="text-sm leading-relaxed text-textmute">Started with a second hand van and a landline in the spare room. Every job came from somebody telling somebody else.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2013</p>
+        <h3 class="mb-2 text-xl font-semibold">The first workshop</h3>
+        <p class="text-sm leading-relaxed text-textmute">A unit on the industrial estate meant parts on the shelf instead of a trip to the merchant halfway through every job.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2017</p>
+        <h3 class="mb-2 text-xl font-semibold">Four engineers, one standard</h3>
+        <p class="text-sm leading-relaxed text-textmute">Grew the team without changing how the work is done. Everybody trains in house before they are let near a customer's home.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">2021</p>
+        <h3 class="mb-2 text-xl font-semibold">Fixed pricing across the board</h3>
+        <p class="text-sm leading-relaxed text-textmute">Stopped charging by the day. Every job quoted in writing, so nobody has to wonder what the final number will be.</p>
+      </li>
+
+      <li class="atl-item">
+        <span class="atl-dot" aria-hidden="true"></span>
+        <p class="mb-1 text-sm font-semibold text-accent">Today</p>
+        <h3 class="mb-2 text-xl font-semibold">Eleven people, same promise</h3>
+        <p class="text-sm leading-relaxed text-textmute">Still answering our own phone, and still finishing on the day we said we would.</p>
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p04"><span class="pv-num">04</span><span class="pv-name">Customer Benefits</span></div>
+<!--
+  Customer Benefits section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    six benefits, three column grid, icon above the text, left aligned copy,
+    no card border, staggered entrance.
+
+  A benefit is an outcome for the visitor, not a feature of the product. The
+  copy below is written that way on purpose: what the customer gets, not what
+  the business owns.
+
+  Every class in this block is prefixed cbn- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="cbn bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="cbn-title">
+
+  <style>
+    .cbn .cbn-rise{animation:cbn-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes cbn-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .cbn .cbn-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-14 max-w-2xl text-center cbn-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What you get</p>
+      <h2 id="cbn-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Six reasons people stay with us</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">Not a feature list. These are the things customers tell us actually made the difference.</p>
+    </header>
+
+    <ul class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+
+      <li class="cbn-rise" style="animation-delay:0ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">No waiting three weeks for a price</h3>
+        <p class="text-sm leading-relaxed text-textmute">A written quote lands within two working days of the visit, so you can make a decision while the job is still fresh in your head.</p>
+      </li>
+
+      <li class="cbn-rise" style="animation-delay:60ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">The price does not move</h3>
+        <p class="text-sm leading-relaxed text-textmute">What you agree is what you pay. No day rate creeping upward and no line items appearing at the end that nobody mentioned.</p>
+      </li>
+
+      <li class="cbn-rise" style="animation-delay:120ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">You get a time, not a day</h3>
+        <p class="text-sm leading-relaxed text-textmute">A two hour arrival window, confirmed the day before. You do not lose a day of work waiting for a van that might come.</p>
+      </li>
+
+      <li class="cbn-rise" style="animation-delay:180ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">Covered for two years</h3>
+        <p class="text-sm leading-relaxed text-textmute">Workmanship is guaranteed and parts carry the manufacturer's own cover. One call and somebody comes back out at no charge.</p>
+      </li>
+
+      <li class="cbn-rise" style="animation-delay:240ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 16l4-8 4 5 4-9"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">Your home stays liveable</h3>
+        <p class="text-sm leading-relaxed text-textmute">Sheets down, waste out the same day, water back on every evening. You keep using the house while the work is going on.</p>
+      </li>
+
+      <li class="cbn-rise" style="animation-delay:300ms">
+        <span class="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <h3 class="mb-2 text-lg font-semibold">Someone answers the phone</h3>
+        <p class="text-sm leading-relaxed text-textmute">A real person, seven days a week, who can actually tell you where your job is up to rather than promising to find out.</p>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p05"><span class="pv-num">05</span><span class="pv-name">Expandable Content</span></div>
+<!--
+  Expandable Content section, an FAQ or accordion.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  It is built on the native details and summary elements, so opening, closing,
+  keyboard operation and screen reader announcement all work with no script.
+  The name attribute on each details element makes the group behave as an
+  accordion, where opening one closes the others.
+
+  Default configuration shown here:
+    single column, one open at a time, first item closed, chevron marker,
+    bordered rows, staggered entrance.
+
+  Every class in this block is prefixed exp- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="exp bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="exp-title">
+
+  <style>
+    .exp .exp-rise{animation:exp-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes exp-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* Remove the browser's default triangle so the chevron below is the only marker. */
+    .exp summary{list-style:none;cursor:pointer}
+    .exp summary::-webkit-details-marker{display:none}
+    .exp summary::marker{content:""}
+
+    .exp summary:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:3px;border-radius:.5rem}
+
+    .exp .exp-chevron{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+    .exp details[open] .exp-chevron{transform:rotate(180deg)}
+
+    /* The answer slides open. grid-template-rows animates where height auto cannot. */
+    .exp .exp-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows 260ms cubic-bezier(.16,1,.3,1)}
+    .exp details[open] .exp-body{grid-template-rows:1fr}
+    .exp .exp-body > div{overflow:hidden}
+
+    @media (prefers-reduced-motion: reduce){
+      .exp .exp-rise{animation:none}
+      .exp .exp-chevron,.exp .exp-body{transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-3xl">
+
+    <header class="mb-12 text-center exp-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Questions</p>
+      <h2 id="exp-title" class="text-4xl font-semibold leading-tight sm:text-5xl">The things people ask first</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">If your question is not here, send it over and you will get a straight answer the same day.</p>
+    </header>
+
+    <div class="divide-y divide-black/10 border-y border-black/10">
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:0ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>How quickly can you start?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Small jobs are usually booked within the same week. Anything that needs materials ordering runs to about two weeks, and you get the date in writing before we start.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:60ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Is the quote fixed, or does it move?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Fixed. The price you agree is the price you pay. If we find something genuinely unexpected behind a wall we stop, show you, and agree the cost before carrying on.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:120ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Do you clear up afterwards?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Every time. Dust sheets go down before the first tool comes out, and waste leaves with us on the day rather than sitting in your driveway.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:180ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>What if something goes wrong later?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Workmanship is guaranteed for two years and parts carry the manufacturer's own cover. One phone call and we come back out, at no charge.</p></div></div>
+      </details>
+
+      <details name="exp-faq" class="exp-rise" style="animation-delay:240ms">
+        <summary class="flex items-center justify-between gap-4 py-5 text-left text-lg font-medium">
+          <span>Which areas do you cover?</span>
+          <svg class="exp-chevron h-5 w-5 shrink-0 text-textmute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="exp-body"><div><p class="pb-5 pr-9 text-base leading-relaxed text-textmute">Anywhere within about forty minutes of the workshop. If you are slightly outside that, ask anyway, because it often still works out.</p></div></div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p06"><span class="pv-num">06</span><span class="pv-name">Features and Details</span></div>
+<!--
+  Features and Details section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A features section answers "what exactly is included", so it is denser and
+  more literal than a benefits section. The specification table at the bottom
+  is the part visitors actually scan, so it stays a real table rather than a
+  grid of divs, which means it can be read out in order.
+
+  Default configuration shown here:
+    lead feature panel, four supporting features in a two by two grid, and a
+    specification table underneath. Table scrolls sideways on small screens
+    instead of squashing.
+
+  Every class in this block is prefixed fad- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="fad bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="fad-title">
+
+  <style>
+    .fad .fad-rise{animation:fad-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes fad-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* A wide table must scroll inside its own box. The page itself must never
+       scroll sideways. */
+    .fad .fad-scroll{overflow-x:auto}
+    .fad .fad-scroll:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:3px;border-radius:1rem}
+
+    @media (prefers-reduced-motion: reduce){ .fad .fad-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mb-14 max-w-2xl fad-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What is included</p>
+      <h2 id="fad-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Everything in the price, listed</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">No asterisks and no optional extras added at the end. If it is on this page, it is in the quote.</p>
+    </header>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+
+      <div class="rounded-3xl bg-bgdark p-8 text-white lg:row-span-2 fad-rise">
+        <span class="mb-6 grid h-11 w-11 place-items-center rounded-xl bg-white/10" aria-hidden="true">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </span>
+        <h3 class="mb-3 text-2xl font-semibold">Full strip out and disposal</h3>
+        <p class="mb-6 text-sm leading-relaxed text-white/70">The old suite comes out, goes in our van, and is disposed of properly with the paperwork to prove it. Nothing sits in your driveway for a fortnight.</p>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li>Waste carrier licensed and logged</li>
+          <li>Floor and stairs protected throughout</li>
+          <li>Skip hire never charged separately</li>
+        </ul>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:60ms">
+        <h3 class="mb-2 text-lg font-semibold">Certified parts only</h3>
+        <p class="text-sm leading-relaxed text-textmute">Named brands with their own warranty, registered to you on the day rather than left for you to do.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:120ms">
+        <h3 class="mb-2 text-lg font-semibold">Notified to building control</h3>
+        <p class="text-sm leading-relaxed text-textmute">Where the work needs it, the certificate is filed for you and a copy lands in your inbox.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:180ms">
+        <h3 class="mb-2 text-lg font-semibold">Water back on nightly</h3>
+        <p class="text-sm leading-relaxed text-textmute">However mid job it looks, you get water and heating back before we leave for the evening.</p>
+      </div>
+
+      <div class="rounded-3xl border border-black/10 p-7 fad-rise" style="animation-delay:240ms">
+        <h3 class="mb-2 text-lg font-semibold">Handover walk round</h3>
+        <p class="text-sm leading-relaxed text-textmute">We go through it together before anything is signed, and anything you are not happy with is put right there and then.</p>
+      </div>
+
+    </div>
+
+    <div class="fad-scroll mt-14 rounded-2xl border border-black/10 fad-rise" tabindex="0" style="animation-delay:300ms">
+      <table class="w-full min-w-[36rem] border-collapse text-left text-sm">
+        <caption class="sr-only">What is included at each level of service</caption>
+        <thead>
+          <tr class="border-b border-black/10 bg-muted/60">
+            <th scope="col" class="px-5 py-4 font-semibold">Included</th>
+            <th scope="col" class="px-5 py-4 font-semibold">Standard</th>
+            <th scope="col" class="px-5 py-4 font-semibold">Full fit</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-black/10 text-textmute">
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Site visit and written quote</th><td class="px-5 py-4">Yes</td><td class="px-5 py-4">Yes</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Strip out and disposal</th><td class="px-5 py-4">Yes</td><td class="px-5 py-4">Yes</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Tiling and finishing</th><td class="px-5 py-4">Priced separately</td><td class="px-5 py-4">Included</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Electrics and extraction</th><td class="px-5 py-4">Priced separately</td><td class="px-5 py-4">Included</td></tr>
+          <tr><th scope="row" class="px-5 py-4 font-medium text-textdark">Workmanship guarantee</th><td class="px-5 py-4">2 years</td><td class="px-5 py-4">2 years</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p07"><span class="pv-num">07</span><span class="pv-name">Graphic Illustration</span></div>
+<!--
+  Graphic Illustration section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A labelled diagram. The illustration is inline SVG rather than an image
+  file, so it stays sharp at any size, inherits the page colours, and needs no
+  external request. The labels sit in the HTML beside the drawing rather than
+  inside it, so they are real text that can be read, translated and searched.
+
+  Hotspots are anchors, so hovering or focusing one highlights its part of the
+  drawing. That works with a pointer and with a keyboard, and needs no script.
+
+  Default configuration shown here:
+    centred diagram with four numbered call outs arranged around it, caption
+    beneath, staggered entrance.
+
+  Every class in this block is prefixed gil- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="gil bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="gil-title">
+
+  <style>
+    .gil .gil-rise{animation:gil-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes gil-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+    .gil .gil-hot{transition:background-color 200ms ease,border-color 200ms ease}
+    .gil .gil-hot:hover,.gil .gil-hot:focus-visible{background:rgba(37,99,235,.06);border-color:rgb(37 99 235)}
+    .gil .gil-hot:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:2px}
+
+    @media (prefers-reduced-motion: reduce){
+      .gil .gil-rise{animation:none}
+      .gil .gil-hot{transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-5xl">
+
+    <header class="mx-auto mb-14 max-w-2xl text-center gil-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">How the system fits together</p>
+      <h2 id="gil-title" class="text-4xl font-semibold leading-tight sm:text-5xl">What is actually behind the wall</h2>
+    </header>
+
+    <div class="grid items-center gap-12 md:grid-cols-[1fr_20rem]">
+
+      <figure class="gil-rise">
+        <svg viewBox="0 0 480 380" class="w-full" role="img" aria-labelledby="gil-figtitle gil-figdesc">
+          <title id="gil-figtitle">A heating system laid out schematically</title>
+          <desc id="gil-figdesc">A boiler feeds a hot water cylinder and a manifold, which in turn feed radiators and an underfloor loop.</desc>
+
+          <rect x="20" y="20" width="440" height="340" rx="24" fill="#f6f7f9"/>
+
+          <!-- boiler -->
+          <rect x="60" y="70" width="110" height="130" rx="16" fill="#fff" stroke="#2563eb" stroke-width="3"/>
+          <circle cx="115" cy="120" r="22" fill="none" stroke="#2563eb" stroke-width="3"/>
+          <path d="M104 120h22M115 109v22" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+          <text x="115" y="180" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Boiler</text>
+
+          <!-- cylinder. The label sits inside the shape, as it does on the
+               boiler and the manifold, so nothing overlaps an outline. -->
+          <rect x="310" y="60" width="90" height="150" rx="45" fill="#fff" stroke="#047857" stroke-width="3"/>
+          <text x="355" y="145" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Cylinder</text>
+
+          <!-- manifold -->
+          <rect x="180" y="250" width="140" height="60" rx="14" fill="#fff" stroke="#b45309" stroke-width="3"/>
+          <path d="M200 250v-30M240 250v-30M280 250v-30" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+          <text x="250" y="290" text-anchor="middle" font-size="13" fill="#0f172a" font-family="system-ui, sans-serif">Manifold</text>
+
+          <!-- flow lines -->
+          <path d="M170 110h140" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+          <path d="M115 200v80h65" stroke="#b45309" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M355 210v70h-35" stroke="#047857" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </figure>
+
+      <ol class="space-y-3">
+        <li class="gil-rise" style="animation-delay:60ms">
+          <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent text-xs font-semibold text-white" aria-hidden="true">1</span>
+            <span><span class="block text-sm font-semibold">The boiler</span><span class="block text-sm leading-relaxed text-textmute">Sized to the house, not to the old one it replaced.</span></span>
+          </a>
+        </li>
+        <li class="gil-rise" style="animation-delay:120ms">
+          <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-emerald-700 text-xs font-semibold text-white" aria-hidden="true">2</span>
+            <span><span class="block text-sm font-semibold">The cylinder</span><span class="block text-sm leading-relaxed text-textmute">Holds enough for two showers back to back without a cold run.</span></span>
+          </a>
+        </li>
+        <li class="gil-rise" style="animation-delay:180ms">
+          <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-amber-700 text-xs font-semibold text-white" aria-hidden="true">3</span>
+            <span><span class="block text-sm font-semibold">The manifold</span><span class="block text-sm leading-relaxed text-textmute">One place to isolate a single room instead of draining the lot.</span></span>
+          </a>
+        </li>
+        <li class="gil-rise" style="animation-delay:240ms">
+          <a href="#gil-title" class="gil-hot flex gap-4 rounded-2xl border border-black/10 p-4">
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-violet-700 text-xs font-semibold text-white" aria-hidden="true">4</span>
+            <span><span class="block text-sm font-semibold">Balanced flow</span><span class="block text-sm leading-relaxed text-textmute">Every radiator set on commissioning so no room runs cold.</span></span>
+          </a>
+        </li>
+      </ol>
+
+    </div>
+
+    <p class="mx-auto mt-12 max-w-2xl text-center text-sm leading-relaxed text-textmute gil-rise" style="animation-delay:300ms">Schematic only. Your survey drawing will show the actual pipe runs for your property.</p>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p08"><span class="pv-num">08</span><span class="pv-name">Horizontal Stack Cards</span></div>
+<!--
+  Horizontal Stack Cards section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is a real overflow container with CSS scroll snapping, which is what
+  makes it work with no script at all: it is draggable with a pointer,
+  swipeable on touch, scrollable with a trackpad, and reachable by keyboard
+  because the container itself is focusable. Snapping keeps every card
+  landing squarely rather than half off the edge.
+
+  What is deliberately NOT done here: turning vertical scroll into horizontal
+  movement. That traps the visitor, because they can no longer scroll past the
+  section normally, and on a trackpad it fights them.
+
+  Default configuration shown here:
+    five cards, snap to each card start, edges faded, one and a bit cards
+    visible on mobile so the row is obviously scrollable.
+
+  Every class in this block is prefixed hsc- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="hsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="hsc-title">
+
+  <style>
+    .hsc .hsc-rail{
+      display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;
+      scroll-padding-left:1.25rem;padding-bottom:1.25rem;
+      scrollbar-width:thin}
+    .hsc .hsc-rail > *{scroll-snap-align:start;flex:0 0 auto}
+    .hsc .hsc-rail:focus-visible{outline:2px solid rgb(37 99 235);outline-offset:4px;border-radius:1rem}
+
+    .hsc .hsc-rise{animation:hsc-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes hsc-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .hsc .hsc-card{transition:transform 260ms cubic-bezier(.16,1,.3,1)}
+    .hsc .hsc-card:hover{transform:translateY(-4px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .hsc .hsc-rail{scroll-behavior:auto}
+      .hsc .hsc-rise{animation:none}
+      .hsc .hsc-card{transition:none}
+      .hsc .hsc-card:hover{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mb-10 flex flex-wrap items-end justify-between gap-4 hsc-rise">
+      <div class="max-w-xl">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Case studies</p>
+        <h2 id="hsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Work we were proud to hand over</h2>
+      </div>
+      <p class="text-sm text-textmute">Scroll or swipe to see more</p>
+    </header>
+
+    <!-- tabindex makes the rail reachable, so arrow keys scroll it. -->
+    <ul class="hsc-rail hsc-rise" tabindex="0" role="group" aria-label="Case studies, scroll horizontally" style="animation-delay:80ms">
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Bathroom</p>
+          <h3 class="mb-2 text-xl font-semibold">A loft ensuite in nine days</h3>
+          <p class="text-sm leading-relaxed text-textmute">Awkward eaves, no existing waste run, and a tight staircase. Finished a day early.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Heating</p>
+          <h3 class="mb-2 text-xl font-semibold">Whole house, no lost heat</h3>
+          <p class="text-sm leading-relaxed text-textmute">Boiler swapped and every radiator rebalanced without the family moving out for a night.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Kitchen</p>
+          <h3 class="mb-2 text-xl font-semibold">An island with hidden waste</h3>
+          <p class="text-sm leading-relaxed text-textmute">Feeds and waste run under a solid floor so nothing boxed in and nothing on show.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-rose-500/20 to-rose-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Commercial</p>
+          <h3 class="mb-2 text-xl font-semibold">A cafe that never shut</h3>
+          <p class="text-sm leading-relaxed text-textmute">Full replumb done overnight across four visits, so not a single trading hour was lost.</p>
+        </div>
+      </li>
+
+      <li class="hsc-card w-[19rem] overflow-hidden rounded-3xl border border-black/10 sm:w-[22rem]">
+        <div class="aspect-[16/10] bg-gradient-to-br from-violet-500/20 to-violet-500/5"></div>
+        <div class="p-6">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-textmute">Access</p>
+          <h3 class="mb-2 text-xl font-semibold">Level access, same footprint</h3>
+          <p class="text-sm leading-relaxed text-textmute">A step free wet room fitted into the original room size, with no extension needed.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p09"><span class="pv-num">09</span><span class="pv-name">How It Works</span></div>
+<!--
+  How It Works section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    three numbered steps, horizontal row on desktop, connector line between
+    steps, staggered entrance, stacks to a vertical list on mobile.
+
+  Every class in this block is prefixed hiw- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="hiw bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="hiw-title">
+
+  <style>
+    .hiw .hiw-rise{animation:hiw-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes hiw-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* The connector is drawn behind the numbers, and never past the last step. */
+    .hiw .hiw-step{position:relative}
+    @media (min-width:768px){
+      .hiw .hiw-step:not(:last-child)::after{
+        content:"";position:absolute;top:1.75rem;left:calc(50% + 2.25rem);
+        width:calc(100% - 4.5rem);height:2px;
+        background:linear-gradient(to right,currentColor 0 6px,transparent 6px 12px);
+        background-size:12px 2px;color:rgb(148 163 184);opacity:.7}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .hiw .hiw-rise{animation:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-5xl">
+
+    <header class="mx-auto mb-14 max-w-2xl text-center hiw-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">How it works</p>
+      <h2 id="hiw-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Three steps, start to finish</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">No paperwork to chase and no surprise costs. Here is exactly what happens after you get in touch.</p>
+    </header>
+
+    <ol class="grid gap-10 md:grid-cols-3 md:gap-6">
+
+      <li class="hiw-step text-center hiw-rise" style="animation-delay:0ms">
+        <span class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-accent text-lg font-semibold text-white" aria-hidden="true">1</span>
+        <h3 class="mb-2 text-xl font-semibold">Tell us what you need</h3>
+        <p class="mx-auto max-w-xs text-sm leading-relaxed text-textmute">Send a message or call. It takes two minutes and there is nothing to fill in beyond your name and the job.</p>
+      </li>
+
+      <li class="hiw-step text-center hiw-rise" style="animation-delay:90ms">
+        <span class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-accent text-lg font-semibold text-white" aria-hidden="true">2</span>
+        <h3 class="mb-2 text-xl font-semibold">Get a fixed quote</h3>
+        <p class="mx-auto max-w-xs text-sm leading-relaxed text-textmute">We visit, measure, and put a price in writing. The number you agree is the number you pay.</p>
+      </li>
+
+      <li class="hiw-step text-center hiw-rise" style="animation-delay:180ms">
+        <span class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-accent text-lg font-semibold text-white" aria-hidden="true">3</span>
+        <h3 class="mb-2 text-xl font-semibold">We do the work</h3>
+        <p class="mx-auto max-w-xs text-sm leading-relaxed text-textmute">Booked for a date that suits you, finished on the day we said, and tidied up before we leave.</p>
+      </li>
+
+    </ol>
+
+    <div class="mt-14 text-center hiw-rise" style="animation-delay:270ms">
+      <a href="#contact" class="inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white">Start step one</a>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p10"><span class="pv-num">10</span><span class="pv-name">Image and Text</span></div>
+<!--
+  Image and Text section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    three alternating rows, image left on the first row and the side swapping
+    each row, text vertically centred, staggered entrance, stacks image above
+    text on mobile.
+
+  The alternating side is done with a single nth-child rule rather than by
+  hand marking each row, so adding or removing a row keeps the rhythm.
+
+  Every class in this block is prefixed iat- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="iat bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="iat-title">
+
+  <style>
+    .iat .iat-rise{animation:iat-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes iat-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+    /* Every second row puts the picture on the right. On mobile the picture is
+       always first, because a wall of text with no image above it reads badly. */
+    @media (min-width:768px){
+      .iat .iat-row:nth-child(even) .iat-figure{order:2}
+      .iat .iat-row:nth-child(even) .iat-copy{order:1}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .iat .iat-rise{animation:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-16 max-w-2xl text-center iat-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Why us</p>
+      <h2 id="iat-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Built around how you actually work</h2>
+    </header>
+
+    <div class="space-y-20 lg:space-y-28">
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">One point of contact</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">You speak to the person doing the work</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">No call centre and no ticket number. The same name answers the phone on day one and on the day it is finished, which is why nothing gets lost between people.</p>
+          <a href="#contact" class="text-sm font-semibold text-accent">Talk to us</a>
+        </div>
+      </div>
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise" style="animation-delay:80ms">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Fixed pricing</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">The quote is the price, in writing</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">Everything is measured before a number is given, so there is nothing to add later. If something genuinely unexpected turns up we stop and show you first.</p>
+          <a href="#pricing" class="text-sm font-semibold text-accent">See how pricing works</a>
+        </div>
+      </div>
+
+      <div class="iat-row grid items-center gap-10 md:grid-cols-2 md:gap-14 iat-rise" style="animation-delay:160ms">
+        <div class="iat-figure">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
+        </div>
+        <div class="iat-copy">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-textmute">Finished properly</p>
+          <h3 class="mb-4 text-3xl font-semibold leading-snug">We leave it cleaner than we found it</h3>
+          <p class="mb-6 text-base leading-relaxed text-textmute">Dust sheets before the first tool comes out, waste taken away the same day, and a walk round together before anyone signs anything off.</p>
+          <a href="#work" class="text-sm font-semibold text-accent">See finished jobs</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p11"><span class="pv-num">11</span><span class="pv-name">Photo Gallery</span></div>
+<!--
+  Photo Gallery section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Default configuration shown here:
+    layout 3 column grid, square crop, category filters on, captions hidden,
+    hover zoom inside a fixed frame, staggered entrance.
+
+  Every id and class in this block is prefixed pgal- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the filters rely on ids.
+-->
+<section class="pgal bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pgal-title">
+
+  <style>
+    /* Filter radios drive the grid. They are never shown. */
+    .pgal input[name="pgal-filter"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+    /* Chip styling, and the selected state driven by the radio next to it. */
+    .pgal .pgal-chip{cursor:pointer;user-select:none}
+    .pgal input[name="pgal-filter"]:checked + .pgal-chip{
+      background:var(--pgal-accent,#2563eb);border-color:var(--pgal-accent,#2563eb);color:#fff}
+    .pgal input[name="pgal-filter"]:focus-visible + .pgal-chip{outline:2px solid currentColor;outline-offset:2px}
+
+    /* Filtering. Each radio hides the items that do not match it. */
+    .pgal #pgal-f-bathrooms:checked ~ .pgal-grid > li:not([data-cat="bathrooms"]),
+    .pgal #pgal-f-heating:checked   ~ .pgal-grid > li:not([data-cat="heating"]),
+    .pgal #pgal-f-kitchens:checked  ~ .pgal-grid > li:not([data-cat="kitchens"]){display:none}
+
+    /* Entrance. Pure CSS, so it needs no observer and no script. */
+    .pgal .pgal-rise{animation:pgal-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes pgal-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    /* The frame never resizes, so a hover cannot push the grid around. */
+    .pgal .pgal-shot{transition:transform 320ms cubic-bezier(.16,1,.3,1)}
+    .pgal .pgal-tile:hover .pgal-shot,
+    .pgal .pgal-tile:focus-visible .pgal-shot{transform:scale(1.05)}
+
+    @media (prefers-reduced-motion: reduce){
+      .pgal .pgal-rise{animation:none}
+      .pgal .pgal-shot{transition:none}
+      .pgal .pgal-tile:hover .pgal-shot{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-10 max-w-2xl text-center pgal-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Recent work</p>
+      <h2 id="pgal-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Nine jobs from this year</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">Every job below was finished in the last twelve months. Tap a category to narrow the list.</p>
+    </header>
+
+    <!-- Filters and grid are siblings, which is what lets the checked radio reach the grid. -->
+    <fieldset class="mb-10 border-0 p-0">
+      <legend class="sr-only">Filter the gallery by category</legend>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-all" checked>
+      <label for="pgal-f-all" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">All</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-bathrooms">
+      <label for="pgal-f-bathrooms" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Bathrooms</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-heating">
+      <label for="pgal-f-heating" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Heating</label>
+
+      <input type="radio" name="pgal-filter" id="pgal-f-kitchens">
+      <label for="pgal-f-kitchens" class="pgal-chip mr-2 mb-2 inline-block rounded-full border border-black/15 px-4 py-2 text-sm font-medium text-textmute">Kitchens</label>
+
+      <ul class="pgal-grid mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:0ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Wet room with a walk in shower, Ashfield Road"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23dbe4f5'/%3E%3Cstop offset='1' stop-color='%23f2f5fb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%238da4cc' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:40ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Replacement combi boiler in a utility room"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e3ddf3'/%3E%3Cstop offset='1' stop-color='%23f6f4fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%239b8dc4' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:80ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Fitted kitchen with a quartz worktop"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23d8ecdf' /%3E%3Cstop offset='1' stop-color='%23f1f8f3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%2382ab92' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:120ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Family bathroom with a freestanding bath"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f7e6d9'/%3E%3Cstop offset='1' stop-color='%23fdf5ef'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23c99d80' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:160ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Underfloor heating manifold before the screed went down"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23dceaf7'/%3E%3Cstop offset='1' stop-color='%23f0f6fc'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%2382a2c4' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:200ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Kitchen island with an inset sink"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23eae3f6'/%3E%3Cstop offset='1' stop-color='%23f7f4fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23a292c9' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="bathrooms" class="pgal-rise" style="animation-delay:240ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Cloakroom with a wall hung basin"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23d9eef0'/%3E%3Cstop offset='1' stop-color='%23f0f9fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%237fa9ad' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="heating" class="pgal-rise" style="animation-delay:280ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Vertical designer radiator in a hallway"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f5e2e6'/%3E%3Cstop offset='1' stop-color='%23fcf2f4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23c58f99' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+        <li data-cat="kitchens" class="pgal-rise" style="animation-delay:320ms">
+          <figure class="pgal-tile block overflow-hidden rounded-2xl border border-black/10">
+            <img class="pgal-shot aspect-square w-full object-cover" width="800" height="800" loading="lazy"
+              alt="Utility room with fitted storage"
+              src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e6e9ee'/%3E%3Cstop offset='1' stop-color='%23f5f6f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='800' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23929aa8' stroke-width='16' stroke-linecap='round'%3E%3Crect x='250' y='280' width='300' height='240' rx='24'/%3E%3Ccircle cx='340' cy='360' r='30'/%3E%3Cpath d='M260 480l110-110 90 90 60-55 70 65'/%3E%3C/g%3E%3C/svg%3E">
+          </figure>
+        </li>
+
+      </ul>
+    </fieldset>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p12"><span class="pv-num">12</span><span class="pv-name">Products and Services</span></div>
+<!--
+  Products and Services section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Each card carries the four things a visitor needs before they will act: what
+  it is, what it costs, what is included, and how to start. A card without a
+  price or a next step is a feature list wearing a card, and it converts badly.
+
+  One card is marked as the popular choice. That is a real ranking signal, so
+  only one card should ever carry it.
+
+  Default configuration shown here:
+    three cards, equal height, middle card emphasised, price from figures,
+    three inclusions each, one call to action per card.
+
+  Every class in this block is prefixed pns- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="pns bg-muted px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="pns-title">
+
+  <style>
+    .pns .pns-rise{animation:pns-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes pns-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .pns .pns-card{transition:transform 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease}
+    .pns .pns-card:hover{transform:translateY(-4px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .pns .pns-rise{animation:none}
+      .pns .pns-card{transition:none}
+      .pns .pns-card:hover{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <header class="mx-auto mb-14 max-w-2xl text-center pns-rise">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Services</p>
+      <h2 id="pns-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Three ways we can help</h2>
+      <p class="mt-4 text-base leading-relaxed text-textdark/70">Every price below is a starting figure from a real job. You get an exact number after the visit.</p>
+    </header>
+
+    <ul class="grid items-stretch gap-6 md:grid-cols-3">
+
+      <li class="pns-rise" style="animation-delay:0ms">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+          <h3 class="mb-2 text-xl font-semibold">Repairs and call outs</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">Something has stopped working and you need it back today.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£95</span> <span class="text-sm text-textmute">first hour, parts at cost</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Two hour arrival window</li>
+            <li>Seven days a week</li>
+            <li>Fee quoted before we set off</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full border border-black/15 px-6 py-3 text-center text-sm font-semibold">Book a call out</a>
+        </article>
+      </li>
+
+      <li class="pns-rise" style="animation-delay:80ms">
+        <article class="pns-card relative flex h-full flex-col rounded-3xl border-2 border-accent bg-surface p-8 shadow-lg">
+          <span class="absolute -top-3 left-8 rounded-full bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">Most booked</span>
+          <h3 class="mb-2 text-xl font-semibold">Full bathroom fit</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">Stripped back and rebuilt by one team, start to finish.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£4,200</span> <span class="text-sm text-textmute">from, fixed in writing</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Design visit and written quote</li>
+            <li>Strip out and disposal included</li>
+            <li>Most rooms done in eight days</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full bg-accent px-6 py-3 text-center text-sm font-semibold text-white">Get a fixed quote</a>
+        </article>
+      </li>
+
+      <li class="pns-rise" style="animation-delay:160ms">
+        <article class="pns-card flex h-full flex-col rounded-3xl border border-black/10 bg-surface p-8">
+          <h3 class="mb-2 text-xl font-semibold">Boiler replacement</h3>
+          <p class="mb-6 text-sm leading-relaxed text-textmute">A new combi fitted, registered and running the same day.</p>
+          <p class="mb-6"><span class="text-3xl font-semibold">£1,850</span> <span class="text-sm text-textmute">from, including the unit</span></p>
+          <ul class="mb-8 space-y-2 text-sm text-textmute">
+            <li>Same week appointments</li>
+            <li>Warranty registered for you</li>
+            <li>System flushed and balanced</li>
+          </ul>
+          <a href="#contact" class="mt-auto block rounded-full border border-black/15 px-6 py-3 text-center text-sm font-semibold">Check availability</a>
+        </article>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p13"><span class="pv-num">13</span><span class="pv-name">Sales Video</span></div>
+<!--
+  Sales Video section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is not the plain video section. A sales video sits inside an offer: the
+  player on one side, the reason to act on the other, and a call to action
+  that is visible from the first moment rather than revealed after the video
+  ends. A visitor who is already convinced should never have to sit through
+  four minutes to find the button.
+
+  Click to load again, done with :target, so no third party embed is fetched
+  until the visitor presses play. The iframe src is a placeholder, replace it
+  with the real embed URL.
+
+  Default configuration shown here:
+    dark offer panel, player left, offer and call to action right, benefit
+    list beneath the heading, single primary action.
+
+  Every id and class in this block is prefixed svd- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the play state relies on an id.
+-->
+<section class="svd bg-bgdark px-5 py-20 text-white sm:px-8 lg:py-28" aria-labelledby="svd-title">
+
+  <style>
+    .svd .svd-player{display:none}
+    .svd #svd-play:target .svd-player{display:block}
+    .svd #svd-play:target .svd-poster{display:none}
+
+    .svd .svd-poster{position:relative;display:block;width:100%}
+    .svd .svd-poster:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:1.25rem}
+
+    .svd .svd-btn{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+    .svd .svd-poster:hover .svd-btn{transform:scale(1.08)}
+
+    @media (prefers-reduced-motion: reduce){
+      .svd .svd-btn{transition:none}
+      .svd .svd-poster:hover .svd-btn{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+    <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+
+      <div id="svd-play" class="overflow-hidden rounded-3xl border border-white/15 bg-black/40">
+        <a href="#svd-play" class="svd-poster group" aria-label="Play the video, how a fixed quote is put together">
+          <span class="block aspect-video w-full bg-gradient-to-br from-accent/40 via-accent/15 to-transparent"></span>
+          <span class="absolute inset-0 grid place-items-center">
+            <span class="svd-btn grid h-20 w-20 place-items-center rounded-full bg-white shadow-2xl" aria-hidden="true">
+              <svg class="ml-1 h-8 w-8 text-textdark" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </span>
+          <span class="absolute bottom-4 left-4 rounded-full bg-black/70 px-3 py-1 text-xs font-medium">4 min 12 sec</span>
+        </a>
+
+        <div class="svd-player">
+          <iframe class="aspect-video w-full" src="about:blank"
+            title="How a fixed quote is put together"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Watch first</p>
+        <h2 id="svd-title" class="mb-5 text-4xl font-semibold leading-tight sm:text-5xl">See exactly how your price is worked out</h2>
+        <p class="mb-7 text-base leading-relaxed text-white/70">Four minutes, filmed on a real survey. You will see every measurement that goes into the number, and every place where other firms usually add an extra later.</p>
+
+        <ul class="mb-9 space-y-3 text-sm text-white/85">
+          <li class="flex gap-3"><span class="mt-1 text-white" aria-hidden="true">&#10003;</span> Where the cost actually comes from</li>
+          <li class="flex gap-3"><span class="mt-1 text-white" aria-hidden="true">&#10003;</span> The three things that change a quote</li>
+          <li class="flex gap-3"><span class="mt-1 text-white" aria-hidden="true">&#10003;</span> What we will never charge you for</li>
+        </ul>
+
+        <!-- Visible from the first moment. Nobody has to finish the video to act. -->
+        <a href="#contact" class="inline-block rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white">Book your free survey</a>
+        <p class="mt-3 text-xs text-white/50">Usually within five working days. No obligation to book the work.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p14"><span class="pv-num">14</span><span class="pv-name">Tabbed Content</span></div>
+<!--
+  Tabbed Content section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The tabs are a radio group. That matters: a radio group already gives arrow
+  key navigation, a single tab stop, and a selected state that assistive
+  technology announces, all without a script. It is announced as a radio group
+  rather than as a tablist, which is the one thing lost by not using script.
+
+  Structure note that is easy to get wrong: the radio inputs and the panel
+  container must be SIBLINGS, because the selected panel is matched with the
+  general sibling combinator. They are therefore all direct children of one
+  flex row, where the labels sit inline and the rule and the panels each take
+  a full width basis so they wrap onto their own line.
+
+  Default configuration shown here:
+    four tabs, horizontal above the panel, first tab selected, panels cross
+    fade in a single grid cell, underline marker on the selected tab.
+
+  Every id and class in this block is prefixed tbc- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the tabs rely on ids.
+-->
+<section class="tbc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="tbc-title">
+
+  <style>
+    /* Flex, not grid. A grid of max-content tracks lets the full width panels
+       inflate the track sizes, which pushes the whole section past the
+       viewport. Flex items with a 100% basis and min-width 0 cannot do that. */
+    .tbc .tbc-wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;
+      column-gap:2rem;border:0;padding:0;margin:0;min-width:0}
+    @media (max-width:640px){
+      .tbc .tbc-wrap{column-gap:1.5rem;row-gap:.25rem}
+    }
+
+    .tbc input[name="tbc-tab"]{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+    .tbc .tbc-label{cursor:pointer;user-select:none;border-bottom:2px solid transparent;padding-bottom:.75rem}
+    .tbc input[name="tbc-tab"]:checked + .tbc-label{color:rgb(37 99 235);border-bottom-color:currentColor}
+    .tbc input[name="tbc-tab"]:focus-visible + .tbc-label{outline:2px solid currentColor;outline-offset:4px;border-radius:.25rem}
+
+    .tbc .tbc-rule{flex:0 0 100%;border:0;border-top:1px solid rgba(0,0,0,.1);margin:0 0 2.5rem}
+
+    /* Panels are stacked in one grid cell, so the section never changes height
+       as the visitor moves between tabs. */
+    .tbc .tbc-panels{flex:0 0 100%;min-width:0;display:grid;text-align:left}
+    .tbc .tbc-panel{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(8px);
+      transition:opacity 220ms ease,transform 220ms cubic-bezier(.16,1,.3,1),visibility 0s linear 220ms}
+
+    .tbc #tbc-t1:checked ~ .tbc-panels .tbc-p1,
+    .tbc #tbc-t2:checked ~ .tbc-panels .tbc-p2,
+    .tbc #tbc-t3:checked ~ .tbc-panels .tbc-p3,
+    .tbc #tbc-t4:checked ~ .tbc-panels .tbc-p4{
+      opacity:1;visibility:visible;transform:none;transition-delay:0s}
+
+    @media (prefers-reduced-motion: reduce){
+      .tbc .tbc-panel{transition:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-5xl">
+
+    <header class="mx-auto mb-10 max-w-2xl text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">What we do</p>
+      <h2 id="tbc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Four services, one team</h2>
+    </header>
+
+    <fieldset class="tbc-wrap">
+      <legend class="sr-only">Choose a service to read about</legend>
+
+      <input type="radio" name="tbc-tab" id="tbc-t1" checked>
+      <label for="tbc-t1" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Bathrooms</label>
+
+      <input type="radio" name="tbc-tab" id="tbc-t2">
+      <label for="tbc-t2" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Heating</label>
+
+      <input type="radio" name="tbc-tab" id="tbc-t3">
+      <label for="tbc-t3" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Kitchens</label>
+
+      <input type="radio" name="tbc-tab" id="tbc-t4">
+      <label for="tbc-t4" class="tbc-label text-sm font-semibold text-textmute sm:text-base">Emergencies</label>
+
+      <hr class="tbc-rule">
+
+      <div class="tbc-panels">
+
+        <div class="tbc-panel tbc-p1 grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-3 text-2xl font-semibold">Full bathroom fits</h3>
+            <p class="mb-5 text-base leading-relaxed text-textmute">Stripped back, re-plumbed, tiled and finished by one team, so nobody is waiting on anybody else. Most rooms are done inside eight working days.</p>
+            <ul class="space-y-2 text-sm text-textmute">
+              <li>Design visit and a fixed written price</li>
+              <li>Wet rooms, walk-in showers and level access</li>
+              <li>Old suite removed and taken away</li>
+            </ul>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5"></div>
+        </div>
+
+        <div class="tbc-panel tbc-p2 grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-3 text-2xl font-semibold">Boilers and heating</h3>
+            <p class="mb-5 text-base leading-relaxed text-textmute">Replacement combis, system upgrades and underfloor loops. Registered engineers, and the paperwork filed for you on the day.</p>
+            <ul class="space-y-2 text-sm text-textmute">
+              <li>Same week appointments for a failed boiler</li>
+              <li>Manufacturer warranties registered on completion</li>
+              <li>Annual servicing reminders if you want them</li>
+            </ul>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5"></div>
+        </div>
+
+        <div class="tbc-panel tbc-p3 grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-3 text-2xl font-semibold">Kitchen plumbing</h3>
+            <p class="mb-5 text-base leading-relaxed text-textmute">Sinks, islands, appliance runs and waste. We work alongside your fitter so the trades are not tripping over each other.</p>
+            <ul class="space-y-2 text-sm text-textmute">
+              <li>Island feeds and concealed waste runs</li>
+              <li>Filtered and boiling water taps</li>
+              <li>Appliance connection and testing</li>
+            </ul>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-500/5"></div>
+        </div>
+
+        <div class="tbc-panel tbc-p4 grid items-center gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="mb-3 text-2xl font-semibold">Emergency call outs</h3>
+            <p class="mb-5 text-base leading-relaxed text-textmute">Burst pipes, no heat, no hot water. A real person answers, and you get a time window rather than a vague promise.</p>
+            <ul class="space-y-2 text-sm text-textmute">
+              <li>Answered seven days a week</li>
+              <li>Two hour arrival window given up front</li>
+              <li>Call out fee quoted before we set off</li>
+            </ul>
+          </div>
+          <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-rose-500/20 to-rose-500/5"></div>
+        </div>
+
+      </div>
+    </fieldset>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p15"><span class="pv-num">15</span><span class="pv-name">Vertical Stack Cards</span></div>
+<!--
+  Vertical Stack Cards section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The stacking is CSS position sticky and nothing else. Each card sticks at a
+  slightly lower offset than the one before it, so as the page scrolls the
+  cards come to rest on top of each other like a pile of paper. The rising
+  z-index is what puts each new card over the previous one.
+
+  Two things that break this if changed: a bottom margin on the sticky
+  wrapper, and any ancestor with overflow hidden, because sticky stops working
+  inside one.
+
+  Default configuration shown here:
+    four cards, sticky pile, 5rem top offset stepping down 1.5rem per card,
+    solid card faces so the one underneath is fully covered.
+
+  Every class in this block is prefixed vsc- so it cannot collide with the
+  rest of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="vsc bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="vsc-title">
+
+  <style>
+    .vsc .vsc-slot{position:sticky;height:min-content}
+    .vsc .vsc-slot:nth-of-type(1){top:5rem;z-index:1}
+    .vsc .vsc-slot:nth-of-type(2){top:6.5rem;z-index:2}
+    .vsc .vsc-slot:nth-of-type(3){top:8rem;z-index:3}
+    .vsc .vsc-slot:nth-of-type(4){top:9.5rem;z-index:4}
+
+    /* The face must be opaque, otherwise the card underneath shows through. */
+    .vsc .vsc-card{background:#fff}
+
+    @media (max-width:767px){
+      /* Below the breakpoint the pile becomes a plain list. A stack of sticky
+         cards on a short screen leaves almost nothing visible. */
+      .vsc .vsc-slot{position:static;top:auto}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .vsc .vsc-slot{position:static;top:auto}
+    }
+  </style>
+
+  <div class="mx-auto max-w-4xl">
+
+    <header class="mb-14 text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Our promise</p>
+      <h2 id="vsc-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Four things we will not compromise on</h2>
+    </header>
+
+    <!-- No bottom margin on the slots. A margin under a sticky element ends its
+         stick early and the pile falls apart. Spacing is done with padding. -->
+    <div class="space-y-8 md:space-y-0">
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-accent/[0.06] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent">01</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">One team, start to finish</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">The people who quote the job are the people who do it. Nothing is handed to a subcontractor you have never met, which is why nothing gets lost between visits.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">02</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">A price that holds</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Measured before it is quoted and written down before it is booked. If something genuinely unexpected appears we stop, show you, and agree the cost before carrying on.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">03</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">Your home stays usable</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Sheets down before the first tool comes out, waste gone the same day, and water and heating back on every evening without exception.</p>
+        </article>
+      </div>
+
+      <div class="vsc-slot md:pb-8">
+        <article class="vsc-card rounded-3xl border border-black/10 p-8 shadow-sm sm:p-10">
+          <span class="mb-4 inline-block rounded-full bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-violet-700">04</span>
+          <h3 class="mb-3 text-2xl font-semibold sm:text-3xl">We come back if we need to</h3>
+          <p class="max-w-xl text-base leading-relaxed text-textmute">Two years on workmanship, manufacturer cover on parts, and no argument about whose fault it is. One call and somebody is out to you.</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p16"><span class="pv-num">16</span><span class="pv-name">Video</span></div>
+<!--
+  Video section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Click to load, done without script. The poster is a link to a fragment, and
+  the iframe only exists inside a container that is revealed by :target. Until
+  the visitor presses play, no third party embed is on the page at all, which
+  keeps the page fast and stops the video host setting cookies on people who
+  never watched anything.
+
+  The iframe src below is a placeholder. Replace it with the real embed URL.
+  Prefer the host's privacy mode where one exists.
+
+  Default configuration shown here:
+    single 16:9 player, centred, poster with a play control, caption beneath.
+
+  Every id and class in this block is prefixed vid- so it cannot collide with
+  the rest of the page. Placing this block twice on one page requires changing
+  that prefix, because the play state relies on an id.
+-->
+<section class="vid bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="vid-title">
+
+  <style>
+    .vid .vid-frame{position:relative;overflow:hidden;border-radius:1.5rem}
+
+    /* The embed is absent until the fragment matches. */
+    .vid .vid-player{display:none}
+    .vid #vid-play:target .vid-player{display:block}
+    .vid #vid-play:target .vid-poster{display:none}
+
+    .vid .vid-poster{position:relative;display:block;width:100%}
+    .vid .vid-poster:focus-visible{outline:3px solid rgb(37 99 235);outline-offset:3px;border-radius:1.5rem}
+
+    .vid .vid-btn{transition:transform 220ms cubic-bezier(.16,1,.3,1)}
+    .vid .vid-poster:hover .vid-btn{transform:scale(1.08)}
+
+    @media (prefers-reduced-motion: reduce){
+      .vid .vid-btn{transition:none}
+      .vid .vid-poster:hover .vid-btn{transform:none}
+    }
+  </style>
+
+  <div class="mx-auto max-w-4xl">
+
+    <header class="mx-auto mb-10 max-w-2xl text-center">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Watch</p>
+      <h2 id="vid-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Two minutes inside a finished job</h2>
+      <p class="mt-4 text-base leading-relaxed text-textmute">A walk through of a wet room from first fix to handover, filmed on the day.</p>
+    </header>
+
+    <div id="vid-play" class="vid-frame border border-black/10 bg-bgdark">
+
+      <a href="#vid-play" class="vid-poster group" aria-label="Play the video, two minutes inside a finished job">
+        <span class="block aspect-video w-full bg-gradient-to-br from-accent/30 via-accent/10 to-transparent"></span>
+        <span class="absolute inset-0 grid place-items-center">
+          <span class="vid-btn grid h-20 w-20 place-items-center rounded-full bg-white/95 shadow-xl" aria-hidden="true">
+            <svg class="ml-1 h-8 w-8 text-textdark" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+      </a>
+
+      <div class="vid-player">
+        <iframe class="aspect-video w-full" src="about:blank"
+          title="Two minutes inside a finished job"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+
+    </div>
+
+    <p class="mt-4 text-center text-sm text-textmute">Filmed at a job in Ashfield Road. Nothing staged and nothing tidied for the camera.</p>
+
+  </div>
+</section>
+
+
+<div class="pv-bar" id="p17"><span class="pv-num">17</span><span class="pv-name">Image to Page Section</span></div>
+<!--
+  Image to Page Section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This block is a worked example of the method, so it records what was read out
+  of the reference picture and what was deliberately left behind.
+
+  The reference was a screenshot of a section on another joinery company's site:
+  copy on the left, a tall photograph on the right, a small figure panel
+  overlapping the photograph's lower left corner, three short proof lines with
+  a mark beside each, and one button.
+
+  READ OUT OF THE PICTURE
+    Structure   two columns, copy left and media right, split roughly 3 to 2.
+    Repeats     three proof lines, each a mark and one line of text.
+    Parts       rule, eyebrow, heading, body, proof list, action, media, figure
+                panel, caption.
+    Axis        left aligned. The heading sets the axis and nothing is centred.
+    Order       eyebrow, heading, body, proof, action, then media. On a narrow
+                screen that is the order it stacks in.
+    Ratios      heading about 3x the body. Gap between the columns about the
+                same as the padding inside the figure panel. Media a portrait
+                of about 4 to 5.
+
+  DELIBERATELY NOT COPIED
+    Colors      the reference was warm brown on cream. Sampling those would
+                hardcode another firm's brand. Read as roles instead: page
+                ground, one accent for the button and the marks, dark for
+                headings, muted for quiet copy.
+    Words       every line is rewritten. The reference's company name, its
+                claims and its numbers are not on this page.
+    Font        the page's own font.
+    Photograph  the reference's photograph is not shipped, whole or cropped.
+                The position keeps the block's inline placeholder at the same
+                portrait shape until the customer's photograph arrives.
+    A control   the picture had a small arrow at the photograph's edge, which
+                on the original scrolled through more photographs. There is no
+                script here, so an arrow would render perfectly and do nothing.
+                It is left out.
+
+  Every class in this block is prefixed i2p- so it cannot collide with the rest
+  of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="i2p bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="i2p-title">
+
+  <style>
+    .i2p .i2p-rise{animation:i2p-rise 440ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes i2p-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .i2p .i2p-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
+
+      <!-- Copy. First in the markup, so it is also first when the columns stack. -->
+      <div class="i2p-rise">
+        <div class="mb-5 h-px w-16 bg-accent" aria-hidden="true"></div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Staircases, made to the opening</p>
+        <h2 id="i2p-title" class="mb-6 text-4xl font-semibold leading-tight sm:text-5xl">Measured in your house, cut in our workshop</h2>
+
+        <div class="mb-8 space-y-4 text-base leading-relaxed text-textmute">
+          <p>No two openings are the same, and a staircase ordered from a catalogue has to be packed out on site to fit one. We survey the opening first, draw it, and cut the strings and treads to that drawing.</p>
+          <p>The stair arrives in three pieces and goes in over a day and a half. You get the workshop drawing before anything is cut.</p>
+        </div>
+
+        <ul class="mb-9 space-y-3 text-sm leading-relaxed">
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Surveyed before quoting.</span> <span class="text-textmute">The price on the quote is the price on the invoice.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Oak, ash or painted softwood.</span> <span class="text-textmute">All of it cut in the same workshop, by the same two joiners.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Building Regulations Part K.</span> <span class="text-textmute">Rise, going and handrail height checked against the survey, not assumed.</span></span>
+          </li>
+        </ul>
+
+        <a href="#survey" class="inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white">Book a survey</a>
+      </div>
+
+      <!-- Media. The reference's arrow control is not rebuilt, see the note above. -->
+      <div class="relative i2p-rise" style="animation-delay:100ms">
+        <div class="overflow-hidden rounded-3xl bg-muted">
+          <svg viewBox="0 0 400 500" class="block h-auto w-full" role="img"
+               aria-label="Placeholder in the shape of the portrait photograph the reference showed, a staircase seen from the hall">
+            <!-- Colored with fill and stroke utilities, so the placeholder
+                 follows the page's theme rather than carrying a fixed hex. -->
+            <rect width="400" height="500" class="fill-muted"/>
+            <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
+              <!-- floor, then the step profile, then the newel posts, the
+                   handrail above the nosings, and a baluster off each tread. -->
+              <path d="M34 440H60" opacity="0.35"/>
+              <path d="M60 440h60v-50h60v-50h60v-50h60v-50h52" opacity="0.6"/>
+              <path d="M60 440V350" opacity="0.6"/>
+              <path d="M340 240V150" opacity="0.6"/>
+              <path d="M60 350L340 150" opacity="0.6"/>
+              <g opacity="0.35">
+                <path d="M120 390V307"/>
+                <path d="M180 340V264"/>
+                <path d="M240 290V221"/>
+                <path d="M300 240V179"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Overlaps on desktop, sits below on mobile so it never covers the subject. -->
+        <div class="mt-6 rounded-2xl border border-black/10 bg-white p-6 shadow-lg lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:w-56">
+          <p class="text-4xl font-semibold leading-none">1.5</p>
+          <p class="mt-2 text-sm leading-relaxed text-textmute">days on site for a straight flight, start to handrail</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mt-16 max-w-2xl text-sm leading-relaxed text-textmute i2p-rise" style="animation-delay:200ms">Photograph position held from the reference layout. Your own workshop and installation photographs replace the placeholder.</p>
+
+  </div>
+</section>
+
+
+</body>
+</html>

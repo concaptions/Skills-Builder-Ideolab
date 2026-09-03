@@ -1,0 +1,124 @@
+<!--
+  Image to Page Section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This block is a worked example of the method, so it records what was read out
+  of the reference picture and what was deliberately left behind.
+
+  The reference was a screenshot of a section on another joinery company's site:
+  copy on the left, a tall photograph on the right, a small figure panel
+  overlapping the photograph's lower left corner, three short proof lines with
+  a mark beside each, and one button.
+
+  READ OUT OF THE PICTURE
+    Structure   two columns, copy left and media right, split roughly 3 to 2.
+    Repeats     three proof lines, each a mark and one line of text.
+    Parts       rule, eyebrow, heading, body, proof list, action, media, figure
+                panel, caption.
+    Axis        left aligned. The heading sets the axis and nothing is centred.
+    Order       eyebrow, heading, body, proof, action, then media. On a narrow
+                screen that is the order it stacks in.
+    Ratios      heading about 3x the body. Gap between the columns about the
+                same as the padding inside the figure panel. Media a portrait
+                of about 4 to 5.
+
+  DELIBERATELY NOT COPIED
+    Colors      the reference was warm brown on cream. Sampling those would
+                hardcode another firm's brand. Read as roles instead: page
+                ground, one accent for the button and the marks, dark for
+                headings, muted for quiet copy.
+    Words       every line is rewritten. The reference's company name, its
+                claims and its numbers are not on this page.
+    Font        the page's own font.
+    Photograph  the reference's photograph is not shipped, whole or cropped.
+                The position keeps the block's inline placeholder at the same
+                portrait shape until the customer's photograph arrives.
+    A control   the picture had a small arrow at the photograph's edge, which
+                on the original scrolled through more photographs. There is no
+                script here, so an arrow would render perfectly and do nothing.
+                It is left out.
+
+  Every class in this block is prefixed i2p- so it cannot collide with the rest
+  of the page. There are no ids, so this block is safe to place twice.
+-->
+<section class="i2p bg-surface px-5 py-20 text-textdark sm:px-8 lg:py-28" aria-labelledby="i2p-title">
+
+  <style>
+    .i2p .i2p-rise{animation:i2p-rise 440ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes i2p-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .i2p .i2p-rise{animation:none} }
+  </style>
+
+  <div class="mx-auto max-w-6xl">
+
+    <div class="grid items-center gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
+
+      <!-- Copy. First in the markup, so it is also first when the columns stack. -->
+      <div class="i2p-rise">
+        <div class="mb-5 h-px w-16 bg-accent" aria-hidden="true"></div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">Staircases, made to the opening</p>
+        <h2 id="i2p-title" class="mb-6 text-4xl font-semibold leading-tight sm:text-5xl">Measured in your house, cut in our workshop</h2>
+
+        <div class="mb-8 space-y-4 text-base leading-relaxed text-textmute">
+          <p>No two openings are the same, and a staircase ordered from a catalogue has to be packed out on site to fit one. We survey the opening first, draw it, and cut the strings and treads to that drawing.</p>
+          <p>The stair arrives in three pieces and goes in over a day and a half. You get the workshop drawing before anything is cut.</p>
+        </div>
+
+        <ul class="mb-9 space-y-3 text-sm leading-relaxed">
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Surveyed before quoting.</span> <span class="text-textmute">The price on the quote is the price on the invoice.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Oak, ash or painted softwood.</span> <span class="text-textmute">All of it cut in the same workshop, by the same two joiners.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+            <span><span class="font-semibold">Building Regulations Part K.</span> <span class="text-textmute">Rise, going and handrail height checked against the survey, not assumed.</span></span>
+          </li>
+        </ul>
+
+        <a href="#survey" class="inline-block rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white">Book a survey</a>
+      </div>
+
+      <!-- Media. The reference's arrow control is not rebuilt, see the note above. -->
+      <div class="relative i2p-rise" style="animation-delay:100ms">
+        <div class="overflow-hidden rounded-3xl bg-muted">
+          <svg viewBox="0 0 400 500" class="block h-auto w-full" role="img"
+               aria-label="Placeholder in the shape of the portrait photograph the reference showed, a staircase seen from the hall">
+            <!-- Colored with fill and stroke utilities, so the placeholder
+                 follows the page's theme rather than carrying a fixed hex. -->
+            <rect width="400" height="500" class="fill-muted"/>
+            <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="stroke-accent">
+              <!-- floor, then the step profile, then the newel posts, the
+                   handrail above the nosings, and a baluster off each tread. -->
+              <path d="M34 440H60" opacity="0.35"/>
+              <path d="M60 440h60v-50h60v-50h60v-50h60v-50h52" opacity="0.6"/>
+              <path d="M60 440V350" opacity="0.6"/>
+              <path d="M340 240V150" opacity="0.6"/>
+              <path d="M60 350L340 150" opacity="0.6"/>
+              <g opacity="0.35">
+                <path d="M120 390V307"/>
+                <path d="M180 340V264"/>
+                <path d="M240 290V221"/>
+                <path d="M300 240V179"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Overlaps on desktop, sits below on mobile so it never covers the subject. -->
+        <div class="mt-6 rounded-2xl border border-black/10 bg-white p-6 shadow-lg lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:w-56">
+          <p class="text-4xl font-semibold leading-none">1.5</p>
+          <p class="mt-2 text-sm leading-relaxed text-textmute">days on site for a straight flight, start to handrail</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="mt-16 max-w-2xl text-sm leading-relaxed text-textmute i2p-rise" style="animation-delay:200ms">Photograph position held from the reference layout. Your own workshop and installation photographs replace the placeholder.</p>
+
+  </div>
+</section>
