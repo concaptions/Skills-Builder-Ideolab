@@ -75,6 +75,15 @@ Which networks appear, the order, whether labels show beside the icons, the shap
 
 Every link carries a real accessible name, because a row of icons with no names is announced as a run of blank links. The icon is `aria-hidden` and the name is text, either visible or visually hidden. External links open in the same tab unless there is a reason not to.
 
+## The marks
+
+The block carries a set of thirty, so a builder is never stuck without the mark for the one place a business actually posts to: Facebook, Instagram, YouTube, LinkedIn, X, TikTok, WhatsApp, Threads, Pinterest, Snapchat, Reddit, GitHub, Telegram, Discord, Twitch, Vimeo, Google, Trustpilot, Yelp, Nextdoor, Houzz, Checkatrade, Bluesky, Mastodon, Substack, Medium, Spotify, Podcasts, RSS and email.
+
+- **Drawn here, not downloaded.** No external files are allowed in these blocks, and a set drawn in one line weight reads as one set rather than as a row of borrowed logos. A brand's own logo file also carries terms of use. Where a customer supplies their own mark, it drops straight in.
+- **Every mark is one style.** Same 24 unit box, same 1.9 stroke, same round caps. Mixing a filled brand logo into a line set is the quickest way to make a footer look assembled by two different people.
+- **The set is not the row.** Show only the places the business posts to. A wall of thirty marks tells a visitor nothing and dilutes the two that matter.
+- **If a platform is missing**, draw it in the same box at the same weight rather than reaching for an icon font.
+
 ## Settings and Controls
 
 - Choose networks, order, URLs, labels, icon size, link behavior, and accessible names.
