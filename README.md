@@ -16,7 +16,13 @@ Each skill is delivered as three things:
 | `element.html` | The code. A real, working block, ready to place on a page. |
 | `thumbnail.png` | A picture of what that block actually looks like, rendered from the block itself. |
 
-Open `PREVIEW.html` in a browser to see the batch 1 blocks on one page, live and clickable.
+Open `PREVIEW.html` in a browser. It links to one preview page per batch, where every block in that batch is live and clickable on a single page.
+
+One further skill sits outside the batches:
+
+| Skill | What it does |
+| --- | --- |
+| `quality-and-placement-check` | Checks a generated block before it is delivered. Sixteen checks on the block itself, then eight on the page it is going on, including where it sits in the running order. It is text only, because it teaches a method and produces nothing to look at. |
 
 ## Batch 1, the sections
 

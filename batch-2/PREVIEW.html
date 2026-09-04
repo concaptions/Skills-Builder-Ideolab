@@ -1,0 +1,2829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Builder Elements 01 to 20</title>
+
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  surface:'#ffffff', muted:'#f6f7f9', textdark:'#0f172a',
+  textmute:'#64748b', accent:'#2563eb', bgdark:'#0b1220'
+} } } }
+</script>
+
+<style>
+  html{scroll-behavior:smooth}
+  html,body{margin:0}
+  body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  [hidden]{display:none !important}
+
+  .pv-top{position:sticky;top:0;z-index:60;background:#0b1220;color:#fff;
+    padding:.7rem 1.1rem;display:flex;flex-wrap:wrap;gap:.3rem .85rem;align-items:baseline;
+    font-size:.76rem;box-shadow:0 1px 0 rgba(255,255,255,.09)}
+  .pv-top strong{font-size:.86rem;font-weight:600;margin-right:.6rem}
+  .pv-top a{color:#93c5fd;text-decoration:none}
+  .pv-top a:hover{color:#fff}
+
+  .pv-bar{background:#111827;color:#fff;padding:.5rem 1.1rem;font-size:.78rem;
+    display:flex;align-items:baseline;gap:.7rem;scroll-margin-top:3.2rem}
+  .pv-num{opacity:.45;font-variant-numeric:tabular-nums;font-size:.72rem}
+  .pv-name{font-weight:600;letter-spacing:.02em}
+</style>
+</head>
+<body class="bg-surface text-textdark antialiased">
+
+<div class="pv-top">
+  <strong>20 elements</strong>
+  <a href="#p01">Headline or Title</a>
+  <a href="#p02">Text Paragraph</a>
+  <a href="#p03">Bullet or Numbered List</a>
+  <a href="#p04">Clickable Button</a>
+  <a href="#p05">Section Divider</a>
+  <a href="#p06">Single Icon</a>
+  <a href="#p07">Single Image</a>
+  <a href="#p08">Image with Text</a>
+  <a href="#p09">Icon with Text</a>
+  <a href="#p10">Standard Video</a>
+  <a href="#p11">Sales Video</a>
+  <a href="#p12">Audio Player</a>
+  <a href="#p13">Photo Gallery</a>
+  <a href="#p14">Sliding Images</a>
+  <a href="#p15">Contact or Lead Form</a>
+  <a href="#p16">Pop Up Window</a>
+  <a href="#p17">Countdown Timer</a>
+  <a href="#p18">Progress Bar</a>
+  <a href="#p19">Social Media Links</a>
+  <a href="#p20">Business Location Map</a>
+</div>
+
+<div class="pv-bar" id="p01"><span class="pv-num">01</span><span class="pv-name">Headline or Title</span></div>
+<!--
+  Headline or Title element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The eyebrow, headline and supporting line are one group and enter together.
+  Three separately staggered lines of a single heading read as a stutter.
+
+  Default configuration shown here:
+    eyebrow shown, two line headline, supporting line shown, centered,
+    one accent phrase, fade and rise.
+
+  Every class is prefixed ehd- so it cannot collide with the rest of the page.
+  There are no ids, so this block is safe to place twice.
+-->
+<section class="ehd px-5 py-14 sm:px-8" aria-labelledby="ehd-title">
+
+  <style>
+    
+    @layer ehd-base {
+      .ehd,.ehd *,.ehd *::before,.ehd *::after{box-sizing:border-box}
+      .ehd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ehd h1,.ehd h2,.ehd h3,.ehd p{margin:0}
+      .ehd ul,.ehd ol{margin:0;padding:0;list-style:none}
+      .ehd img,.ehd svg,.ehd video{display:block;max-width:100%}
+      .ehd{background-color:rgb(var(--ehd-surface));color:rgb(var(--ehd-ink));padding:3.5rem 1.25rem}
+      .ehd .ehd-wrap{max-width:44rem;margin-inline:auto;text-align:center}
+      .ehd h2{font-size:2.25rem;line-height:1.15;font-weight:600}
+      .ehd p{font-size:1.0625rem;line-height:1.625}
+    }
+
+    .ehd{
+      --ehd-surface:255 255 255;
+      --ehd-band:246 247 249;
+      --ehd-ink:15 23 42;
+      --ehd-soft:92 107 129;
+      --ehd-accent:37 99 235;
+      --ehd-deep:11 18 32;
+      background-color:rgb(var(--ehd-surface));
+      color:rgb(var(--ehd-ink));
+    }
+    .ehd .ehd-eyebrow{color:rgb(var(--ehd-accent))}
+    .ehd .ehd-accent{color:rgb(var(--ehd-accent))}
+    .ehd .ehd-soft{color:rgb(var(--ehd-soft))}
+
+    .ehd .ehd-rise{animation:ehd-rise 400ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes ehd-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .ehd .ehd-rise{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ehd, .ehd *, .ehd::before, .ehd *::before, .ehd::after, .ehd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ehd, .ehd *, .ehd::after, .ehd *::after, .ehd::before, .ehd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ehd::after, .ehd *::after, .ehd::before, .ehd *::before{--tw-content:'';}
+      .ehd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ehd h1, .ehd h2, .ehd h3, .ehd h4, .ehd h5, .ehd h6{font-size:inherit;font-weight:inherit;}
+      .ehd blockquote, .ehd dd, .ehd dl, .ehd figure, .ehd h1, .ehd h2, .ehd h3, .ehd h4, .ehd h5, .ehd h6, .ehd hr, .ehd p, .ehd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ehd.mx-auto, .ehd .mx-auto{margin-left:auto;margin-right:auto;}
+      .ehd.mb-3, .ehd .mb-3{margin-bottom:0.75rem;}
+      .ehd.mt-4, .ehd .mt-4{margin-top:1rem;}
+      .ehd.max-w-2xl, .ehd .max-w-2xl{max-width:42rem;}
+      .ehd.px-5, .ehd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ehd.py-14, .ehd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ehd.text-center, .ehd .text-center{text-align:center;}
+      .ehd.text-4xl, .ehd .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .ehd.text-base, .ehd .text-base{font-size:1rem;line-height:1.5rem;}
+      .ehd.text-xs, .ehd .text-xs{font-size:0.75rem;line-height:1rem;}
+      .ehd.font-semibold, .ehd .font-semibold{font-weight:600;}
+      .ehd.uppercase, .ehd .uppercase{text-transform:uppercase;}
+      .ehd.leading-relaxed, .ehd .leading-relaxed{line-height:1.625;}
+      .ehd.leading-tight, .ehd .leading-tight{line-height:1.25;}
+      .ehd.tracking-\[0\.2em\], .ehd .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.ehd.sm\:px-8, .ehd .sm\:px-8{padding-left:2rem;padding-right:2rem;}.ehd.sm\:text-5xl, .ehd .sm\:text-5xl{font-size:3rem;line-height:1;}.ehd.sm\:text-lg, .ehd .sm\:text-lg{font-size:1.125rem;line-height:1.75rem;}}
+    }
+  </style>
+
+  <div class="ehd-wrap mx-auto max-w-2xl text-center ehd-rise">
+    <p class="ehd-eyebrow mb-3 text-xs font-semibold uppercase tracking-[0.2em]">What we do</p>
+    <h2 id="ehd-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Heating and plumbing, <span class="ehd-accent">done once</span></h2>
+    <p class="ehd-soft mt-4 text-base leading-relaxed sm:text-lg">Every job is quoted in writing before anybody sets off, and the number on the quote is the number you pay.</p>
+  </div>
+</section>
+
+<div class="pv-bar" id="p02"><span class="pv-num">02</span><span class="pv-name">Text Paragraph</span></div>
+<!--
+  Text Paragraph element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The measure is capped at about 68 characters. Prose set wider than that
+  loses the reader on the return sweep to the next line.
+
+  Default configuration shown here:
+    standard width, one column, lead sentence, one emphasised phrase,
+    fade and rise.
+
+  Every class is prefixed etx- so it cannot collide with the rest of the page.
+-->
+<section class="etx px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer etx-base {
+      .etx,.etx *,.etx *::before,.etx *::after{box-sizing:border-box}
+      .etx{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .etx h2,.etx h3,.etx p{margin:0}
+      .etx ul,.etx ol{margin:0;padding:0;list-style:none}
+      .etx img,.etx svg,.etx video{display:block;max-width:100%}
+      .etx{background-color:rgb(var(--etx-surface));color:rgb(var(--etx-ink));padding:3.5rem 1.25rem}
+      .etx .etx-wrap{max-width:40rem;margin-inline:auto}
+      .etx p{font-size:1.0625rem;line-height:1.7}
+    }
+
+    .etx{
+      --etx-surface:255 255 255;
+      --etx-band:246 247 249;
+      --etx-ink:15 23 42;
+      --etx-soft:92 107 129;
+      --etx-accent:37 99 235;
+      --etx-deep:11 18 32;
+      background-color:rgb(var(--etx-surface));
+      color:rgb(var(--etx-ink));
+    }
+    .etx .etx-soft{color:rgb(var(--etx-soft))}
+    .etx .etx-mark{
+      background-image:linear-gradient(rgb(var(--etx-accent)/.16),rgb(var(--etx-accent)/.16));
+      background-repeat:no-repeat;background-position:0 88%;background-size:100% .38em;
+      padding-inline:.1em;font-weight:600;
+    }
+    .etx .etx-lead{font-size:1.1875rem;line-height:1.65}
+
+    .etx .etx-rise{animation:etx-rise 400ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes etx-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .etx .etx-rise{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .etx, .etx *, .etx::before, .etx *::before, .etx::after, .etx *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .etx, .etx *, .etx::after, .etx *::after, .etx::before, .etx *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .etx::after, .etx *::after, .etx::before, .etx *::before{--tw-content:'';}
+      .etx{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .etx blockquote, .etx dd, .etx dl, .etx figure, .etx h1, .etx h2, .etx h3, .etx h4, .etx h5, .etx h6, .etx hr, .etx p, .etx pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .etx.mx-auto, .etx .mx-auto{margin-left:auto;margin-right:auto;}
+      .etx.mt-5, .etx .mt-5{margin-top:1.25rem;}
+      .etx.max-w-xl, .etx .max-w-xl{max-width:36rem;}
+      .etx.px-5, .etx .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .etx.py-14, .etx .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .etx.text-base, .etx .text-base{font-size:1rem;line-height:1.5rem;}
+      .etx.text-lg, .etx .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .etx.leading-relaxed, .etx .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.etx.sm\:px-8, .etx .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="etx-wrap mx-auto max-w-xl etx-rise">
+    <p class="etx-lead text-lg leading-relaxed">A boiler that is sized properly costs less to run every winter it is fitted, and most of the ones we replace were never sized at all.</p>
+    <p class="etx-soft mt-5 text-base leading-relaxed">The survey takes about forty minutes. We measure the rooms, count the radiators and look at the pipework you already have, then quote against that rather than against a guess. <span class="etx-mark">The number on the quote is the number you pay</span>, and if we find something behind a wall that changes the job we stop and tell you before we carry on.</p>
+    <p class="etx-soft mt-5 text-base leading-relaxed">Most replacements are finished inside a day, and the heating is back on the same evening.</p>
+  </div>
+</section>
+
+<div class="pv-bar" id="p03"><span class="pv-num">03</span><span class="pv-name">Bullet or Numbered List</span></div>
+<!--
+  Bullet or Numbered List element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A real ul, so a screen reader announces how many items there are before it
+  starts reading. The tick is inline SVG and aria-hidden, because the meaning
+  is carried by the list itself.
+
+  Default configuration shown here:
+    checklist, one column, no descriptions, staggered entrance.
+
+  Every class is prefixed elt- so it cannot collide with the rest of the page.
+-->
+<section class="elt px-5 py-14 sm:px-8" aria-labelledby="elt-title">
+
+  <style>
+    
+    @layer elt-base {
+      .elt,.elt *,.elt *::before,.elt *::after{box-sizing:border-box}
+      .elt{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .elt h2,.elt h3,.elt p{margin:0}
+      .elt ul,.elt ol{margin:0;padding:0;list-style:none}
+      .elt img,.elt svg,.elt video{display:block;max-width:100%}
+      .elt{background-color:rgb(var(--elt-surface));color:rgb(var(--elt-ink));padding:3.5rem 1.25rem}
+      .elt .elt-wrap{max-width:40rem;margin-inline:auto}
+      .elt .elt-list{display:grid;gap:.875rem}
+      .elt h2{font-size:1.5rem;font-weight:600}
+      .elt p{font-size:1rem;line-height:1.6}
+    }
+
+    .elt{
+      --elt-surface:255 255 255;
+      --elt-band:246 247 249;
+      --elt-ink:15 23 42;
+      --elt-soft:92 107 129;
+      --elt-accent:37 99 235;
+      --elt-deep:11 18 32;
+      background-color:rgb(var(--elt-surface));
+      color:rgb(var(--elt-ink));
+    }
+    .elt .elt-tick{color:rgb(var(--elt-accent))}
+
+    .elt .elt-item{animation:elt-rise 380ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes elt-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .elt .elt-item{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .elt, .elt *, .elt::before, .elt *::before, .elt::after, .elt *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .elt, .elt *, .elt::after, .elt *::after, .elt::before, .elt *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .elt::after, .elt *::after, .elt::before, .elt *::before{--tw-content:'';}
+      .elt{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .elt h1, .elt h2, .elt h3, .elt h4, .elt h5, .elt h6{font-size:inherit;font-weight:inherit;}
+      .elt blockquote, .elt dd, .elt dl, .elt figure, .elt h1, .elt h2, .elt h3, .elt h4, .elt h5, .elt h6, .elt hr, .elt p, .elt pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .elt menu, .elt ol, .elt ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .elt audio, .elt canvas, .elt embed, .elt iframe, .elt img, .elt object, .elt svg, .elt video{display:block;vertical-align:middle;}
+      .elt.mx-auto, .elt .mx-auto{margin-left:auto;margin-right:auto;}
+      .elt.mb-6, .elt .mb-6{margin-bottom:1.5rem;}
+      .elt.mt-0\.5, .elt .mt-0\.5{margin-top:0.125rem;}
+      .elt.flex, .elt .flex{display:flex;}
+      .elt.grid, .elt .grid{display:grid;}
+      .elt.h-5, .elt .h-5{height:1.25rem;}
+      .elt.w-5, .elt .w-5{width:1.25rem;}
+      .elt.max-w-xl, .elt .max-w-xl{max-width:36rem;}
+      .elt.shrink-0, .elt .shrink-0{flex-shrink:0;}
+      .elt.gap-3, .elt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .elt.gap-3\.5, .elt .gap-3\.5{row-gap:0.875rem;column-gap:0.875rem;}
+      .elt.px-5, .elt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .elt.py-14, .elt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .elt.text-2xl, .elt .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .elt.text-base, .elt .text-base{font-size:1rem;line-height:1.5rem;}
+      .elt.font-semibold, .elt .font-semibold{font-weight:600;}
+      .elt.leading-relaxed, .elt .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.elt.sm\:px-8, .elt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="elt-wrap mx-auto max-w-xl">
+    <h2 id="elt-title" class="mb-6 text-2xl font-semibold">What is included in every quote</h2>
+
+    <ul class="elt-list grid gap-3.5">
+      <li class="elt-item flex gap-3" style="animation-delay:0ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">The boiler, the flue and every fitting the job needs</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:60ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Taking the old unit away and disposing of it</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:120ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">A system flush and every radiator balanced</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:180ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Registering the warranty in your name before we leave</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:240ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Clearing up, including the bits you cannot see</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p04"><span class="pv-num">04</span><span class="pv-name">Clickable Button</span></div>
+<!--
+  Clickable Button element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Real anchors, because these navigate. A styled div cannot be reached by
+  keyboard and is not announced as a control. The labels say what happens
+  rather than click here.
+
+  Default configuration shown here:
+    solid primary with an arrow, secondary outline beside it, a text button,
+    lift on hover, visible focus ring.
+
+  Every class is prefixed ebt- so it cannot collide with the rest of the page.
+-->
+<section class="ebt px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer ebt-base {
+      .ebt,.ebt *,.ebt *::before,.ebt *::after{box-sizing:border-box}
+      .ebt{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ebt h2,.ebt p{margin:0}
+      .ebt ul,.ebt ol{margin:0;padding:0;list-style:none}
+      .ebt img,.ebt svg{display:block;max-width:100%}
+      .ebt{background-color:rgb(var(--ebt-surface));color:rgb(var(--ebt-ink));padding:3.5rem 1.25rem}
+      .ebt .ebt-wrap{max-width:40rem;margin-inline:auto}
+      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+      .ebt h2{font-size:1.5rem;font-weight:600}
+      .ebt p{font-size:1rem;line-height:1.6}
+    }
+
+    .ebt{
+      --ebt-surface:255 255 255;
+      --ebt-band:246 247 249;
+      --ebt-ink:15 23 42;
+      --ebt-soft:92 107 129;
+      --ebt-accent:37 99 235;
+      --ebt-deep:11 18 32;
+      background-color:rgb(var(--ebt-surface));
+      color:rgb(var(--ebt-ink));
+    }
+    .ebt .ebt-soft{color:rgb(var(--ebt-soft))}
+
+    /* Every button is at least 44px tall so it can be hit with a thumb. */
+    .ebt .ebt-btn{
+      display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
+      padding:.7rem 1.4rem;border-radius:9999px;font-size:.9375rem;font-weight:600;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1),box-shadow 200ms ease,background-color 200ms ease;
+    }
+    .ebt .ebt-primary{background-color:rgb(var(--ebt-accent));color:#fff}
+    .ebt .ebt-primary:hover,.ebt .ebt-primary:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--ebt-accent)/.28)}
+    .ebt .ebt-secondary{border:1px solid rgb(var(--ebt-ink)/.18);color:rgb(var(--ebt-ink))}
+    .ebt .ebt-secondary:hover,.ebt .ebt-secondary:focus-visible{transform:translateY(-2px);border-color:rgb(var(--ebt-accent));color:rgb(var(--ebt-accent))}
+    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.25rem}
+    .ebt .ebt-text:hover,.ebt .ebt-text:focus-visible{text-decoration:underline}
+
+    /* Never removed. Without it a keyboard user cannot see where they are. */
+    .ebt .ebt-btn:focus-visible{outline:2px solid rgb(var(--ebt-accent));outline-offset:3px}
+
+    .ebt .ebt-arrow{transition:transform 200ms cubic-bezier(.16,1,.3,1)}
+    .ebt .ebt-primary:hover .ebt-arrow{transform:translateX(3px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .ebt .ebt-btn,.ebt .ebt-arrow{transition:none}
+      .ebt .ebt-btn:hover{transform:none;box-shadow:none}
+    }
+
+    @media (max-width: 479px){
+      .ebt .ebt-primary{width:100%;justify-content:center}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ebt, .ebt *, .ebt::before, .ebt *::before, .ebt::after, .ebt *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ebt, .ebt *, .ebt::after, .ebt *::after, .ebt::before, .ebt *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ebt::after, .ebt *::after, .ebt::before, .ebt *::before{--tw-content:'';}
+      .ebt{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ebt h1, .ebt h2, .ebt h3, .ebt h4, .ebt h5, .ebt h6{font-size:inherit;font-weight:inherit;}
+      .ebt a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .ebt blockquote, .ebt dd, .ebt dl, .ebt figure, .ebt h1, .ebt h2, .ebt h3, .ebt h4, .ebt h5, .ebt h6, .ebt hr, .ebt p, .ebt pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ebt audio, .ebt canvas, .ebt embed, .ebt iframe, .ebt img, .ebt object, .ebt svg, .ebt video{display:block;vertical-align:middle;}
+      .ebt.mx-auto, .ebt .mx-auto{margin-left:auto;margin-right:auto;}
+      .ebt.mb-2, .ebt .mb-2{margin-bottom:0.5rem;}
+      .ebt.mb-6, .ebt .mb-6{margin-bottom:1.5rem;}
+      .ebt.flex, .ebt .flex{display:flex;}
+      .ebt.h-4, .ebt .h-4{height:1rem;}
+      .ebt.w-4, .ebt .w-4{width:1rem;}
+      .ebt.max-w-xl, .ebt .max-w-xl{max-width:36rem;}
+      .ebt.flex-wrap, .ebt .flex-wrap{flex-wrap:wrap;}
+      .ebt.items-center, .ebt .items-center{align-items:center;}
+      .ebt.gap-3, .ebt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ebt.px-5, .ebt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ebt.py-14, .ebt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ebt.text-2xl, .ebt .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .ebt.text-base, .ebt .text-base{font-size:1rem;line-height:1.5rem;}
+      .ebt.font-semibold, .ebt .font-semibold{font-weight:600;}
+      .ebt.leading-relaxed, .ebt .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.ebt.sm\:px-8, .ebt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="ebt-wrap mx-auto max-w-xl">
+    <h2 class="mb-2 text-2xl font-semibold">Ready when you are</h2>
+    <p class="ebt-soft mb-6 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
+
+    <div class="ebt-row flex flex-wrap items-center gap-3">
+      <a href="#book" class="ebt-btn ebt-primary">
+        Book a survey
+        <svg class="ebt-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg>
+      </a>
+      <a href="#prices" class="ebt-btn ebt-secondary">See our prices</a>
+      <a href="#questions" class="ebt-btn ebt-text">Ask a question first</a>
+    </div>
+  </div>
+</section>
+
+<div class="pv-bar" id="p05"><span class="pv-num">05</span><span class="pv-name">Section Divider</span></div>
+<!--
+  Section Divider element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Three dividers are shown together so the choices are visible: a plain hr
+  that really separates content and is announced, a labelled divider whose
+  label sits on the section background so the line does not run through the
+  words, and a decorative gradient rule that is hidden from a screen reader.
+
+  Default configuration shown here:
+    short centered rule, one pixel, hairline colour, draw from centre.
+
+  Every class is prefixed edv- so it cannot collide with the rest of the page.
+-->
+<section class="edv px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer edv-base {
+      .edv,.edv *,.edv *::before,.edv *::after{box-sizing:border-box}
+      .edv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .edv h2,.edv p{margin:0}
+      .edv img,.edv svg{display:block;max-width:100%}
+      .edv{background-color:rgb(var(--edv-surface));color:rgb(var(--edv-ink));padding:3.5rem 1.25rem}
+      .edv .edv-wrap{max-width:40rem;margin-inline:auto}
+      .edv p{font-size:1rem;line-height:1.6}
+    }
+
+    .edv{
+      --edv-surface:255 255 255;
+      --edv-band:246 247 249;
+      --edv-ink:15 23 42;
+      --edv-soft:92 107 129;
+      --edv-accent:37 99 235;
+      --edv-deep:11 18 32;
+      background-color:rgb(var(--edv-surface));
+      color:rgb(var(--edv-ink));
+    }
+    .edv .edv-soft{color:rgb(var(--edv-soft))}
+
+    .edv .edv-rule{
+      height:1px;border:0;margin:2rem auto;width:5rem;
+      background-color:rgb(var(--edv-ink)/.18);
+      animation:edv-draw 500ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .edv .edv-grad{
+      height:1px;margin:2rem 0;width:100%;
+      background-image:linear-gradient(to right,transparent,rgb(var(--edv-accent)/.55),transparent);
+      animation:edv-draw 500ms cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes edv-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* The label sits on the section background, so the line stops either side
+       of the words instead of running through them. */
+    .edv .edv-labelled{display:flex;align-items:center;gap:1rem;margin:2rem 0}
+    .edv .edv-labelled::before,.edv .edv-labelled::after{
+      content:"";flex:1;height:1px;background-color:rgb(var(--edv-ink)/.14);
+    }
+    .edv .edv-label{
+      font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+      color:rgb(var(--edv-soft));
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .edv .edv-rule,.edv .edv-grad{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .edv, .edv *, .edv::before, .edv *::before, .edv::after, .edv *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .edv, .edv *, .edv::after, .edv *::after, .edv::before, .edv *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .edv::after, .edv *::after, .edv::before, .edv *::before{--tw-content:'';}
+      .edv{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .edv hr{height:0px;color:inherit;border-top-width:1px;}
+      .edv blockquote, .edv dd, .edv dl, .edv figure, .edv h1, .edv h2, .edv h3, .edv h4, .edv h5, .edv h6, .edv hr, .edv p, .edv pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .edv.mx-auto, .edv .mx-auto{margin-left:auto;margin-right:auto;}
+      .edv.max-w-xl, .edv .max-w-xl{max-width:36rem;}
+      .edv.px-5, .edv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .edv.py-14, .edv .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .edv.text-base, .edv .text-base{font-size:1rem;line-height:1.5rem;}
+      .edv.leading-relaxed, .edv .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.edv.sm\:px-8, .edv .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="edv-wrap mx-auto max-w-xl">
+    <p class="edv-soft text-base leading-relaxed">We started with one van and a landline in the spare room, and most of the first year's work came from somebody telling somebody else.</p>
+
+    <!-- A real separator between two parts of the content, so it is announced. -->
+    <hr class="edv-rule">
+
+    <p class="edv-soft text-base leading-relaxed">Eighteen years on there are eleven of us, and the phone is still answered by somebody who has been on the tools.</p>
+
+    <div class="edv-labelled" role="presentation">
+      <span class="edv-label">Since 2008</span>
+    </div>
+
+    <p class="edv-soft text-base leading-relaxed">Every engineer trains in house before they are let near a customer's home.</p>
+
+    <!-- Decorative only, so it is hidden rather than announced. -->
+    <div class="edv-grad" aria-hidden="true"></div>
+
+    <p class="edv-soft text-base leading-relaxed">That has not changed, and it is not going to.</p>
+  </div>
+</section>
+
+<div class="pv-bar" id="p06"><span class="pv-num">06</span><span class="pv-name">Single Icon</span></div>
+<!--
+  Single Icon element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Inline SVG, never an icon font. Every path carries a presentation attribute
+  as well as a class, so it keeps its colour where the stylesheet has not
+  loaded, and every stroke only path carries fill="none", because a path with
+  no fill is filled solid black.
+
+  The decorative marks are aria-hidden. The one inside a link has a real
+  accessible name, because a link announced as blank is a dead end.
+
+  Default configuration shown here:
+    line style, circle container, accent stroke, draw on entrance.
+
+  Every class is prefixed eic- so it cannot collide with the rest of the page.
+-->
+<section class="eic px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer eic-base {
+      .eic,.eic *,.eic *::before,.eic *::after{box-sizing:border-box}
+      .eic{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eic h2,.eic h3,.eic p{margin:0}
+      .eic ul,.eic ol{margin:0;padding:0;list-style:none}
+      .eic img,.eic svg{display:block;max-width:100%}
+      .eic{background-color:rgb(var(--eic-surface));color:rgb(var(--eic-ink));padding:3.5rem 1.25rem}
+      .eic .eic-wrap{max-width:40rem;margin-inline:auto}
+      .eic .eic-row{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center}
+      .eic p{font-size:1rem;line-height:1.6}
+    }
+
+    .eic{
+      --eic-surface:255 255 255;
+      --eic-band:246 247 249;
+      --eic-ink:15 23 42;
+      --eic-soft:92 107 129;
+      --eic-accent:37 99 235;
+      --eic-deep:11 18 32;
+      background-color:rgb(var(--eic-surface));
+      color:rgb(var(--eic-ink));
+    }
+    .eic .eic-soft{color:rgb(var(--eic-soft))}
+
+    /* The container scales with the type beside it rather than being fixed. */
+    .eic .eic-tile{
+      display:grid;place-items:center;width:2.75em;height:2.75em;border-radius:9999px;
+      background-color:rgb(var(--eic-accent)/.10);
+    }
+    .eic .eic-tile svg{width:1.35em;height:1.35em}
+    .eic .eic-square{border-radius:.85rem}
+
+    .eic .eic-draw path,.eic .eic-draw circle{
+      stroke-dasharray:64;stroke-dashoffset:64;
+      animation:eic-draw 620ms cubic-bezier(.16,1,.3,1) forwards;
+    }
+    @keyframes eic-draw{to{stroke-dashoffset:0}}
+
+    /* A tappable icon keeps a 44px target even when the mark is smaller. */
+    .eic .eic-link{display:inline-grid;place-items:center;min-width:2.75rem;min-height:2.75rem;border-radius:9999px}
+    .eic .eic-link:hover,.eic .eic-link:focus-visible{background-color:rgb(var(--eic-accent)/.10)}
+    .eic .eic-link:focus-visible{outline:2px solid rgb(var(--eic-accent));outline-offset:2px}
+
+    @media (prefers-reduced-motion: reduce){
+      .eic .eic-draw path,.eic .eic-draw circle{animation:none;stroke-dashoffset:0}
+    }
+  </style>
+
+  <div class="eic-wrap mx-auto max-w-xl">
+    <div class="eic-row flex flex-wrap items-center gap-6">
+
+      <span class="eic-tile eic-draw" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3 4 8v8l8 5 8-5V8z" fill="none"/>
+          <path d="M12 12v9" fill="none"/>
+        </svg>
+      </span>
+
+      <span class="eic-tile eic-square eic-draw" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="8" fill="none"/>
+          <path d="M12 8v4l3 2" fill="none"/>
+        </svg>
+      </span>
+
+      <a href="#warranty" class="eic-link">
+        <span class="sr-only">Read about the warranty</span>
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/>
+          <path d="m9 12 2 2 4-4" fill="none"/>
+        </svg>
+      </a>
+
+      <p class="eic-soft text-sm leading-relaxed">The first two marks are decorative and are passed over by a screen reader. The third is a link and carries its own name.</p>
+    </div>
+  </div>
+
+  <style>
+    .eic .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eic, .eic *, .eic::before, .eic *::before, .eic::after, .eic *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eic, .eic *, .eic::after, .eic *::after, .eic::before, .eic *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eic::after, .eic *::after, .eic::before, .eic *::before{--tw-content:'';}
+      .eic{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eic a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .eic blockquote, .eic dd, .eic dl, .eic figure, .eic h1, .eic h2, .eic h3, .eic h4, .eic h5, .eic h6, .eic hr, .eic p, .eic pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eic audio, .eic canvas, .eic embed, .eic iframe, .eic img, .eic object, .eic svg, .eic video{display:block;vertical-align:middle;}
+      .eic.sr-only, .eic .sr-only{position:absolute;width:1px;height:1px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:-1px;overflow-x:hidden;overflow-y:hidden;clip:rect(0px, 0px, 0px, 0px);white-space-collapse:collapse;text-wrap-mode:nowrap;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
+      .eic.mx-auto, .eic .mx-auto{margin-left:auto;margin-right:auto;}
+      .eic.flex, .eic .flex{display:flex;}
+      .eic.h-6, .eic .h-6{height:1.5rem;}
+      .eic.w-6, .eic .w-6{width:1.5rem;}
+      .eic.max-w-xl, .eic .max-w-xl{max-width:36rem;}
+      .eic.flex-wrap, .eic .flex-wrap{flex-wrap:wrap;}
+      .eic.items-center, .eic .items-center{align-items:center;}
+      .eic.gap-6, .eic .gap-6{row-gap:1.5rem;column-gap:1.5rem;}
+      .eic.px-5, .eic .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eic.py-14, .eic .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eic.text-sm, .eic .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eic.leading-relaxed, .eic .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.eic.sm\:px-8, .eic .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+</section>
+
+<div class="pv-bar" id="p07"><span class="pv-num">07</span><span class="pv-name">Single Image</span></div>
+<!--
+  Single Image element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The placeholder is inline SVG rather than a file, so the block makes no
+  external request. Replace it with the customer's own photograph.
+
+  The aspect ratio is set on the frame, not on the picture, so swapping the
+  image cannot move the layout. The zoom happens inside the frame, so nothing
+  around it is pushed.
+
+  Default configuration shown here:
+    4 by 3, rounded, caption shown, slow zoom on hover.
+
+  Every class is prefixed eim- so it cannot collide with the rest of the page.
+-->
+<section class="eim px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer eim-base {
+      .eim,.eim *,.eim *::before,.eim *::after{box-sizing:border-box}
+      .eim{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eim h2,.eim p,.eim figure,.eim figcaption{margin:0}
+      .eim img,.eim svg{display:block;max-width:100%}
+      .eim{background-color:rgb(var(--eim-surface));color:rgb(var(--eim-ink));padding:3.5rem 1.25rem}
+      .eim .eim-wrap{max-width:44rem;margin-inline:auto}
+      .eim p,.eim figcaption{font-size:.9375rem;line-height:1.6}
+    }
+
+    .eim{
+      --eim-surface:255 255 255;
+      --eim-band:246 247 249;
+      --eim-ink:15 23 42;
+      --eim-soft:92 107 129;
+      --eim-accent:37 99 235;
+      --eim-deep:11 18 32;
+      background-color:rgb(var(--eim-surface));
+      color:rgb(var(--eim-ink));
+    }
+    .eim .eim-soft{color:rgb(var(--eim-soft))}
+
+    /* The ratio lives on the frame. Swapping the picture cannot move the page. */
+    .eim .eim-frame{
+      overflow:hidden;border-radius:1.25rem;aspect-ratio:4 / 3;
+      background-color:rgb(var(--eim-band));
+    }
+    .eim .eim-frame > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 500ms cubic-bezier(.16,1,.3,1)}
+    .eim .eim-frame:hover > *{transform:scale(1.04)}
+
+    @media (max-width: 639px){
+      .eim .eim-frame{aspect-ratio:3 / 4}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .eim .eim-frame > *{transition:none}
+      .eim .eim-frame:hover > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eim, .eim *, .eim::before, .eim *::before, .eim::after, .eim *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eim, .eim *, .eim::after, .eim *::after, .eim::before, .eim *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eim::after, .eim *::after, .eim::before, .eim *::before{--tw-content:'';}
+      .eim{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eim blockquote, .eim dd, .eim dl, .eim figure, .eim h1, .eim h2, .eim h3, .eim h4, .eim h5, .eim h6, .eim hr, .eim p, .eim pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eim audio, .eim canvas, .eim embed, .eim iframe, .eim img, .eim object, .eim svg, .eim video{display:block;vertical-align:middle;}
+      .eim.mx-auto, .eim .mx-auto{margin-left:auto;margin-right:auto;}
+      .eim.mt-3, .eim .mt-3{margin-top:0.75rem;}
+      .eim.max-w-2xl, .eim .max-w-2xl{max-width:42rem;}
+      .eim.fill-muted, .eim .fill-muted{fill:rgb(246, 247, 249);}
+      .eim.px-5, .eim .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eim.py-14, .eim .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eim.text-sm, .eim .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eim.leading-relaxed, .eim .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.eim.sm\:px-8, .eim .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <figure class="eim-wrap mx-auto max-w-2xl">
+    <div class="eim-frame">
+      <svg viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="A finished bathroom with a walk in shower and a tiled floor">
+        <rect width="800" height="600" fill="#f6f7f9" class="fill-muted"/>
+        <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+          <path d="M120 470h560" fill="none"/>
+          <path d="M180 470V250h180v220" fill="none"/>
+          <path d="M180 300h180" fill="none"/>
+          <path d="M430 470V330h190v140" fill="none"/>
+          <circle cx="270" cy="215" r="26" fill="none"/>
+          <path d="M470 300h110" fill="none"/>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="eim-soft mt-3 text-sm leading-relaxed">A full bathroom fit in Nottingham, stripped back and rebuilt by one team in eight working days.</figcaption>
+  </figure>
+</section>
+
+<div class="pv-bar" id="p08"><span class="pv-num">08</span><span class="pv-name">Image with Text</span></div>
+<!--
+  Image with Text element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The image comes first in the source, so the order on a phone matches the
+  order a screen reader reads. Nothing is reordered with CSS.
+
+  Default configuration shown here:
+    image left, 4 by 3, card enclosure, title and one paragraph, link shown,
+    lift on hover.
+
+  Every class is prefixed eit- so it cannot collide with the rest of the page.
+-->
+<section class="eit px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer eit-base {
+      .eit,.eit *,.eit *::before,.eit *::after{box-sizing:border-box}
+      .eit{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eit h2,.eit h3,.eit p{margin:0}
+      .eit img,.eit svg{display:block;max-width:100%}
+      .eit{background-color:rgb(var(--eit-surface));color:rgb(var(--eit-ink));padding:3.5rem 1.25rem}
+      .eit .eit-wrap{max-width:44rem;margin-inline:auto}
+      .eit .eit-card{display:grid;gap:1.25rem}
+      .eit h3{font-size:1.25rem;font-weight:600}
+      .eit p{font-size:1rem;line-height:1.625}
+    }
+
+    .eit{
+      --eit-surface:255 255 255;
+      --eit-band:246 247 249;
+      --eit-ink:15 23 42;
+      --eit-soft:92 107 129;
+      --eit-accent:37 99 235;
+      --eit-deep:11 18 32;
+      background-color:rgb(var(--eit-surface));
+      color:rgb(var(--eit-ink));
+    }
+    .eit .eit-soft{color:rgb(var(--eit-soft))}
+    .eit .eit-link{color:rgb(var(--eit-accent));font-weight:600}
+    .eit .eit-link:focus-visible{outline:2px solid rgb(var(--eit-accent));outline-offset:3px;border-radius:.25rem}
+
+    .eit .eit-card{
+      border:1px solid rgb(var(--eit-ink)/.10);border-radius:1.25rem;overflow:hidden;
+      background-color:rgb(var(--eit-surface));
+      transition:transform 260ms cubic-bezier(.16,1,.3,1),box-shadow 260ms ease;
+      animation:eit-rise 420ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .eit .eit-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(15 23 42 / .09)}
+    @keyframes eit-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .eit .eit-frame{overflow:hidden;aspect-ratio:4 / 3;background-color:rgb(var(--eit-band))}
+    .eit .eit-frame > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 500ms cubic-bezier(.16,1,.3,1)}
+    .eit .eit-card:hover .eit-frame > *{transform:scale(1.05)}
+
+    @media (min-width: 768px){
+      .eit .eit-card{grid-template-columns:15rem 1fr;align-items:center;gap:0}
+      .eit .eit-frame{height:100%;aspect-ratio:auto;min-height:12rem}
+      .eit .eit-body{padding:1.75rem}
+    }
+    @media (max-width: 767px){
+      .eit .eit-body{padding:1.25rem 1.25rem 1.5rem}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .eit .eit-card,.eit .eit-frame > *{transition:none;animation:none}
+      .eit .eit-card:hover{transform:none;box-shadow:none}
+      .eit .eit-card:hover .eit-frame > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eit, .eit *, .eit::before, .eit *::before, .eit::after, .eit *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eit, .eit *, .eit::after, .eit *::after, .eit::before, .eit *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eit::after, .eit *::after, .eit::before, .eit *::before{--tw-content:'';}
+      .eit{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eit h1, .eit h2, .eit h3, .eit h4, .eit h5, .eit h6{font-size:inherit;font-weight:inherit;}
+      .eit a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .eit blockquote, .eit dd, .eit dl, .eit figure, .eit h1, .eit h2, .eit h3, .eit h4, .eit h5, .eit h6, .eit hr, .eit p, .eit pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eit audio, .eit canvas, .eit embed, .eit iframe, .eit img, .eit object, .eit svg, .eit video{display:block;vertical-align:middle;}
+      .eit.mx-auto, .eit .mx-auto{margin-left:auto;margin-right:auto;}
+      .eit.mt-2, .eit .mt-2{margin-top:0.5rem;}
+      .eit.mt-4, .eit .mt-4{margin-top:1rem;}
+      .eit.max-w-2xl, .eit .max-w-2xl{max-width:42rem;}
+      .eit.fill-muted, .eit .fill-muted{fill:rgb(246, 247, 249);}
+      .eit.px-5, .eit .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eit.py-14, .eit .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eit.text-base, .eit .text-base{font-size:1rem;line-height:1.5rem;}
+      .eit.text-sm, .eit .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eit.text-xl, .eit .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .eit.font-semibold, .eit .font-semibold{font-weight:600;}
+      .eit.leading-relaxed, .eit .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.eit.sm\:px-8, .eit .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="eit-wrap mx-auto max-w-2xl">
+    <article class="eit-card">
+      <div class="eit-frame">
+        <svg viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="An engineer checking a newly fitted boiler">
+          <rect width="600" height="450" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+            <rect x="200" y="120" width="200" height="230" rx="20" fill="none"/>
+            <circle cx="300" cy="210" r="38" fill="none"/>
+            <path d="M282 210h36M300 192v36" fill="none"/>
+            <path d="M240 300h120" fill="none"/>
+          </g>
+        </svg>
+      </div>
+      <div class="eit-body">
+        <h3 class="text-xl font-semibold">Same day boiler replacement</h3>
+        <p class="eit-soft mt-2 text-base leading-relaxed">A new combi fitted, registered and running before we leave, with the old unit taken away.</p>
+        <p class="mt-4"><a href="#boilers" class="eit-link text-sm">See what is included</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="pv-bar" id="p09"><span class="pv-num">09</span><span class="pv-name">Icon with Text</span></div>
+<!--
+  Icon with Text element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The icons are decorative and hidden, because the title beside each one
+  already carries the meaning. Every item stretches to the same height so a
+  longer title cannot make one taller than its neighbours.
+
+  Default configuration shown here:
+    icon above, no card, three across, staggered entrance.
+
+  Every class is prefixed eiw- so it cannot collide with the rest of the page.
+-->
+<section class="eiw px-5 py-14 sm:px-8" aria-labelledby="eiw-title">
+
+  <style>
+    
+    @layer eiw-base {
+      .eiw,.eiw *,.eiw *::before,.eiw *::after{box-sizing:border-box}
+      .eiw{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eiw h2,.eiw h3,.eiw p{margin:0}
+      .eiw ul,.eiw ol{margin:0;padding:0;list-style:none}
+      .eiw img,.eiw svg{display:block;max-width:100%}
+      .eiw{background-color:rgb(var(--eiw-surface));color:rgb(var(--eiw-ink));padding:3.5rem 1.25rem}
+      .eiw .eiw-wrap{max-width:60rem;margin-inline:auto}
+      .eiw .eiw-row{display:grid;gap:1.75rem}
+      .eiw h2{font-size:1.75rem;font-weight:600}
+      .eiw h3{font-size:1.0625rem;font-weight:600}
+      .eiw p{font-size:.9375rem;line-height:1.6}
+    }
+
+    .eiw{
+      --eiw-surface:255 255 255;
+      --eiw-band:246 247 249;
+      --eiw-ink:15 23 42;
+      --eiw-soft:92 107 129;
+      --eiw-accent:37 99 235;
+      --eiw-deep:11 18 32;
+      background-color:rgb(var(--eiw-surface));
+      color:rgb(var(--eiw-ink));
+    }
+    .eiw .eiw-soft{color:rgb(var(--eiw-soft))}
+
+    .eiw .eiw-tile{
+      display:grid;place-items:center;width:3rem;height:3rem;border-radius:.9rem;
+      background-color:rgb(var(--eiw-accent)/.10);
+      transition:background-color 220ms ease;
+    }
+    .eiw .eiw-item:hover .eiw-tile{background-color:rgb(var(--eiw-accent)/.18)}
+    .eiw .eiw-item{
+      animation:eiw-rise 400ms cubic-bezier(.16,1,.3,1) both;
+      transition:transform 220ms cubic-bezier(.16,1,.3,1);
+    }
+    .eiw .eiw-item:hover{transform:translateY(-2px)}
+    @keyframes eiw-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (min-width: 640px){ .eiw .eiw-row{grid-template-columns:repeat(2,minmax(0,1fr))} }
+    @media (min-width: 1024px){ .eiw .eiw-row{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+    @media (prefers-reduced-motion: reduce){
+      .eiw .eiw-item,.eiw .eiw-tile{animation:none;transition:none}
+      .eiw .eiw-item:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eiw, .eiw *, .eiw::before, .eiw *::before, .eiw::after, .eiw *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eiw, .eiw *, .eiw::after, .eiw *::after, .eiw::before, .eiw *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eiw::after, .eiw *::after, .eiw::before, .eiw *::before{--tw-content:'';}
+      .eiw{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eiw h1, .eiw h2, .eiw h3, .eiw h4, .eiw h5, .eiw h6{font-size:inherit;font-weight:inherit;}
+      .eiw blockquote, .eiw dd, .eiw dl, .eiw figure, .eiw h1, .eiw h2, .eiw h3, .eiw h4, .eiw h5, .eiw h6, .eiw hr, .eiw p, .eiw pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eiw menu, .eiw ol, .eiw ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .eiw audio, .eiw canvas, .eiw embed, .eiw iframe, .eiw img, .eiw object, .eiw svg, .eiw video{display:block;vertical-align:middle;}
+      .eiw.mx-auto, .eiw .mx-auto{margin-left:auto;margin-right:auto;}
+      .eiw.mb-8, .eiw .mb-8{margin-bottom:2rem;}
+      .eiw.mt-1\.5, .eiw .mt-1\.5{margin-top:0.375rem;}
+      .eiw.mt-4, .eiw .mt-4{margin-top:1rem;}
+      .eiw.grid, .eiw .grid{display:grid;}
+      .eiw.h-6, .eiw .h-6{height:1.5rem;}
+      .eiw.w-6, .eiw .w-6{width:1.5rem;}
+      .eiw.max-w-5xl, .eiw .max-w-5xl{max-width:64rem;}
+      .eiw.items-start, .eiw .items-start{align-items:flex-start;}
+      .eiw.gap-7, .eiw .gap-7{row-gap:1.75rem;column-gap:1.75rem;}
+      .eiw.px-5, .eiw .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eiw.py-14, .eiw .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eiw.text-2xl, .eiw .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .eiw.text-base, .eiw .text-base{font-size:1rem;line-height:1.5rem;}
+      .eiw.text-sm, .eiw .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eiw.font-semibold, .eiw .font-semibold{font-weight:600;}
+      .eiw.leading-relaxed, .eiw .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.eiw.sm\:px-8, .eiw .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="eiw-wrap mx-auto max-w-5xl">
+    <h2 id="eiw-title" class="mb-8 text-2xl font-semibold">Why people call us back</h2>
+
+    <ul class="eiw-row grid items-start gap-7">
+      <li class="eiw-item" style="animation-delay:0ms">
+        <span class="eiw-tile" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8" fill="none"/><path d="M12 8v4l3 2" fill="none"/>
+          </svg>
+        </span>
+        <h3 class="mt-4 text-base font-semibold">A two hour window</h3>
+        <p class="eiw-soft mt-1.5 text-sm leading-relaxed">Not a day off work waiting in. You get a window and a call when we set off.</p>
+      </li>
+      <li class="eiw-item" style="animation-delay:70ms">
+        <span class="eiw-tile" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7h16v12H4z" fill="none"/><path d="M4 11h16" fill="none"/><path d="M9 15h4" fill="none"/>
+          </svg>
+        </span>
+        <h3 class="mt-4 text-base font-semibold">The quoted price</h3>
+        <p class="eiw-soft mt-1.5 text-sm leading-relaxed">Fixed in writing before we start. If something changes we stop and tell you.</p>
+      </li>
+      <li class="eiw-item" style="animation-delay:140ms">
+        <span class="eiw-tile" aria-hidden="true">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/>
+          </svg>
+        </span>
+        <h3 class="mt-4 text-base font-semibold">Warranty registered</h3>
+        <p class="eiw-soft mt-1.5 text-sm leading-relaxed">Done in your name before we leave, so you are not chasing it later.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p10"><span class="pv-num">10</span><span class="pv-name">Standard Video</span></div>
+<!--
+  Standard Video element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Click to load is built with :target. The poster is a real link; following it
+  swaps the poster for the player. Nothing autoplays and nothing carries sound
+  until the reader asks for it.
+
+  The transcript is a details disclosure, so it works with no script at all.
+
+  Default configuration shown here:
+    16 by 9, minimal frame, poster shown, click to load, transcript beneath.
+
+  Every class is prefixed evd- so it cannot collide with the rest of the page.
+  It uses one id, so placing it twice on a page needs that id renamed.
+-->
+<section class="evd px-5 py-14 sm:px-8" aria-labelledby="evd-title">
+
+  <style>
+    
+    @layer evd-base {
+      .evd,.evd *,.evd *::before,.evd *::after{box-sizing:border-box}
+      .evd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .evd h2,.evd p,.evd figure{margin:0}
+      .evd img,.evd svg,.evd video{display:block;max-width:100%}
+      .evd{background-color:rgb(var(--evd-surface));color:rgb(var(--evd-ink));padding:3.5rem 1.25rem}
+      .evd .evd-wrap{max-width:48rem;margin-inline:auto}
+      .evd h2{font-size:1.75rem;font-weight:600}
+      .evd p{font-size:1rem;line-height:1.625}
+    }
+
+    .evd{
+      --evd-surface:255 255 255;
+      --evd-band:246 247 249;
+      --evd-ink:15 23 42;
+      --evd-soft:92 107 129;
+      --evd-accent:37 99 235;
+      --evd-deep:11 18 32;
+      background-color:rgb(var(--evd-surface));
+      color:rgb(var(--evd-ink));
+    }
+    .evd .evd-soft{color:rgb(var(--evd-soft))}
+
+    .evd .evd-stage{
+      position:relative;overflow:hidden;border-radius:1.25rem;aspect-ratio:16 / 9;
+      background-color:rgb(var(--evd-band));border:1px solid rgb(var(--evd-ink)/.10);
+    }
+    .evd .evd-poster{position:absolute;inset:0}
+    .evd .evd-poster svg{width:100%;height:100%;object-fit:cover;
+      transition:transform 400ms cubic-bezier(.16,1,.3,1)}
+    .evd .evd-stage:hover .evd-poster svg{transform:scale(1.03)}
+
+    .evd .evd-play{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      display:inline-flex;align-items:center;gap:.6rem;
+      min-height:2.75rem;padding:.7rem 1.25rem;border-radius:9999px;
+      background-color:rgb(var(--evd-surface));color:rgb(var(--evd-ink));
+      font-size:.9375rem;font-weight:600;box-shadow:0 10px 26px rgb(15 23 42 / .18);
+      transition:transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .evd .evd-stage:hover .evd-play{transform:translate(-50%,-50%) scale(1.04)}
+    .evd .evd-play:focus-visible{outline:2px solid rgb(var(--evd-accent));outline-offset:3px}
+    .evd .evd-dot{
+      display:grid;place-items:center;width:2rem;height:2rem;border-radius:9999px;
+      background-color:rgb(var(--evd-accent));color:#fff;
+    }
+
+    /* The player is hidden until the poster link is followed. */
+    .evd .evd-player{position:absolute;inset:0;opacity:0;visibility:hidden}
+    .evd #evd-play:target .evd-player{opacity:1;visibility:visible}
+    .evd #evd-play:target .evd-poster,
+    .evd #evd-play:target .evd-play{opacity:0;visibility:hidden}
+
+    .evd .evd-note{
+      display:grid;place-items:center;height:100%;
+      background-color:rgb(var(--evd-deep));color:rgb(var(--evd-surface));
+      font-size:.9375rem;padding:1.5rem;text-align:center;
+    }
+
+    .evd .evd-transcript{
+      margin-top:1rem;border:1px solid rgb(var(--evd-ink)/.10);border-radius:.9rem;
+      background-color:rgb(var(--evd-band));
+    }
+    .evd .evd-transcript > summary{
+      cursor:pointer;padding:.85rem 1.1rem;font-size:.9375rem;font-weight:600;list-style:none;
+    }
+    .evd .evd-transcript > summary::-webkit-details-marker{display:none}
+    .evd .evd-transcript > summary:focus-visible{outline:2px solid rgb(var(--evd-accent));outline-offset:2px;border-radius:.9rem}
+    .evd .evd-transcript[open] > summary{border-bottom:1px solid rgb(var(--evd-ink)/.10)}
+    .evd .evd-transcript p{padding:1rem 1.1rem;font-size:.9375rem}
+
+    @media (prefers-reduced-motion: reduce){
+      .evd .evd-poster svg,.evd .evd-play{transition:none}
+      .evd .evd-stage:hover .evd-poster svg,
+      .evd .evd-stage:hover .evd-play{transform:none}
+      .evd .evd-play{transform:translate(-50%,-50%)}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .evd, .evd *, .evd::before, .evd *::before, .evd::after, .evd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .evd, .evd *, .evd::after, .evd *::after, .evd::before, .evd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .evd::after, .evd *::after, .evd::before, .evd *::before{--tw-content:'';}
+      .evd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .evd h1, .evd h2, .evd h3, .evd h4, .evd h5, .evd h6{font-size:inherit;font-weight:inherit;}
+      .evd a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .evd summary{display:list-item;}
+      .evd blockquote, .evd dd, .evd dl, .evd figure, .evd h1, .evd h2, .evd h3, .evd h4, .evd h5, .evd h6, .evd hr, .evd p, .evd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .evd audio, .evd canvas, .evd embed, .evd iframe, .evd img, .evd object, .evd svg, .evd video{display:block;vertical-align:middle;}
+      .evd.mx-auto, .evd .mx-auto{margin-left:auto;margin-right:auto;}
+      .evd.mb-2, .evd .mb-2{margin-bottom:0.5rem;}
+      .evd.mb-6, .evd .mb-6{margin-bottom:1.5rem;}
+      .evd.h-4, .evd .h-4{height:1rem;}
+      .evd.w-4, .evd .w-4{width:1rem;}
+      .evd.max-w-3xl, .evd .max-w-3xl{max-width:48rem;}
+      .evd.fill-muted, .evd .fill-muted{fill:rgb(246, 247, 249);}
+      .evd.px-5, .evd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .evd.py-14, .evd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .evd.text-2xl, .evd .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .evd.text-base, .evd .text-base{font-size:1rem;line-height:1.5rem;}
+      .evd.font-semibold, .evd .font-semibold{font-weight:600;}
+      .evd.leading-relaxed, .evd .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.evd.sm\:px-8, .evd .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="evd-wrap mx-auto max-w-3xl">
+    <h2 id="evd-title" class="mb-2 text-2xl font-semibold">Watch a survey from start to finish</h2>
+    <p class="evd-soft mb-6 text-base leading-relaxed">Four minutes, filmed on an ordinary Tuesday in a house much like yours.</p>
+
+    <figure id="evd-play" class="evd-stage">
+      <div class="evd-poster">
+        <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="An engineer measuring a room during a survey">
+          <rect width="960" height="540" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45">
+            <path d="M120 420h720" fill="none"/>
+            <path d="M240 420V240h200v180" fill="none"/>
+            <path d="M560 420V300h180v120" fill="none"/>
+            <circle cx="340" cy="190" r="30" fill="none"/>
+          </g>
+        </svg>
+      </div>
+
+      <a href="#evd-play" class="evd-play">
+        <span class="evd-dot" aria-hidden="true">
+          <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l8-4.5z"/></svg>
+        </span>
+        Play the survey film
+      </a>
+
+      <div class="evd-player">
+        <p class="evd-note">The film loads here. Replace this panel with the customer's own player embed once one is supplied.</p>
+      </div>
+    </figure>
+
+    <details class="evd-transcript">
+      <summary>Read the transcript</summary>
+      <p class="evd-soft">We start at the front door, take the room measurements one by one, count the radiators, then look at the pipework already in the house. Nothing is staged and nothing is cut. At the end you see the written quote being handed over.</p>
+    </details>
+  </div>
+</section>
+
+<div class="pv-bar" id="p11"><span class="pv-num">11</span><span class="pv-name">Sales Video</span></div>
+<!--
+  Sales Video element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The call to action is present from the first moment rather than revealed
+  after a timer. A reader who has already decided should not have to watch to
+  reach the button, and a delayed reveal needs a script in any case.
+
+  Click to load is built with :target, so nothing plays until it is asked for.
+
+  Default configuration shown here:
+    16 by 9 player left, offer card right, three bullets, guarantee line,
+    call to action always visible.
+
+  Every class is prefixed esv- so it cannot collide with the rest of the page.
+  It uses one id, so placing it twice on a page needs that id renamed.
+-->
+<section class="esv px-5 py-16 sm:px-8" aria-labelledby="esv-title">
+
+  <style>
+    
+    @layer esv-base {
+      .esv,.esv *,.esv *::before,.esv *::after{box-sizing:border-box}
+      .esv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esv h2,.esv h3,.esv p,.esv figure{margin:0}
+      .esv ul,.esv ol{margin:0;padding:0;list-style:none}
+      .esv img,.esv svg{display:block;max-width:100%}
+      .esv{background-color:rgb(var(--esv-deep));color:rgb(var(--esv-surface));padding:4rem 1.25rem}
+      .esv .esv-wrap{max-width:68rem;margin-inline:auto}
+      .esv .esv-row{display:grid;gap:2rem}
+      .esv h2{font-size:1.875rem;line-height:1.2;font-weight:600}
+      .esv h3{font-size:1.125rem;font-weight:600}
+      .esv p{font-size:1rem;line-height:1.625}
+    }
+
+    .esv{
+      --esv-surface:255 255 255;
+      --esv-band:246 247 249;
+      --esv-ink:15 23 42;
+      --esv-soft:92 107 129;
+      --esv-accent:37 99 235;
+      --esv-deep:11 18 32;
+      background-color:rgb(var(--esv-deep));
+      color:rgb(var(--esv-surface));
+    }
+    /* On this dark ground the soft value measures 3.93 to 1, so quiet copy is
+       a lowered opacity of the surface value instead. */
+    .esv .esv-quiet{color:rgb(var(--esv-surface)/.72)}
+
+    .esv .esv-stage{
+      position:relative;overflow:hidden;border-radius:1.25rem;aspect-ratio:16 / 9;
+      background-color:rgb(var(--esv-surface)/.06);border:1px solid rgb(var(--esv-surface)/.16);
+    }
+    .esv .esv-poster{position:absolute;inset:0}
+    .esv .esv-poster svg{width:100%;height:100%;object-fit:cover;
+      transition:transform 400ms cubic-bezier(.16,1,.3,1)}
+    .esv .esv-stage:hover .esv-poster svg{transform:scale(1.03)}
+
+    .esv .esv-play{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      display:inline-flex;align-items:center;gap:.6rem;min-height:2.75rem;
+      padding:.7rem 1.25rem;border-radius:9999px;
+      background-color:rgb(var(--esv-surface));color:rgb(var(--esv-ink));
+      font-size:.9375rem;font-weight:600;box-shadow:0 12px 30px rgb(0 0 0 / .35);
+      transition:transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .esv .esv-stage:hover .esv-play{transform:translate(-50%,-50%) scale(1.04)}
+    .esv .esv-play:focus-visible{outline:2px solid rgb(var(--esv-surface));outline-offset:3px}
+    .esv .esv-dot{display:grid;place-items:center;width:2rem;height:2rem;border-radius:9999px;
+      background-color:rgb(var(--esv-accent));color:#fff}
+
+    .esv .esv-player{position:absolute;inset:0;opacity:0;visibility:hidden}
+    .esv #esv-play:target .esv-player{opacity:1;visibility:visible}
+    .esv #esv-play:target .esv-poster,
+    .esv #esv-play:target .esv-play{opacity:0;visibility:hidden}
+    .esv .esv-note{display:grid;place-items:center;height:100%;padding:1.5rem;text-align:center;
+      font-size:.9375rem;color:rgb(var(--esv-surface)/.8)}
+
+    .esv .esv-card{
+      border-radius:1.25rem;padding:1.75rem;
+      background-color:rgb(var(--esv-surface)/.07);border:1px solid rgb(var(--esv-surface)/.16);
+    }
+    .esv .esv-tick{color:#fff}
+    .esv .esv-cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      width:100%;min-height:3rem;border-radius:9999px;
+      background-color:rgb(var(--esv-accent));color:#fff;font-weight:600;
+      transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms ease;
+    }
+    .esv .esv-cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgb(var(--esv-accent)/.4)}
+    .esv .esv-cta:focus-visible{outline:2px solid rgb(var(--esv-surface));outline-offset:3px}
+
+    @media (min-width: 1024px){
+      .esv .esv-row{grid-template-columns:1.5fr 1fr;align-items:start}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .esv .esv-poster svg,.esv .esv-play,.esv .esv-cta{transition:none}
+      .esv .esv-stage:hover .esv-poster svg{transform:none}
+      .esv .esv-stage:hover .esv-play{transform:translate(-50%,-50%)}
+      .esv .esv-cta:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esv, .esv *, .esv::before, .esv *::before, .esv::after, .esv *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esv, .esv *, .esv::after, .esv *::after, .esv::before, .esv *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esv::after, .esv *::after, .esv::before, .esv *::before{--tw-content:'';}
+      .esv{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esv h1, .esv h2, .esv h3, .esv h4, .esv h5, .esv h6{font-size:inherit;font-weight:inherit;}
+      .esv a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .esv blockquote, .esv dd, .esv dl, .esv figure, .esv h1, .esv h2, .esv h3, .esv h4, .esv h5, .esv h6, .esv hr, .esv p, .esv pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esv menu, .esv ol, .esv ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esv audio, .esv canvas, .esv embed, .esv iframe, .esv img, .esv object, .esv svg, .esv video{display:block;vertical-align:middle;}
+      .esv.mx-auto, .esv .mx-auto{margin-left:auto;margin-right:auto;}
+      .esv.mb-2, .esv .mb-2{margin-bottom:0.5rem;}
+      .esv.mb-8, .esv .mb-8{margin-bottom:2rem;}
+      .esv.mt-0\.5, .esv .mt-0\.5{margin-top:0.125rem;}
+      .esv.mt-1, .esv .mt-1{margin-top:0.25rem;}
+      .esv.mt-3, .esv .mt-3{margin-top:0.75rem;}
+      .esv.mt-5, .esv .mt-5{margin-top:1.25rem;}
+      .esv.mt-6, .esv .mt-6{margin-top:1.5rem;}
+      .esv.flex, .esv .flex{display:flex;}
+      .esv.grid, .esv .grid{display:grid;}
+      .esv.h-4, .esv .h-4{height:1rem;}
+      .esv.h-5, .esv .h-5{height:1.25rem;}
+      .esv.w-4, .esv .w-4{width:1rem;}
+      .esv.w-5, .esv .w-5{width:1.25rem;}
+      .esv.max-w-6xl, .esv .max-w-6xl{max-width:72rem;}
+      .esv.shrink-0, .esv .shrink-0{flex-shrink:0;}
+      .esv.gap-3, .esv .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .esv.gap-8, .esv .gap-8{row-gap:2rem;column-gap:2rem;}
+      .esv.space-y-3 > :not([hidden]) ~ :not([hidden]), .esv .space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse));}
+      .esv.fill-bgdark, .esv .fill-bgdark{fill:rgb(11, 18, 32);}
+      .esv.px-5, .esv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esv.py-16, .esv .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .esv.text-center, .esv .text-center{text-align:center;}
+      .esv.text-3xl, .esv .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .esv.text-base, .esv .text-base{font-size:1rem;line-height:1.5rem;}
+      .esv.text-lg, .esv .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .esv.text-sm, .esv .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .esv.text-xs, .esv .text-xs{font-size:0.75rem;line-height:1rem;}
+      .esv.font-normal, .esv .font-normal{font-weight:400;}
+      .esv.font-semibold, .esv .font-semibold{font-weight:600;}
+      .esv.leading-relaxed, .esv .leading-relaxed{line-height:1.625;}
+      .esv.leading-tight, .esv .leading-tight{line-height:1.25;}
+      @media (min-width: 640px){.esv.sm\:px-8, .esv .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esv-wrap mx-auto max-w-6xl">
+    <h2 id="esv-title" class="mb-2 text-3xl font-semibold leading-tight">See exactly what a full bathroom fit involves</h2>
+    <p class="esv-quiet mb-8 text-base leading-relaxed">Six minutes, from the first survey to handing the room back.</p>
+
+    <div class="esv-row grid gap-8">
+      <figure id="esv-play" class="esv-stage">
+        <div class="esv-poster">
+          <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom part way through installation">
+            <rect width="960" height="540" fill="#0b1220" class="fill-bgdark"/>
+            <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.28">
+              <path d="M120 430h720" fill="none"/>
+              <path d="M250 430V250h190v180" fill="none"/>
+              <path d="M250 300h190" fill="none"/>
+              <path d="M560 430V320h190v110" fill="none"/>
+              <circle cx="345" cy="215" r="26" fill="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <a href="#esv-play" class="esv-play">
+          <span class="esv-dot" aria-hidden="true">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l8-4.5z"/></svg>
+          </span>
+          Play the film
+        </a>
+
+        <div class="esv-player">
+          <p class="esv-note">The film loads here. Replace this panel with the customer's own player embed once one is supplied.</p>
+        </div>
+      </figure>
+
+      <div class="esv-card">
+        <h3 class="text-lg font-semibold">Full bathroom fit</h3>
+        <p class="mt-1 text-3xl font-semibold">£4,200 <span class="esv-quiet text-sm font-normal">from, fixed in writing</span></p>
+
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Design visit and a written quote</span>
+          </li>
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Strip out and disposal included</span>
+          </li>
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Most rooms finished in eight working days</span>
+          </li>
+        </ul>
+
+        <a href="#quote" class="esv-cta mt-6">Get a fixed quote</a>
+        <p class="esv-quiet mt-3 text-center text-xs">If the room is not finished on the day we said, the last day is free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pv-bar" id="p12"><span class="pv-num">12</span><span class="pv-name">Audio Player</span></div>
+<!--
+  Audio Player element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The player is the browser's own audio element with controls. A bar drawn in
+  divs looks the same and does nothing: no keyboard, no screen reader, no
+  seeking, until a script is added. There is no script here.
+
+  The waveform behind it is a static drawing and is hidden from screen
+  readers. It is not animated, because a waveform that moves without
+  following the audio tells the reader something untrue.
+
+  No src is set. Point it at the customer's own file.
+
+  Default configuration shown here:
+    cover art card, title and duration shown, native controls, transcript.
+
+  Every class is prefixed eau- so it cannot collide with the rest of the page.
+-->
+<section class="eau px-5 py-14 sm:px-8" aria-labelledby="eau-title">
+
+  <style>
+    
+    @layer eau-base {
+      .eau,.eau *,.eau *::before,.eau *::after{box-sizing:border-box}
+      .eau{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eau h2,.eau h3,.eau p{margin:0}
+      .eau img,.eau svg{display:block;max-width:100%}
+      .eau{background-color:rgb(var(--eau-surface));color:rgb(var(--eau-ink));padding:3.5rem 1.25rem}
+      .eau .eau-wrap{max-width:40rem;margin-inline:auto}
+      .eau .eau-card{display:grid;gap:1.25rem}
+      .eau h2{font-size:1.75rem;font-weight:600}
+      .eau h3{font-size:1.0625rem;font-weight:600}
+      .eau p{font-size:.9375rem;line-height:1.6}
+    }
+
+    .eau{
+      --eau-surface:255 255 255;
+      --eau-band:246 247 249;
+      --eau-ink:15 23 42;
+      --eau-soft:92 107 129;
+      --eau-accent:37 99 235;
+      --eau-deep:11 18 32;
+      background-color:rgb(var(--eau-surface));
+      color:rgb(var(--eau-ink));
+    }
+    .eau .eau-soft{color:rgb(var(--eau-soft))}
+
+    .eau .eau-card{
+      border:1px solid rgb(var(--eau-ink)/.10);border-radius:1.25rem;padding:1.25rem;
+      background-color:rgb(var(--eau-band));
+      transition:transform 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease;
+    }
+    .eau .eau-card:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgb(15 23 42 / .08)}
+
+    .eau .eau-cover{
+      width:4.5rem;height:4.5rem;border-radius:.9rem;overflow:hidden;flex:none;
+      background-color:rgb(var(--eau-accent)/.12);
+    }
+
+    /* A static drawing, hidden from screen readers. Not an animation. */
+    .eau .eau-wave{width:100%;height:2.25rem;color:rgb(var(--eau-accent)/.45)}
+
+    .eau audio{width:100%;margin-top:.75rem}
+
+    .eau .eau-transcript{
+      margin-top:1rem;border-top:1px solid rgb(var(--eau-ink)/.10);
+    }
+    .eau .eau-transcript > summary{
+      cursor:pointer;padding:.75rem 0 0;font-size:.875rem;font-weight:600;list-style:none;
+    }
+    .eau .eau-transcript > summary::-webkit-details-marker{display:none}
+    .eau .eau-transcript > summary:focus-visible{outline:2px solid rgb(var(--eau-accent));outline-offset:2px;border-radius:.25rem}
+
+    @media (min-width: 640px){
+      .eau .eau-head{display:flex;gap:1rem;align-items:center}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .eau .eau-card{transition:none}
+      .eau .eau-card:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eau, .eau *, .eau::before, .eau *::before, .eau::after, .eau *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eau, .eau *, .eau::after, .eau *::after, .eau::before, .eau *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eau::after, .eau *::after, .eau::before, .eau *::before{--tw-content:'';}
+      .eau{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eau h1, .eau h2, .eau h3, .eau h4, .eau h5, .eau h6{font-size:inherit;font-weight:inherit;}
+      .eau summary{display:list-item;}
+      .eau blockquote, .eau dd, .eau dl, .eau figure, .eau h1, .eau h2, .eau h3, .eau h4, .eau h5, .eau h6, .eau hr, .eau p, .eau pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eau audio, .eau canvas, .eau embed, .eau iframe, .eau img, .eau object, .eau svg, .eau video{display:block;vertical-align:middle;}
+      .eau.mx-auto, .eau .mx-auto{margin-left:auto;margin-right:auto;}
+      .eau.mb-1, .eau .mb-1{margin-bottom:0.25rem;}
+      .eau.mb-5, .eau .mb-5{margin-bottom:1.25rem;}
+      .eau.mt-0\.5, .eau .mt-0\.5{margin-top:0.125rem;}
+      .eau.mt-2, .eau .mt-2{margin-top:0.5rem;}
+      .eau.mt-4, .eau .mt-4{margin-top:1rem;}
+      .eau.min-w-0, .eau .min-w-0{min-width:0px;}
+      .eau.max-w-xl, .eau .max-w-xl{max-width:36rem;}
+      .eau.fill-muted, .eau .fill-muted{fill:rgb(246, 247, 249);}
+      .eau.px-5, .eau .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eau.py-14, .eau .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eau.text-2xl, .eau .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .eau.text-base, .eau .text-base{font-size:1rem;line-height:1.5rem;}
+      .eau.text-sm, .eau .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eau.font-semibold, .eau .font-semibold{font-weight:600;}
+      @media (min-width: 640px){.eau.sm\:px-8, .eau .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="eau-wrap mx-auto max-w-xl">
+    <h2 id="eau-title" class="mb-5 text-2xl font-semibold">What our customers say, in their own voice</h2>
+
+    <article class="eau-card">
+      <div class="eau-head">
+        <span class="eau-cover" aria-hidden="true">
+          <svg viewBox="0 0 72 72" width="72" height="72">
+            <rect width="72" height="72" fill="#e8eefc" class="fill-muted"/>
+            <g fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round">
+              <path d="M36 22v20" fill="none"/>
+              <path d="M28 30v4M44 30v4" fill="none"/>
+              <path d="M24 48h24" fill="none"/>
+            </g>
+          </svg>
+        </span>
+        <div class="min-w-0">
+          <h3 class="text-base font-semibold">Margaret in West Bridgford</h3>
+          <p class="eau-soft mt-0.5 text-sm">Recorded after a boiler replacement, 2 min 14 sec</p>
+        </div>
+      </div>
+
+      <svg class="eau-wave mt-4" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="currentColor">
+          <rect x="4" y="14" width="4" height="12" rx="2"/><rect x="14" y="8" width="4" height="24" rx="2"/>
+          <rect x="24" y="4" width="4" height="32" rx="2"/><rect x="34" y="12" width="4" height="16" rx="2"/>
+          <rect x="44" y="6" width="4" height="28" rx="2"/><rect x="54" y="16" width="4" height="8" rx="2"/>
+          <rect x="64" y="10" width="4" height="20" rx="2"/><rect x="74" y="3" width="4" height="34" rx="2"/>
+          <rect x="84" y="13" width="4" height="14" rx="2"/><rect x="94" y="7" width="4" height="26" rx="2"/>
+          <rect x="104" y="15" width="4" height="10" rx="2"/><rect x="114" y="5" width="4" height="30" rx="2"/>
+          <rect x="124" y="11" width="4" height="18" rx="2"/><rect x="134" y="9" width="4" height="22" rx="2"/>
+          <rect x="144" y="16" width="4" height="8" rx="2"/><rect x="154" y="6" width="4" height="28" rx="2"/>
+          <rect x="164" y="12" width="4" height="16" rx="2"/><rect x="174" y="4" width="4" height="32" rx="2"/>
+          <rect x="184" y="14" width="4" height="12" rx="2"/><rect x="194" y="8" width="4" height="24" rx="2"/>
+          <rect x="204" y="10" width="4" height="20" rx="2"/><rect x="214" y="15" width="4" height="10" rx="2"/>
+          <rect x="224" y="5" width="4" height="30" rx="2"/><rect x="234" y="13" width="4" height="14" rx="2"/>
+          <rect x="244" y="7" width="4" height="26" rx="2"/><rect x="254" y="16" width="4" height="8" rx="2"/>
+          <rect x="264" y="9" width="4" height="22" rx="2"/><rect x="274" y="4" width="4" height="32" rx="2"/>
+          <rect x="284" y="12" width="4" height="16" rx="2"/><rect x="294" y="14" width="4" height="12" rx="2"/>
+          <rect x="304" y="6" width="4" height="28" rx="2"/><rect x="314" y="15" width="4" height="10" rx="2"/>
+          <rect x="324" y="11" width="4" height="18" rx="2"/><rect x="334" y="8" width="4" height="24" rx="2"/>
+          <rect x="344" y="16" width="4" height="8" rx="2"/><rect x="354" y="10" width="4" height="20" rx="2"/>
+          <rect x="364" y="13" width="4" height="14" rx="2"/><rect x="374" y="7" width="4" height="26" rx="2"/>
+          <rect x="384" y="15" width="4" height="10" rx="2"/><rect x="392" y="12" width="4" height="16" rx="2"/>
+        </g>
+      </svg>
+
+      <audio controls preload="none" aria-label="Margaret in West Bridgford, recorded after a boiler replacement">
+        Your browser cannot play this recording. The transcript is below.
+      </audio>
+
+      <details class="eau-transcript">
+        <summary>Read the transcript</summary>
+        <p class="eau-soft mt-2 mb-1">They turned up when they said, took the old one out in the morning and had the heating back on before tea. The price was the price I was quoted. I have already given the number to my sister.</p>
+      </details>
+    </article>
+  </div>
+</section>
+
+<div class="pv-bar" id="p13"><span class="pv-num">13</span><span class="pv-name">Photo Gallery</span></div>
+<!--
+  Photo Gallery element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every tile carries the aspect ratio, not the picture, so a photograph of a
+  different shape cannot make the grid ragged.
+
+  There is no lightbox. A lightbox needs a focus trap and an escape key, both
+  of which need a script, and a fake one that cannot be closed by keyboard is
+  worse than none.
+
+  The placeholders are inline SVG. Replace them with the customer's own work.
+
+  Default configuration shown here:
+    three columns, square crop, no captions, hover zoom, staggered entrance.
+
+  Every class is prefixed egl- so it cannot collide with the rest of the page.
+-->
+<section class="egl px-5 py-14 sm:px-8" aria-labelledby="egl-title">
+
+  <style>
+    
+    @layer egl-base {
+      .egl,.egl *,.egl *::before,.egl *::after{box-sizing:border-box}
+      .egl{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .egl h2,.egl p,.egl figure{margin:0}
+      .egl ul,.egl ol{margin:0;padding:0;list-style:none}
+      .egl img,.egl svg{display:block;max-width:100%}
+      .egl{background-color:rgb(var(--egl-surface));color:rgb(var(--egl-ink));padding:3.5rem 1.25rem}
+      .egl .egl-wrap{max-width:60rem;margin-inline:auto}
+      .egl .egl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+      .egl h2{font-size:1.75rem;font-weight:600}
+      .egl p{font-size:1rem;line-height:1.6}
+    }
+
+    .egl{
+      --egl-surface:255 255 255;
+      --egl-band:246 247 249;
+      --egl-ink:15 23 42;
+      --egl-soft:92 107 129;
+      --egl-accent:37 99 235;
+      --egl-deep:11 18 32;
+      background-color:rgb(var(--egl-surface));
+      color:rgb(var(--egl-ink));
+    }
+    .egl .egl-soft{color:rgb(var(--egl-soft))}
+
+    /* The ratio lives on the tile. A differently shaped photograph cannot
+       make the row ragged. */
+    .egl .egl-tile{
+      overflow:hidden;border-radius:.9rem;aspect-ratio:1 / 1;
+      background-color:rgb(var(--egl-band));
+      animation:egl-rise 380ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .egl .egl-tile > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 480ms cubic-bezier(.16,1,.3,1)}
+    .egl .egl-tile:hover > *{transform:scale(1.06)}
+    @keyframes egl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    @media (min-width: 640px){
+      .egl .egl-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .egl .egl-tile,.egl .egl-tile > *{animation:none;transition:none}
+      .egl .egl-tile:hover > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .egl, .egl *, .egl::before, .egl *::before, .egl::after, .egl *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .egl, .egl *, .egl::after, .egl *::after, .egl::before, .egl *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .egl::after, .egl *::after, .egl::before, .egl *::before{--tw-content:'';}
+      .egl{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .egl h1, .egl h2, .egl h3, .egl h4, .egl h5, .egl h6{font-size:inherit;font-weight:inherit;}
+      .egl blockquote, .egl dd, .egl dl, .egl figure, .egl h1, .egl h2, .egl h3, .egl h4, .egl h5, .egl h6, .egl hr, .egl p, .egl pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .egl menu, .egl ol, .egl ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .egl audio, .egl canvas, .egl embed, .egl iframe, .egl img, .egl object, .egl svg, .egl video{display:block;vertical-align:middle;}
+      .egl.mx-auto, .egl .mx-auto{margin-left:auto;margin-right:auto;}
+      .egl.mb-2, .egl .mb-2{margin-bottom:0.5rem;}
+      .egl.mb-6, .egl .mb-6{margin-bottom:1.5rem;}
+      .egl.grid, .egl .grid{display:grid;}
+      .egl.max-w-5xl, .egl .max-w-5xl{max-width:64rem;}
+      .egl.gap-3, .egl .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .egl.fill-muted, .egl .fill-muted{fill:rgb(246, 247, 249);}
+      .egl.px-5, .egl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .egl.py-14, .egl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .egl.text-2xl, .egl .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .egl.text-base, .egl .text-base{font-size:1rem;line-height:1.5rem;}
+      .egl.font-semibold, .egl .font-semibold{font-weight:600;}
+      .egl.leading-relaxed, .egl .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.egl.sm\:gap-4, .egl .sm\:gap-4{row-gap:1rem;column-gap:1rem;}.egl.sm\:px-8, .egl .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="egl-wrap mx-auto max-w-5xl">
+    <h2 id="egl-title" class="mb-2 text-2xl font-semibold">Recent work</h2>
+    <p class="egl-soft mb-6 text-base leading-relaxed">Every job below was finished in the last twelve months.</p>
+
+    <ul class="egl-grid grid gap-3 sm:gap-4">
+      <li class="egl-tile" style="animation-delay:0ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A tiled walk in shower with a glass screen">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="90" y="90" width="220" height="240" rx="12" fill="none"/>
+            <path d="M200 90v240M90 200h220" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:50ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A newly fitted combi boiler on a kitchen wall">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="130" y="90" width="140" height="180" rx="16" fill="none"/>
+            <circle cx="200" cy="160" r="26" fill="none"/>
+            <path d="M160 320h80" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:100ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A radiator fitted under a bay window">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="100" y="180" width="200" height="110" rx="10" fill="none"/>
+            <path d="M140 180v110M180 180v110M220 180v110M260 180v110" fill="none"/>
+            <path d="M110 120h180" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:150ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Copper pipework run neatly under a floor">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <path d="M80 140h140v120h140" fill="none"/>
+            <path d="M80 220h90v80" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:200ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A finished kitchen with a fitted sink">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <path d="M80 240h240v70H80z" fill="none"/>
+            <rect x="150" y="200" width="100" height="40" rx="8" fill="none"/>
+            <path d="M200 200v-40" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:250ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A cylinder fitted in an airing cupboard">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="150" y="80" width="100" height="240" rx="50" fill="none"/>
+            <path d="M150 180h100" fill="none"/>
+          </g>
+        </svg>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p14"><span class="pv-num">14</span><span class="pv-name">Sliding Images</span></div>
+<!--
+  Sliding Images element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is a real scroll container with scroll-snap, not a transform driven
+  track with hidden overflow. That means a finger, a trackpad, a scrollbar and
+  the arrow keys all work with no script, and a screen reader can reach every
+  slide.
+
+  Nothing advances on its own. A rail that moves by itself takes the slide
+  away as the reader starts to look at it.
+
+  The next slide peeks in on purpose. That is what tells the reader there is
+  more to the right.
+
+  Default configuration shown here:
+    three visible above 1024px, one and a bit on a phone, 16 by 10 crop,
+    snap to each slide, no autoplay.
+
+  Every class is prefixed esl- so it cannot collide with the rest of the page.
+-->
+<section class="esl px-5 py-14 sm:px-8" aria-labelledby="esl-title">
+
+  <style>
+    
+    @layer esl-base {
+      .esl,.esl *,.esl *::before,.esl *::after{box-sizing:border-box}
+      .esl{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esl h2,.esl p,.esl figure,.esl figcaption{margin:0}
+      .esl ul,.esl ol{margin:0;padding:0;list-style:none}
+      .esl img,.esl svg{display:block;max-width:100%}
+      .esl{background-color:rgb(var(--esl-surface));color:rgb(var(--esl-ink));padding:3.5rem 1.25rem}
+      .esl .esl-wrap{max-width:64rem;margin-inline:auto}
+      .esl h2{font-size:1.75rem;font-weight:600}
+      .esl p,.esl figcaption{font-size:.9375rem;line-height:1.6}
+    }
+
+    .esl{
+      --esl-surface:255 255 255;
+      --esl-band:246 247 249;
+      --esl-ink:15 23 42;
+      --esl-soft:92 107 129;
+      --esl-accent:37 99 235;
+      --esl-deep:11 18 32;
+      background-color:rgb(var(--esl-surface));
+      color:rgb(var(--esl-ink));
+    }
+    .esl .esl-soft{color:rgb(var(--esl-soft))}
+
+    .esl .esl-rail{
+      display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+      padding-bottom:.75rem;scrollbar-width:thin;
+    }
+    .esl .esl-rail:focus-visible{outline:2px solid rgb(var(--esl-accent));outline-offset:4px;border-radius:1rem}
+    .esl .esl-slide{
+      flex:0 0 78%;scroll-snap-align:start;
+    }
+    .esl .esl-frame{
+      overflow:hidden;border-radius:1rem;aspect-ratio:16 / 10;
+      background-color:rgb(var(--esl-band));
+    }
+    .esl .esl-frame > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 480ms cubic-bezier(.16,1,.3,1)}
+    .esl .esl-slide:hover .esl-frame > *{transform:scale(1.04)}
+
+    @media (min-width: 640px){ .esl .esl-slide{flex-basis:46%} }
+    @media (min-width: 1024px){ .esl .esl-slide{flex-basis:31.5%} }
+
+    @media (prefers-reduced-motion: reduce){
+      .esl .esl-rail{scroll-behavior:auto}
+      .esl .esl-frame > *{transition:none}
+      .esl .esl-slide:hover .esl-frame > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esl, .esl *, .esl::before, .esl *::before, .esl::after, .esl *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esl, .esl *, .esl::after, .esl *::after, .esl::before, .esl *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esl::after, .esl *::after, .esl::before, .esl *::before{--tw-content:'';}
+      .esl{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esl h1, .esl h2, .esl h3, .esl h4, .esl h5, .esl h6{font-size:inherit;font-weight:inherit;}
+      .esl blockquote, .esl dd, .esl dl, .esl figure, .esl h1, .esl h2, .esl h3, .esl h4, .esl h5, .esl h6, .esl hr, .esl p, .esl pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esl menu, .esl ol, .esl ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esl audio, .esl canvas, .esl embed, .esl iframe, .esl img, .esl object, .esl svg, .esl video{display:block;vertical-align:middle;}
+      .esl.mx-auto, .esl .mx-auto{margin-left:auto;margin-right:auto;}
+      .esl.mb-2, .esl .mb-2{margin-bottom:0.5rem;}
+      .esl.mb-6, .esl .mb-6{margin-bottom:1.5rem;}
+      .esl.mt-2, .esl .mt-2{margin-top:0.5rem;}
+      .esl.max-w-4xl, .esl .max-w-4xl{max-width:56rem;}
+      .esl.fill-muted, .esl .fill-muted{fill:rgb(246, 247, 249);}
+      .esl.px-5, .esl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esl.py-14, .esl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .esl.text-2xl, .esl .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .esl.text-base, .esl .text-base{font-size:1rem;line-height:1.5rem;}
+      .esl.text-sm, .esl .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .esl.font-semibold, .esl .font-semibold{font-weight:600;}
+      .esl.leading-relaxed, .esl .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.esl.sm\:px-8, .esl .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esl-wrap mx-auto max-w-4xl">
+    <h2 id="esl-title" class="mb-2 text-2xl font-semibold">Jobs from this year</h2>
+    <p class="esl-soft mb-6 text-base leading-relaxed">Scroll sideways for more. Nothing here moves on its own.</p>
+
+    <ul class="esl-rail" tabindex="0" role="group" aria-label="Recent jobs, scroll for more">
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A bathroom stripped back to the joists">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <path d="M80 320h480" fill="none"/><path d="M160 320V160h160v160" fill="none"/><path d="M160 220h160" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Day one, West Bridgford</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="First fix pipework run in a bathroom wall">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <path d="M120 120h200v160h200" fill="none"/><path d="M120 240h140v80" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">First fix, day three</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Tiling part way up a bathroom wall">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.4">
+                <path d="M120 120h400v200H120z" fill="none"/>
+                <path d="M120 186h400M120 253h400M253 120v200M386 120v200" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Tiling, day five</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="The finished bathroom handed back">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <rect x="140" y="120" width="180" height="200" rx="14" fill="none"/>
+                <rect x="380" y="200" width="140" height="120" rx="12" fill="none"/>
+                <circle cx="230" cy="180" r="22" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Handed back, day eight</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p15"><span class="pv-num">15</span><span class="pv-name">Contact or Lead Form</span></div>
+<!--
+  Contact or Lead Form element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every field has a real label tied to it. A placeholder is not a label: it
+  disappears as soon as the visitor starts typing, and it is not announced as
+  one. Required is stated in words as well as marked, because a red asterisk
+  alone is invisible to anybody who cannot see the colour.
+
+  The inputs are 16px, which is what stops a phone browser zooming in when a
+  field is focused, and 44px tall so they can be hit with a thumb.
+
+  Checking is done by the browser through required and type. Anything beyond
+  that, including messages and a thank you state, needs a script or a server.
+
+  Default configuration shown here:
+    name, email, phone, message, consent, one column, inline layout.
+
+  Every class is prefixed efm- so it cannot collide with the rest of the page.
+  It uses ids, because labels need them. Placing it twice needs them renamed.
+-->
+<section class="efm px-5 py-16 sm:px-8" aria-labelledby="efm-title">
+
+  <style>
+    
+    @layer efm-base {
+      .efm,.efm *,.efm *::before,.efm *::after{box-sizing:border-box}
+      .efm{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .efm h2,.efm p,.efm label{margin:0}
+      .efm{background-color:rgb(var(--efm-band));color:rgb(var(--efm-ink));padding:4rem 1.25rem}
+      .efm .efm-wrap{max-width:36rem;margin-inline:auto}
+      .efm .efm-grid{display:grid;gap:1.1rem}
+      .efm h2{font-size:1.875rem;font-weight:600}
+      .efm p{font-size:1rem;line-height:1.625}
+    }
+
+    .efm{
+      --efm-surface:255 255 255;
+      --efm-band:246 247 249;
+      --efm-ink:15 23 42;
+      --efm-soft:92 107 129;
+      --efm-accent:37 99 235;
+      --efm-deep:11 18 32;
+      background-color:rgb(var(--efm-band));
+      color:rgb(var(--efm-ink));
+    }
+    .efm .efm-soft{color:rgb(var(--efm-soft))}
+
+    .efm .efm-label{display:block;font-size:.875rem;font-weight:600;margin-bottom:.35rem}
+    .efm .efm-req{color:rgb(var(--efm-soft));font-weight:400}
+
+    /* 16px keeps a phone browser from zooming in on focus. 44px keeps the
+       field hittable with a thumb. */
+    .efm .efm-input{
+      width:100%;min-height:2.75rem;font-size:1rem;padding:.65rem .85rem;
+      border:1px solid rgb(var(--efm-ink)/.18);border-radius:.65rem;
+      background-color:rgb(var(--efm-surface));color:rgb(var(--efm-ink));
+      transition:border-color 160ms ease,box-shadow 160ms ease;
+    }
+    .efm textarea.efm-input{min-height:7rem;resize:vertical}
+    .efm .efm-input:focus{
+      outline:none;border-color:rgb(var(--efm-accent));
+      box-shadow:0 0 0 3px rgb(var(--efm-accent)/.18);
+    }
+
+    .efm .efm-consent{display:flex;gap:.65rem;align-items:flex-start}
+    .efm .efm-consent input{margin-top:.2rem;width:1.1rem;height:1.1rem;flex:none}
+
+    .efm .efm-submit{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:2.9rem;padding:.75rem 1.6rem;border-radius:9999px;
+      background-color:rgb(var(--efm-accent));color:#fff;font-weight:600;font-size:.9375rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1),box-shadow 200ms ease;
+    }
+    .efm .efm-submit:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--efm-accent)/.3)}
+    .efm .efm-submit:focus-visible{outline:2px solid rgb(var(--efm-accent));outline-offset:3px}
+
+    @media (min-width: 768px){
+      .efm .efm-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+    }
+    @media (max-width: 479px){
+      .efm .efm-submit{width:100%}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .efm .efm-input,.efm .efm-submit{transition:none}
+      .efm .efm-submit:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .efm, .efm *, .efm::before, .efm *::before, .efm::after, .efm *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .efm, .efm *, .efm::after, .efm *::after, .efm::before, .efm *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .efm::after, .efm *::after, .efm::before, .efm *::before{--tw-content:'';}
+      .efm{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .efm h1, .efm h2, .efm h3, .efm h4, .efm h5, .efm h6{font-size:inherit;font-weight:inherit;}
+      .efm button, .efm input, .efm optgroup, .efm select, .efm textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .efm button, .efm select{text-transform:none;}
+      .efm button, .efm input:where([type="button"]), .efm input:where([type="reset"]), .efm input:where([type="submit"]){appearance:button;background-color:transparent;background-image:none;}
+      .efm blockquote, .efm dd, .efm dl, .efm figure, .efm h1, .efm h2, .efm h3, .efm h4, .efm h5, .efm h6, .efm hr, .efm p, .efm pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .efm textarea{resize:vertical;}
+      .efm input::placeholder, .efm textarea::placeholder{opacity:1;color:rgb(156, 163, 175);}
+      .efm[role="button"], .efm [role="button"], .efm button{cursor:pointer;}
+      .efm.mx-auto, .efm .mx-auto{margin-left:auto;margin-right:auto;}
+      .efm.mb-7, .efm .mb-7{margin-bottom:1.75rem;}
+      .efm.mt-2, .efm .mt-2{margin-top:0.5rem;}
+      .efm.grid, .efm .grid{display:grid;}
+      .efm.max-w-lg, .efm .max-w-lg{max-width:32rem;}
+      .efm.gap-4, .efm .gap-4{row-gap:1rem;column-gap:1rem;}
+      .efm.px-5, .efm .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .efm.py-16, .efm .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .efm.text-3xl, .efm .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .efm.text-base, .efm .text-base{font-size:1rem;line-height:1.5rem;}
+      .efm.text-sm, .efm .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .efm.font-semibold, .efm .font-semibold{font-weight:600;}
+      .efm.leading-relaxed, .efm .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.efm.sm\:px-8, .efm .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="efm-wrap mx-auto max-w-lg">
+    <h2 id="efm-title" class="text-3xl font-semibold">Tell us about the job</h2>
+    <p class="efm-soft mt-2 mb-7 text-base leading-relaxed">We answer every message the same working day. Fields marked required are the only ones we need.</p>
+
+    <form class="efm-grid grid gap-4" method="post" action="#">
+      <div class="efm-pair">
+        <div>
+          <label class="efm-label" for="efm-name">Your name <span class="efm-req">(required)</span></label>
+          <input class="efm-input" id="efm-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label class="efm-label" for="efm-phone">Phone</label>
+          <input class="efm-input" id="efm-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+      </div>
+
+      <div>
+        <label class="efm-label" for="efm-email">Email <span class="efm-req">(required)</span></label>
+        <input class="efm-input" id="efm-email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div>
+        <label class="efm-label" for="efm-message">What do you need doing?</label>
+        <textarea class="efm-input" id="efm-message" name="message" rows="4"></textarea>
+      </div>
+
+      <div class="efm-consent">
+        <input id="efm-consent" name="consent" type="checkbox" required>
+        <label class="text-sm leading-relaxed" for="efm-consent">Yes, you can contact me about this enquiry. <span class="efm-req">(required)</span></label>
+      </div>
+
+      <div>
+        <button class="efm-submit" type="submit">Send the enquiry</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<div class="pv-bar" id="p16"><span class="pv-num">16</span><span class="pv-name">Pop Up Window</span></div>
+<!--
+  Pop-Up Window element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Opened with :target from a real link, and closed with another real link, so
+  both work from a keyboard. It does not open on a timer, on exit intent or on
+  scroll depth: every one of those needs a script.
+
+  Focus is not trapped inside the panel, because trapping focus needs a script
+  too. That is why nothing essential lives in here. The offer on the page is
+  the offer; this is a convenience.
+
+  Default configuration shown here:
+    centre panel, opened from a link, dimmed backdrop, close top right,
+    drawer shape on a phone.
+
+  Every class is prefixed epu- so it cannot collide with the rest of the page.
+  It uses one id, so placing it twice on a page needs that id renamed.
+-->
+<section class="epu px-5 py-14 sm:px-8" aria-labelledby="epu-title">
+
+  <style>
+    
+    @layer epu-base {
+      .epu,.epu *,.epu *::before,.epu *::after{box-sizing:border-box}
+      .epu{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .epu h2,.epu h3,.epu p{margin:0}
+      .epu{background-color:rgb(var(--epu-surface));color:rgb(var(--epu-ink));padding:3.5rem 1.25rem}
+      .epu .epu-wrap{max-width:40rem;margin-inline:auto}
+      .epu h2{font-size:1.75rem;font-weight:600}
+      .epu h3{font-size:1.25rem;font-weight:600}
+      .epu p{font-size:1rem;line-height:1.625}
+    }
+
+    .epu{
+      --epu-surface:255 255 255;
+      --epu-band:246 247 249;
+      --epu-ink:15 23 42;
+      --epu-soft:92 107 129;
+      --epu-accent:37 99 235;
+      --epu-deep:11 18 32;
+      background-color:rgb(var(--epu-surface));
+      color:rgb(var(--epu-ink));
+      position:relative;
+    }
+    .epu .epu-soft{color:rgb(var(--epu-soft))}
+
+    .epu .epu-open{
+      display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
+      padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;font-size:.9375rem;
+      background-color:rgb(var(--epu-accent));color:#fff;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .epu .epu-open:hover{transform:translateY(-2px)}
+    .epu .epu-open:focus-visible{outline:2px solid rgb(var(--epu-accent));outline-offset:3px}
+
+    .epu .epu-layer{
+      position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:1rem;
+      opacity:0;visibility:hidden;transition:opacity 240ms ease,visibility 240ms;
+    }
+    .epu .epu-scrim{position:absolute;inset:0;background-color:rgb(0 0 0 / .45)}
+    .epu .epu-panel{
+      position:relative;width:100%;max-width:26rem;border-radius:1.25rem;padding:1.75rem;
+      background-color:rgb(var(--epu-surface));color:rgb(var(--epu-ink));
+      box-shadow:0 24px 60px rgb(0 0 0 / .3);
+      transform:scale(.96);transition:transform 240ms cubic-bezier(.16,1,.3,1);
+    }
+    .epu #epu-offer:target{opacity:1;visibility:visible}
+    .epu #epu-offer:target .epu-panel{transform:scale(1)}
+
+    .epu .epu-close{
+      position:absolute;top:.6rem;right:.6rem;
+      display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:9999px;
+      color:rgb(var(--epu-soft));
+    }
+    .epu .epu-close:hover{background-color:rgb(var(--epu-ink)/.06);color:rgb(var(--epu-ink))}
+    .epu .epu-close:focus-visible{outline:2px solid rgb(var(--epu-accent));outline-offset:2px}
+
+    @media (max-width: 639px){
+      .epu .epu-layer{place-items:end;padding:0}
+      .epu .epu-panel{max-width:none;border-radius:1.25rem 1.25rem 0 0;transform:translateY(12px)}
+      .epu #epu-offer:target .epu-panel{transform:none}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .epu .epu-layer,.epu .epu-panel,.epu .epu-open{transition:none}
+      .epu .epu-open:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .epu, .epu *, .epu::before, .epu *::before, .epu::after, .epu *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .epu, .epu *, .epu::after, .epu *::after, .epu::before, .epu *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .epu::after, .epu *::after, .epu::before, .epu *::before{--tw-content:'';}
+      .epu{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .epu h1, .epu h2, .epu h3, .epu h4, .epu h5, .epu h6{font-size:inherit;font-weight:inherit;}
+      .epu a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .epu blockquote, .epu dd, .epu dl, .epu figure, .epu h1, .epu h2, .epu h3, .epu h4, .epu h5, .epu h6, .epu hr, .epu p, .epu pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .epu audio, .epu canvas, .epu embed, .epu iframe, .epu img, .epu object, .epu svg, .epu video{display:block;vertical-align:middle;}
+      .epu.mx-auto, .epu .mx-auto{margin-left:auto;margin-right:auto;}
+      .epu.mb-2, .epu .mb-2{margin-bottom:0.5rem;}
+      .epu.mb-6, .epu .mb-6{margin-bottom:1.5rem;}
+      .epu.mt-2, .epu .mt-2{margin-top:0.5rem;}
+      .epu.mt-4, .epu .mt-4{margin-top:1rem;}
+      .epu.h-5, .epu .h-5{height:1.25rem;}
+      .epu.w-5, .epu .w-5{width:1.25rem;}
+      .epu.max-w-xl, .epu .max-w-xl{max-width:36rem;}
+      .epu.px-5, .epu .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .epu.py-14, .epu .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .epu.pr-10, .epu .pr-10{padding-right:2.5rem;}
+      .epu.text-2xl, .epu .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .epu.text-base, .epu .text-base{font-size:1rem;line-height:1.5rem;}
+      .epu.text-sm, .epu .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .epu.text-xl, .epu .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .epu.font-semibold, .epu .font-semibold{font-weight:600;}
+      .epu.leading-relaxed, .epu .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.epu.sm\:px-8, .epu .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="epu-wrap mx-auto max-w-xl">
+    <h2 id="epu-title" class="mb-2 text-2xl font-semibold">Booking more than one job?</h2>
+    <p class="epu-soft mb-6 text-base leading-relaxed">There is a standing discount when two jobs are booked on the same visit. The details are short, so they are tucked away rather than taking up the page.</p>
+    <a href="#epu-offer" class="epu-open">See the discount</a>
+  </div>
+
+  <div id="epu-offer" class="epu-layer" role="dialog" aria-labelledby="epu-panel-title" aria-modal="false">
+    <a href="#epu-title" class="epu-scrim" aria-label="Close"></a>
+    <div class="epu-panel">
+      <a href="#epu-title" class="epu-close" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" fill="none"/></svg>
+      </a>
+      <h3 id="epu-panel-title" class="pr-10 text-xl font-semibold">Two jobs, one visit</h3>
+      <p class="epu-soft mt-2 text-base leading-relaxed">Book a second job on the same visit and the second call out fee comes off the quote. It applies to any two jobs at the same address, and there is nothing to claim: it is already on the quote when you get it.</p>
+      <p class="epu-soft mt-4 text-sm">Mention it when you call, or write it in the enquiry.</p>
+    </div>
+  </div>
+</section>
+
+<div class="pv-bar" id="p17"><span class="pv-num">17</span><span class="pv-name">Countdown Timer</span></div>
+<!--
+  Countdown Timer element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Nothing here counts down. A countdown needs a clock, and a clock needs a
+  script. Seconds printed on the page that never move read as broken rather
+  than urgent, so seconds are not shown at all.
+
+  What is shown instead is the real deadline: written out in words, marked up
+  with a time element so it is machine readable, and broken into units so it
+  can be taken in at a glance. A reader can put a date in a diary. They cannot
+  do anything with a number that is frozen.
+
+  Replace the datetime and the figures with the customer's own deadline.
+
+  Default configuration shown here:
+    closing date written out, three units, urgency line, entrance only.
+
+  Every class is prefixed ecd- so it cannot collide with the rest of the page.
+-->
+<section class="ecd px-5 py-14 sm:px-8" aria-labelledby="ecd-title">
+
+  <style>
+    
+    @layer ecd-base {
+      .ecd,.ecd *,.ecd *::before,.ecd *::after{box-sizing:border-box}
+      .ecd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ecd h2,.ecd p{margin:0}
+      .ecd ul,.ecd ol{margin:0;padding:0;list-style:none}
+      .ecd{background-color:rgb(var(--ecd-band));color:rgb(var(--ecd-ink));padding:3.5rem 1.25rem}
+      .ecd .ecd-wrap{max-width:36rem;margin-inline:auto;text-align:center}
+      .ecd .ecd-row{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+      .ecd h2{font-size:1.5rem;font-weight:600}
+      .ecd p{font-size:1rem;line-height:1.6}
+    }
+
+    .ecd{
+      --ecd-surface:255 255 255;
+      --ecd-band:246 247 249;
+      --ecd-ink:15 23 42;
+      --ecd-soft:92 107 129;
+      --ecd-accent:37 99 235;
+      --ecd-deep:11 18 32;
+      background-color:rgb(var(--ecd-band));
+      color:rgb(var(--ecd-ink));
+    }
+    .ecd .ecd-soft{color:rgb(var(--ecd-soft))}
+    .ecd .ecd-date{color:rgb(var(--ecd-accent));font-weight:600}
+
+    .ecd .ecd-unit{
+      min-width:5rem;padding:.9rem .75rem;border-radius:.9rem;
+      background-color:rgb(var(--ecd-surface));border:1px solid rgb(var(--ecd-ink)/.10);
+    }
+    .ecd .ecd-num{display:block;font-size:1.75rem;font-weight:600;line-height:1.1}
+    .ecd .ecd-lbl{display:block;margin-top:.2rem;font-size:.7rem;font-weight:600;
+      letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--ecd-soft))}
+
+    .ecd .ecd-panel{animation:ecd-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes ecd-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .ecd .ecd-panel{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ecd, .ecd *, .ecd::before, .ecd *::before, .ecd::after, .ecd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ecd, .ecd *, .ecd::after, .ecd *::after, .ecd::before, .ecd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ecd::after, .ecd *::after, .ecd::before, .ecd *::before{--tw-content:'';}
+      .ecd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ecd h1, .ecd h2, .ecd h3, .ecd h4, .ecd h5, .ecd h6{font-size:inherit;font-weight:inherit;}
+      .ecd blockquote, .ecd dd, .ecd dl, .ecd figure, .ecd h1, .ecd h2, .ecd h3, .ecd h4, .ecd h5, .ecd h6, .ecd hr, .ecd p, .ecd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ecd menu, .ecd ol, .ecd ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .ecd.mx-auto, .ecd .mx-auto{margin-left:auto;margin-right:auto;}
+      .ecd.mt-2, .ecd .mt-2{margin-top:0.5rem;}
+      .ecd.mt-5, .ecd .mt-5{margin-top:1.25rem;}
+      .ecd.mt-6, .ecd .mt-6{margin-top:1.5rem;}
+      .ecd.flex, .ecd .flex{display:flex;}
+      .ecd.max-w-md, .ecd .max-w-md{max-width:28rem;}
+      .ecd.flex-wrap, .ecd .flex-wrap{flex-wrap:wrap;}
+      .ecd.justify-center, .ecd .justify-center{justify-content:center;}
+      .ecd.gap-3, .ecd .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ecd.px-5, .ecd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ecd.py-14, .ecd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ecd.text-center, .ecd .text-center{text-align:center;}
+      .ecd.text-2xl, .ecd .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .ecd.text-base, .ecd .text-base{font-size:1rem;line-height:1.5rem;}
+      .ecd.text-sm, .ecd .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .ecd.font-semibold, .ecd .font-semibold{font-weight:600;}
+      .ecd.leading-relaxed, .ecd .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.ecd.sm\:px-8, .ecd .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="ecd-wrap ecd-panel mx-auto max-w-md text-center">
+    <h2 id="ecd-title" class="text-2xl font-semibold">The winter service price ends soon</h2>
+    <p class="ecd-soft mt-2 text-base leading-relaxed">Book before <time class="ecd-date" datetime="2026-10-31">Friday 31 October 2026</time> and the service is £69 rather than £95.</p>
+
+    <ul class="ecd-row mt-6 flex flex-wrap justify-center gap-3">
+      <li class="ecd-unit">
+        <span class="ecd-num">31</span>
+        <span class="ecd-lbl">October</span>
+      </li>
+      <li class="ecd-unit">
+        <span class="ecd-num">17:00</span>
+        <span class="ecd-lbl">Closes</span>
+      </li>
+      <li class="ecd-unit">
+        <span class="ecd-num">£26</span>
+        <span class="ecd-lbl">You save</span>
+      </li>
+    </ul>
+
+    <p class="ecd-soft mt-5 text-sm">Slots for October are usually gone by the middle of the month, so the date is the last one we can book, not the last one we have.</p>
+  </div>
+</section>
+
+<div class="pv-bar" id="p18"><span class="pv-num">18</span><span class="pv-name">Progress Bar</span></div>
+<!--
+  Progress Bar element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The value is written into the markup, in the text, in the inline width and
+  in the aria attributes, so all three agree. A bar on its own is a shape: the
+  number beside it is what carries the meaning, and role=progressbar with
+  aria-valuenow is what carries it to a screen reader.
+
+  Nothing counts up. A count needs a script.
+
+  Default configuration shown here:
+    horizontal bar, value beside the label, fill once on entrance.
+
+  Every class is prefixed epr- so it cannot collide with the rest of the page.
+-->
+<section class="epr px-5 py-14 sm:px-8" aria-labelledby="epr-title">
+
+  <style>
+    
+    @layer epr-base {
+      .epr,.epr *,.epr *::before,.epr *::after{box-sizing:border-box}
+      .epr{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .epr h2,.epr h3,.epr p{margin:0}
+      .epr ul,.epr ol{margin:0;padding:0;list-style:none}
+      .epr{background-color:rgb(var(--epr-surface));color:rgb(var(--epr-ink));padding:3.5rem 1.25rem}
+      .epr .epr-wrap{max-width:36rem;margin-inline:auto}
+      .epr .epr-list{display:grid;gap:1.75rem}
+      .epr h2{font-size:1.75rem;font-weight:600}
+      .epr p{font-size:.9375rem;line-height:1.6}
+    }
+
+    .epr{
+      --epr-surface:255 255 255;
+      --epr-band:246 247 249;
+      --epr-ink:15 23 42;
+      --epr-soft:92 107 129;
+      --epr-accent:37 99 235;
+      --epr-deep:11 18 32;
+      background-color:rgb(var(--epr-surface));
+      color:rgb(var(--epr-ink));
+    }
+    .epr .epr-soft{color:rgb(var(--epr-soft))}
+
+    .epr .epr-head{display:flex;flex-wrap:wrap;gap:.35rem 1rem;align-items:baseline;justify-content:space-between}
+    .epr .epr-value{font-weight:600}
+
+    .epr .epr-track{
+      height:.625rem;border-radius:9999px;overflow:hidden;margin-top:.55rem;
+      background-color:rgb(var(--epr-ink)/.08);
+    }
+    .epr .epr-fill{
+      height:100%;border-radius:9999px;
+      background-color:rgb(var(--epr-accent));
+      transform-origin:left center;
+      animation:epr-fill 900ms cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes epr-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* A segmented variant, drawn rather than animated. */
+    .epr .epr-steps{display:flex;gap:.4rem;margin-top:.55rem}
+    .epr .epr-step{flex:1;height:.5rem;border-radius:9999px;background-color:rgb(var(--epr-ink)/.08)}
+    .epr .epr-step.is-done{background-color:rgb(var(--epr-accent))}
+
+    @media (prefers-reduced-motion: reduce){
+      .epr .epr-fill{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .epr, .epr *, .epr::before, .epr *::before, .epr::after, .epr *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .epr, .epr *, .epr::after, .epr *::after, .epr::before, .epr *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .epr::after, .epr *::after, .epr::before, .epr *::before{--tw-content:'';}
+      .epr{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .epr h1, .epr h2, .epr h3, .epr h4, .epr h5, .epr h6{font-size:inherit;font-weight:inherit;}
+      .epr blockquote, .epr dd, .epr dl, .epr figure, .epr h1, .epr h2, .epr h3, .epr h4, .epr h5, .epr h6, .epr hr, .epr p, .epr pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .epr menu, .epr ol, .epr ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .epr.mx-auto, .epr .mx-auto{margin-left:auto;margin-right:auto;}
+      .epr.mb-6, .epr .mb-6{margin-bottom:1.5rem;}
+      .epr.mt-2, .epr .mt-2{margin-top:0.5rem;}
+      .epr.grid, .epr .grid{display:grid;}
+      .epr.max-w-md, .epr .max-w-md{max-width:28rem;}
+      .epr.gap-7, .epr .gap-7{row-gap:1.75rem;column-gap:1.75rem;}
+      .epr.px-5, .epr .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .epr.py-14, .epr .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .epr.text-2xl, .epr .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .epr.text-sm, .epr .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .epr.font-semibold, .epr .font-semibold{font-weight:600;}
+      @media (min-width: 640px){.epr.sm\:px-8, .epr .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="epr-wrap mx-auto max-w-md">
+    <h2 id="epr-title" class="mb-6 text-2xl font-semibold">Where the winter fund has got to</h2>
+
+    <ul class="epr-list grid gap-7">
+      <li>
+        <div class="epr-head">
+          <span class="text-sm font-semibold">Boilers replaced for pensioners</span>
+          <span class="epr-value text-sm">34 of 50</span>
+        </div>
+        <div class="epr-track" role="progressbar" aria-label="Boilers replaced for pensioners" aria-valuenow="34" aria-valuemin="0" aria-valuemax="50" aria-valuetext="34 of 50">
+          <div class="epr-fill" style="width:68%"></div>
+        </div>
+        <p class="epr-soft mt-2">Sixteen to go before the end of February.</p>
+      </li>
+
+      <li>
+        <div class="epr-head">
+          <span class="text-sm font-semibold">Fund raised</span>
+          <span class="epr-value text-sm">£41,200 of £60,000</span>
+        </div>
+        <div class="epr-track" role="progressbar" aria-label="Fund raised" aria-valuenow="41200" aria-valuemin="0" aria-valuemax="60000" aria-valuetext="41,200 pounds of 60,000">
+          <div class="epr-fill" style="width:69%"></div>
+        </div>
+        <p class="epr-soft mt-2">Every pound goes on parts. The labour is given.</p>
+      </li>
+
+      <li>
+        <div class="epr-head">
+          <span class="text-sm font-semibold">Where your job is up to</span>
+          <span class="epr-value text-sm">Step 3 of 5</span>
+        </div>
+        <ul class="epr-steps" role="progressbar" aria-label="Where your job is up to" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" aria-valuetext="Step 3 of 5, fitting">
+          <li class="epr-step is-done"></li>
+          <li class="epr-step is-done"></li>
+          <li class="epr-step is-done"></li>
+          <li class="epr-step"></li>
+          <li class="epr-step"></li>
+        </ul>
+        <p class="epr-soft mt-2">Survey, quote and parts ordered are done. Fitting is next.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p19"><span class="pv-num">19</span><span class="pv-name">Social Media Links</span></div>
+<!--
+  Social Media Links element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every link carries a real name in text. Without it a row of icons is
+  announced as several blank links, which is a dead end. The icon is
+  aria-hidden and the name is visually hidden text, so it is read but not
+  drawn.
+
+  Every target is 44px even though the marks inside are 20px, so they can be
+  hit with a thumb.
+
+  The marks are simple inline shapes, not brand logos, because a brand logo is
+  someone else's asset. Replace them with the networks the customer actually
+  uses, and drop any account they do not post to.
+
+  Default configuration shown here:
+    icon row, four links, circular buttons, hidden names, fill on hover.
+
+  Every class is prefixed esm- so it cannot collide with the rest of the page.
+-->
+<section class="esm px-5 py-14 sm:px-8" aria-labelledby="esm-title">
+
+  <style>
+    
+    @layer esm-base {
+      .esm,.esm *,.esm *::before,.esm *::after{box-sizing:border-box}
+      .esm{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esm h2,.esm p{margin:0}
+      .esm ul,.esm ol{margin:0;padding:0;list-style:none}
+      .esm svg{display:block}
+      .esm{background-color:rgb(var(--esm-surface));color:rgb(var(--esm-ink));padding:3.5rem 1.25rem}
+      .esm .esm-wrap{max-width:36rem;margin-inline:auto}
+      .esm .esm-row{display:flex;flex-wrap:wrap;gap:.6rem}
+      .esm h2{font-size:1.5rem;font-weight:600}
+      .esm p{font-size:1rem;line-height:1.6}
+    }
+
+    .esm{
+      --esm-surface:255 255 255;
+      --esm-band:246 247 249;
+      --esm-ink:15 23 42;
+      --esm-soft:92 107 129;
+      --esm-accent:37 99 235;
+      --esm-deep:11 18 32;
+      background-color:rgb(var(--esm-surface));
+      color:rgb(var(--esm-ink));
+    }
+    .esm .esm-soft{color:rgb(var(--esm-soft))}
+
+    /* 44px target, 20px mark. */
+    .esm .esm-link{
+      display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:9999px;
+      background-color:rgb(var(--esm-ink)/.05);color:rgb(var(--esm-ink));
+      transition:background-color 200ms ease,color 200ms ease,transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .esm .esm-link:hover,.esm .esm-link:focus-visible{
+      background-color:rgb(var(--esm-accent));color:#fff;transform:translateY(-2px);
+    }
+    .esm .esm-link:focus-visible{outline:2px solid rgb(var(--esm-accent));outline-offset:3px}
+
+    .esm .esm-name{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media (prefers-reduced-motion: reduce){
+      .esm .esm-link{transition:none}
+      .esm .esm-link:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esm, .esm *, .esm::before, .esm *::before, .esm::after, .esm *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esm, .esm *, .esm::after, .esm *::after, .esm::before, .esm *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esm::after, .esm *::after, .esm::before, .esm *::before{--tw-content:'';}
+      .esm{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esm h1, .esm h2, .esm h3, .esm h4, .esm h5, .esm h6{font-size:inherit;font-weight:inherit;}
+      .esm a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .esm blockquote, .esm dd, .esm dl, .esm figure, .esm h1, .esm h2, .esm h3, .esm h4, .esm h5, .esm h6, .esm hr, .esm p, .esm pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esm menu, .esm ol, .esm ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esm audio, .esm canvas, .esm embed, .esm iframe, .esm img, .esm object, .esm svg, .esm video{display:block;vertical-align:middle;}
+      .esm.mx-auto, .esm .mx-auto{margin-left:auto;margin-right:auto;}
+      .esm.mb-5, .esm .mb-5{margin-bottom:1.25rem;}
+      .esm.mt-2, .esm .mt-2{margin-top:0.5rem;}
+      .esm.flex, .esm .flex{display:flex;}
+      .esm.h-5, .esm .h-5{height:1.25rem;}
+      .esm.w-5, .esm .w-5{width:1.25rem;}
+      .esm.max-w-md, .esm .max-w-md{max-width:28rem;}
+      .esm.flex-wrap, .esm .flex-wrap{flex-wrap:wrap;}
+      .esm.gap-2\.5, .esm .gap-2\.5{row-gap:0.625rem;column-gap:0.625rem;}
+      .esm.px-5, .esm .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esm.py-14, .esm .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .esm.text-2xl, .esm .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .esm.text-base, .esm .text-base{font-size:1rem;line-height:1.5rem;}
+      .esm.font-semibold, .esm .font-semibold{font-weight:600;}
+      .esm.leading-relaxed, .esm .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.esm.sm\:px-8, .esm .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esm-wrap mx-auto max-w-md">
+    <h2 id="esm-title" class="text-2xl font-semibold">See the work as it happens</h2>
+    <p class="esm-soft mt-2 mb-5 text-base leading-relaxed">We post most jobs the week they are finished.</p>
+
+    <ul class="esm-row flex flex-wrap gap-2.5">
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our page on Facebook</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H8v3h2v6h3v-6h2.5l.5-3H13V9a1 1 0 0 1 1-1z" fill="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our photographs on Instagram</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="5" fill="none"/>
+            <circle cx="12" cy="12" r="4" fill="none"/>
+            <circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our films on YouTube</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="12" rx="4" fill="none"/>
+            <path d="M11 10.5v3l3-1.5z" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our company page on LinkedIn</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="3" fill="none"/>
+            <path d="M8 11v6M8 8v.01M12 17v-3a2 2 0 0 1 4 0v3" fill="none"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="pv-bar" id="p20"><span class="pv-num">20</span><span class="pv-name">Business Location Map</span></div>
+<!--
+  Business Location Map element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  There is no live map. A real map is a third party embed, which is an
+  external file and is not allowed here, and panning and zooming need a
+  script in any case.
+
+  What matters is here instead: the address as real text a reader can copy, a
+  drawn local map so the place is recognisable, and a link that opens
+  directions in whatever map app the visitor already uses.
+
+  The drawing is decorative and hidden from screen readers, because the
+  address beside it carries the meaning.
+
+  Default configuration shown here:
+    stylised map beside the details, marker shown, address, hours and phone,
+    directions link.
+
+  Every class is prefixed emp- so it cannot collide with the rest of the page.
+-->
+<section class="emp px-5 py-16 sm:px-8" aria-labelledby="emp-title">
+
+  <style>
+    
+    @layer emp-base {
+      .emp,.emp *,.emp *::before,.emp *::after{box-sizing:border-box}
+      .emp{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .emp h2,.emp h3,.emp p,.emp address{margin:0}
+      .emp ul,.emp ol{margin:0;padding:0;list-style:none}
+      .emp svg{display:block;max-width:100%}
+      .emp{background-color:rgb(var(--emp-surface));color:rgb(var(--emp-ink));padding:4rem 1.25rem}
+      .emp .emp-wrap{max-width:60rem;margin-inline:auto}
+      .emp .emp-row{display:grid;gap:1.75rem}
+      .emp h2{font-size:1.875rem;font-weight:600}
+      .emp h3{font-size:1rem;font-weight:600}
+      .emp p,.emp address{font-size:1rem;line-height:1.625;font-style:normal}
+    }
+
+    .emp{
+      --emp-surface:255 255 255;
+      --emp-band:246 247 249;
+      --emp-ink:15 23 42;
+      --emp-soft:92 107 129;
+      --emp-accent:37 99 235;
+      --emp-deep:11 18 32;
+      background-color:rgb(var(--emp-surface));
+      color:rgb(var(--emp-ink));
+    }
+    .emp .emp-soft{color:rgb(var(--emp-soft))}
+
+    .emp .emp-map{
+      overflow:hidden;border-radius:1.25rem;aspect-ratio:4 / 3;
+      background-color:rgb(var(--emp-band));border:1px solid rgb(var(--emp-ink)/.10);
+    }
+    .emp .emp-map svg{width:100%;height:100%}
+    .emp .emp-pin{animation:emp-drop 520ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes emp-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+    .emp .emp-dl{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      min-height:2.75rem;padding:.7rem 1.4rem;border-radius:9999px;
+      background-color:rgb(var(--emp-accent));color:#fff;font-weight:600;font-size:.9375rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .emp .emp-dl:hover{transform:translateY(-2px)}
+    .emp .emp-dl:focus-visible{outline:2px solid rgb(var(--emp-accent));outline-offset:3px}
+
+    @media (min-width: 768px){
+      .emp .emp-row{grid-template-columns:1.1fr 1fr;align-items:center;gap:2.5rem}
+    }
+    @media (max-width: 479px){
+      .emp .emp-dl{width:100%}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .emp .emp-pin{animation:none}
+      .emp .emp-dl{transition:none}
+      .emp .emp-dl:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .emp, .emp *, .emp::before, .emp *::before, .emp::after, .emp *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .emp, .emp *, .emp::after, .emp *::after, .emp::before, .emp *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .emp::after, .emp *::after, .emp::before, .emp *::before{--tw-content:'';}
+      .emp{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .emp h1, .emp h2, .emp h3, .emp h4, .emp h5, .emp h6{font-size:inherit;font-weight:inherit;}
+      .emp a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .emp blockquote, .emp dd, .emp dl, .emp figure, .emp h1, .emp h2, .emp h3, .emp h4, .emp h5, .emp h6, .emp hr, .emp p, .emp pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .emp menu, .emp ol, .emp ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .emp audio, .emp canvas, .emp embed, .emp iframe, .emp img, .emp object, .emp svg, .emp video{display:block;vertical-align:middle;}
+      .emp.mx-auto, .emp .mx-auto{margin-left:auto;margin-right:auto;}
+      .emp.mb-6, .emp .mb-6{margin-bottom:1.5rem;}
+      .emp.mt-2, .emp .mt-2{margin-top:0.5rem;}
+      .emp.mt-3, .emp .mt-3{margin-top:0.75rem;}
+      .emp.mt-6, .emp .mt-6{margin-top:1.5rem;}
+      .emp.grid, .emp .grid{display:grid;}
+      .emp.max-w-5xl, .emp .max-w-5xl{max-width:64rem;}
+      .emp.gap-7, .emp .gap-7{row-gap:1.75rem;column-gap:1.75rem;}
+      .emp.space-y-1 > :not([hidden]) ~ :not([hidden]), .emp .space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse));}
+      .emp.fill-accent, .emp .fill-accent{fill:rgb(37, 99, 235);}
+      .emp.fill-muted, .emp .fill-muted{fill:rgb(246, 247, 249);}
+      .emp.px-5, .emp .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .emp.py-16, .emp .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .emp.text-3xl, .emp .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .emp.text-base, .emp .text-base{font-size:1rem;line-height:1.5rem;}
+      .emp.text-sm, .emp .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .emp.font-semibold, .emp .font-semibold{font-weight:600;}
+      .emp.leading-relaxed, .emp .leading-relaxed{line-height:1.625;}
+      .emp.underline, .emp .underline{text-decoration-line:underline;}
+      @media (min-width: 640px){.emp.sm\:px-8, .emp .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="emp-wrap mx-auto max-w-5xl">
+    <h2 id="emp-title" class="mb-6 text-3xl font-semibold">Where to find us</h2>
+
+    <div class="emp-row grid gap-7">
+      <div class="emp-map" aria-hidden="true">
+        <svg viewBox="0 0 480 360">
+          <rect width="480" height="360" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#0f172a" stroke-width="10" opacity="0.10" stroke-linecap="square">
+            <path d="M0 130h480M0 250h480M140 0v360M330 0v360" fill="none"/>
+          </g>
+          <g fill="none" stroke="#0f172a" stroke-width="4" opacity="0.14">
+            <path d="M60 0v360M230 0v360M410 0v360M0 60h480M0 190h480M0 315h480" fill="none"/>
+          </g>
+          <rect x="150" y="140" width="80" height="60" rx="6" fill="#2563eb" opacity="0.10"/>
+          <g class="emp-pin">
+            <path d="M190 176c0-10 8-18 18-18s18 8 18 18c0 13-18 30-18 30s-18-17-18-30z" fill="#2563eb" class="fill-accent"/>
+            <circle cx="208" cy="176" r="6" fill="#ffffff"/>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <h3 class="text-base font-semibold">Unit 4, Meadow Works</h3>
+        <address class="emp-soft mt-2 text-base leading-relaxed">
+          Meadow Lane<br>
+          Nottingham<br>
+          NG2 3HS
+        </address>
+
+        <h3 class="mt-6 text-base font-semibold">Opening hours</h3>
+        <ul class="emp-soft mt-2 space-y-1 text-base">
+          <li>Monday to Friday, 8am to 6pm</li>
+          <li>Saturday, 9am to 1pm</li>
+          <li>Sunday, emergencies only</li>
+        </ul>
+
+        <p class="mt-6"><a class="emp-dl" href="https://example.com/directions">Get directions</a></p>
+        <p class="emp-soft mt-3 text-sm">Or call <a class="font-semibold underline" href="tel:+441159600000">0115 960 0000</a>. The phone is answered by somebody who has been on the tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
