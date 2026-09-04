@@ -1,0 +1,209 @@
+<!--
+  Sales Video element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The call to action is present from the first moment rather than revealed
+  after a timer. A reader who has already decided should not have to watch to
+  reach the button, and a delayed reveal needs a script in any case.
+
+  Click to load is built with :target, so nothing plays until it is asked for.
+
+  Default configuration shown here:
+    16 by 9 player left, offer card right, three bullets, guarantee line,
+    call to action always visible.
+
+  Every class is prefixed esv- so it cannot collide with the rest of the page.
+  It uses one id, so placing it twice on a page needs that id renamed.
+-->
+<section class="esv px-5 py-16 sm:px-8" aria-labelledby="esv-title">
+
+  <style>
+    
+    @layer esv-base {
+      .esv,.esv *,.esv *::before,.esv *::after{box-sizing:border-box}
+      .esv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esv h2,.esv h3,.esv p,.esv figure{margin:0}
+      .esv ul,.esv ol{margin:0;padding:0;list-style:none}
+      .esv img,.esv svg{display:block;max-width:100%}
+      .esv{background-color:rgb(var(--esv-deep));color:rgb(var(--esv-surface));padding:4rem 1.25rem}
+      .esv .esv-wrap{max-width:68rem;margin-inline:auto}
+      .esv .esv-row{display:grid;gap:2rem}
+      .esv h2{font-size:1.875rem;line-height:1.2;font-weight:600}
+      .esv h3{font-size:1.125rem;font-weight:600}
+      .esv p{font-size:1rem;line-height:1.625}
+    }
+
+    .esv{
+      --esv-surface:255 255 255;
+      --esv-band:246 247 249;
+      --esv-ink:15 23 42;
+      --esv-soft:92 107 129;
+      --esv-accent:37 99 235;
+      --esv-deep:11 18 32;
+      background-color:rgb(var(--esv-deep));
+      color:rgb(var(--esv-surface));
+    }
+    /* On this dark ground the soft value measures 3.93 to 1, so quiet copy is
+       a lowered opacity of the surface value instead. */
+    .esv .esv-quiet{color:rgb(var(--esv-surface)/.72)}
+
+    .esv .esv-stage{
+      position:relative;overflow:hidden;border-radius:1.25rem;aspect-ratio:16 / 9;
+      background-color:rgb(var(--esv-surface)/.06);border:1px solid rgb(var(--esv-surface)/.16);
+    }
+    .esv .esv-poster{position:absolute;inset:0}
+    .esv .esv-poster svg{width:100%;height:100%;object-fit:cover;
+      transition:transform 400ms cubic-bezier(.16,1,.3,1)}
+    .esv .esv-stage:hover .esv-poster svg{transform:scale(1.03)}
+
+    .esv .esv-play{
+      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      display:inline-flex;align-items:center;gap:.6rem;min-height:2.75rem;
+      padding:.7rem 1.25rem;border-radius:9999px;
+      background-color:rgb(var(--esv-surface));color:rgb(var(--esv-ink));
+      font-size:.9375rem;font-weight:600;box-shadow:0 12px 30px rgb(0 0 0 / .35);
+      transition:transform 300ms cubic-bezier(.16,1,.3,1);
+    }
+    .esv .esv-stage:hover .esv-play{transform:translate(-50%,-50%) scale(1.04)}
+    .esv .esv-play:focus-visible{outline:2px solid rgb(var(--esv-surface));outline-offset:3px}
+    .esv .esv-dot{display:grid;place-items:center;width:2rem;height:2rem;border-radius:9999px;
+      background-color:rgb(var(--esv-accent));color:#fff}
+
+    .esv .esv-player{position:absolute;inset:0;opacity:0;visibility:hidden}
+    .esv #esv-play:target .esv-player{opacity:1;visibility:visible}
+    .esv #esv-play:target .esv-poster,
+    .esv #esv-play:target .esv-play{opacity:0;visibility:hidden}
+    .esv .esv-note{display:grid;place-items:center;height:100%;padding:1.5rem;text-align:center;
+      font-size:.9375rem;color:rgb(var(--esv-surface)/.8)}
+
+    .esv .esv-card{
+      border-radius:1.25rem;padding:1.75rem;
+      background-color:rgb(var(--esv-surface)/.07);border:1px solid rgb(var(--esv-surface)/.16);
+    }
+    .esv .esv-tick{color:#fff}
+    .esv .esv-cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      width:100%;min-height:3rem;border-radius:9999px;
+      background-color:rgb(var(--esv-accent));color:#fff;font-weight:600;
+      transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms ease;
+    }
+    .esv .esv-cta:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgb(var(--esv-accent)/.4)}
+    .esv .esv-cta:focus-visible{outline:2px solid rgb(var(--esv-surface));outline-offset:3px}
+
+    @media (min-width: 1024px){
+      .esv .esv-row{grid-template-columns:1.5fr 1fr;align-items:start}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .esv .esv-poster svg,.esv .esv-play,.esv .esv-cta{transition:none}
+      .esv .esv-stage:hover .esv-poster svg{transform:none}
+      .esv .esv-stage:hover .esv-play{transform:translate(-50%,-50%)}
+      .esv .esv-cta:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esv, .esv *, .esv::before, .esv *::before, .esv::after, .esv *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esv, .esv *, .esv::after, .esv *::after, .esv::before, .esv *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esv::after, .esv *::after, .esv::before, .esv *::before{--tw-content:'';}
+      .esv{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esv h1, .esv h2, .esv h3, .esv h4, .esv h5, .esv h6{font-size:inherit;font-weight:inherit;}
+      .esv a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .esv blockquote, .esv dd, .esv dl, .esv figure, .esv h1, .esv h2, .esv h3, .esv h4, .esv h5, .esv h6, .esv hr, .esv p, .esv pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esv menu, .esv ol, .esv ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esv audio, .esv canvas, .esv embed, .esv iframe, .esv img, .esv object, .esv svg, .esv video{display:block;vertical-align:middle;}
+      .esv.mx-auto, .esv .mx-auto{margin-left:auto;margin-right:auto;}
+      .esv.mb-2, .esv .mb-2{margin-bottom:0.5rem;}
+      .esv.mb-8, .esv .mb-8{margin-bottom:2rem;}
+      .esv.mt-0\.5, .esv .mt-0\.5{margin-top:0.125rem;}
+      .esv.mt-1, .esv .mt-1{margin-top:0.25rem;}
+      .esv.mt-3, .esv .mt-3{margin-top:0.75rem;}
+      .esv.mt-5, .esv .mt-5{margin-top:1.25rem;}
+      .esv.mt-6, .esv .mt-6{margin-top:1.5rem;}
+      .esv.flex, .esv .flex{display:flex;}
+      .esv.grid, .esv .grid{display:grid;}
+      .esv.h-4, .esv .h-4{height:1rem;}
+      .esv.h-5, .esv .h-5{height:1.25rem;}
+      .esv.w-4, .esv .w-4{width:1rem;}
+      .esv.w-5, .esv .w-5{width:1.25rem;}
+      .esv.max-w-6xl, .esv .max-w-6xl{max-width:72rem;}
+      .esv.shrink-0, .esv .shrink-0{flex-shrink:0;}
+      .esv.gap-3, .esv .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .esv.gap-8, .esv .gap-8{row-gap:2rem;column-gap:2rem;}
+      .esv.space-y-3 > :not([hidden]) ~ :not([hidden]), .esv .space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse));}
+      .esv.fill-bgdark, .esv .fill-bgdark{fill:rgb(11, 18, 32);}
+      .esv.px-5, .esv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esv.py-16, .esv .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .esv.text-center, .esv .text-center{text-align:center;}
+      .esv.text-3xl, .esv .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .esv.text-base, .esv .text-base{font-size:1rem;line-height:1.5rem;}
+      .esv.text-lg, .esv .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .esv.text-sm, .esv .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .esv.text-xs, .esv .text-xs{font-size:0.75rem;line-height:1rem;}
+      .esv.font-normal, .esv .font-normal{font-weight:400;}
+      .esv.font-semibold, .esv .font-semibold{font-weight:600;}
+      .esv.leading-relaxed, .esv .leading-relaxed{line-height:1.625;}
+      .esv.leading-tight, .esv .leading-tight{line-height:1.25;}
+      @media (min-width: 640px){.esv.sm\:px-8, .esv .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esv-wrap mx-auto max-w-6xl">
+    <h2 id="esv-title" class="mb-2 text-3xl font-semibold leading-tight">See exactly what a full bathroom fit involves</h2>
+    <p class="esv-quiet mb-8 text-base leading-relaxed">Six minutes, from the first survey to handing the room back.</p>
+
+    <div class="esv-row grid gap-8">
+      <figure id="esv-play" class="esv-stage">
+        <div class="esv-poster">
+          <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom part way through installation">
+            <rect width="960" height="540" fill="#0b1220" class="fill-bgdark"/>
+            <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.28">
+              <path d="M120 430h720" fill="none"/>
+              <path d="M250 430V250h190v180" fill="none"/>
+              <path d="M250 300h190" fill="none"/>
+              <path d="M560 430V320h190v110" fill="none"/>
+              <circle cx="345" cy="215" r="26" fill="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <a href="#esv-play" class="esv-play">
+          <span class="esv-dot" aria-hidden="true">
+            <svg class="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l8-4.5z"/></svg>
+          </span>
+          Play the film
+        </a>
+
+        <div class="esv-player">
+          <p class="esv-note">The film loads here. Replace this panel with the customer's own player embed once one is supplied.</p>
+        </div>
+      </figure>
+
+      <div class="esv-card">
+        <h3 class="text-lg font-semibold">Full bathroom fit</h3>
+        <p class="mt-1 text-3xl font-semibold">£4,200 <span class="esv-quiet text-sm font-normal">from, fixed in writing</span></p>
+
+        <ul class="mt-5 space-y-3 text-sm">
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Design visit and a written quote</span>
+          </li>
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Strip out and disposal included</span>
+          </li>
+          <li class="flex gap-3">
+            <svg class="esv-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg>
+            <span>Most rooms finished in eight working days</span>
+          </li>
+        </ul>
+
+        <a href="#quote" class="esv-cta mt-6">Get a fixed quote</a>
+        <p class="esv-quiet mt-3 text-center text-xs">If the room is not finished on the day we said, the last day is free.</p>
+      </div>
+    </div>
+  </div>
+</section>

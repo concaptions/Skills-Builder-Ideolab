@@ -1,0 +1,87 @@
+<!--
+  Headline or Title element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The eyebrow, headline and supporting line are one group and enter together.
+  Three separately staggered lines of a single heading read as a stutter.
+
+  Default configuration shown here:
+    eyebrow shown, two line headline, supporting line shown, centered,
+    one accent phrase, fade and rise.
+
+  Every class is prefixed ehd- so it cannot collide with the rest of the page.
+  There are no ids, so this block is safe to place twice.
+-->
+<section class="ehd px-5 py-14 sm:px-8" aria-labelledby="ehd-title">
+
+  <style>
+    
+    @layer ehd-base {
+      .ehd,.ehd *,.ehd *::before,.ehd *::after{box-sizing:border-box}
+      .ehd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ehd h1,.ehd h2,.ehd h3,.ehd p{margin:0}
+      .ehd ul,.ehd ol{margin:0;padding:0;list-style:none}
+      .ehd img,.ehd svg,.ehd video{display:block;max-width:100%}
+      .ehd{background-color:rgb(var(--ehd-surface));color:rgb(var(--ehd-ink));padding:3.5rem 1.25rem}
+      .ehd .ehd-wrap{max-width:44rem;margin-inline:auto;text-align:center}
+      .ehd h2{font-size:2.25rem;line-height:1.15;font-weight:600}
+      .ehd p{font-size:1.0625rem;line-height:1.625}
+    }
+
+    .ehd{
+      --ehd-surface:255 255 255;
+      --ehd-band:246 247 249;
+      --ehd-ink:15 23 42;
+      --ehd-soft:92 107 129;
+      --ehd-accent:37 99 235;
+      --ehd-deep:11 18 32;
+      background-color:rgb(var(--ehd-surface));
+      color:rgb(var(--ehd-ink));
+    }
+    .ehd .ehd-eyebrow{color:rgb(var(--ehd-accent))}
+    .ehd .ehd-accent{color:rgb(var(--ehd-accent))}
+    .ehd .ehd-soft{color:rgb(var(--ehd-soft))}
+
+    .ehd .ehd-rise{animation:ehd-rise 400ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes ehd-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .ehd .ehd-rise{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ehd, .ehd *, .ehd::before, .ehd *::before, .ehd::after, .ehd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ehd, .ehd *, .ehd::after, .ehd *::after, .ehd::before, .ehd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ehd::after, .ehd *::after, .ehd::before, .ehd *::before{--tw-content:'';}
+      .ehd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ehd h1, .ehd h2, .ehd h3, .ehd h4, .ehd h5, .ehd h6{font-size:inherit;font-weight:inherit;}
+      .ehd blockquote, .ehd dd, .ehd dl, .ehd figure, .ehd h1, .ehd h2, .ehd h3, .ehd h4, .ehd h5, .ehd h6, .ehd hr, .ehd p, .ehd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ehd.mx-auto, .ehd .mx-auto{margin-left:auto;margin-right:auto;}
+      .ehd.mb-3, .ehd .mb-3{margin-bottom:0.75rem;}
+      .ehd.mt-4, .ehd .mt-4{margin-top:1rem;}
+      .ehd.max-w-2xl, .ehd .max-w-2xl{max-width:42rem;}
+      .ehd.px-5, .ehd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ehd.py-14, .ehd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ehd.text-center, .ehd .text-center{text-align:center;}
+      .ehd.text-4xl, .ehd .text-4xl{font-size:2.25rem;line-height:2.5rem;}
+      .ehd.text-base, .ehd .text-base{font-size:1rem;line-height:1.5rem;}
+      .ehd.text-xs, .ehd .text-xs{font-size:0.75rem;line-height:1rem;}
+      .ehd.font-semibold, .ehd .font-semibold{font-weight:600;}
+      .ehd.uppercase, .ehd .uppercase{text-transform:uppercase;}
+      .ehd.leading-relaxed, .ehd .leading-relaxed{line-height:1.625;}
+      .ehd.leading-tight, .ehd .leading-tight{line-height:1.25;}
+      .ehd.tracking-\[0\.2em\], .ehd .tracking-\[0\.2em\]{letter-spacing:0.2em;}
+      @media (min-width: 640px){.ehd.sm\:px-8, .ehd .sm\:px-8{padding-left:2rem;padding-right:2rem;}.ehd.sm\:text-5xl, .ehd .sm\:text-5xl{font-size:3rem;line-height:1;}.ehd.sm\:text-lg, .ehd .sm\:text-lg{font-size:1.125rem;line-height:1.75rem;}}
+    }
+  </style>
+
+  <div class="ehd-wrap mx-auto max-w-2xl text-center ehd-rise">
+    <p class="ehd-eyebrow mb-3 text-xs font-semibold uppercase tracking-[0.2em]">What we do</p>
+    <h2 id="ehd-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Heating and plumbing, <span class="ehd-accent">done once</span></h2>
+    <p class="ehd-soft mt-4 text-base leading-relaxed sm:text-lg">Every job is quoted in writing before anybody sets off, and the number on the quote is the number you pay.</p>
+  </div>
+</section>

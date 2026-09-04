@@ -1,0 +1,119 @@
+<!--
+  Countdown Timer element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Nothing here counts down. A countdown needs a clock, and a clock needs a
+  script. Seconds printed on the page that never move read as broken rather
+  than urgent, so seconds are not shown at all.
+
+  What is shown instead is the real deadline: written out in words, marked up
+  with a time element so it is machine readable, and broken into units so it
+  can be taken in at a glance. A reader can put a date in a diary. They cannot
+  do anything with a number that is frozen.
+
+  Replace the datetime and the figures with the customer's own deadline.
+
+  Default configuration shown here:
+    closing date written out, three units, urgency line, entrance only.
+
+  Every class is prefixed ecd- so it cannot collide with the rest of the page.
+-->
+<section class="ecd px-5 py-14 sm:px-8" aria-labelledby="ecd-title">
+
+  <style>
+    
+    @layer ecd-base {
+      .ecd,.ecd *,.ecd *::before,.ecd *::after{box-sizing:border-box}
+      .ecd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ecd h2,.ecd p{margin:0}
+      .ecd ul,.ecd ol{margin:0;padding:0;list-style:none}
+      .ecd{background-color:rgb(var(--ecd-band));color:rgb(var(--ecd-ink));padding:3.5rem 1.25rem}
+      .ecd .ecd-wrap{max-width:36rem;margin-inline:auto;text-align:center}
+      .ecd .ecd-row{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+      .ecd h2{font-size:1.5rem;font-weight:600}
+      .ecd p{font-size:1rem;line-height:1.6}
+    }
+
+    .ecd{
+      --ecd-surface:255 255 255;
+      --ecd-band:246 247 249;
+      --ecd-ink:15 23 42;
+      --ecd-soft:92 107 129;
+      --ecd-accent:37 99 235;
+      --ecd-deep:11 18 32;
+      background-color:rgb(var(--ecd-band));
+      color:rgb(var(--ecd-ink));
+    }
+    .ecd .ecd-soft{color:rgb(var(--ecd-soft))}
+    .ecd .ecd-date{color:rgb(var(--ecd-accent));font-weight:600}
+
+    .ecd .ecd-unit{
+      min-width:5rem;padding:.9rem .75rem;border-radius:.9rem;
+      background-color:rgb(var(--ecd-surface));border:1px solid rgb(var(--ecd-ink)/.10);
+    }
+    .ecd .ecd-num{display:block;font-size:1.75rem;font-weight:600;line-height:1.1}
+    .ecd .ecd-lbl{display:block;margin-top:.2rem;font-size:.7rem;font-weight:600;
+      letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--ecd-soft))}
+
+    .ecd .ecd-panel{animation:ecd-rise 420ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes ecd-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .ecd .ecd-panel{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ecd, .ecd *, .ecd::before, .ecd *::before, .ecd::after, .ecd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ecd, .ecd *, .ecd::after, .ecd *::after, .ecd::before, .ecd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ecd::after, .ecd *::after, .ecd::before, .ecd *::before{--tw-content:'';}
+      .ecd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ecd h1, .ecd h2, .ecd h3, .ecd h4, .ecd h5, .ecd h6{font-size:inherit;font-weight:inherit;}
+      .ecd blockquote, .ecd dd, .ecd dl, .ecd figure, .ecd h1, .ecd h2, .ecd h3, .ecd h4, .ecd h5, .ecd h6, .ecd hr, .ecd p, .ecd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ecd menu, .ecd ol, .ecd ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .ecd.mx-auto, .ecd .mx-auto{margin-left:auto;margin-right:auto;}
+      .ecd.mt-2, .ecd .mt-2{margin-top:0.5rem;}
+      .ecd.mt-5, .ecd .mt-5{margin-top:1.25rem;}
+      .ecd.mt-6, .ecd .mt-6{margin-top:1.5rem;}
+      .ecd.flex, .ecd .flex{display:flex;}
+      .ecd.max-w-md, .ecd .max-w-md{max-width:28rem;}
+      .ecd.flex-wrap, .ecd .flex-wrap{flex-wrap:wrap;}
+      .ecd.justify-center, .ecd .justify-center{justify-content:center;}
+      .ecd.gap-3, .ecd .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ecd.px-5, .ecd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ecd.py-14, .ecd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ecd.text-center, .ecd .text-center{text-align:center;}
+      .ecd.text-2xl, .ecd .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .ecd.text-base, .ecd .text-base{font-size:1rem;line-height:1.5rem;}
+      .ecd.text-sm, .ecd .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .ecd.font-semibold, .ecd .font-semibold{font-weight:600;}
+      .ecd.leading-relaxed, .ecd .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.ecd.sm\:px-8, .ecd .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="ecd-wrap ecd-panel mx-auto max-w-md text-center">
+    <h2 id="ecd-title" class="text-2xl font-semibold">The winter service price ends soon</h2>
+    <p class="ecd-soft mt-2 text-base leading-relaxed">Book before <time class="ecd-date" datetime="2026-10-31">Friday 31 October 2026</time> and the service is £69 rather than £95.</p>
+
+    <ul class="ecd-row mt-6 flex flex-wrap justify-center gap-3">
+      <li class="ecd-unit">
+        <span class="ecd-num">31</span>
+        <span class="ecd-lbl">October</span>
+      </li>
+      <li class="ecd-unit">
+        <span class="ecd-num">17:00</span>
+        <span class="ecd-lbl">Closes</span>
+      </li>
+      <li class="ecd-unit">
+        <span class="ecd-num">£26</span>
+        <span class="ecd-lbl">You save</span>
+      </li>
+    </ul>
+
+    <p class="ecd-soft mt-5 text-sm">Slots for October are usually gone by the middle of the month, so the date is the last one we can book, not the last one we have.</p>
+  </div>
+</section>

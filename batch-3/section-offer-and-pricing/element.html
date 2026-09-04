@@ -1,0 +1,223 @@
+<!--
+  Offer and Pricing section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The monthly and annual choice is a radio group with :checked ~ rules, not a
+  script. That gives one tab stop, arrow keys between the two options, and an
+  announced selected state, all for nothing.
+
+  Four things have to line up for that to work: the inputs come before the
+  prices, they share a parent with them, each price is a sibling the selector
+  can reach, and the class named in the rule is the class actually used.
+
+  Every card is the same height with the button at the foot, and the billing
+  term sits beside the figure rather than in small print beneath it.
+
+  Default configuration shown here:
+    three tiers, middle featured, monthly and annual choice, guarantee line.
+
+  Every class is prefixed sof- so it cannot collide with the rest of the page.
+  It uses two ids for the radio group, so placing it twice needs them renamed.
+-->
+<section class="sof px-5 py-16 sm:px-8" aria-labelledby="sof-title">
+
+  <style>
+    
+    @layer sof-base {
+      .sof,.sof *,.sof *::before,.sof *::after{box-sizing:border-box}
+      .sof{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .sof h2,.sof h3,.sof p{margin:0}
+      .sof ul,.sof ol{margin:0;padding:0;list-style:none}
+      .sof svg{display:block;max-width:100%}
+      .sof{background-color:rgb(var(--sof-band));color:rgb(var(--sof-ink));padding:4rem 1.25rem}
+      .sof .sof-wrap{max-width:64rem;margin-inline:auto}
+      .sof .sof-row{display:grid;gap:1.5rem}
+      .sof h2{font-size:1.875rem;font-weight:600}
+      .sof h3{font-size:1.125rem;font-weight:600}
+      .sof p{font-size:.9375rem;line-height:1.6}
+    }
+
+    .sof{
+      --sof-surface:255 255 255;
+      --sof-band:246 247 249;
+      --sof-ink:15 23 42;
+      --sof-soft:92 107 129;
+      --sof-accent:37 99 235;
+      --sof-deep:11 18 32;
+      background-color:rgb(var(--sof-band));
+      color:rgb(var(--sof-ink));
+    }
+    .sof .sof-soft{color:rgb(var(--sof-soft))}
+
+    .sof .sof-switch{display:inline-flex;padding:.25rem;border-radius:9999px;
+      background-color:rgb(var(--sof-ink)/.06)}
+    .sof .sof-switch input{position:absolute;opacity:0;width:1px;height:1px}
+    .sof .sof-opt{
+      display:inline-flex;align-items:center;justify-content:center;min-height:2.5rem;
+      padding:.5rem 1.1rem;border-radius:9999px;font-size:.875rem;font-weight:600;cursor:pointer;
+      color:rgb(var(--sof-soft));transition:background-color 200ms ease,color 200ms ease;
+    }
+    .sof #sof-monthly:checked ~ .sof-switch label[for="sof-monthly"],
+    .sof #sof-annual:checked ~ .sof-switch label[for="sof-annual"]{
+      background-color:rgb(var(--sof-surface));color:rgb(var(--sof-ink));
+      box-shadow:0 2px 8px rgb(15 23 42 / .10);
+    }
+    .sof .sof-opt:focus-within{outline:2px solid rgb(var(--sof-accent));outline-offset:2px}
+    .sof input:focus-visible + .sof-switch{outline:2px solid rgb(var(--sof-accent))}
+
+    /* Only one price shows at a time. Both are in the markup. */
+    .sof .sof-annual{display:none}
+    .sof #sof-annual:checked ~ .sof-body .sof-annual{display:block}
+    .sof #sof-annual:checked ~ .sof-body .sof-monthly{display:none}
+
+    .sof .sof-card{
+      display:flex;flex-direction:column;height:100%;position:relative;
+      border-radius:1.25rem;padding:1.75rem;
+      background-color:rgb(var(--sof-surface));border:1px solid rgb(var(--sof-ink)/.10);
+      transition:transform 240ms cubic-bezier(.16,1,.3,1),box-shadow 240ms ease;
+      animation:sof-rise 420ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .sof .sof-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgb(15 23 42 / .10)}
+    @keyframes sof-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .sof .sof-featured{border:2px solid rgb(var(--sof-accent))}
+    .sof .sof-badge{
+      position:absolute;top:-.75rem;left:1.75rem;padding:.3rem .75rem;border-radius:9999px;
+      font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+      background-color:rgb(var(--sof-accent));color:#fff;
+    }
+    .sof .sof-price{font-size:2.25rem;font-weight:600;line-height:1.05}
+    .sof .sof-term{font-size:.9375rem;font-weight:400;color:rgb(var(--sof-soft))}
+    .sof .sof-tick{color:rgb(var(--sof-accent))}
+
+    .sof .sof-cta,.sof .sof-quiet{
+      margin-top:auto;display:inline-flex;align-items:center;justify-content:center;
+      min-height:2.75rem;border-radius:9999px;font-weight:600;font-size:.875rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1),border-color 200ms ease;
+    }
+    .sof .sof-cta{background-color:rgb(var(--sof-accent));color:#fff}
+    .sof .sof-quiet{border:1px solid rgb(var(--sof-ink)/.16);color:rgb(var(--sof-ink))}
+    .sof .sof-cta:hover,.sof .sof-quiet:hover{transform:translateY(-2px)}
+    .sof .sof-quiet:hover{border-color:rgb(var(--sof-accent))}
+    .sof .sof-cta:focus-visible,.sof .sof-quiet:focus-visible{outline:2px solid rgb(var(--sof-accent));outline-offset:3px}
+
+    @media (min-width: 768px){ .sof .sof-row{grid-template-columns:repeat(3,minmax(0,1fr))} }
+
+    @media (prefers-reduced-motion: reduce){
+      .sof .sof-card,.sof .sof-cta,.sof .sof-quiet,.sof .sof-opt{animation:none;transition:none}
+      .sof .sof-card:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .sof, .sof *, .sof::before, .sof *::before, .sof::after, .sof *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .sof, .sof *, .sof::after, .sof *::after, .sof::before, .sof *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .sof::after, .sof *::after, .sof::before, .sof *::before{--tw-content:'';}
+      .sof{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .sof h1, .sof h2, .sof h3, .sof h4, .sof h5, .sof h6{font-size:inherit;font-weight:inherit;}
+      .sof a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .sof button, .sof input, .sof optgroup, .sof select, .sof textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .sof blockquote, .sof dd, .sof dl, .sof figure, .sof h1, .sof h2, .sof h3, .sof h4, .sof h5, .sof h6, .sof hr, .sof p, .sof pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .sof menu, .sof ol, .sof ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .sof input::placeholder, .sof textarea::placeholder{opacity:1;color:rgb(156, 163, 175);}
+      .sof audio, .sof canvas, .sof embed, .sof iframe, .sof img, .sof object, .sof svg, .sof video{display:block;vertical-align:middle;}
+      .sof.mx-auto, .sof .mx-auto{margin-left:auto;margin-right:auto;}
+      .sof.mb-6, .sof .mb-6{margin-bottom:1.5rem;}
+      .sof.mb-7, .sof .mb-7{margin-bottom:1.75rem;}
+      .sof.mt-0\.5, .sof .mt-0\.5{margin-top:0.125rem;}
+      .sof.mt-1, .sof .mt-1{margin-top:0.25rem;}
+      .sof.mt-2, .sof .mt-2{margin-top:0.5rem;}
+      .sof.mt-5, .sof .mt-5{margin-top:1.25rem;}
+      .sof.mt-6, .sof .mt-6{margin-top:1.5rem;}
+      .sof.mt-7, .sof .mt-7{margin-top:1.75rem;}
+      .sof.flex, .sof .flex{display:flex;}
+      .sof.grid, .sof .grid{display:grid;}
+      .sof.h-4, .sof .h-4{height:1rem;}
+      .sof.w-4, .sof .w-4{width:1rem;}
+      .sof.max-w-4xl, .sof .max-w-4xl{max-width:56rem;}
+      .sof.shrink-0, .sof .shrink-0{flex-shrink:0;}
+      .sof.items-stretch, .sof .items-stretch{align-items:stretch;}
+      .sof.gap-2, .sof .gap-2{row-gap:0.5rem;column-gap:0.5rem;}
+      .sof.gap-6, .sof .gap-6{row-gap:1.5rem;column-gap:1.5rem;}
+      .sof.space-y-2 > :not([hidden]) ~ :not([hidden]), .sof .space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse));}
+      .sof.px-5, .sof .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .sof.py-16, .sof .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .sof.text-center, .sof .text-center{text-align:center;}
+      .sof.text-3xl, .sof .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .sof.text-base, .sof .text-base{font-size:1rem;line-height:1.5rem;}
+      .sof.text-lg, .sof .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .sof.text-sm, .sof .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .sof.font-semibold, .sof .font-semibold{font-weight:600;}
+      .sof.leading-relaxed, .sof .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.sof.sm\:px-8, .sof .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="sof-wrap mx-auto max-w-4xl">
+    <h2 id="sof-title" class="text-3xl font-semibold">Cover that actually turns up</h2>
+    <p class="sof-soft mt-2 mb-7 text-base leading-relaxed">Every plan includes an annual service, unlimited call outs and no excess.</p>
+
+    <input type="radio" id="sof-monthly" name="sof-term" checked>
+    <input type="radio" id="sof-annual" name="sof-term">
+
+    <div class="sof-switch" role="group" aria-label="Choose how you pay">
+      <label class="sof-opt" for="sof-monthly">Monthly</label>
+      <label class="sof-opt" for="sof-annual">Annual, two months free</label>
+    </div>
+
+    <div class="sof-body mt-7">
+      <ul class="sof-row grid items-stretch gap-6">
+        <li>
+          <article class="sof-card">
+            <h3 class="text-lg font-semibold">Boiler only</h3>
+            <p class="sof-soft mt-1">The unit itself, parts and labour.</p>
+            <p class="sof-price sof-monthly mt-5">£14 <span class="sof-term">a month</span></p>
+            <p class="sof-price sof-annual mt-5">£140 <span class="sof-term">a year</span></p>
+            <ul class="mt-5 mb-6 space-y-2 text-sm">
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Annual service</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Parts and labour</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Unlimited call outs</span></li>
+            </ul>
+            <a href="#cover" class="sof-quiet">Choose boiler only</a>
+          </article>
+        </li>
+
+        <li>
+          <article class="sof-card sof-featured">
+            <span class="sof-badge">Recommended</span>
+            <h3 class="text-lg font-semibold">Boiler and heating</h3>
+            <p class="sof-soft mt-1">Radiators, valves and controls as well.</p>
+            <p class="sof-price sof-monthly mt-5">£21 <span class="sof-term">a month</span></p>
+            <p class="sof-price sof-annual mt-5">£210 <span class="sof-term">a year</span></p>
+            <ul class="mt-5 mb-6 space-y-2 text-sm">
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Everything in boiler only</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Radiators and valves</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Same day in winter</span></li>
+            </ul>
+            <a href="#cover" class="sof-cta">Choose boiler and heating</a>
+          </article>
+        </li>
+
+        <li>
+          <article class="sof-card">
+            <h3 class="text-lg font-semibold">Whole home</h3>
+            <p class="sof-soft mt-1">Heating, plumbing and drains together.</p>
+            <p class="sof-price sof-monthly mt-5">£29 <span class="sof-term">a month</span></p>
+            <p class="sof-price sof-annual mt-5">£290 <span class="sof-term">a year</span></p>
+            <ul class="mt-5 mb-6 space-y-2 text-sm">
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Everything above</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Internal plumbing</span></li>
+              <li class="flex gap-2"><svg class="sof-tick mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6" fill="none"/></svg><span>Blocked drains</span></li>
+            </ul>
+            <a href="#cover" class="sof-quiet">Choose whole home</a>
+          </article>
+        </li>
+      </ul>
+    </div>
+
+    <p class="sof-soft mt-6 text-center text-sm">Thirty days' notice to cancel, no joining fee, and if we cannot fix it on the first visit the next one is free.</p>
+  </div>
+</section>

@@ -1,0 +1,141 @@
+<!--
+  Pop-Up Window element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Opened with :target from a real link, and closed with another real link, so
+  both work from a keyboard. It does not open on a timer, on exit intent or on
+  scroll depth: every one of those needs a script.
+
+  Focus is not trapped inside the panel, because trapping focus needs a script
+  too. That is why nothing essential lives in here. The offer on the page is
+  the offer; this is a convenience.
+
+  Default configuration shown here:
+    centre panel, opened from a link, dimmed backdrop, close top right,
+    drawer shape on a phone.
+
+  Every class is prefixed epu- so it cannot collide with the rest of the page.
+  It uses one id, so placing it twice on a page needs that id renamed.
+-->
+<section class="epu px-5 py-14 sm:px-8" aria-labelledby="epu-title">
+
+  <style>
+    
+    @layer epu-base {
+      .epu,.epu *,.epu *::before,.epu *::after{box-sizing:border-box}
+      .epu{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .epu h2,.epu h3,.epu p{margin:0}
+      .epu{background-color:rgb(var(--epu-surface));color:rgb(var(--epu-ink));padding:3.5rem 1.25rem}
+      .epu .epu-wrap{max-width:40rem;margin-inline:auto}
+      .epu h2{font-size:1.75rem;font-weight:600}
+      .epu h3{font-size:1.25rem;font-weight:600}
+      .epu p{font-size:1rem;line-height:1.625}
+    }
+
+    .epu{
+      --epu-surface:255 255 255;
+      --epu-band:246 247 249;
+      --epu-ink:15 23 42;
+      --epu-soft:92 107 129;
+      --epu-accent:37 99 235;
+      --epu-deep:11 18 32;
+      background-color:rgb(var(--epu-surface));
+      color:rgb(var(--epu-ink));
+      position:relative;
+    }
+    .epu .epu-soft{color:rgb(var(--epu-soft))}
+
+    .epu .epu-open{
+      display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
+      padding:.7rem 1.4rem;border-radius:9999px;font-weight:600;font-size:.9375rem;
+      background-color:rgb(var(--epu-accent));color:#fff;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .epu .epu-open:hover{transform:translateY(-2px)}
+    .epu .epu-open:focus-visible{outline:2px solid rgb(var(--epu-accent));outline-offset:3px}
+
+    .epu .epu-layer{
+      position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:1rem;
+      opacity:0;visibility:hidden;transition:opacity 240ms ease,visibility 240ms;
+    }
+    .epu .epu-scrim{position:absolute;inset:0;background-color:rgb(0 0 0 / .45)}
+    .epu .epu-panel{
+      position:relative;width:100%;max-width:26rem;border-radius:1.25rem;padding:1.75rem;
+      background-color:rgb(var(--epu-surface));color:rgb(var(--epu-ink));
+      box-shadow:0 24px 60px rgb(0 0 0 / .3);
+      transform:scale(.96);transition:transform 240ms cubic-bezier(.16,1,.3,1);
+    }
+    .epu #epu-offer:target{opacity:1;visibility:visible}
+    .epu #epu-offer:target .epu-panel{transform:scale(1)}
+
+    .epu .epu-close{
+      position:absolute;top:.6rem;right:.6rem;
+      display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:9999px;
+      color:rgb(var(--epu-soft));
+    }
+    .epu .epu-close:hover{background-color:rgb(var(--epu-ink)/.06);color:rgb(var(--epu-ink))}
+    .epu .epu-close:focus-visible{outline:2px solid rgb(var(--epu-accent));outline-offset:2px}
+
+    @media (max-width: 639px){
+      .epu .epu-layer{place-items:end;padding:0}
+      .epu .epu-panel{max-width:none;border-radius:1.25rem 1.25rem 0 0;transform:translateY(12px)}
+      .epu #epu-offer:target .epu-panel{transform:none}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .epu .epu-layer,.epu .epu-panel,.epu .epu-open{transition:none}
+      .epu .epu-open:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .epu, .epu *, .epu::before, .epu *::before, .epu::after, .epu *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .epu, .epu *, .epu::after, .epu *::after, .epu::before, .epu *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .epu::after, .epu *::after, .epu::before, .epu *::before{--tw-content:'';}
+      .epu{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .epu h1, .epu h2, .epu h3, .epu h4, .epu h5, .epu h6{font-size:inherit;font-weight:inherit;}
+      .epu a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .epu blockquote, .epu dd, .epu dl, .epu figure, .epu h1, .epu h2, .epu h3, .epu h4, .epu h5, .epu h6, .epu hr, .epu p, .epu pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .epu audio, .epu canvas, .epu embed, .epu iframe, .epu img, .epu object, .epu svg, .epu video{display:block;vertical-align:middle;}
+      .epu.mx-auto, .epu .mx-auto{margin-left:auto;margin-right:auto;}
+      .epu.mb-2, .epu .mb-2{margin-bottom:0.5rem;}
+      .epu.mb-6, .epu .mb-6{margin-bottom:1.5rem;}
+      .epu.mt-2, .epu .mt-2{margin-top:0.5rem;}
+      .epu.mt-4, .epu .mt-4{margin-top:1rem;}
+      .epu.h-5, .epu .h-5{height:1.25rem;}
+      .epu.w-5, .epu .w-5{width:1.25rem;}
+      .epu.max-w-xl, .epu .max-w-xl{max-width:36rem;}
+      .epu.px-5, .epu .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .epu.py-14, .epu .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .epu.pr-10, .epu .pr-10{padding-right:2.5rem;}
+      .epu.text-2xl, .epu .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .epu.text-base, .epu .text-base{font-size:1rem;line-height:1.5rem;}
+      .epu.text-sm, .epu .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .epu.text-xl, .epu .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .epu.font-semibold, .epu .font-semibold{font-weight:600;}
+      .epu.leading-relaxed, .epu .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.epu.sm\:px-8, .epu .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="epu-wrap mx-auto max-w-xl">
+    <h2 id="epu-title" class="mb-2 text-2xl font-semibold">Booking more than one job?</h2>
+    <p class="epu-soft mb-6 text-base leading-relaxed">There is a standing discount when two jobs are booked on the same visit. The details are short, so they are tucked away rather than taking up the page.</p>
+    <a href="#epu-offer" class="epu-open">See the discount</a>
+  </div>
+
+  <div id="epu-offer" class="epu-layer" role="dialog" aria-labelledby="epu-panel-title" aria-modal="false">
+    <a href="#epu-title" class="epu-scrim" aria-label="Close"></a>
+    <div class="epu-panel">
+      <a href="#epu-title" class="epu-close" aria-label="Close">
+        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" fill="none"/></svg>
+      </a>
+      <h3 id="epu-panel-title" class="pr-10 text-xl font-semibold">Two jobs, one visit</h3>
+      <p class="epu-soft mt-2 text-base leading-relaxed">Book a second job on the same visit and the second call out fee comes off the quote. It applies to any two jobs at the same address, and there is nothing to claim: it is already on the quote when you get it.</p>
+      <p class="epu-soft mt-4 text-sm">Mention it when you call, or write it in the enquiry.</p>
+    </div>
+  </div>
+</section>

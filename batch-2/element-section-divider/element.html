@@ -1,0 +1,108 @@
+<!--
+  Section Divider element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Three dividers are shown together so the choices are visible: a plain hr
+  that really separates content and is announced, a labelled divider whose
+  label sits on the section background so the line does not run through the
+  words, and a decorative gradient rule that is hidden from a screen reader.
+
+  Default configuration shown here:
+    short centered rule, one pixel, hairline colour, draw from centre.
+
+  Every class is prefixed edv- so it cannot collide with the rest of the page.
+-->
+<section class="edv px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer edv-base {
+      .edv,.edv *,.edv *::before,.edv *::after{box-sizing:border-box}
+      .edv{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .edv h2,.edv p{margin:0}
+      .edv img,.edv svg{display:block;max-width:100%}
+      .edv{background-color:rgb(var(--edv-surface));color:rgb(var(--edv-ink));padding:3.5rem 1.25rem}
+      .edv .edv-wrap{max-width:40rem;margin-inline:auto}
+      .edv p{font-size:1rem;line-height:1.6}
+    }
+
+    .edv{
+      --edv-surface:255 255 255;
+      --edv-band:246 247 249;
+      --edv-ink:15 23 42;
+      --edv-soft:92 107 129;
+      --edv-accent:37 99 235;
+      --edv-deep:11 18 32;
+      background-color:rgb(var(--edv-surface));
+      color:rgb(var(--edv-ink));
+    }
+    .edv .edv-soft{color:rgb(var(--edv-soft))}
+
+    .edv .edv-rule{
+      height:1px;border:0;margin:2rem auto;width:5rem;
+      background-color:rgb(var(--edv-ink)/.18);
+      animation:edv-draw 500ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .edv .edv-grad{
+      height:1px;margin:2rem 0;width:100%;
+      background-image:linear-gradient(to right,transparent,rgb(var(--edv-accent)/.55),transparent);
+      animation:edv-draw 500ms cubic-bezier(.16,1,.3,1) both;
+    }
+    @keyframes edv-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* The label sits on the section background, so the line stops either side
+       of the words instead of running through them. */
+    .edv .edv-labelled{display:flex;align-items:center;gap:1rem;margin:2rem 0}
+    .edv .edv-labelled::before,.edv .edv-labelled::after{
+      content:"";flex:1;height:1px;background-color:rgb(var(--edv-ink)/.14);
+    }
+    .edv .edv-label{
+      font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+      color:rgb(var(--edv-soft));
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .edv .edv-rule,.edv .edv-grad{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .edv, .edv *, .edv::before, .edv *::before, .edv::after, .edv *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .edv, .edv *, .edv::after, .edv *::after, .edv::before, .edv *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .edv::after, .edv *::after, .edv::before, .edv *::before{--tw-content:'';}
+      .edv{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .edv hr{height:0px;color:inherit;border-top-width:1px;}
+      .edv blockquote, .edv dd, .edv dl, .edv figure, .edv h1, .edv h2, .edv h3, .edv h4, .edv h5, .edv h6, .edv hr, .edv p, .edv pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .edv.mx-auto, .edv .mx-auto{margin-left:auto;margin-right:auto;}
+      .edv.max-w-xl, .edv .max-w-xl{max-width:36rem;}
+      .edv.px-5, .edv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .edv.py-14, .edv .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .edv.text-base, .edv .text-base{font-size:1rem;line-height:1.5rem;}
+      .edv.leading-relaxed, .edv .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.edv.sm\:px-8, .edv .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="edv-wrap mx-auto max-w-xl">
+    <p class="edv-soft text-base leading-relaxed">We started with one van and a landline in the spare room, and most of the first year's work came from somebody telling somebody else.</p>
+
+    <!-- A real separator between two parts of the content, so it is announced. -->
+    <hr class="edv-rule">
+
+    <p class="edv-soft text-base leading-relaxed">Eighteen years on there are eleven of us, and the phone is still answered by somebody who has been on the tools.</p>
+
+    <div class="edv-labelled" role="presentation">
+      <span class="edv-label">Since 2008</span>
+    </div>
+
+    <p class="edv-soft text-base leading-relaxed">Every engineer trains in house before they are let near a customer's home.</p>
+
+    <!-- Decorative only, so it is hidden rather than announced. -->
+    <div class="edv-grad" aria-hidden="true"></div>
+
+    <p class="edv-soft text-base leading-relaxed">That has not changed, and it is not going to.</p>
+  </div>
+</section>

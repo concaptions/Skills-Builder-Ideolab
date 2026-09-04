@@ -1,0 +1,167 @@
+<!--
+  Sliding Images element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  This is a real scroll container with scroll-snap, not a transform driven
+  track with hidden overflow. That means a finger, a trackpad, a scrollbar and
+  the arrow keys all work with no script, and a screen reader can reach every
+  slide.
+
+  Nothing advances on its own. A rail that moves by itself takes the slide
+  away as the reader starts to look at it.
+
+  The next slide peeks in on purpose. That is what tells the reader there is
+  more to the right.
+
+  Default configuration shown here:
+    three visible above 1024px, one and a bit on a phone, 16 by 10 crop,
+    snap to each slide, no autoplay.
+
+  Every class is prefixed esl- so it cannot collide with the rest of the page.
+-->
+<section class="esl px-5 py-14 sm:px-8" aria-labelledby="esl-title">
+
+  <style>
+    
+    @layer esl-base {
+      .esl,.esl *,.esl *::before,.esl *::after{box-sizing:border-box}
+      .esl{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esl h2,.esl p,.esl figure,.esl figcaption{margin:0}
+      .esl ul,.esl ol{margin:0;padding:0;list-style:none}
+      .esl img,.esl svg{display:block;max-width:100%}
+      .esl{background-color:rgb(var(--esl-surface));color:rgb(var(--esl-ink));padding:3.5rem 1.25rem}
+      .esl .esl-wrap{max-width:64rem;margin-inline:auto}
+      .esl h2{font-size:1.75rem;font-weight:600}
+      .esl p,.esl figcaption{font-size:.9375rem;line-height:1.6}
+    }
+
+    .esl{
+      --esl-surface:255 255 255;
+      --esl-band:246 247 249;
+      --esl-ink:15 23 42;
+      --esl-soft:92 107 129;
+      --esl-accent:37 99 235;
+      --esl-deep:11 18 32;
+      background-color:rgb(var(--esl-surface));
+      color:rgb(var(--esl-ink));
+    }
+    .esl .esl-soft{color:rgb(var(--esl-soft))}
+
+    .esl .esl-rail{
+      display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;
+      padding-bottom:.75rem;scrollbar-width:thin;
+    }
+    .esl .esl-rail:focus-visible{outline:2px solid rgb(var(--esl-accent));outline-offset:4px;border-radius:1rem}
+    .esl .esl-slide{
+      flex:0 0 78%;scroll-snap-align:start;
+    }
+    .esl .esl-frame{
+      overflow:hidden;border-radius:1rem;aspect-ratio:16 / 10;
+      background-color:rgb(var(--esl-band));
+    }
+    .esl .esl-frame > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 480ms cubic-bezier(.16,1,.3,1)}
+    .esl .esl-slide:hover .esl-frame > *{transform:scale(1.04)}
+
+    @media (min-width: 640px){ .esl .esl-slide{flex-basis:46%} }
+    @media (min-width: 1024px){ .esl .esl-slide{flex-basis:31.5%} }
+
+    @media (prefers-reduced-motion: reduce){
+      .esl .esl-rail{scroll-behavior:auto}
+      .esl .esl-frame > *{transition:none}
+      .esl .esl-slide:hover .esl-frame > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esl, .esl *, .esl::before, .esl *::before, .esl::after, .esl *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esl, .esl *, .esl::after, .esl *::after, .esl::before, .esl *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esl::after, .esl *::after, .esl::before, .esl *::before{--tw-content:'';}
+      .esl{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esl h1, .esl h2, .esl h3, .esl h4, .esl h5, .esl h6{font-size:inherit;font-weight:inherit;}
+      .esl blockquote, .esl dd, .esl dl, .esl figure, .esl h1, .esl h2, .esl h3, .esl h4, .esl h5, .esl h6, .esl hr, .esl p, .esl pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esl menu, .esl ol, .esl ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esl audio, .esl canvas, .esl embed, .esl iframe, .esl img, .esl object, .esl svg, .esl video{display:block;vertical-align:middle;}
+      .esl.mx-auto, .esl .mx-auto{margin-left:auto;margin-right:auto;}
+      .esl.mb-2, .esl .mb-2{margin-bottom:0.5rem;}
+      .esl.mb-6, .esl .mb-6{margin-bottom:1.5rem;}
+      .esl.mt-2, .esl .mt-2{margin-top:0.5rem;}
+      .esl.max-w-4xl, .esl .max-w-4xl{max-width:56rem;}
+      .esl.fill-muted, .esl .fill-muted{fill:rgb(246, 247, 249);}
+      .esl.px-5, .esl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esl.py-14, .esl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .esl.text-2xl, .esl .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .esl.text-base, .esl .text-base{font-size:1rem;line-height:1.5rem;}
+      .esl.text-sm, .esl .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .esl.font-semibold, .esl .font-semibold{font-weight:600;}
+      .esl.leading-relaxed, .esl .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.esl.sm\:px-8, .esl .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esl-wrap mx-auto max-w-4xl">
+    <h2 id="esl-title" class="mb-2 text-2xl font-semibold">Jobs from this year</h2>
+    <p class="esl-soft mb-6 text-base leading-relaxed">Scroll sideways for more. Nothing here moves on its own.</p>
+
+    <ul class="esl-rail" tabindex="0" role="group" aria-label="Recent jobs, scroll for more">
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A bathroom stripped back to the joists">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <path d="M80 320h480" fill="none"/><path d="M160 320V160h160v160" fill="none"/><path d="M160 220h160" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Day one, West Bridgford</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="First fix pipework run in a bathroom wall">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <path d="M120 120h200v160h200" fill="none"/><path d="M120 240h140v80" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">First fix, day three</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Tiling part way up a bathroom wall">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.4">
+                <path d="M120 120h400v200H120z" fill="none"/>
+                <path d="M120 186h400M120 253h400M253 120v200M386 120v200" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Tiling, day five</figcaption>
+        </figure>
+      </li>
+      <li class="esl-slide">
+        <figure>
+          <div class="esl-frame">
+            <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="The finished bathroom handed back">
+              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
+              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
+                <rect x="140" y="120" width="180" height="200" rx="14" fill="none"/>
+                <rect x="380" y="200" width="140" height="120" rx="12" fill="none"/>
+                <circle cx="230" cy="180" r="22" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption class="esl-soft mt-2 text-sm">Handed back, day eight</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>

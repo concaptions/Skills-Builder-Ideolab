@@ -1,0 +1,81 @@
+<!--
+  Text Paragraph element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The measure is capped at about 68 characters. Prose set wider than that
+  loses the reader on the return sweep to the next line.
+
+  Default configuration shown here:
+    standard width, one column, lead sentence, one emphasised phrase,
+    fade and rise.
+
+  Every class is prefixed etx- so it cannot collide with the rest of the page.
+-->
+<section class="etx px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer etx-base {
+      .etx,.etx *,.etx *::before,.etx *::after{box-sizing:border-box}
+      .etx{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .etx h2,.etx h3,.etx p{margin:0}
+      .etx ul,.etx ol{margin:0;padding:0;list-style:none}
+      .etx img,.etx svg,.etx video{display:block;max-width:100%}
+      .etx{background-color:rgb(var(--etx-surface));color:rgb(var(--etx-ink));padding:3.5rem 1.25rem}
+      .etx .etx-wrap{max-width:40rem;margin-inline:auto}
+      .etx p{font-size:1.0625rem;line-height:1.7}
+    }
+
+    .etx{
+      --etx-surface:255 255 255;
+      --etx-band:246 247 249;
+      --etx-ink:15 23 42;
+      --etx-soft:92 107 129;
+      --etx-accent:37 99 235;
+      --etx-deep:11 18 32;
+      background-color:rgb(var(--etx-surface));
+      color:rgb(var(--etx-ink));
+    }
+    .etx .etx-soft{color:rgb(var(--etx-soft))}
+    .etx .etx-mark{
+      background-image:linear-gradient(rgb(var(--etx-accent)/.16),rgb(var(--etx-accent)/.16));
+      background-repeat:no-repeat;background-position:0 88%;background-size:100% .38em;
+      padding-inline:.1em;font-weight:600;
+    }
+    .etx .etx-lead{font-size:1.1875rem;line-height:1.65}
+
+    .etx .etx-rise{animation:etx-rise 400ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes etx-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .etx .etx-rise{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .etx, .etx *, .etx::before, .etx *::before, .etx::after, .etx *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .etx, .etx *, .etx::after, .etx *::after, .etx::before, .etx *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .etx::after, .etx *::after, .etx::before, .etx *::before{--tw-content:'';}
+      .etx{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .etx blockquote, .etx dd, .etx dl, .etx figure, .etx h1, .etx h2, .etx h3, .etx h4, .etx h5, .etx h6, .etx hr, .etx p, .etx pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .etx.mx-auto, .etx .mx-auto{margin-left:auto;margin-right:auto;}
+      .etx.mt-5, .etx .mt-5{margin-top:1.25rem;}
+      .etx.max-w-xl, .etx .max-w-xl{max-width:36rem;}
+      .etx.px-5, .etx .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .etx.py-14, .etx .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .etx.text-base, .etx .text-base{font-size:1rem;line-height:1.5rem;}
+      .etx.text-lg, .etx .text-lg{font-size:1.125rem;line-height:1.75rem;}
+      .etx.leading-relaxed, .etx .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.etx.sm\:px-8, .etx .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="etx-wrap mx-auto max-w-xl etx-rise">
+    <p class="etx-lead text-lg leading-relaxed">A boiler that is sized properly costs less to run every winter it is fitted, and most of the ones we replace were never sized at all.</p>
+    <p class="etx-soft mt-5 text-base leading-relaxed">The survey takes about forty minutes. We measure the rooms, count the radiators and look at the pipework you already have, then quote against that rather than against a guess. <span class="etx-mark">The number on the quote is the number you pay</span>, and if we find something behind a wall that changes the job we stop and tell you before we carry on.</p>
+    <p class="etx-soft mt-5 text-base leading-relaxed">Most replacements are finished inside a day, and the heating is back on the same evening.</p>
+  </div>
+</section>

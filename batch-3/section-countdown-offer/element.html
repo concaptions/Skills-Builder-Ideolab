@@ -1,0 +1,138 @@
+<!--
+  Countdown Offer section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Nothing counts down. A countdown needs a clock and a clock needs a script,
+  and printed seconds that never move read as broken rather than urgent.
+
+  What is here instead is a real date, written in words, marked up with a time
+  element, and a reason for the deadline. A reason is what makes a deadline
+  believable; without one the reader assumes it will be extended.
+
+  Replace the date, the figures and the reason with the customer's own.
+
+  Default configuration shown here:
+    centred panel, deadline with three units, saving shown, one call to
+    action, reason stated.
+
+  Every class is prefixed sco- so it cannot collide with the rest of the page.
+-->
+<section class="sco px-5 py-16 sm:px-8" aria-labelledby="sco-title">
+
+  <style>
+    
+    @layer sco-base {
+      .sco,.sco *,.sco *::before,.sco *::after{box-sizing:border-box}
+      .sco{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .sco h2,.sco p{margin:0}
+      .sco ul,.sco ol{margin:0;padding:0;list-style:none}
+      .sco{background-color:rgb(var(--sco-deep));color:rgb(var(--sco-surface));padding:4rem 1.25rem}
+      .sco .sco-wrap{max-width:44rem;margin-inline:auto;text-align:center}
+      .sco .sco-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+      .sco h2{font-size:1.875rem;font-weight:600}
+      .sco p{font-size:1rem;line-height:1.625}
+    }
+
+    .sco{
+      --sco-surface:255 255 255;
+      --sco-band:246 247 249;
+      --sco-ink:15 23 42;
+      --sco-soft:92 107 129;
+      --sco-accent:37 99 235;
+      --sco-deep:11 18 32;
+      background-color:rgb(var(--sco-deep));
+      color:rgb(var(--sco-surface));
+    }
+    /* On this dark ground the soft value measures 3.93 to 1, so quiet copy is
+       a lowered opacity of the surface value instead. */
+    .sco .sco-quiet{color:rgb(var(--sco-surface)/.74)}
+
+    .sco .sco-unit{
+      min-width:6rem;padding:.9rem .8rem;border-radius:.9rem;
+      background-color:rgb(var(--sco-surface)/.08);border:1px solid rgb(var(--sco-surface)/.16);
+    }
+    .sco .sco-num{display:block;font-size:1.5rem;font-weight:600;line-height:1.1}
+    .sco .sco-lbl{display:block;margin-top:.2rem;font-size:.7rem;font-weight:600;
+      letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--sco-surface)/.7)}
+
+    .sco .sco-cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      min-height:3rem;padding:.85rem 1.8rem;border-radius:9999px;
+      background-color:rgb(var(--sco-accent));color:#fff;font-weight:600;
+      transition:transform 220ms cubic-bezier(.16,1,.3,1),box-shadow 220ms ease;
+    }
+    .sco .sco-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgb(var(--sco-accent)/.42)}
+    .sco .sco-cta:focus-visible{outline:2px solid rgb(var(--sco-surface));outline-offset:3px}
+
+    .sco .sco-panel{animation:sco-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes sco-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    @media (max-width: 479px){ .sco .sco-cta{width:100%} }
+
+    @media (prefers-reduced-motion: reduce){
+      .sco .sco-panel{animation:none}
+      .sco .sco-cta{transition:none}
+      .sco .sco-cta:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .sco, .sco *, .sco::before, .sco *::before, .sco::after, .sco *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .sco, .sco *, .sco::after, .sco *::after, .sco::before, .sco *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .sco::after, .sco *::after, .sco::before, .sco *::before{--tw-content:'';}
+      .sco{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .sco h1, .sco h2, .sco h3, .sco h4, .sco h5, .sco h6{font-size:inherit;font-weight:inherit;}
+      .sco a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .sco blockquote, .sco dd, .sco dl, .sco figure, .sco h1, .sco h2, .sco h3, .sco h4, .sco h5, .sco h6, .sco hr, .sco p, .sco pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .sco menu, .sco ol, .sco ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .sco.mx-auto, .sco .mx-auto{margin-left:auto;margin-right:auto;}
+      .sco.mt-3, .sco .mt-3{margin-top:0.75rem;}
+      .sco.mt-5, .sco .mt-5{margin-top:1.25rem;}
+      .sco.mt-7, .sco .mt-7{margin-top:1.75rem;}
+      .sco.mt-8, .sco .mt-8{margin-top:2rem;}
+      .sco.flex, .sco .flex{display:flex;}
+      .sco.max-w-2xl, .sco .max-w-2xl{max-width:42rem;}
+      .sco.max-w-md, .sco .max-w-md{max-width:28rem;}
+      .sco.flex-wrap, .sco .flex-wrap{flex-wrap:wrap;}
+      .sco.justify-center, .sco .justify-center{justify-content:center;}
+      .sco.gap-3, .sco .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .sco.px-5, .sco .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .sco.py-16, .sco .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .sco.text-center, .sco .text-center{text-align:center;}
+      .sco.text-3xl, .sco .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .sco.text-base, .sco .text-base{font-size:1rem;line-height:1.5rem;}
+      .sco.text-sm, .sco .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .sco.font-semibold, .sco .font-semibold{font-weight:600;}
+      .sco.leading-relaxed, .sco .leading-relaxed{line-height:1.625;}
+      .sco.leading-tight, .sco .leading-tight{line-height:1.25;}
+      @media (min-width: 640px){.sco.sm\:px-8, .sco .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="sco-wrap sco-panel mx-auto max-w-2xl text-center">
+    <h2 id="sco-title" class="text-3xl font-semibold leading-tight">£26 off a boiler service, until the end of October</h2>
+    <p class="sco-quiet mt-3 text-base leading-relaxed">Book before <time datetime="2026-10-31">Friday 31 October 2026</time> and the service is £69 rather than the usual £95.</p>
+
+    <ul class="sco-row mt-7 flex flex-wrap justify-center gap-3">
+      <li class="sco-unit">
+        <span class="sco-num">31 Oct</span>
+        <span class="sco-lbl">Last day</span>
+      </li>
+      <li class="sco-unit">
+        <span class="sco-num">£69</span>
+        <span class="sco-lbl">Instead of £95</span>
+      </li>
+      <li class="sco-unit">
+        <span class="sco-num">£26</span>
+        <span class="sco-lbl">You save</span>
+      </li>
+    </ul>
+
+    <p class="mt-8"><a class="sco-cta" href="#book">Book the service</a></p>
+
+    <p class="sco-quiet mx-auto mt-5 max-w-md text-sm leading-relaxed">The date is the end of our quiet season. From November the engineers are on breakdowns and a service has to wait, which is why the price goes back up.</p>
+  </div>
+</section>

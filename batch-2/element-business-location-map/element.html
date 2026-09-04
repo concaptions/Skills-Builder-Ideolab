@@ -1,0 +1,160 @@
+<!--
+  Business Location Map element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  There is no live map. A real map is a third party embed, which is an
+  external file and is not allowed here, and panning and zooming need a
+  script in any case.
+
+  What matters is here instead: the address as real text a reader can copy, a
+  drawn local map so the place is recognisable, and a link that opens
+  directions in whatever map app the visitor already uses.
+
+  The drawing is decorative and hidden from screen readers, because the
+  address beside it carries the meaning.
+
+  Default configuration shown here:
+    stylised map beside the details, marker shown, address, hours and phone,
+    directions link.
+
+  Every class is prefixed emp- so it cannot collide with the rest of the page.
+-->
+<section class="emp px-5 py-16 sm:px-8" aria-labelledby="emp-title">
+
+  <style>
+    
+    @layer emp-base {
+      .emp,.emp *,.emp *::before,.emp *::after{box-sizing:border-box}
+      .emp{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .emp h2,.emp h3,.emp p,.emp address{margin:0}
+      .emp ul,.emp ol{margin:0;padding:0;list-style:none}
+      .emp svg{display:block;max-width:100%}
+      .emp{background-color:rgb(var(--emp-surface));color:rgb(var(--emp-ink));padding:4rem 1.25rem}
+      .emp .emp-wrap{max-width:60rem;margin-inline:auto}
+      .emp .emp-row{display:grid;gap:1.75rem}
+      .emp h2{font-size:1.875rem;font-weight:600}
+      .emp h3{font-size:1rem;font-weight:600}
+      .emp p,.emp address{font-size:1rem;line-height:1.625;font-style:normal}
+    }
+
+    .emp{
+      --emp-surface:255 255 255;
+      --emp-band:246 247 249;
+      --emp-ink:15 23 42;
+      --emp-soft:92 107 129;
+      --emp-accent:37 99 235;
+      --emp-deep:11 18 32;
+      background-color:rgb(var(--emp-surface));
+      color:rgb(var(--emp-ink));
+    }
+    .emp .emp-soft{color:rgb(var(--emp-soft))}
+
+    .emp .emp-map{
+      overflow:hidden;border-radius:1.25rem;aspect-ratio:4 / 3;
+      background-color:rgb(var(--emp-band));border:1px solid rgb(var(--emp-ink)/.10);
+    }
+    .emp .emp-map svg{width:100%;height:100%}
+    .emp .emp-pin{animation:emp-drop 520ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes emp-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+    .emp .emp-dl{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      min-height:2.75rem;padding:.7rem 1.4rem;border-radius:9999px;
+      background-color:rgb(var(--emp-accent));color:#fff;font-weight:600;font-size:.9375rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .emp .emp-dl:hover{transform:translateY(-2px)}
+    .emp .emp-dl:focus-visible{outline:2px solid rgb(var(--emp-accent));outline-offset:3px}
+
+    @media (min-width: 768px){
+      .emp .emp-row{grid-template-columns:1.1fr 1fr;align-items:center;gap:2.5rem}
+    }
+    @media (max-width: 479px){
+      .emp .emp-dl{width:100%}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .emp .emp-pin{animation:none}
+      .emp .emp-dl{transition:none}
+      .emp .emp-dl:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .emp, .emp *, .emp::before, .emp *::before, .emp::after, .emp *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .emp, .emp *, .emp::after, .emp *::after, .emp::before, .emp *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .emp::after, .emp *::after, .emp::before, .emp *::before{--tw-content:'';}
+      .emp{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .emp h1, .emp h2, .emp h3, .emp h4, .emp h5, .emp h6{font-size:inherit;font-weight:inherit;}
+      .emp a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .emp blockquote, .emp dd, .emp dl, .emp figure, .emp h1, .emp h2, .emp h3, .emp h4, .emp h5, .emp h6, .emp hr, .emp p, .emp pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .emp menu, .emp ol, .emp ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .emp audio, .emp canvas, .emp embed, .emp iframe, .emp img, .emp object, .emp svg, .emp video{display:block;vertical-align:middle;}
+      .emp.mx-auto, .emp .mx-auto{margin-left:auto;margin-right:auto;}
+      .emp.mb-6, .emp .mb-6{margin-bottom:1.5rem;}
+      .emp.mt-2, .emp .mt-2{margin-top:0.5rem;}
+      .emp.mt-3, .emp .mt-3{margin-top:0.75rem;}
+      .emp.mt-6, .emp .mt-6{margin-top:1.5rem;}
+      .emp.grid, .emp .grid{display:grid;}
+      .emp.max-w-5xl, .emp .max-w-5xl{max-width:64rem;}
+      .emp.gap-7, .emp .gap-7{row-gap:1.75rem;column-gap:1.75rem;}
+      .emp.space-y-1 > :not([hidden]) ~ :not([hidden]), .emp .space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse));}
+      .emp.fill-accent, .emp .fill-accent{fill:rgb(37, 99, 235);}
+      .emp.fill-muted, .emp .fill-muted{fill:rgb(246, 247, 249);}
+      .emp.px-5, .emp .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .emp.py-16, .emp .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .emp.text-3xl, .emp .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .emp.text-base, .emp .text-base{font-size:1rem;line-height:1.5rem;}
+      .emp.text-sm, .emp .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .emp.font-semibold, .emp .font-semibold{font-weight:600;}
+      .emp.leading-relaxed, .emp .leading-relaxed{line-height:1.625;}
+      .emp.underline, .emp .underline{text-decoration-line:underline;}
+      @media (min-width: 640px){.emp.sm\:px-8, .emp .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="emp-wrap mx-auto max-w-5xl">
+    <h2 id="emp-title" class="mb-6 text-3xl font-semibold">Where to find us</h2>
+
+    <div class="emp-row grid gap-7">
+      <div class="emp-map" aria-hidden="true">
+        <svg viewBox="0 0 480 360">
+          <rect width="480" height="360" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#0f172a" stroke-width="10" opacity="0.10" stroke-linecap="square">
+            <path d="M0 130h480M0 250h480M140 0v360M330 0v360" fill="none"/>
+          </g>
+          <g fill="none" stroke="#0f172a" stroke-width="4" opacity="0.14">
+            <path d="M60 0v360M230 0v360M410 0v360M0 60h480M0 190h480M0 315h480" fill="none"/>
+          </g>
+          <rect x="150" y="140" width="80" height="60" rx="6" fill="#2563eb" opacity="0.10"/>
+          <g class="emp-pin">
+            <path d="M190 176c0-10 8-18 18-18s18 8 18 18c0 13-18 30-18 30s-18-17-18-30z" fill="#2563eb" class="fill-accent"/>
+            <circle cx="208" cy="176" r="6" fill="#ffffff"/>
+          </g>
+        </svg>
+      </div>
+
+      <div>
+        <h3 class="text-base font-semibold">Unit 4, Meadow Works</h3>
+        <address class="emp-soft mt-2 text-base leading-relaxed">
+          Meadow Lane<br>
+          Nottingham<br>
+          NG2 3HS
+        </address>
+
+        <h3 class="mt-6 text-base font-semibold">Opening hours</h3>
+        <ul class="emp-soft mt-2 space-y-1 text-base">
+          <li>Monday to Friday, 8am to 6pm</li>
+          <li>Saturday, 9am to 1pm</li>
+          <li>Sunday, emergencies only</li>
+        </ul>
+
+        <p class="mt-6"><a class="emp-dl" href="https://example.com/directions">Get directions</a></p>
+        <p class="emp-soft mt-3 text-sm">Or call <a class="font-semibold underline" href="tel:+441159600000">0115 960 0000</a>. The phone is answered by somebody who has been on the tools.</p>
+      </div>
+    </div>
+  </div>
+</section>

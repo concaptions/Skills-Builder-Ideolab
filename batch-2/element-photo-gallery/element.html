@@ -1,0 +1,163 @@
+<!--
+  Photo Gallery element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every tile carries the aspect ratio, not the picture, so a photograph of a
+  different shape cannot make the grid ragged.
+
+  There is no lightbox. A lightbox needs a focus trap and an escape key, both
+  of which need a script, and a fake one that cannot be closed by keyboard is
+  worse than none.
+
+  The placeholders are inline SVG. Replace them with the customer's own work.
+
+  Default configuration shown here:
+    three columns, square crop, no captions, hover zoom, staggered entrance.
+
+  Every class is prefixed egl- so it cannot collide with the rest of the page.
+-->
+<section class="egl px-5 py-14 sm:px-8" aria-labelledby="egl-title">
+
+  <style>
+    
+    @layer egl-base {
+      .egl,.egl *,.egl *::before,.egl *::after{box-sizing:border-box}
+      .egl{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .egl h2,.egl p,.egl figure{margin:0}
+      .egl ul,.egl ol{margin:0;padding:0;list-style:none}
+      .egl img,.egl svg{display:block;max-width:100%}
+      .egl{background-color:rgb(var(--egl-surface));color:rgb(var(--egl-ink));padding:3.5rem 1.25rem}
+      .egl .egl-wrap{max-width:60rem;margin-inline:auto}
+      .egl .egl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+      .egl h2{font-size:1.75rem;font-weight:600}
+      .egl p{font-size:1rem;line-height:1.6}
+    }
+
+    .egl{
+      --egl-surface:255 255 255;
+      --egl-band:246 247 249;
+      --egl-ink:15 23 42;
+      --egl-soft:92 107 129;
+      --egl-accent:37 99 235;
+      --egl-deep:11 18 32;
+      background-color:rgb(var(--egl-surface));
+      color:rgb(var(--egl-ink));
+    }
+    .egl .egl-soft{color:rgb(var(--egl-soft))}
+
+    /* The ratio lives on the tile. A differently shaped photograph cannot
+       make the row ragged. */
+    .egl .egl-tile{
+      overflow:hidden;border-radius:.9rem;aspect-ratio:1 / 1;
+      background-color:rgb(var(--egl-band));
+      animation:egl-rise 380ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .egl .egl-tile > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 480ms cubic-bezier(.16,1,.3,1)}
+    .egl .egl-tile:hover > *{transform:scale(1.06)}
+    @keyframes egl-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    @media (min-width: 640px){
+      .egl .egl-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .egl .egl-tile,.egl .egl-tile > *{animation:none;transition:none}
+      .egl .egl-tile:hover > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .egl, .egl *, .egl::before, .egl *::before, .egl::after, .egl *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .egl, .egl *, .egl::after, .egl *::after, .egl::before, .egl *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .egl::after, .egl *::after, .egl::before, .egl *::before{--tw-content:'';}
+      .egl{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .egl h1, .egl h2, .egl h3, .egl h4, .egl h5, .egl h6{font-size:inherit;font-weight:inherit;}
+      .egl blockquote, .egl dd, .egl dl, .egl figure, .egl h1, .egl h2, .egl h3, .egl h4, .egl h5, .egl h6, .egl hr, .egl p, .egl pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .egl menu, .egl ol, .egl ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .egl audio, .egl canvas, .egl embed, .egl iframe, .egl img, .egl object, .egl svg, .egl video{display:block;vertical-align:middle;}
+      .egl.mx-auto, .egl .mx-auto{margin-left:auto;margin-right:auto;}
+      .egl.mb-2, .egl .mb-2{margin-bottom:0.5rem;}
+      .egl.mb-6, .egl .mb-6{margin-bottom:1.5rem;}
+      .egl.grid, .egl .grid{display:grid;}
+      .egl.max-w-5xl, .egl .max-w-5xl{max-width:64rem;}
+      .egl.gap-3, .egl .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .egl.fill-muted, .egl .fill-muted{fill:rgb(246, 247, 249);}
+      .egl.px-5, .egl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .egl.py-14, .egl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .egl.text-2xl, .egl .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .egl.text-base, .egl .text-base{font-size:1rem;line-height:1.5rem;}
+      .egl.font-semibold, .egl .font-semibold{font-weight:600;}
+      .egl.leading-relaxed, .egl .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.egl.sm\:gap-4, .egl .sm\:gap-4{row-gap:1rem;column-gap:1rem;}.egl.sm\:px-8, .egl .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="egl-wrap mx-auto max-w-5xl">
+    <h2 id="egl-title" class="mb-2 text-2xl font-semibold">Recent work</h2>
+    <p class="egl-soft mb-6 text-base leading-relaxed">Every job below was finished in the last twelve months.</p>
+
+    <ul class="egl-grid grid gap-3 sm:gap-4">
+      <li class="egl-tile" style="animation-delay:0ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A tiled walk in shower with a glass screen">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="90" y="90" width="220" height="240" rx="12" fill="none"/>
+            <path d="M200 90v240M90 200h220" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:50ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A newly fitted combi boiler on a kitchen wall">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="130" y="90" width="140" height="180" rx="16" fill="none"/>
+            <circle cx="200" cy="160" r="26" fill="none"/>
+            <path d="M160 320h80" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:100ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A radiator fitted under a bay window">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="100" y="180" width="200" height="110" rx="10" fill="none"/>
+            <path d="M140 180v110M180 180v110M220 180v110M260 180v110" fill="none"/>
+            <path d="M110 120h180" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:150ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Copper pipework run neatly under a floor">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <path d="M80 140h140v120h140" fill="none"/>
+            <path d="M80 220h90v80" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:200ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A finished kitchen with a fitted sink">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <path d="M80 240h240v70H80z" fill="none"/>
+            <rect x="150" y="200" width="100" height="40" rx="8" fill="none"/>
+            <path d="M200 200v-40" fill="none"/>
+          </g>
+        </svg>
+      </li>
+      <li class="egl-tile" style="animation-delay:250ms">
+        <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A cylinder fitted in an airing cupboard">
+          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
+            <rect x="150" y="80" width="100" height="240" rx="50" fill="none"/>
+            <path d="M150 180h100" fill="none"/>
+          </g>
+        </svg>
+      </li>
+    </ul>
+  </div>
+</section>

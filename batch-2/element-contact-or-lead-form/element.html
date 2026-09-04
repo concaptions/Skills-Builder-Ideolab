@@ -1,0 +1,160 @@
+<!--
+  Contact or Lead Form element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every field has a real label tied to it. A placeholder is not a label: it
+  disappears as soon as the visitor starts typing, and it is not announced as
+  one. Required is stated in words as well as marked, because a red asterisk
+  alone is invisible to anybody who cannot see the colour.
+
+  The inputs are 16px, which is what stops a phone browser zooming in when a
+  field is focused, and 44px tall so they can be hit with a thumb.
+
+  Checking is done by the browser through required and type. Anything beyond
+  that, including messages and a thank you state, needs a script or a server.
+
+  Default configuration shown here:
+    name, email, phone, message, consent, one column, inline layout.
+
+  Every class is prefixed efm- so it cannot collide with the rest of the page.
+  It uses ids, because labels need them. Placing it twice needs them renamed.
+-->
+<section class="efm px-5 py-16 sm:px-8" aria-labelledby="efm-title">
+
+  <style>
+    
+    @layer efm-base {
+      .efm,.efm *,.efm *::before,.efm *::after{box-sizing:border-box}
+      .efm{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .efm h2,.efm p,.efm label{margin:0}
+      .efm{background-color:rgb(var(--efm-band));color:rgb(var(--efm-ink));padding:4rem 1.25rem}
+      .efm .efm-wrap{max-width:36rem;margin-inline:auto}
+      .efm .efm-grid{display:grid;gap:1.1rem}
+      .efm h2{font-size:1.875rem;font-weight:600}
+      .efm p{font-size:1rem;line-height:1.625}
+    }
+
+    .efm{
+      --efm-surface:255 255 255;
+      --efm-band:246 247 249;
+      --efm-ink:15 23 42;
+      --efm-soft:92 107 129;
+      --efm-accent:37 99 235;
+      --efm-deep:11 18 32;
+      background-color:rgb(var(--efm-band));
+      color:rgb(var(--efm-ink));
+    }
+    .efm .efm-soft{color:rgb(var(--efm-soft))}
+
+    .efm .efm-label{display:block;font-size:.875rem;font-weight:600;margin-bottom:.35rem}
+    .efm .efm-req{color:rgb(var(--efm-soft));font-weight:400}
+
+    /* 16px keeps a phone browser from zooming in on focus. 44px keeps the
+       field hittable with a thumb. */
+    .efm .efm-input{
+      width:100%;min-height:2.75rem;font-size:1rem;padding:.65rem .85rem;
+      border:1px solid rgb(var(--efm-ink)/.18);border-radius:.65rem;
+      background-color:rgb(var(--efm-surface));color:rgb(var(--efm-ink));
+      transition:border-color 160ms ease,box-shadow 160ms ease;
+    }
+    .efm textarea.efm-input{min-height:7rem;resize:vertical}
+    .efm .efm-input:focus{
+      outline:none;border-color:rgb(var(--efm-accent));
+      box-shadow:0 0 0 3px rgb(var(--efm-accent)/.18);
+    }
+
+    .efm .efm-consent{display:flex;gap:.65rem;align-items:flex-start}
+    .efm .efm-consent input{margin-top:.2rem;width:1.1rem;height:1.1rem;flex:none}
+
+    .efm .efm-submit{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:2.9rem;padding:.75rem 1.6rem;border-radius:9999px;
+      background-color:rgb(var(--efm-accent));color:#fff;font-weight:600;font-size:.9375rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1),box-shadow 200ms ease;
+    }
+    .efm .efm-submit:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--efm-accent)/.3)}
+    .efm .efm-submit:focus-visible{outline:2px solid rgb(var(--efm-accent));outline-offset:3px}
+
+    @media (min-width: 768px){
+      .efm .efm-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+    }
+    @media (max-width: 479px){
+      .efm .efm-submit{width:100%}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .efm .efm-input,.efm .efm-submit{transition:none}
+      .efm .efm-submit:hover{transform:none;box-shadow:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .efm, .efm *, .efm::before, .efm *::before, .efm::after, .efm *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .efm, .efm *, .efm::after, .efm *::after, .efm::before, .efm *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .efm::after, .efm *::after, .efm::before, .efm *::before{--tw-content:'';}
+      .efm{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .efm h1, .efm h2, .efm h3, .efm h4, .efm h5, .efm h6{font-size:inherit;font-weight:inherit;}
+      .efm button, .efm input, .efm optgroup, .efm select, .efm textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .efm button, .efm select{text-transform:none;}
+      .efm button, .efm input:where([type="button"]), .efm input:where([type="reset"]), .efm input:where([type="submit"]){appearance:button;background-color:transparent;background-image:none;}
+      .efm blockquote, .efm dd, .efm dl, .efm figure, .efm h1, .efm h2, .efm h3, .efm h4, .efm h5, .efm h6, .efm hr, .efm p, .efm pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .efm textarea{resize:vertical;}
+      .efm input::placeholder, .efm textarea::placeholder{opacity:1;color:rgb(156, 163, 175);}
+      .efm[role="button"], .efm [role="button"], .efm button{cursor:pointer;}
+      .efm.mx-auto, .efm .mx-auto{margin-left:auto;margin-right:auto;}
+      .efm.mb-7, .efm .mb-7{margin-bottom:1.75rem;}
+      .efm.mt-2, .efm .mt-2{margin-top:0.5rem;}
+      .efm.grid, .efm .grid{display:grid;}
+      .efm.max-w-lg, .efm .max-w-lg{max-width:32rem;}
+      .efm.gap-4, .efm .gap-4{row-gap:1rem;column-gap:1rem;}
+      .efm.px-5, .efm .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .efm.py-16, .efm .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .efm.text-3xl, .efm .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .efm.text-base, .efm .text-base{font-size:1rem;line-height:1.5rem;}
+      .efm.text-sm, .efm .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .efm.font-semibold, .efm .font-semibold{font-weight:600;}
+      .efm.leading-relaxed, .efm .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.efm.sm\:px-8, .efm .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="efm-wrap mx-auto max-w-lg">
+    <h2 id="efm-title" class="text-3xl font-semibold">Tell us about the job</h2>
+    <p class="efm-soft mt-2 mb-7 text-base leading-relaxed">We answer every message the same working day. Fields marked required are the only ones we need.</p>
+
+    <form class="efm-grid grid gap-4" method="post" action="#">
+      <div class="efm-pair">
+        <div>
+          <label class="efm-label" for="efm-name">Your name <span class="efm-req">(required)</span></label>
+          <input class="efm-input" id="efm-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div>
+          <label class="efm-label" for="efm-phone">Phone</label>
+          <input class="efm-input" id="efm-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+      </div>
+
+      <div>
+        <label class="efm-label" for="efm-email">Email <span class="efm-req">(required)</span></label>
+        <input class="efm-input" id="efm-email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div>
+        <label class="efm-label" for="efm-message">What do you need doing?</label>
+        <textarea class="efm-input" id="efm-message" name="message" rows="4"></textarea>
+      </div>
+
+      <div class="efm-consent">
+        <input id="efm-consent" name="consent" type="checkbox" required>
+        <label class="text-sm leading-relaxed" for="efm-consent">Yes, you can contact me about this enquiry. <span class="efm-req">(required)</span></label>
+      </div>
+
+      <div>
+        <button class="efm-submit" type="submit">Send the enquiry</button>
+      </div>
+    </form>
+  </div>
+</section>

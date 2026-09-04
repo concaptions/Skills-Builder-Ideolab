@@ -1,0 +1,123 @@
+<!--
+  Third-Party Widget element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The embed itself is not here and cannot be: it is another company's script
+  and an external file, both of which are ruled out. What this block provides
+  is the slot, at a fixed height so the page cannot jump when the tool is
+  dropped in, with a described fallback and a real link out.
+
+  The fallback is content, not a spinner. A shimmer with nothing behind it
+  tells the reader something untrue about what is happening.
+
+  Default configuration shown here:
+    framed slot with a fixed height, label above, fallback with a link out.
+
+  Every class is prefixed ewd- so it cannot collide with the rest of the page.
+-->
+<section class="ewd px-5 py-16 sm:px-8" aria-labelledby="ewd-title">
+
+  <style>
+    
+    @layer ewd-base {
+      .ewd,.ewd *,.ewd *::before,.ewd *::after{box-sizing:border-box}
+      .ewd{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ewd h2,.ewd h3,.ewd p{margin:0}
+      .ewd svg{display:block;max-width:100%}
+      .ewd{background-color:rgb(var(--ewd-surface));color:rgb(var(--ewd-ink));padding:4rem 1.25rem}
+      .ewd .ewd-wrap{max-width:44rem;margin-inline:auto}
+      .ewd h2{font-size:1.875rem;font-weight:600}
+      .ewd h3{font-size:1rem;font-weight:600}
+      .ewd p{font-size:1rem;line-height:1.625}
+    }
+
+    .ewd{
+      --ewd-surface:255 255 255;
+      --ewd-band:246 247 249;
+      --ewd-ink:15 23 42;
+      --ewd-soft:92 107 129;
+      --ewd-accent:37 99 235;
+      --ewd-deep:11 18 32;
+      background-color:rgb(var(--ewd-surface));
+      color:rgb(var(--ewd-ink));
+    }
+    .ewd .ewd-soft{color:rgb(var(--ewd-soft))}
+
+    /* A fixed height, so dropping the tool in cannot move the page. */
+    .ewd .ewd-slot{
+      height:26rem;border-radius:1.25rem;overflow:hidden;
+      border:1px solid rgb(var(--ewd-ink)/.12);background-color:rgb(var(--ewd-band));
+      display:grid;place-items:center;padding:2rem;text-align:center;
+      animation:ewd-fade 400ms ease both;
+    }
+    @keyframes ewd-fade{from{opacity:0}to{opacity:1}}
+
+    .ewd .ewd-out{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      min-height:2.75rem;padding:.7rem 1.4rem;border-radius:9999px;
+      background-color:rgb(var(--ewd-accent));color:#fff;font-weight:600;font-size:.9375rem;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .ewd .ewd-out:hover{transform:translateY(-2px)}
+    .ewd .ewd-out:focus-visible{outline:2px solid rgb(var(--ewd-accent));outline-offset:3px}
+
+    @media (max-width: 639px){ .ewd .ewd-slot{height:32rem} }
+
+    @media (prefers-reduced-motion: reduce){
+      .ewd .ewd-slot{animation:none}
+      .ewd .ewd-out{transition:none}
+      .ewd .ewd-out:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ewd, .ewd *, .ewd::before, .ewd *::before, .ewd::after, .ewd *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ewd, .ewd *, .ewd::after, .ewd *::after, .ewd::before, .ewd *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ewd::after, .ewd *::after, .ewd::before, .ewd *::before{--tw-content:'';}
+      .ewd{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ewd h1, .ewd h2, .ewd h3, .ewd h4, .ewd h5, .ewd h6{font-size:inherit;font-weight:inherit;}
+      .ewd a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .ewd blockquote, .ewd dd, .ewd dl, .ewd figure, .ewd h1, .ewd h2, .ewd h3, .ewd h4, .ewd h5, .ewd h6, .ewd hr, .ewd p, .ewd pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ewd audio, .ewd canvas, .ewd embed, .ewd iframe, .ewd img, .ewd object, .ewd svg, .ewd video{display:block;vertical-align:middle;}
+      .ewd.mx-auto, .ewd .mx-auto{margin-left:auto;margin-right:auto;}
+      .ewd.mb-2, .ewd .mb-2{margin-bottom:0.5rem;}
+      .ewd.mb-6, .ewd .mb-6{margin-bottom:1.5rem;}
+      .ewd.mt-2, .ewd .mt-2{margin-top:0.5rem;}
+      .ewd.mt-4, .ewd .mt-4{margin-top:1rem;}
+      .ewd.mt-5, .ewd .mt-5{margin-top:1.25rem;}
+      .ewd.h-14, .ewd .h-14{height:3.5rem;}
+      .ewd.w-14, .ewd .w-14{width:3.5rem;}
+      .ewd.max-w-2xl, .ewd .max-w-2xl{max-width:42rem;}
+      .ewd.max-w-sm, .ewd .max-w-sm{max-width:24rem;}
+      .ewd.px-5, .ewd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ewd.py-16, .ewd .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .ewd.text-3xl, .ewd .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .ewd.text-base, .ewd .text-base{font-size:1rem;line-height:1.5rem;}
+      .ewd.text-sm, .ewd .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .ewd.font-semibold, .ewd .font-semibold{font-weight:600;}
+      .ewd.leading-relaxed, .ewd .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.ewd.sm\:px-8, .ewd .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="ewd-wrap mx-auto max-w-2xl">
+    <h2 id="ewd-title" class="mb-2 text-3xl font-semibold">Book a slot online</h2>
+    <p class="ewd-soft mb-6 text-base leading-relaxed">The booking calendar sits below. It shows the next fortnight and lets you pick a two hour window.</p>
+
+    <div class="ewd-slot">
+      <div>
+        <svg class="mx-auto h-14 w-14" viewBox="0 0 56 56" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="8" y="12" width="40" height="36" rx="6" fill="none"/>
+          <path d="M8 22h40M19 8v8M37 8v8" fill="none"/>
+          <path d="M19 32h6M31 32h6M19 40h6" fill="none"/>
+        </svg>
+        <h3 class="mt-4 text-base font-semibold">The booking calendar loads here</h3>
+        <p class="ewd-soft mx-auto mt-2 max-w-sm text-sm leading-relaxed">If it does not appear, the calendar is temporarily unavailable. You can still book by phone on 0115 960 0000, or use the link below.</p>
+        <p class="mt-5"><a class="ewd-out" href="https://example.com/book">Open the booking page</a></p>
+      </div>
+    </div>
+  </div>
+</section>

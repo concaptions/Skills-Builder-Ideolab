@@ -1,0 +1,122 @@
+<!--
+  Image with Text element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  The image comes first in the source, so the order on a phone matches the
+  order a screen reader reads. Nothing is reordered with CSS.
+
+  Default configuration shown here:
+    image left, 4 by 3, card enclosure, title and one paragraph, link shown,
+    lift on hover.
+
+  Every class is prefixed eit- so it cannot collide with the rest of the page.
+-->
+<section class="eit px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer eit-base {
+      .eit,.eit *,.eit *::before,.eit *::after{box-sizing:border-box}
+      .eit{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .eit h2,.eit h3,.eit p{margin:0}
+      .eit img,.eit svg{display:block;max-width:100%}
+      .eit{background-color:rgb(var(--eit-surface));color:rgb(var(--eit-ink));padding:3.5rem 1.25rem}
+      .eit .eit-wrap{max-width:44rem;margin-inline:auto}
+      .eit .eit-card{display:grid;gap:1.25rem}
+      .eit h3{font-size:1.25rem;font-weight:600}
+      .eit p{font-size:1rem;line-height:1.625}
+    }
+
+    .eit{
+      --eit-surface:255 255 255;
+      --eit-band:246 247 249;
+      --eit-ink:15 23 42;
+      --eit-soft:92 107 129;
+      --eit-accent:37 99 235;
+      --eit-deep:11 18 32;
+      background-color:rgb(var(--eit-surface));
+      color:rgb(var(--eit-ink));
+    }
+    .eit .eit-soft{color:rgb(var(--eit-soft))}
+    .eit .eit-link{color:rgb(var(--eit-accent));font-weight:600}
+    .eit .eit-link:focus-visible{outline:2px solid rgb(var(--eit-accent));outline-offset:3px;border-radius:.25rem}
+
+    .eit .eit-card{
+      border:1px solid rgb(var(--eit-ink)/.10);border-radius:1.25rem;overflow:hidden;
+      background-color:rgb(var(--eit-surface));
+      transition:transform 260ms cubic-bezier(.16,1,.3,1),box-shadow 260ms ease;
+      animation:eit-rise 420ms cubic-bezier(.16,1,.3,1) both;
+    }
+    .eit .eit-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgb(15 23 42 / .09)}
+    @keyframes eit-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .eit .eit-frame{overflow:hidden;aspect-ratio:4 / 3;background-color:rgb(var(--eit-band))}
+    .eit .eit-frame > *{width:100%;height:100%;object-fit:cover;
+      transition:transform 500ms cubic-bezier(.16,1,.3,1)}
+    .eit .eit-card:hover .eit-frame > *{transform:scale(1.05)}
+
+    @media (min-width: 768px){
+      .eit .eit-card{grid-template-columns:15rem 1fr;align-items:center;gap:0}
+      .eit .eit-frame{height:100%;aspect-ratio:auto;min-height:12rem}
+      .eit .eit-body{padding:1.75rem}
+    }
+    @media (max-width: 767px){
+      .eit .eit-body{padding:1.25rem 1.25rem 1.5rem}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .eit .eit-card,.eit .eit-frame > *{transition:none;animation:none}
+      .eit .eit-card:hover{transform:none;box-shadow:none}
+      .eit .eit-card:hover .eit-frame > *{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .eit, .eit *, .eit::before, .eit *::before, .eit::after, .eit *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .eit, .eit *, .eit::after, .eit *::after, .eit::before, .eit *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .eit::after, .eit *::after, .eit::before, .eit *::before{--tw-content:'';}
+      .eit{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eit h1, .eit h2, .eit h3, .eit h4, .eit h5, .eit h6{font-size:inherit;font-weight:inherit;}
+      .eit a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .eit blockquote, .eit dd, .eit dl, .eit figure, .eit h1, .eit h2, .eit h3, .eit h4, .eit h5, .eit h6, .eit hr, .eit p, .eit pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eit audio, .eit canvas, .eit embed, .eit iframe, .eit img, .eit object, .eit svg, .eit video{display:block;vertical-align:middle;}
+      .eit.mx-auto, .eit .mx-auto{margin-left:auto;margin-right:auto;}
+      .eit.mt-2, .eit .mt-2{margin-top:0.5rem;}
+      .eit.mt-4, .eit .mt-4{margin-top:1rem;}
+      .eit.max-w-2xl, .eit .max-w-2xl{max-width:42rem;}
+      .eit.fill-muted, .eit .fill-muted{fill:rgb(246, 247, 249);}
+      .eit.px-5, .eit .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .eit.py-14, .eit .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eit.text-base, .eit .text-base{font-size:1rem;line-height:1.5rem;}
+      .eit.text-sm, .eit .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eit.text-xl, .eit .text-xl{font-size:1.25rem;line-height:1.75rem;}
+      .eit.font-semibold, .eit .font-semibold{font-weight:600;}
+      .eit.leading-relaxed, .eit .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.eit.sm\:px-8, .eit .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="eit-wrap mx-auto max-w-2xl">
+    <article class="eit-card">
+      <div class="eit-frame">
+        <svg viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="An engineer checking a newly fitted boiler">
+          <rect width="600" height="450" fill="#f6f7f9" class="fill-muted"/>
+          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+            <rect x="200" y="120" width="200" height="230" rx="20" fill="none"/>
+            <circle cx="300" cy="210" r="38" fill="none"/>
+            <path d="M282 210h36M300 192v36" fill="none"/>
+            <path d="M240 300h120" fill="none"/>
+          </g>
+        </svg>
+      </div>
+      <div class="eit-body">
+        <h3 class="text-xl font-semibold">Same day boiler replacement</h3>
+        <p class="eit-soft mt-2 text-base leading-relaxed">A new combi fitted, registered and running before we leave, with the old unit taken away.</p>
+        <p class="mt-4"><a href="#boilers" class="eit-link text-sm">See what is included</a></p>
+      </div>
+    </article>
+  </div>
+</section>

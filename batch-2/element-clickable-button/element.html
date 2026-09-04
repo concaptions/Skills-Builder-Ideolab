@@ -1,0 +1,118 @@
+<!--
+  Clickable Button element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Real anchors, because these navigate. A styled div cannot be reached by
+  keyboard and is not announced as a control. The labels say what happens
+  rather than click here.
+
+  Default configuration shown here:
+    solid primary with an arrow, secondary outline beside it, a text button,
+    lift on hover, visible focus ring.
+
+  Every class is prefixed ebt- so it cannot collide with the rest of the page.
+-->
+<section class="ebt px-5 py-14 sm:px-8">
+
+  <style>
+    
+    @layer ebt-base {
+      .ebt,.ebt *,.ebt *::before,.ebt *::after{box-sizing:border-box}
+      .ebt{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .ebt h2,.ebt p{margin:0}
+      .ebt ul,.ebt ol{margin:0;padding:0;list-style:none}
+      .ebt img,.ebt svg{display:block;max-width:100%}
+      .ebt{background-color:rgb(var(--ebt-surface));color:rgb(var(--ebt-ink));padding:3.5rem 1.25rem}
+      .ebt .ebt-wrap{max-width:40rem;margin-inline:auto}
+      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+      .ebt h2{font-size:1.5rem;font-weight:600}
+      .ebt p{font-size:1rem;line-height:1.6}
+    }
+
+    .ebt{
+      --ebt-surface:255 255 255;
+      --ebt-band:246 247 249;
+      --ebt-ink:15 23 42;
+      --ebt-soft:92 107 129;
+      --ebt-accent:37 99 235;
+      --ebt-deep:11 18 32;
+      background-color:rgb(var(--ebt-surface));
+      color:rgb(var(--ebt-ink));
+    }
+    .ebt .ebt-soft{color:rgb(var(--ebt-soft))}
+
+    /* Every button is at least 44px tall so it can be hit with a thumb. */
+    .ebt .ebt-btn{
+      display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
+      padding:.7rem 1.4rem;border-radius:9999px;font-size:.9375rem;font-weight:600;
+      transition:transform 200ms cubic-bezier(.16,1,.3,1),box-shadow 200ms ease,background-color 200ms ease;
+    }
+    .ebt .ebt-primary{background-color:rgb(var(--ebt-accent));color:#fff}
+    .ebt .ebt-primary:hover,.ebt .ebt-primary:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--ebt-accent)/.28)}
+    .ebt .ebt-secondary{border:1px solid rgb(var(--ebt-ink)/.18);color:rgb(var(--ebt-ink))}
+    .ebt .ebt-secondary:hover,.ebt .ebt-secondary:focus-visible{transform:translateY(-2px);border-color:rgb(var(--ebt-accent));color:rgb(var(--ebt-accent))}
+    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.25rem}
+    .ebt .ebt-text:hover,.ebt .ebt-text:focus-visible{text-decoration:underline}
+
+    /* Never removed. Without it a keyboard user cannot see where they are. */
+    .ebt .ebt-btn:focus-visible{outline:2px solid rgb(var(--ebt-accent));outline-offset:3px}
+
+    .ebt .ebt-arrow{transition:transform 200ms cubic-bezier(.16,1,.3,1)}
+    .ebt .ebt-primary:hover .ebt-arrow{transform:translateX(3px)}
+
+    @media (prefers-reduced-motion: reduce){
+      .ebt .ebt-btn,.ebt .ebt-arrow{transition:none}
+      .ebt .ebt-btn:hover{transform:none;box-shadow:none}
+    }
+
+    @media (max-width: 479px){
+      .ebt .ebt-primary{width:100%;justify-content:center}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .ebt, .ebt *, .ebt::before, .ebt *::before, .ebt::after, .ebt *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .ebt, .ebt *, .ebt::after, .ebt *::after, .ebt::before, .ebt *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .ebt::after, .ebt *::after, .ebt::before, .ebt *::before{--tw-content:'';}
+      .ebt{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .ebt h1, .ebt h2, .ebt h3, .ebt h4, .ebt h5, .ebt h6{font-size:inherit;font-weight:inherit;}
+      .ebt a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .ebt blockquote, .ebt dd, .ebt dl, .ebt figure, .ebt h1, .ebt h2, .ebt h3, .ebt h4, .ebt h5, .ebt h6, .ebt hr, .ebt p, .ebt pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .ebt audio, .ebt canvas, .ebt embed, .ebt iframe, .ebt img, .ebt object, .ebt svg, .ebt video{display:block;vertical-align:middle;}
+      .ebt.mx-auto, .ebt .mx-auto{margin-left:auto;margin-right:auto;}
+      .ebt.mb-2, .ebt .mb-2{margin-bottom:0.5rem;}
+      .ebt.mb-6, .ebt .mb-6{margin-bottom:1.5rem;}
+      .ebt.flex, .ebt .flex{display:flex;}
+      .ebt.h-4, .ebt .h-4{height:1rem;}
+      .ebt.w-4, .ebt .w-4{width:1rem;}
+      .ebt.max-w-xl, .ebt .max-w-xl{max-width:36rem;}
+      .ebt.flex-wrap, .ebt .flex-wrap{flex-wrap:wrap;}
+      .ebt.items-center, .ebt .items-center{align-items:center;}
+      .ebt.gap-3, .ebt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ebt.px-5, .ebt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .ebt.py-14, .ebt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .ebt.text-2xl, .ebt .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .ebt.text-base, .ebt .text-base{font-size:1rem;line-height:1.5rem;}
+      .ebt.font-semibold, .ebt .font-semibold{font-weight:600;}
+      .ebt.leading-relaxed, .ebt .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.ebt.sm\:px-8, .ebt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="ebt-wrap mx-auto max-w-xl">
+    <h2 class="mb-2 text-2xl font-semibold">Ready when you are</h2>
+    <p class="ebt-soft mb-6 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
+
+    <div class="ebt-row flex flex-wrap items-center gap-3">
+      <a href="#book" class="ebt-btn ebt-primary">
+        Book a survey
+        <svg class="ebt-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg>
+      </a>
+      <a href="#prices" class="ebt-btn ebt-secondary">See our prices</a>
+      <a href="#questions" class="ebt-btn ebt-text">Ask a question first</a>
+    </div>
+  </div>
+</section>

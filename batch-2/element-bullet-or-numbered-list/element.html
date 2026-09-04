@@ -1,0 +1,110 @@
+<!--
+  Bullet or Numbered List element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A real ul, so a screen reader announces how many items there are before it
+  starts reading. The tick is inline SVG and aria-hidden, because the meaning
+  is carried by the list itself.
+
+  Default configuration shown here:
+    checklist, one column, no descriptions, staggered entrance.
+
+  Every class is prefixed elt- so it cannot collide with the rest of the page.
+-->
+<section class="elt px-5 py-14 sm:px-8" aria-labelledby="elt-title">
+
+  <style>
+    
+    @layer elt-base {
+      .elt,.elt *,.elt *::before,.elt *::after{box-sizing:border-box}
+      .elt{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .elt h2,.elt h3,.elt p{margin:0}
+      .elt ul,.elt ol{margin:0;padding:0;list-style:none}
+      .elt img,.elt svg,.elt video{display:block;max-width:100%}
+      .elt{background-color:rgb(var(--elt-surface));color:rgb(var(--elt-ink));padding:3.5rem 1.25rem}
+      .elt .elt-wrap{max-width:40rem;margin-inline:auto}
+      .elt .elt-list{display:grid;gap:.875rem}
+      .elt h2{font-size:1.5rem;font-weight:600}
+      .elt p{font-size:1rem;line-height:1.6}
+    }
+
+    .elt{
+      --elt-surface:255 255 255;
+      --elt-band:246 247 249;
+      --elt-ink:15 23 42;
+      --elt-soft:92 107 129;
+      --elt-accent:37 99 235;
+      --elt-deep:11 18 32;
+      background-color:rgb(var(--elt-surface));
+      color:rgb(var(--elt-ink));
+    }
+    .elt .elt-tick{color:rgb(var(--elt-accent))}
+
+    .elt .elt-item{animation:elt-rise 380ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes elt-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .elt .elt-item{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .elt, .elt *, .elt::before, .elt *::before, .elt::after, .elt *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .elt, .elt *, .elt::after, .elt *::after, .elt::before, .elt *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .elt::after, .elt *::after, .elt::before, .elt *::before{--tw-content:'';}
+      .elt{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .elt h1, .elt h2, .elt h3, .elt h4, .elt h5, .elt h6{font-size:inherit;font-weight:inherit;}
+      .elt blockquote, .elt dd, .elt dl, .elt figure, .elt h1, .elt h2, .elt h3, .elt h4, .elt h5, .elt h6, .elt hr, .elt p, .elt pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .elt menu, .elt ol, .elt ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .elt audio, .elt canvas, .elt embed, .elt iframe, .elt img, .elt object, .elt svg, .elt video{display:block;vertical-align:middle;}
+      .elt.mx-auto, .elt .mx-auto{margin-left:auto;margin-right:auto;}
+      .elt.mb-6, .elt .mb-6{margin-bottom:1.5rem;}
+      .elt.mt-0\.5, .elt .mt-0\.5{margin-top:0.125rem;}
+      .elt.flex, .elt .flex{display:flex;}
+      .elt.grid, .elt .grid{display:grid;}
+      .elt.h-5, .elt .h-5{height:1.25rem;}
+      .elt.w-5, .elt .w-5{width:1.25rem;}
+      .elt.max-w-xl, .elt .max-w-xl{max-width:36rem;}
+      .elt.shrink-0, .elt .shrink-0{flex-shrink:0;}
+      .elt.gap-3, .elt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .elt.gap-3\.5, .elt .gap-3\.5{row-gap:0.875rem;column-gap:0.875rem;}
+      .elt.px-5, .elt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .elt.py-14, .elt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .elt.text-2xl, .elt .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .elt.text-base, .elt .text-base{font-size:1rem;line-height:1.5rem;}
+      .elt.font-semibold, .elt .font-semibold{font-weight:600;}
+      .elt.leading-relaxed, .elt .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.elt.sm\:px-8, .elt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="elt-wrap mx-auto max-w-xl">
+    <h2 id="elt-title" class="mb-6 text-2xl font-semibold">What is included in every quote</h2>
+
+    <ul class="elt-list grid gap-3.5">
+      <li class="elt-item flex gap-3" style="animation-delay:0ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">The boiler, the flue and every fitting the job needs</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:60ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Taking the old unit away and disposing of it</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:120ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">A system flush and every radiator balanced</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:180ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Registering the warranty in your name before we leave</span>
+      </li>
+      <li class="elt-item flex gap-3" style="animation-delay:240ms">
+        <svg class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
+        <span class="text-base leading-relaxed">Clearing up, including the bits you cannot see</span>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,146 @@
+<!--
+  Social Media Links element.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Every link carries a real name in text. Without it a row of icons is
+  announced as several blank links, which is a dead end. The icon is
+  aria-hidden and the name is visually hidden text, so it is read but not
+  drawn.
+
+  Every target is 44px even though the marks inside are 20px, so they can be
+  hit with a thumb.
+
+  The marks are simple inline shapes, not brand logos, because a brand logo is
+  someone else's asset. Replace them with the networks the customer actually
+  uses, and drop any account they do not post to.
+
+  Default configuration shown here:
+    icon row, four links, circular buttons, hidden names, fill on hover.
+
+  Every class is prefixed esm- so it cannot collide with the rest of the page.
+-->
+<section class="esm px-5 py-14 sm:px-8" aria-labelledby="esm-title">
+
+  <style>
+    
+    @layer esm-base {
+      .esm,.esm *,.esm *::before,.esm *::after{box-sizing:border-box}
+      .esm{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .esm h2,.esm p{margin:0}
+      .esm ul,.esm ol{margin:0;padding:0;list-style:none}
+      .esm svg{display:block}
+      .esm{background-color:rgb(var(--esm-surface));color:rgb(var(--esm-ink));padding:3.5rem 1.25rem}
+      .esm .esm-wrap{max-width:36rem;margin-inline:auto}
+      .esm .esm-row{display:flex;flex-wrap:wrap;gap:.6rem}
+      .esm h2{font-size:1.5rem;font-weight:600}
+      .esm p{font-size:1rem;line-height:1.6}
+    }
+
+    .esm{
+      --esm-surface:255 255 255;
+      --esm-band:246 247 249;
+      --esm-ink:15 23 42;
+      --esm-soft:92 107 129;
+      --esm-accent:37 99 235;
+      --esm-deep:11 18 32;
+      background-color:rgb(var(--esm-surface));
+      color:rgb(var(--esm-ink));
+    }
+    .esm .esm-soft{color:rgb(var(--esm-soft))}
+
+    /* 44px target, 20px mark. */
+    .esm .esm-link{
+      display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:9999px;
+      background-color:rgb(var(--esm-ink)/.05);color:rgb(var(--esm-ink));
+      transition:background-color 200ms ease,color 200ms ease,transform 200ms cubic-bezier(.16,1,.3,1);
+    }
+    .esm .esm-link:hover,.esm .esm-link:focus-visible{
+      background-color:rgb(var(--esm-accent));color:#fff;transform:translateY(-2px);
+    }
+    .esm .esm-link:focus-visible{outline:2px solid rgb(var(--esm-accent));outline-offset:3px}
+
+    .esm .esm-name{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media (prefers-reduced-motion: reduce){
+      .esm .esm-link{transition:none}
+      .esm .esm-link:hover{transform:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .esm, .esm *, .esm::before, .esm *::before, .esm::after, .esm *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .esm, .esm *, .esm::after, .esm *::after, .esm::before, .esm *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .esm::after, .esm *::after, .esm::before, .esm *::before{--tw-content:'';}
+      .esm{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .esm h1, .esm h2, .esm h3, .esm h4, .esm h5, .esm h6{font-size:inherit;font-weight:inherit;}
+      .esm a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
+      .esm blockquote, .esm dd, .esm dl, .esm figure, .esm h1, .esm h2, .esm h3, .esm h4, .esm h5, .esm h6, .esm hr, .esm p, .esm pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .esm menu, .esm ol, .esm ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .esm audio, .esm canvas, .esm embed, .esm iframe, .esm img, .esm object, .esm svg, .esm video{display:block;vertical-align:middle;}
+      .esm.mx-auto, .esm .mx-auto{margin-left:auto;margin-right:auto;}
+      .esm.mb-5, .esm .mb-5{margin-bottom:1.25rem;}
+      .esm.mt-2, .esm .mt-2{margin-top:0.5rem;}
+      .esm.flex, .esm .flex{display:flex;}
+      .esm.h-5, .esm .h-5{height:1.25rem;}
+      .esm.w-5, .esm .w-5{width:1.25rem;}
+      .esm.max-w-md, .esm .max-w-md{max-width:28rem;}
+      .esm.flex-wrap, .esm .flex-wrap{flex-wrap:wrap;}
+      .esm.gap-2\.5, .esm .gap-2\.5{row-gap:0.625rem;column-gap:0.625rem;}
+      .esm.px-5, .esm .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .esm.py-14, .esm .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .esm.text-2xl, .esm .text-2xl{font-size:1.5rem;line-height:2rem;}
+      .esm.text-base, .esm .text-base{font-size:1rem;line-height:1.5rem;}
+      .esm.font-semibold, .esm .font-semibold{font-weight:600;}
+      .esm.leading-relaxed, .esm .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.esm.sm\:px-8, .esm .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="esm-wrap mx-auto max-w-md">
+    <h2 id="esm-title" class="text-2xl font-semibold">See the work as it happens</h2>
+    <p class="esm-soft mt-2 mb-5 text-base leading-relaxed">We post most jobs the week they are finished.</p>
+
+    <ul class="esm-row flex flex-wrap gap-2.5">
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our page on Facebook</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H8v3h2v6h3v-6h2.5l.5-3H13V9a1 1 0 0 1 1-1z" fill="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our photographs on Instagram</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="5" fill="none"/>
+            <circle cx="12" cy="12" r="4" fill="none"/>
+            <circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our films on YouTube</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="12" rx="4" fill="none"/>
+            <path d="M11 10.5v3l3-1.5z" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a class="esm-link" href="https://example.com/">
+          <span class="esm-name">Our company page on LinkedIn</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="3" fill="none"/>
+            <path d="M8 11v6M8 8v.01M12 17v-3a2 2 0 0 1 4 0v3" fill="none"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

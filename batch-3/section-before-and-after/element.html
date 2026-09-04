@@ -1,0 +1,145 @@
+<!--
+  Before and After section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  Side by side rather than a drag slider. A slider needs a script, and a
+  handle that is drawn but does not move is the first thing a reader will try
+  and the first thing that will disappoint them.
+
+  Both frames carry the same aspect ratio, so neither picture is favoured by
+  being larger, and both are labelled in words rather than by position.
+
+  Default configuration shown here:
+    two images side by side, labelled, one result line beneath, fade and rise.
+
+  Every class is prefixed sba- so it cannot collide with the rest of the page.
+-->
+<section class="sba px-5 py-16 sm:px-8" aria-labelledby="sba-title">
+
+  <style>
+    
+    @layer sba-base {
+      .sba,.sba *,.sba *::before,.sba *::after{box-sizing:border-box}
+      .sba{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .sba h2,.sba h3,.sba p,.sba figure,.sba figcaption{margin:0}
+      .sba ul,.sba ol{margin:0;padding:0;list-style:none}
+      .sba svg{display:block;max-width:100%}
+      .sba{background-color:rgb(var(--sba-surface));color:rgb(var(--sba-ink));padding:4rem 1.25rem}
+      .sba .sba-wrap{max-width:64rem;margin-inline:auto}
+      .sba .sba-pair{display:grid;gap:1rem}
+      .sba h2{font-size:1.875rem;font-weight:600}
+      .sba p,.sba figcaption{font-size:1rem;line-height:1.625}
+    }
+
+    .sba{
+      --sba-surface:255 255 255;
+      --sba-band:246 247 249;
+      --sba-ink:15 23 42;
+      --sba-soft:92 107 129;
+      --sba-accent:37 99 235;
+      --sba-deep:11 18 32;
+      background-color:rgb(var(--sba-surface));
+      color:rgb(var(--sba-ink));
+    }
+    .sba .sba-soft{color:rgb(var(--sba-soft))}
+
+    .sba .sba-frame{
+      overflow:hidden;border-radius:1rem;aspect-ratio:4 / 3;
+      background-color:rgb(var(--sba-band));border:1px solid rgb(var(--sba-ink)/.10);
+    }
+    .sba .sba-frame > svg{width:100%;height:100%}
+    .sba .sba-tag{
+      display:inline-block;margin-top:.65rem;padding:.2rem .6rem;border-radius:9999px;
+      font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    }
+    .sba .sba-before{background-color:rgb(var(--sba-ink)/.07);color:rgb(var(--sba-ink))}
+    .sba .sba-after{background-color:rgb(var(--sba-accent));color:#fff}
+
+    .sba .sba-rise{animation:sba-rise 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes sba-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .sba .sba-result{
+      margin-top:1.75rem;border-radius:1rem;padding:1.25rem 1.5rem;
+      background-color:rgb(var(--sba-band));
+    }
+
+    @media (min-width: 640px){ .sba .sba-pair{grid-template-columns:1fr 1fr;gap:1.25rem} }
+
+    @media (prefers-reduced-motion: reduce){
+      .sba .sba-rise{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .sba, .sba *, .sba::before, .sba *::before, .sba::after, .sba *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .sba, .sba *, .sba::after, .sba *::after, .sba::before, .sba *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .sba::after, .sba *::after, .sba::before, .sba *::before{--tw-content:'';}
+      .sba{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .sba h1, .sba h2, .sba h3, .sba h4, .sba h5, .sba h6{font-size:inherit;font-weight:inherit;}
+      .sba b, .sba strong{font-weight:bolder;}
+      .sba blockquote, .sba dd, .sba dl, .sba figure, .sba h1, .sba h2, .sba h3, .sba h4, .sba h5, .sba h6, .sba hr, .sba p, .sba pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .sba audio, .sba canvas, .sba embed, .sba iframe, .sba img, .sba object, .sba svg, .sba video{display:block;vertical-align:middle;}
+      .sba.mx-auto, .sba .mx-auto{margin-left:auto;margin-right:auto;}
+      .sba.mb-2, .sba .mb-2{margin-bottom:0.5rem;}
+      .sba.mb-7, .sba .mb-7{margin-bottom:1.75rem;}
+      .sba.grid, .sba .grid{display:grid;}
+      .sba.max-w-4xl, .sba .max-w-4xl{max-width:56rem;}
+      .sba.gap-4, .sba .gap-4{row-gap:1rem;column-gap:1rem;}
+      .sba.fill-muted, .sba .fill-muted{fill:rgb(246, 247, 249);}
+      .sba.px-5, .sba .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .sba.py-16, .sba .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .sba.text-3xl, .sba .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .sba.text-base, .sba .text-base{font-size:1rem;line-height:1.5rem;}
+      .sba.font-semibold, .sba .font-semibold{font-weight:600;}
+      .sba.leading-relaxed, .sba .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.sba.sm\:px-8, .sba .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="sba-wrap mx-auto max-w-4xl sba-rise">
+    <h2 id="sba-title" class="mb-2 text-3xl font-semibold">The same bathroom, eight working days apart</h2>
+    <p class="sba-soft mb-7 text-base leading-relaxed">Both photographs are taken from the doorway, at the same time of day, with nothing moved.</p>
+
+    <div class="sba-pair grid gap-4">
+      <figure>
+        <div class="sba-frame">
+          <svg viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Before: a dated bathroom with a panelled bath and worn tiling">
+            <rect width="480" height="360" fill="#f6f7f9" class="fill-muted"/>
+            <g fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" opacity="0.32">
+              <path d="M60 280h360" fill="none"/>
+              <rect x="90" y="190" width="180" height="90" rx="8" fill="none"/>
+              <rect x="310" y="200" width="90" height="80" rx="6" fill="none"/>
+              <path d="M90 120h300M90 155h300" fill="none"/>
+              <circle cx="180" cy="165" r="10" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="sba-tag sba-before">Before</span></figcaption>
+      </figure>
+
+      <figure>
+        <div class="sba-frame">
+          <svg viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="After: a walk in shower, new basin and large format tiling">
+            <rect width="480" height="360" fill="#f6f7f9" class="fill-muted"/>
+            <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.5">
+              <path d="M60 280h360" fill="none"/>
+              <rect x="90" y="90" width="170" height="190" rx="10" fill="none"/>
+              <path d="M175 90v190" fill="none"/>
+              <rect x="310" y="180" width="100" height="60" rx="10" fill="none"/>
+              <path d="M360 180v-40" fill="none"/>
+              <circle cx="130" cy="130" r="12" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="sba-tag sba-after">After</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="sba-result">
+      <p class="text-base leading-relaxed"><strong>Eight working days, one team, £4,180 against a £4,200 quote.</strong> The twenty pounds came off because the old suite was worth something as scrap.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,199 @@
+<!--
+  Interactive Comparison section.
+  Static block. HTML + Tailwind utility classes + a small scoped stylesheet.
+  No JavaScript, no external assets, no build step.
+
+  A real table with th scope on every header, so a screen reader can say which
+  option and which criterion a cell belongs to. A grid of divs looks the same
+  and loses all of that.
+
+  Every cell says yes or no in text. A tick on its own is a shape, and a shape
+  read aloud is nothing, so the ticks are aria-hidden and the words carry the
+  meaning.
+
+  Below 768px the table becomes one card per option with the criteria repeated
+  inside, because a three column table at phone width cannot be read. Both
+  layouts are in the markup and only one is shown at a time.
+
+  Default configuration shown here:
+    three options, five criteria, middle recommended, table above 768px.
+
+  Every class is prefixed sic- so it cannot collide with the rest of the page.
+-->
+<section class="sic px-5 py-16 sm:px-8" aria-labelledby="sic-title">
+
+  <style>
+    
+    @layer sic-base {
+      .sic,.sic *,.sic *::before,.sic *::after{box-sizing:border-box}
+      .sic{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+      .sic h2,.sic h3,.sic p{margin:0}
+      .sic ul,.sic ol{margin:0;padding:0;list-style:none}
+      .sic svg{display:block;max-width:100%}
+      .sic{background-color:rgb(var(--sic-surface));color:rgb(var(--sic-ink));padding:4rem 1.25rem}
+      .sic .sic-wrap{max-width:60rem;margin-inline:auto}
+      .sic h2{font-size:1.875rem;font-weight:600}
+      .sic h3{font-size:1.0625rem;font-weight:600}
+      .sic p{font-size:.9375rem;line-height:1.6}
+      .sic table{width:100%;border-collapse:collapse}
+    }
+
+    .sic{
+      --sic-surface:255 255 255;
+      --sic-band:246 247 249;
+      --sic-ink:15 23 42;
+      --sic-soft:92 107 129;
+      --sic-accent:37 99 235;
+      --sic-deep:11 18 32;
+      background-color:rgb(var(--sic-surface));
+      color:rgb(var(--sic-ink));
+    }
+    .sic .sic-soft{color:rgb(var(--sic-soft))}
+
+    .sic .sic-table{display:none}
+    .sic th,.sic td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid rgb(var(--sic-ink)/.10);font-size:.9375rem}
+    .sic thead th{font-size:.875rem;font-weight:600}
+    .sic .sic-rec{background-color:rgb(var(--sic-accent)/.06)}
+    .sic .sic-rechead{color:rgb(var(--sic-accent))}
+    .sic .sic-yes{color:rgb(var(--sic-accent))}
+    .sic .sic-no{color:rgb(var(--sic-soft))}
+
+    .sic .sic-cards{display:grid;gap:1rem}
+    .sic .sic-card{
+      border:1px solid rgb(var(--sic-ink)/.10);border-radius:1.25rem;padding:1.4rem;
+      background-color:rgb(var(--sic-band));
+    }
+    .sic .sic-card.is-rec{border:2px solid rgb(var(--sic-accent));background-color:rgb(var(--sic-accent)/.05)}
+    .sic .sic-crit{display:flex;justify-content:space-between;gap:1rem;
+      padding:.55rem 0;border-top:1px solid rgb(var(--sic-ink)/.08);font-size:.875rem}
+    .sic .sic-crit:first-of-type{border-top:0}
+
+    @media (min-width: 768px){
+      .sic .sic-table{display:block}
+      .sic .sic-cards{display:none}
+    }
+
+    .sic .sic-fade{animation:sic-fade 460ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes sic-fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+    @media (prefers-reduced-motion: reduce){
+      .sic .sic-fade{animation:none}
+    }
+  
+    @layer ideolab-fallback {
+      /* Taken from Tailwind itself, so it cannot drift from what the
+         classes mean. It sits in a layer, so a page that loads its own
+         Tailwind overrides all of it; a page with none renders from this. */
+      .sic, .sic *, .sic::before, .sic *::before, .sic::after, .sic *::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: ;}
+      .sic, .sic *, .sic::after, .sic *::after, .sic::before, .sic *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
+      .sic::after, .sic *::after, .sic::before, .sic *::before{--tw-content:'';}
+      .sic{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .sic h1, .sic h2, .sic h3, .sic h4, .sic h5, .sic h6{font-size:inherit;font-weight:inherit;}
+      .sic b, .sic strong{font-weight:bolder;}
+      .sic table{text-indent:0px;border-top-color:inherit;border-right-color:inherit;border-bottom-color:inherit;border-left-color:inherit;border-collapse:collapse;}
+      .sic blockquote, .sic dd, .sic dl, .sic figure, .sic h1, .sic h2, .sic h3, .sic h4, .sic h5, .sic h6, .sic hr, .sic p, .sic pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .sic menu, .sic ol, .sic ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
+      .sic.mx-auto, .sic .mx-auto{margin-left:auto;margin-right:auto;}
+      .sic.mb-2, .sic .mb-2{margin-bottom:0.5rem;}
+      .sic.mb-3, .sic .mb-3{margin-bottom:0.75rem;}
+      .sic.mb-7, .sic .mb-7{margin-bottom:1.75rem;}
+      .sic.grid, .sic .grid{display:grid;}
+      .sic.max-w-5xl, .sic .max-w-5xl{max-width:64rem;}
+      .sic.gap-4, .sic .gap-4{row-gap:1rem;column-gap:1rem;}
+      .sic.px-5, .sic .px-5{padding-left:1.25rem;padding-right:1.25rem;}
+      .sic.py-16, .sic .py-16{padding-top:4rem;padding-bottom:4rem;}
+      .sic.text-left, .sic .text-left{text-align:left;}
+      .sic.text-3xl, .sic .text-3xl{font-size:1.875rem;line-height:2.25rem;}
+      .sic.text-base, .sic .text-base{font-size:1rem;line-height:1.5rem;}
+      .sic.text-sm, .sic .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .sic.font-normal, .sic .font-normal{font-weight:400;}
+      .sic.font-semibold, .sic .font-semibold{font-weight:600;}
+      .sic.leading-relaxed, .sic .leading-relaxed{line-height:1.625;}
+      @media (min-width: 640px){.sic.sm\:px-8, .sic .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
+    }
+  </style>
+
+  <div class="sic-wrap mx-auto max-w-5xl sic-fade">
+    <h2 id="sic-title" class="mb-2 text-3xl font-semibold">Which cover plan suits you</h2>
+    <p class="sic-soft mb-7 text-base leading-relaxed">The differences are in what is covered, not in how quickly we come out. Every plan gets the same response time. <strong>Boiler and heating is the one most people take</strong>, because it covers the radiators as well as the boiler.</p>
+
+    <div class="sic-table">
+      <table>
+        <caption class="sic-soft mb-3 text-left text-sm">What each plan covers</caption>
+        <thead>
+          <tr>
+            <th scope="col">What is covered</th>
+            <th scope="col">Boiler only</th>
+            <th scope="col" class="sic-rechead">Boiler and heating <span class="sic-soft font-normal">(recommended)</span></th>
+            <th scope="col">Whole home</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="font-normal">Annual service</th>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+            <td class="sic-rec"><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes, twice</td>
+          </tr>
+          <tr>
+            <th scope="row" class="font-normal">Boiler parts and labour</th>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+            <td class="sic-rec"><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+          </tr>
+          <tr>
+            <th scope="row" class="font-normal">Radiators, valves and controls</th>
+            <td><span class="sic-no" aria-hidden="true">&#8212;</span> No</td>
+            <td class="sic-rec"><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+          </tr>
+          <tr>
+            <th scope="row" class="font-normal">Internal plumbing</th>
+            <td><span class="sic-no" aria-hidden="true">&#8212;</span> No</td>
+            <td class="sic-rec"><span class="sic-no" aria-hidden="true">&#8212;</span> No</td>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+          </tr>
+          <tr>
+            <th scope="row" class="font-normal">Blocked drains</th>
+            <td><span class="sic-no" aria-hidden="true">&#8212;</span> No</td>
+            <td class="sic-rec"><span class="sic-no" aria-hidden="true">&#8212;</span> No</td>
+            <td><span class="sic-yes" aria-hidden="true">&#10003;</span> Yes</td>
+          </tr>
+          <tr>
+            <th scope="row" class="font-normal">Price a month</th>
+            <td>£14</td>
+            <td class="sic-rec">£21</td>
+            <td>£29</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="sic-cards grid gap-4">
+      <li class="sic-card">
+        <h3 class="text-base font-semibold">Boiler only, £14 a month</h3>
+        <p class="sic-crit"><span>Annual service</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Boiler parts and labour</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Radiators and controls</span><span class="sic-soft font-semibold">No</span></p>
+        <p class="sic-crit"><span>Internal plumbing</span><span class="sic-soft font-semibold">No</span></p>
+        <p class="sic-crit"><span>Blocked drains</span><span class="sic-soft font-semibold">No</span></p>
+      </li>
+      <li class="sic-card is-rec">
+        <h3 class="text-base font-semibold">Boiler and heating, £21 a month <span class="sic-soft font-normal">(recommended)</span></h3>
+        <p class="sic-crit"><span>Annual service</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Boiler parts and labour</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Radiators and controls</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Internal plumbing</span><span class="sic-soft font-semibold">No</span></p>
+        <p class="sic-crit"><span>Blocked drains</span><span class="sic-soft font-semibold">No</span></p>
+      </li>
+      <li class="sic-card">
+        <h3 class="text-base font-semibold">Whole home, £29 a month</h3>
+        <p class="sic-crit"><span>Annual service</span><span class="font-semibold">Yes, twice</span></p>
+        <p class="sic-crit"><span>Boiler parts and labour</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Radiators and controls</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Internal plumbing</span><span class="font-semibold">Yes</span></p>
+        <p class="sic-crit"><span>Blocked drains</span><span class="font-semibold">Yes</span></p>
+      </li>
+    </ul>
+  </div>
+</section>
