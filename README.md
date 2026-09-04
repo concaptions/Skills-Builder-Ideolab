@@ -1,12 +1,12 @@
 # Website Builder Skills
 
-Forty-eight skills, in three batches.
+Forty-eight skills. The seventeen in batch 1 and the twenty in batch 2 are here; batch 3 is built and follows when it is due.
 
 | Folder | What is in it |
 | --- | --- |
 | `batch-1` | The sixteen full website sections, plus one method skill for rebuilding a section from a picture of it. |
 | `batch-2` | Elements 01 to 20: the pieces placed inside a section. |
-| `batch-3` | Elements 21 to 24, and the seven recommended additional sections. |
+| `batch-3` | Elements 21 to 24, and the seven recommended additional sections. Built and held back, not in this repository yet. |
 
 Each skill is delivered as three things:
 
