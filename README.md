@@ -16,7 +16,7 @@ Each skill is delivered as three things:
 | `element.html` | The code. A real, working block, ready to place on a page. |
 | `thumbnail.png` | A picture of what that block actually looks like, rendered from the block itself. |
 
-Open `PREVIEW.html` in a browser. It links to one preview page per batch, where every block in that batch is live and clickable on a single page.
+Each batch folder holds its own `PREVIEW.html`. Open one in a browser to see every block in that batch live and clickable on a single page. Each preview is self contained, so it can be opened on its own without the rest of the repository.
 
 One further skill sits outside the batches:
 
