@@ -46,7 +46,34 @@ Then the block's own shape: the section's background, text color and padding, th
       .emp p{font-size:1rem;line-height:1.625}
     }
 
-About twelve declarations in all. Do not try to restate every utility you used. This is the block's skeleton, not a second copy of Tailwind.
+That is the skeleton, and it stays short. The detail, the spacing and the smaller responsive steps still come from the utilities.
+
+**Then, outside the layer, declare the six colour variables.** Nothing else defines them. A block that writes `rgb(var(--emp-surface))` without declaring `--emp-surface` has written an invalid declaration and the browser throws the whole line away. Measured with no stylesheet, a block that skipped this had a transparent section, a card with no face, and pure black headings, quiet copy and marks. **The customer's colours go in these six values.** That is where a brief asking for a red and brown clinic actually lands, and it is the only place any colour is decided.
+
+    .emp{
+      --emp-surface:255 255 255;
+      --emp-band:246 247 249;
+      --emp-ink:15 23 42;
+      --emp-soft:92 107 129;
+      --emp-accent:37 99 235;
+      --emp-deep:11 18 32;
+      background-color:rgb(var(--emp-surface));
+      color:rgb(var(--emp-ink));
+    }
+
+This part is not in the layer, on purpose. Tailwind has no rule for a class name prefixed `emp-`, so there is nothing to conflict with, and a layered rule would lose to a stray utility sitting on the same element.
+
+**Then write out every named class the block cannot be read without.** A card or panel face, its border, its radius and its padding. Any ground that is not the section's own. Any text that is not the default ink. The accent on a mark, a rule or a button. The keyframes, the media queries that build the columns, and the reduced-motion rule. Every one of those is a utility on the markup as well, and a utility is nothing in a viewer with no Tailwind. Measured on a block that left them out: three cards with no face and no border, black marks, and all three at full width down the page instead of three across.
+
+    .emp .emp-card{background-color:rgb(var(--emp-band));border:1px solid rgb(var(--emp-ink)/.10);
+      border-radius:1rem;padding:1.5rem}
+    .emp .emp-mark{color:rgb(var(--emp-accent))}
+    .emp .emp-soft{color:rgb(var(--emp-soft))}
+    @media (min-width:640px){.emp .emp-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+Those class names are an example of the shape, not a list to copy. Name the ones this block actually contains.
+
+**The test before you hand it over:** picture every `class` attribute deleted. What is left has to still be this block, in the customer's colours, with its faces and its columns. If it collapses to a column of black text on white, the stylesheet is too short.
 
 **Nothing else is assumed.** The block does not expect the page to define a color, a font, a helper class or a shared stylesheet.
 
@@ -107,7 +134,8 @@ Stylised map beside the details, marker shown, address, hours and phone in text,
 An address that exists only inside the picture. A live embed, which is an external file and is not allowed here. A pin that pulses forever beside the words a reader is trying to read.
 - **An icon with no size of its own.** `<svg class="h-4 w-4" viewBox="0 0 20 20">` is 16px only while Tailwind is loaded. Strip the stylesheet away and the SVG has no intrinsic size and stretches to the width of whatever contains it: measured at 900 by 900 inside a 900px section, with the rest of the block pushed off the screen. Fix it with a `width` and a `height` attribute on the tag, and a base layer rule for any icon used more than once.
 - **A height attribute on an illustration that fills its column.** The reverse mistake, and it shows up on a page that has Tailwind as well as one that does not. The width follows the column while the height is pinned to the attribute, so the drawing is squashed: measured at 656 by 380 where it should have been 656 by 519. An svg whose width follows its container keeps its height free.
-- **A height attribute on an illustration that fills its column.** The reverse mistake, and it shows up on a page that has Tailwind as well as one that does not. The width follows the column while the height is pinned to the attribute, so the drawing is squashed: measured at 656 by 380 where it should have been 656 by 519. An svg whose width follows its container keeps its height free.
+- **A colour variable that is used but never declared.** `rgb(var(--emp-accent))` with no `--emp-accent` on the block is an invalid declaration, and an invalid declaration is not a fallback to something sensible: the browser throws the line away. Measured on a block that did this, the section had no background, the cards had no face and every piece of text came out pure black, including the parts meant to carry the brand colour.
+- **A card that exists only as utility classes.** `class="rounded-2xl border bg-white p-6"` is a card while Tailwind is loaded and nothing at all without it. Measured: no face, no border, no radius, no padding, and the three cards stacked at full width instead of sitting three across. Anything a reader would notice was missing goes in the block's own stylesheet as well as on the markup.
 
 ## What a static block cannot do
 
@@ -135,6 +163,12 @@ The block carries its own color. Six variables are declared on the block itself,
 | `--emp-deep` | the dark ground |
 
 The values are channel triplets, `15 23 42` rather than `#0f172a`, so an opacity suffix still works: `rgb(var(--emp-ink) / .70)`.
+
+
+Declare all six on the block itself, and give them real values. They are not defined anywhere else, and a colour read from a variable that was never declared is an invalid declaration: the browser discards the line and that part renders with no colour at all. Where the brief names the customer's colours, those colours go into these six values and nowhere else.
+
+    .emp{--emp-surface:255 255 255;--emp-band:246 247 249;--emp-ink:15 23 42;
+      --emp-soft:92 107 129;--emp-accent:37 99 235;--emp-deep:11 18 32}
 
 Rebrand the block by changing those six values, in one place. Do not spread hex values through the markup, and do not reach for a color name out of the page's Tailwind config. Every page the builder makes writes its own config with its own color names, so a name taken from one page resolves to nothing on the next. Measured on two live sites: `bg-surface` painted no background on either, and `muted` was a pale background on one and a dark text color on the other.
 

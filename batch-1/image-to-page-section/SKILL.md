@@ -53,7 +53,34 @@ Then the block's own shape. Cover these and nothing more.
       .i2p p{font-size:1rem;line-height:1.625}
     }
 
-About twelve declarations in all. Do not try to restate every utility you used. This is the block's skeleton, not a second copy of Tailwind. The exact spacing scale, the small type sizes and the hover states stay in the utilities where they belong.
+That is the skeleton, and it stays short. The detail, the spacing and the smaller responsive steps still come from the utilities.
+
+**Then, outside the layer, declare the six colour variables.** Nothing else defines them. A block that writes `rgb(var(--i2p-surface))` without declaring `--i2p-surface` has written an invalid declaration and the browser throws the whole line away. Measured with no stylesheet, a block that skipped this had a transparent section, a card with no face, and pure black headings, quiet copy and marks. **The customer's colours go in these six values.** That is where a brief asking for a red and brown clinic actually lands, and it is the only place any colour is decided.
+
+    .i2p{
+      --i2p-surface:255 255 255;
+      --i2p-band:246 247 249;
+      --i2p-ink:15 23 42;
+      --i2p-soft:92 107 129;
+      --i2p-accent:37 99 235;
+      --i2p-deep:11 18 32;
+      background-color:rgb(var(--i2p-surface));
+      color:rgb(var(--i2p-ink));
+    }
+
+This part is not in the layer, on purpose. Tailwind has no rule for a class name prefixed `i2p-`, so there is nothing to conflict with, and a layered rule would lose to a stray utility sitting on the same element.
+
+**Then write out every named class the block cannot be read without.** A card or panel face, its border, its radius and its padding. Any ground that is not the section's own. Any text that is not the default ink. The accent on a mark, a rule or a button. The keyframes, the media queries that build the columns, and the reduced-motion rule. Every one of those is a utility on the markup as well, and a utility is nothing in a viewer with no Tailwind. Measured on a block that left them out: three cards with no face and no border, black marks, and all three at full width down the page instead of three across.
+
+    .i2p .i2p-card{background-color:rgb(var(--i2p-band));border:1px solid rgb(var(--i2p-ink)/.10);
+      border-radius:1rem;padding:1.5rem}
+    .i2p .i2p-mark{color:rgb(var(--i2p-accent))}
+    .i2p .i2p-soft{color:rgb(var(--i2p-soft))}
+    @media (min-width:640px){.i2p .i2p-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+Those class names are an example of the shape, not a list to copy. Name the ones this block actually contains.
+
+**The test before you hand it over:** picture every `class` attribute deleted. What is left has to still be this block, in the customer's colours, with its faces and its columns. If it collapses to a column of black text on white, the stylesheet is too short. The exact spacing scale, the small type sizes and the hover states stay in the utilities where they belong.
 
 **Nothing else is assumed.** The block does not expect the page to define a color, a font, a helper class or a shared stylesheet. If the page loads Tailwind the block is complete; if it does not, the base layer keeps it readable and in shape.
 
@@ -198,7 +225,8 @@ Structure and proportion fidelity, copy rewritten for the customer, column count
 8. **Matching the spacing pixel for pixel.** Screenshots are taken at different zoom levels and pixel ratios, so the numbers in them are not the numbers on the page. Use the ratios and the page's own spacing scale.
 - **An icon with no size of its own.** `<svg class="h-4 w-4" viewBox="0 0 20 20">` is 16px only while Tailwind is loaded. Strip the stylesheet away and the SVG has no intrinsic size and stretches to the width of whatever contains it: measured at 900 by 900 inside a 900px section, with the rest of the block pushed off the screen. Fix it with a `width` and a `height` attribute on the tag, and a base layer rule for any icon used more than once.
 - **A height attribute on an illustration that fills its column.** The reverse mistake, and it shows up on a page that has Tailwind as well as one that does not. The width follows the column while the height is pinned to the attribute, so the drawing is squashed: measured at 656 by 380 where it should have been 656 by 519. An svg whose width follows its container keeps its height free.
-- **A height attribute on an illustration that fills its column.** The reverse mistake, and it shows up on a page that has Tailwind as well as one that does not. The width follows the column while the height is pinned to the attribute, so the drawing is squashed: measured at 656 by 380 where it should have been 656 by 519. An svg whose width follows its container keeps its height free.
+- **A colour variable that is used but never declared.** `rgb(var(--i2p-accent))` with no `--i2p-accent` on the block is an invalid declaration, and an invalid declaration is not a fallback to something sensible: the browser throws the line away. Measured on a block that did this, the section had no background, the cards had no face and every piece of text came out pure black, including the parts meant to carry the brand colour.
+- **A card that exists only as utility classes.** `class="rounded-2xl border bg-white p-6"` is a card while Tailwind is loaded and nothing at all without it. Measured: no face, no border, no radius, no padding, and the three cards stacked at full width instead of sitting three across. Anything a reader would notice was missing goes in the block's own stylesheet as well as on the markup.
 
 ## What a static block cannot do
 
@@ -240,6 +268,12 @@ coloured part of the block reads one of them.
 | `--i2p-deep` | the dark ground |
 
 The values are channel triplets, `15 23 42` rather than `#0f172a`, so an opacity suffix still works:
+
+
+Declare all six on the block itself, and give them real values. They are not defined anywhere else, and a colour read from a variable that was never declared is an invalid declaration: the browser discards the line and that part renders with no colour at all. Where the brief names the customer's colours, those colours go into these six values and nowhere else.
+
+    .i2p{--i2p-surface:255 255 255;--i2p-band:246 247 249;--i2p-ink:15 23 42;
+      --i2p-soft:92 107 129;--i2p-accent:37 99 235;--i2p-deep:11 18 32}
 `rgb(var(--i2p-ink) / .70)`.
 
 Rebrand the block by changing those six values, in one place. Do not spread hex values through the
