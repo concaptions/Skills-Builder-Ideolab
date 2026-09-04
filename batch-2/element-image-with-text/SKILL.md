@@ -9,6 +9,14 @@ description: A compact image and copy block inserted within a larger section. Us
 
 One `<section>` element, and nothing else.
 
+**Five things to check before you hand the block back.** Each one has been the entire reason a delivered block was broken.
+
+1. The six colour variables are declared on the block, with values. Nothing else in the world defines them, and a colour read from a variable that does not exist is an invalid declaration the browser throws away.
+2. Every face, ground, border and text colour is written into the block's own stylesheet, not left to a utility class alone.
+3. Every icon carries a `width` and a `height` attribute as well as its size classes.
+4. No `<script>`, no external file, no markdown fence, no page wrapper.
+5. Read it back once with every `class` attribute imagined away. What is left still has to be this block, in the customer's colours.
+
 - No `<!doctype>`, `<html>`, `<head>` or `<body>`. The block is dropped into a page that already exists.
 - No markdown code fence around it, and no commentary before or after it. Return the HTML itself. A leftover fence marker renders as visible text on the page, and inside a grid it becomes an extra item that pushes the layout out of shape.
 - No `<script>`, no event handlers, no `hidden` attributes waiting to be toggled. Nothing here can run.

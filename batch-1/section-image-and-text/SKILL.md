@@ -9,6 +9,14 @@ description: A general-purpose storytelling section pairing written content with
 
 One `<section>` element, and nothing else.
 
+**Five things to check before you hand the block back.** Each one has been the entire reason a delivered block was broken.
+
+1. The six colour variables are declared on the block, with values. Nothing else in the world defines them, and a colour read from a variable that does not exist is an invalid declaration the browser throws away.
+2. Every face, ground, border and text colour is written into the block's own stylesheet, not left to a utility class alone.
+3. Every icon carries a `width` and a `height` attribute as well as its size classes.
+4. No `<script>`, no external file, no markdown fence, no page wrapper.
+5. Read it back once with every `class` attribute imagined away. What is left still has to be this block, in the customer's colours.
+
 - No `<!doctype>`, `<html>`, `<head>` or `<body>`. The block is dropped into a page that already exists.
 - No markdown code fence around it, and no commentary before or after it. Return the HTML itself. A leftover fence marker renders as visible text on the page, and inside a grid it becomes an extra item that pushes the layout out of shape.
 - No `<script>`, no event handlers, no `hidden` attributes waiting to be toggled. Nothing here can run.
@@ -262,14 +270,15 @@ A colour is not readable just because it came from a variable. Every piece of te
 1 against the colour actually behind it, which is the nearest ancestor that paints a background rather
 than the page. Large text, meaning 24px, or 18.66px when it is bold, needs 3 to 1.
 
-With the default values these four pairs fail, so do not reach for them.
+With the default values these three pairs fail, so do not reach for them.
 
 | Text | Background | Measured |
 | --- | --- | --- |
 | ink | deep | 1.05 to 1, near black on near black |
 | accent | deep | 3.62 to 1, the accent is a dark blue and it sinks into a dark panel |
-| soft | deep | 3.93 to 1 |
-| soft | band | 4.44 to 1, although the same value clears on surface at 4.76 to 1 |
+| soft | deep | 3.45 to 1 |
+
+Soft clears everywhere else: 5.06 to 1 on the band and 5.42 on surface.
 
 On a dark panel, set text in the surface value and use a lowered opacity of it for the quieter line.
 White on the accent measures 5.17 to 1, so the accent still works there as a button background. On the
