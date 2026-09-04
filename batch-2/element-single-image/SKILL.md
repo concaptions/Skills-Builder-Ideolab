@@ -75,6 +75,16 @@ The crop, the aspect ratio, the rounding, the frame, the caption, and whether th
 
 Every image carries a width and a height so the page does not jump while it loads, and an alt description unless it is purely decorative. The aspect ratio is set on the container, not left to whatever the file happens to be, or the layout moves when the image is swapped.
 
+## How to present it
+
+A single picture is the only thing in its band, so the band has to be built around it or the page reads as empty. That was the fault reported here: a 672px picture centred in a 1280px section with 304px of bare white each side, which looks like something failed to load rather than like a considered choice.
+
+- **Give the picture the width of the content column, not half of it.** If it is worth a band of its own it is worth the full column.
+- **Put it on the band colour, not on white.** White around a white framed picture leaves nothing holding it.
+- **Lift the frame.** A rounded corner and a soft shadow separate the picture from the page.
+- **Caption it with something only this business could write.** A place, a date, how long the job took. "Our work" is not a caption.
+- **Keep the aspect ratio on the frame, not on the picture**, so swapping the picture cannot move the rest of the page.
+
 ## Settings and Controls
 
 - Choose upload, Brand Gallery, generated image, stock source, or external image.

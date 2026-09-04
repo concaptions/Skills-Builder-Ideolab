@@ -75,6 +75,16 @@ The shape, the size, the container, the color, the alignment, and whether it lin
 
 It must be inline SVG, never an icon font or an external library. A decorative icon takes `aria-hidden="true"` so it is passed over. An icon that is the only content of a link takes a real accessible name, because a link announced as blank is a dead end.
 
+## What the block should show
+
+This element is one icon, and the only decision it offers is how that icon is presented. So show that decision: the same mark in each treatment, side by side, with each treatment named. A row of three different icons and a sentence does not show anything a reader or a builder can choose between.
+
+- Show one mark, repeated, not several different marks.
+- Name each treatment underneath, so the choice can be pointed at.
+- Give every specimen the same row height, or the labels sit at different heights and the row reads as crooked.
+- Then show it once in real use, beside a real line of copy, so the size against the type is visible.
+- Do not write the accessibility reasoning into the visible copy. A visitor to the finished website does not need to be told which mark a screen reader passes over. Keep that as a comment in the code.
+
 ## Settings and Controls
 
 - Choose icon library, uploaded SVG, generated icon, Lottie, or Rive asset.

@@ -75,6 +75,15 @@ The marker style, the number of columns, whether descriptions sit under the item
 
 It must stay a real `ul` or `ol`. A stack of divs is not a list, and a numbered list built from typed digits inside divs is announced as ordinary text with no count and no position. Use `ol` when the order matters and `ul` when it does not.
 
+## Making it worth looking at
+
+A tick and a line of text, repeated five times, is correct and forgettable. The element is called Bullet or Numbered List, so the choice between the two is the thing worth showing.
+
+- **Put the mark in a tile.** A small circle behind the tick gives the rows a single edge to read down and holds the text at one starting point.
+- **Separate the rows with a hairline**, not with nothing. The last row does not need one.
+- **Show both treatments when the content allows it**, side by side: the ticked list where the order does not matter, the numbered list where it does. One column below 768px, where two would leave four words to a line.
+- **A tick is not a bullet for everything.** Use it for what is included. Use a number for what happens in sequence. Do not number a list whose order does not matter.
+
 ## Settings and Controls
 
 - Set list type, item count, indentation, spacing, columns, marker position, and mobile stacking.

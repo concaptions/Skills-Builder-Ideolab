@@ -75,6 +75,15 @@ The label, the destination, the size, the style, whether an icon is included and
 
 It must be a real `<a>` when it navigates and a real `<button>` when it acts. A styled div is not reachable by keyboard, is not announced as a control, and cannot be pressed with the space bar. The label must say what happens: Book a survey, not Click here.
 
+## Spacing
+
+Reported and measured on this block: 24px between the sentence and the row of buttons, and 12px between the buttons. Both are too tight, and the second one made the outlined button and the text button read as a single shape.
+
+- **32px** between the last line of copy and the row. A 44px control needs more air above it than the gap between two lines of type.
+- **16px** between buttons, and the same when they wrap to a second line.
+- A text button carries no border, so give it the same horizontal padding as the others, about 14px, or it sits hard against its neighbour.
+- On a narrow screen the primary button goes full width and the others stay their own width underneath it.
+
 ## Settings and Controls
 
 - Set label, destination, size, width, alignment, icon, icon position, disabled state, and mobile width.

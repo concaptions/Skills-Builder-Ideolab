@@ -25,7 +25,7 @@
       .ebt img,.ebt svg{display:block;max-width:100%}
       .ebt{background-color:rgb(var(--ebt-surface));color:rgb(var(--ebt-ink));padding:3.5rem 1.25rem}
       .ebt .ebt-wrap{max-width:40rem;margin-inline:auto}
-      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
       .ebt h2{font-size:1.5rem;font-weight:600}
       .ebt p{font-size:1rem;line-height:1.6}
     }
@@ -42,7 +42,10 @@
     }
     .ebt .ebt-soft{color:rgb(var(--ebt-soft))}
 
-    /* Every button is at least 44px tall so it can be hit with a thumb. */
+    /* Every button is at least 44px tall so it can be hit with a thumb, and
+       the row keeps a full 16px between them. A 45px control needs more air
+       around it than the gap between two lines of type: at 12px the outlined
+       button and the text button read as one shape. */
     .ebt .ebt-btn{
       display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
       padding:.7rem 1.4rem;border-radius:9999px;font-size:.9375rem;font-weight:600;
@@ -52,7 +55,7 @@
     .ebt .ebt-primary:hover,.ebt .ebt-primary:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--ebt-accent)/.28)}
     .ebt .ebt-secondary{border:1px solid rgb(var(--ebt-ink)/.18);color:rgb(var(--ebt-ink))}
     .ebt .ebt-secondary:hover,.ebt .ebt-secondary:focus-visible{transform:translateY(-2px);border-color:rgb(var(--ebt-accent));color:rgb(var(--ebt-accent))}
-    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.25rem}
+    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.9rem}
     .ebt .ebt-text:hover,.ebt .ebt-text:focus-visible{text-decoration:underline}
 
     /* Never removed. Without it a keyboard user cannot see where they are. */
@@ -70,6 +73,7 @@
       .ebt .ebt-primary{width:100%;justify-content:center}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -84,14 +88,14 @@
       .ebt audio, .ebt canvas, .ebt embed, .ebt iframe, .ebt img, .ebt object, .ebt svg, .ebt video{display:block;vertical-align:middle;}
       .ebt.mx-auto, .ebt .mx-auto{margin-left:auto;margin-right:auto;}
       .ebt.mb-2, .ebt .mb-2{margin-bottom:0.5rem;}
-      .ebt.mb-6, .ebt .mb-6{margin-bottom:1.5rem;}
+      .ebt.mb-8, .ebt .mb-8{margin-bottom:2rem;}
       .ebt.flex, .ebt .flex{display:flex;}
       .ebt.h-4, .ebt .h-4{height:1rem;}
       .ebt.w-4, .ebt .w-4{width:1rem;}
       .ebt.max-w-xl, .ebt .max-w-xl{max-width:36rem;}
       .ebt.flex-wrap, .ebt .flex-wrap{flex-wrap:wrap;}
       .ebt.items-center, .ebt .items-center{align-items:center;}
-      .ebt.gap-3, .ebt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ebt.gap-4, .ebt .gap-4{row-gap:1rem;column-gap:1rem;}
       .ebt.px-5, .ebt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .ebt.py-14, .ebt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .ebt.text-2xl, .ebt .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -104,9 +108,9 @@
 
   <div class="ebt-wrap mx-auto max-w-xl">
     <h2 class="mb-2 text-2xl font-semibold">Ready when you are</h2>
-    <p class="ebt-soft mb-6 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
+    <p class="ebt-soft mb-8 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
 
-    <div class="ebt-row flex flex-wrap items-center gap-3">
+    <div class="ebt-row flex flex-wrap items-center gap-4">
       <a href="#book" class="ebt-btn ebt-primary">
         Book a survey
         <svg width="16" height="16" class="ebt-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg>

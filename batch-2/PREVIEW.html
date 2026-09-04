@@ -111,6 +111,7 @@ tailwind.config = { theme: { extend: { colors: {
       .ehd .ehd-rise{animation:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -141,9 +142,9 @@ tailwind.config = { theme: { extend: { colors: {
   </style>
 
   <div class="ehd-wrap mx-auto max-w-2xl text-center ehd-rise">
-    <p class="ehd-eyebrow mb-3 text-xs font-semibold uppercase tracking-[0.2em]">What we do</p>
-    <h2 id="ehd-title" class="text-4xl font-semibold leading-tight sm:text-5xl">Heating and plumbing, <span class="ehd-accent">done once</span></h2>
-    <p class="ehd-soft mt-4 text-base leading-relaxed sm:text-lg">Every job is quoted in writing before anybody sets off, and the number on the quote is the number you pay.</p>
+    <p class="ehd-eyebrow mb-3 text-xs font-semibold uppercase tracking-[0.2em]">Gas Safe registered, Nottingham</p>
+    <h2 id="ehd-title" class="text-4xl font-semibold leading-tight sm:text-5xl">No heating this morning? <span class="ehd-accent">Warm again by tonight.</span></h2>
+    <p class="ehd-soft mt-4 text-base leading-relaxed sm:text-lg">Call before eleven and an engineer is with you the same day, with the price agreed in writing before any work starts.</p>
   </div>
 </section>
 
@@ -256,8 +257,8 @@ tailwind.config = { theme: { extend: { colors: {
       .elt ul,.elt ol{margin:0;padding:0;list-style:none}
       .elt img,.elt svg,.elt video{display:block;max-width:100%}
       .elt{background-color:rgb(var(--elt-surface));color:rgb(var(--elt-ink));padding:3.5rem 1.25rem}
-      .elt .elt-wrap{max-width:40rem;margin-inline:auto}
-      .elt .elt-list{display:grid;gap:.875rem}
+      .elt .elt-wrap{max-width:56rem;margin-inline:auto}
+      .elt .elt-list{display:grid;gap:1rem}
       .elt h2{font-size:1.5rem;font-weight:600}
       .elt p{font-size:1rem;line-height:1.6}
     }
@@ -272,15 +273,55 @@ tailwind.config = { theme: { extend: { colors: {
       background-color:rgb(var(--elt-surface));
       color:rgb(var(--elt-ink));
     }
+    .elt .elt-soft{color:rgb(var(--elt-soft))}
     .elt .elt-tick{color:rgb(var(--elt-accent))}
 
+    /* Two treatments side by side, because the choice this element offers is
+       between them. One column below 768px, where two would leave four words
+       to a line. */
+    .elt .elt-cols{display:grid;gap:2.5rem 3rem}
+    @media (min-width: 768px){
+      .elt .elt-cols{grid-template-columns:1fr 1fr}
+    }
+    .elt .elt-kind{
+      font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+      color:rgb(var(--elt-soft));margin-bottom:1rem;
+    }
+
+    /* The mark sits in a tile so the rows line up down a single edge and the
+       text starts in the same place every time. */
+    .elt .elt-mark{
+      display:grid;place-items:center;flex:none;width:1.75rem;height:1.75rem;
+      border-radius:9999px;background-color:rgb(var(--elt-accent)/.10);
+      color:rgb(var(--elt-accent));
+    }
+    .elt .elt-mark svg{width:.95rem;height:.95rem}
+    /* The accent on a ten percent tint of itself measures 4.49 to 1, which is
+       a fail for text. A tick is a graphic and is judged at 3 to 1, but a
+       number is text. So the step marker is solid and the figure sits on it in
+       white, which measures 5.17 to 1, and it reads as a step rather than a
+       second kind of bullet. */
+    .elt .elt-num{
+      font-size:.8125rem;font-weight:700;font-variant-numeric:tabular-nums;
+      background-color:rgb(var(--elt-accent));color:#fff;
+    }
+
+    .elt .elt-item{
+      display:flex;gap:.85rem;align-items:flex-start;
+      padding-bottom:1rem;border-bottom:1px solid rgb(var(--elt-ink)/.08);
+    }
+    .elt .elt-item:last-child{border-bottom:0;padding-bottom:0}
+
     .elt .elt-item{animation:elt-rise 380ms cubic-bezier(.16,1,.3,1) both}
+    .elt .elt-item span{font-size:1rem;line-height:1.6}
     @keyframes elt-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
     @media (prefers-reduced-motion: reduce){
       .elt .elt-item{animation:none}
     }
   
+      
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -294,51 +335,74 @@ tailwind.config = { theme: { extend: { colors: {
       .elt menu, .elt ol, .elt ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
       .elt audio, .elt canvas, .elt embed, .elt iframe, .elt img, .elt object, .elt svg, .elt video{display:block;vertical-align:middle;}
       .elt.mx-auto, .elt .mx-auto{margin-left:auto;margin-right:auto;}
-      .elt.mb-6, .elt .mb-6{margin-bottom:1.5rem;}
-      .elt.mt-0\.5, .elt .mt-0\.5{margin-top:0.125rem;}
-      .elt.flex, .elt .flex{display:flex;}
-      .elt.grid, .elt .grid{display:grid;}
-      .elt.h-5, .elt .h-5{height:1.25rem;}
-      .elt.w-5, .elt .w-5{width:1.25rem;}
-      .elt.max-w-xl, .elt .max-w-xl{max-width:36rem;}
-      .elt.shrink-0, .elt .shrink-0{flex-shrink:0;}
-      .elt.gap-3, .elt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
-      .elt.gap-3\.5, .elt .gap-3\.5{row-gap:0.875rem;column-gap:0.875rem;}
+      .elt.mb-2, .elt .mb-2{margin-bottom:0.5rem;}
+      .elt.mb-8, .elt .mb-8{margin-bottom:2rem;}
+      .elt.max-w-4xl, .elt .max-w-4xl{max-width:56rem;}
       .elt.px-5, .elt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .elt.py-14, .elt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .elt.text-2xl, .elt .text-2xl{font-size:1.5rem;line-height:2rem;}
-      .elt.text-base, .elt .text-base{font-size:1rem;line-height:1.5rem;}
       .elt.font-semibold, .elt .font-semibold{font-weight:600;}
-      .elt.leading-relaxed, .elt .leading-relaxed{line-height:1.625;}
       @media (min-width: 640px){.elt.sm\:px-8, .elt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
     }
   </style>
 
-  <div class="elt-wrap mx-auto max-w-xl">
-    <h2 id="elt-title" class="mb-6 text-2xl font-semibold">What is included in every quote</h2>
+  <div class="elt-wrap mx-auto max-w-4xl">
+    <h2 id="elt-title" class="mb-2 text-2xl font-semibold">What is included, and how it runs</h2>
+    <p class="elt-soft mb-8">A tick where the order does not matter. A number where it does.</p>
 
-    <ul class="elt-list grid gap-3.5">
-      <li class="elt-item flex gap-3" style="animation-delay:0ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">The boiler, the flue and every fitting the job needs</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:60ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Taking the old unit away and disposing of it</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:120ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">A system flush and every radiator balanced</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:180ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Registering the warranty in your name before we leave</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:240ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Clearing up, including the bits you cannot see</span>
-      </li>
-    </ul>
+    <div class="elt-cols">
+      <div>
+        <p class="elt-kind">Included in every quote</p>
+        <ul class="elt-list">
+        <li class="elt-item" style="animation-delay:0ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>The boiler, the flue and every fitting the job needs</span>
+        </li>
+        <li class="elt-item" style="animation-delay:60ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Taking the old unit away and disposing of it</span>
+        </li>
+        <li class="elt-item" style="animation-delay:120ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>A system flush and every radiator balanced</span>
+        </li>
+        <li class="elt-item" style="animation-delay:180ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Registering the warranty in your name before we leave</span>
+        </li>
+        <li class="elt-item" style="animation-delay:240ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Clearing up, including the bits you cannot see</span>
+        </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="elt-kind">How the day runs</p>
+        <ol class="elt-list">
+        <li class="elt-item" style="animation-delay:0ms">
+          <span class="elt-mark elt-num" aria-hidden="true">1</span>
+          <span>You send a photograph of the old boiler and the meter</span>
+        </li>
+        <li class="elt-item" style="animation-delay:60ms">
+          <span class="elt-mark elt-num" aria-hidden="true">2</span>
+          <span>We price it in writing, with nothing added later</span>
+        </li>
+        <li class="elt-item" style="animation-delay:120ms">
+          <span class="elt-mark elt-num" aria-hidden="true">3</span>
+          <span>An engineer arrives on the agreed morning</span>
+        </li>
+        <li class="elt-item" style="animation-delay:180ms">
+          <span class="elt-mark elt-num" aria-hidden="true">4</span>
+          <span>The system is flushed, balanced and tested with you there</span>
+        </li>
+        <li class="elt-item" style="animation-delay:240ms">
+          <span class="elt-mark elt-num" aria-hidden="true">5</span>
+          <span>The warranty is registered and the paperwork is emailed</span>
+        </li>
+        </ol>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -370,7 +434,7 @@ tailwind.config = { theme: { extend: { colors: {
       .ebt img,.ebt svg{display:block;max-width:100%}
       .ebt{background-color:rgb(var(--ebt-surface));color:rgb(var(--ebt-ink));padding:3.5rem 1.25rem}
       .ebt .ebt-wrap{max-width:40rem;margin-inline:auto}
-      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+      .ebt .ebt-row{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
       .ebt h2{font-size:1.5rem;font-weight:600}
       .ebt p{font-size:1rem;line-height:1.6}
     }
@@ -387,7 +451,10 @@ tailwind.config = { theme: { extend: { colors: {
     }
     .ebt .ebt-soft{color:rgb(var(--ebt-soft))}
 
-    /* Every button is at least 44px tall so it can be hit with a thumb. */
+    /* Every button is at least 44px tall so it can be hit with a thumb, and
+       the row keeps a full 16px between them. A 45px control needs more air
+       around it than the gap between two lines of type: at 12px the outlined
+       button and the text button read as one shape. */
     .ebt .ebt-btn{
       display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;
       padding:.7rem 1.4rem;border-radius:9999px;font-size:.9375rem;font-weight:600;
@@ -397,7 +464,7 @@ tailwind.config = { theme: { extend: { colors: {
     .ebt .ebt-primary:hover,.ebt .ebt-primary:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgb(var(--ebt-accent)/.28)}
     .ebt .ebt-secondary{border:1px solid rgb(var(--ebt-ink)/.18);color:rgb(var(--ebt-ink))}
     .ebt .ebt-secondary:hover,.ebt .ebt-secondary:focus-visible{transform:translateY(-2px);border-color:rgb(var(--ebt-accent));color:rgb(var(--ebt-accent))}
-    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.25rem}
+    .ebt .ebt-text{color:rgb(var(--ebt-accent));padding-inline:.9rem}
     .ebt .ebt-text:hover,.ebt .ebt-text:focus-visible{text-decoration:underline}
 
     /* Never removed. Without it a keyboard user cannot see where they are. */
@@ -415,6 +482,7 @@ tailwind.config = { theme: { extend: { colors: {
       .ebt .ebt-primary{width:100%;justify-content:center}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -429,14 +497,14 @@ tailwind.config = { theme: { extend: { colors: {
       .ebt audio, .ebt canvas, .ebt embed, .ebt iframe, .ebt img, .ebt object, .ebt svg, .ebt video{display:block;vertical-align:middle;}
       .ebt.mx-auto, .ebt .mx-auto{margin-left:auto;margin-right:auto;}
       .ebt.mb-2, .ebt .mb-2{margin-bottom:0.5rem;}
-      .ebt.mb-6, .ebt .mb-6{margin-bottom:1.5rem;}
+      .ebt.mb-8, .ebt .mb-8{margin-bottom:2rem;}
       .ebt.flex, .ebt .flex{display:flex;}
       .ebt.h-4, .ebt .h-4{height:1rem;}
       .ebt.w-4, .ebt .w-4{width:1rem;}
       .ebt.max-w-xl, .ebt .max-w-xl{max-width:36rem;}
       .ebt.flex-wrap, .ebt .flex-wrap{flex-wrap:wrap;}
       .ebt.items-center, .ebt .items-center{align-items:center;}
-      .ebt.gap-3, .ebt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
+      .ebt.gap-4, .ebt .gap-4{row-gap:1rem;column-gap:1rem;}
       .ebt.px-5, .ebt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .ebt.py-14, .ebt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .ebt.text-2xl, .ebt .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -449,9 +517,9 @@ tailwind.config = { theme: { extend: { colors: {
 
   <div class="ebt-wrap mx-auto max-w-xl">
     <h2 class="mb-2 text-2xl font-semibold">Ready when you are</h2>
-    <p class="ebt-soft mb-6 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
+    <p class="ebt-soft mb-8 text-base leading-relaxed">A survey takes about forty minutes and there is no charge for it.</p>
 
-    <div class="ebt-row flex flex-wrap items-center gap-3">
+    <div class="ebt-row flex flex-wrap items-center gap-4">
       <a href="#book" class="ebt-btn ebt-primary">
         Book a survey
         <svg width="16" height="16" class="ebt-arrow h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4"/></svg>
@@ -591,7 +659,7 @@ tailwind.config = { theme: { extend: { colors: {
 
   Every class is prefixed eic- so it cannot collide with the rest of the page.
 -->
-<section class="eic px-5 py-14 sm:px-8">
+<section class="eic px-5 py-14 sm:px-8" aria-labelledby="eic-title">
 
   <style>
     
@@ -633,6 +701,31 @@ tailwind.config = { theme: { extend: { colors: {
     }
     @keyframes eic-draw{to{stroke-dashoffset:0}}
 
+    /* The five treatments the skill names, side by side and labelled, because
+       the element is one icon and the choice being made is how it is presented. */
+    .eic .eic-specimens{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(6.5rem,1fr));
+      gap:1.5rem 1rem;margin-top:2rem;
+    }
+    /* The plain mark has no tile, so without a fixed row for the mark its
+       label sat higher than the other four and the row read as crooked. */
+    .eic .eic-spec{display:grid;grid-template-rows:2.75rem auto;justify-items:center;
+      align-items:center;gap:.7rem;text-align:center}
+    .eic .eic-name{
+      font-size:.75rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+      color:rgb(var(--eic-soft));
+    }
+    .eic .eic-plain svg{width:1.9rem;height:1.9rem}
+    .eic .eic-solid{background-color:rgb(var(--eic-accent))}
+    .eic .eic-solid svg{stroke:#fff}
+    .eic .eic-ring{
+      background-color:transparent;border:1.5px solid rgb(var(--eic-accent)/.45);
+    }
+    .eic .eic-use{
+      display:flex;align-items:center;gap:.75rem;margin-top:2.25rem;
+      padding-top:1.5rem;border-top:1px solid rgb(var(--eic-ink)/.10);
+    }
+
     /* A tappable icon keeps a 44px target even when the mark is smaller. */
     .eic .eic-link{display:inline-grid;place-items:center;min-width:2.75rem;min-height:2.75rem;border-radius:9999px}
     .eic .eic-link:hover,.eic .eic-link:focus-visible{background-color:rgb(var(--eic-accent)/.10)}
@@ -641,40 +734,12 @@ tailwind.config = { theme: { extend: { colors: {
     @media (prefers-reduced-motion: reduce){
       .eic .eic-draw path,.eic .eic-draw circle{animation:none;stroke-dashoffset:0}
     }
-  </style>
 
-  <div class="eic-wrap mx-auto max-w-xl">
-    <div class="eic-row flex flex-wrap items-center gap-6">
-
-      <span class="eic-tile eic-draw" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3 4 8v8l8 5 8-5V8z" fill="none"/>
-          <path d="M12 12v9" fill="none"/>
-        </svg>
-      </span>
-
-      <span class="eic-tile eic-square eic-draw" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="8" fill="none"/>
-          <path d="M12 8v4l3 2" fill="none"/>
-        </svg>
-      </span>
-
-      <a href="#warranty" class="eic-link">
-        <span class="sr-only">Read about the warranty</span>
-        <svg width="24" height="24" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/>
-          <path d="m9 12 2 2 4-4" fill="none"/>
-        </svg>
-      </a>
-
-      <p class="eic-soft text-sm leading-relaxed">The first two marks are decorative and are passed over by a screen reader. The third is a link and carries its own name.</p>
-    </div>
-  </div>
-
-  <style>
+    /* The link's only content is a mark, so its name is a line of text that is
+       read out and never drawn. */
     .eic .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -683,26 +748,71 @@ tailwind.config = { theme: { extend: { colors: {
       .eic, .eic *, .eic::after, .eic *::after, .eic::before, .eic *::before{box-sizing:border-box;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;border-top-style:solid;border-right-style:solid;border-bottom-style:solid;border-left-style:solid;border-top-color:rgb(229, 231, 235);border-right-color:rgb(229, 231, 235);border-bottom-color:rgb(229, 231, 235);border-left-color:rgb(229, 231, 235);}
       .eic::after, .eic *::after, .eic::before, .eic *::before{--tw-content:'';}
       .eic{line-height:1.5;text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent;}
+      .eic h1, .eic h2, .eic h3, .eic h4, .eic h5, .eic h6{font-size:inherit;font-weight:inherit;}
       .eic a{color:inherit;text-decoration-line:inherit;text-decoration-thickness:inherit;text-decoration-style:inherit;text-decoration-color:inherit;}
       .eic blockquote, .eic dd, .eic dl, .eic figure, .eic h1, .eic h2, .eic h3, .eic h4, .eic h5, .eic h6, .eic hr, .eic p, .eic pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
+      .eic menu, .eic ol, .eic ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
       .eic audio, .eic canvas, .eic embed, .eic iframe, .eic img, .eic object, .eic svg, .eic video{display:block;vertical-align:middle;}
       .eic.sr-only, .eic .sr-only{position:absolute;width:1px;height:1px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;margin-top:-1px;margin-right:-1px;margin-bottom:-1px;margin-left:-1px;overflow-x:hidden;overflow-y:hidden;clip:rect(0px, 0px, 0px, 0px);white-space-collapse:collapse;text-wrap-mode:nowrap;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;}
       .eic.mx-auto, .eic .mx-auto{margin-left:auto;margin-right:auto;}
-      .eic.flex, .eic .flex{display:flex;}
+      .eic.mt-2, .eic .mt-2{margin-top:0.5rem;}
       .eic.h-6, .eic .h-6{height:1.5rem;}
       .eic.w-6, .eic .w-6{width:1.5rem;}
-      .eic.max-w-xl, .eic .max-w-xl{max-width:36rem;}
-      .eic.flex-wrap, .eic .flex-wrap{flex-wrap:wrap;}
-      .eic.items-center, .eic .items-center{align-items:center;}
-      .eic.gap-6, .eic .gap-6{row-gap:1.5rem;column-gap:1.5rem;}
+      .eic.max-w-2xl, .eic .max-w-2xl{max-width:42rem;}
       .eic.px-5, .eic .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .eic.py-14, .eic .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
+      .eic.text-2xl, .eic .text-2xl{font-size:1.5rem;line-height:2rem;}
       .eic.text-sm, .eic .text-sm{font-size:0.875rem;line-height:1.25rem;}
+      .eic.font-semibold, .eic .font-semibold{font-weight:600;}
       .eic.leading-relaxed, .eic .leading-relaxed{line-height:1.625;}
       @media (min-width: 640px){.eic.sm\:px-8, .eic .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
     }
   </style>
-</section>
+
+  <div class="eic-wrap mx-auto max-w-2xl">
+
+    <h2 id="eic-title" class="text-2xl font-semibold">One mark, five ways to set it</h2>
+    <p class="eic-soft mt-2">The icon does not change. What changes is the container it sits in, and that is the only decision this element asks you to make.</p>
+
+    <!-- A decorative mark is hidden from a screen reader, because the words
+         beside it already say what it means. A mark that is the only thing
+         inside a link is not decorative and carries the link's name instead. -->
+    <ul class="eic-specimens">
+      <li class="eic-spec">
+        <span class="eic-plain eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+        <span class="eic-name">Plain</span>
+      </li>
+      <li class="eic-spec">
+        <span class="eic-tile eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+        <span class="eic-name">Soft circle</span>
+      </li>
+      <li class="eic-spec">
+        <span class="eic-tile eic-square eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+        <span class="eic-name">Soft square</span>
+      </li>
+      <li class="eic-spec">
+        <span class="eic-tile eic-solid eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+        <span class="eic-name">Solid</span>
+      </li>
+      <li class="eic-spec">
+        <span class="eic-tile eic-ring eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+        <span class="eic-name">Outlined</span>
+      </li>
+    </ul>
+
+    <div class="eic-use">
+      <span class="eic-tile eic-draw" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4 3 7 7 9 4-2 7-5 7-9V6z" fill="none"/><path d="m9 12 2 2 4-4" fill="none"/></svg></span>
+      <p class="eic-soft text-sm leading-relaxed">Ten year parts and labour warranty, registered for you on the day.</p>
+      <a href="#warranty" class="eic-link">
+        <span class="sr-only">Read the warranty terms</span>
+        <svg width="24" height="24" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h13" fill="none"/><path d="m12.5 6 6 6-6 6" fill="none"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  </section>
 
 <div class="pv-bar" id="p07"><span class="pv-num">07</span><span class="pv-name">Single Image</span></div>
 <!--
@@ -731,11 +841,14 @@ tailwind.config = { theme: { extend: { colors: {
       .eim{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
       .eim h2,.eim p,.eim figure,.eim figcaption{margin:0}
       .eim img,.eim svg{display:block;max-width:100%}
-      .eim{background-color:rgb(var(--eim-surface));color:rgb(var(--eim-ink));padding:3.5rem 1.25rem}
-      .eim .eim-wrap{max-width:44rem;margin-inline:auto}
+      .eim{background-color:rgb(var(--eim-band));color:rgb(var(--eim-ink));padding:4rem 1.25rem}
+      .eim .eim-wrap{max-width:60rem;margin-inline:auto}
       .eim p,.eim figcaption{font-size:.9375rem;line-height:1.6}
     }
 
+    /* The picture sits on the band rather than on bare white. A single image
+       on white leaves the whole width of the page empty around it, which is
+       what it was doing: 672px of picture with 304px of nothing either side. */
     .eim{
       --eim-surface:255 255 255;
       --eim-band:246 247 249;
@@ -743,22 +856,34 @@ tailwind.config = { theme: { extend: { colors: {
       --eim-soft:92 107 129;
       --eim-accent:37 99 235;
       --eim-deep:11 18 32;
-      background-color:rgb(var(--eim-surface));
+      background-color:rgb(var(--eim-band));
       color:rgb(var(--eim-ink));
     }
     .eim .eim-soft{color:rgb(var(--eim-soft))}
 
     /* The ratio lives on the frame. Swapping the picture cannot move the page. */
     .eim .eim-frame{
-      overflow:hidden;border-radius:1.25rem;aspect-ratio:4 / 3;
-      background-color:rgb(var(--eim-band));
+      overflow:hidden;border-radius:1.25rem;aspect-ratio:16 / 10;
+      background-color:rgb(var(--eim-surface));
+      box-shadow:0 18px 44px rgb(15 23 42 / .10);
     }
     .eim .eim-frame > *{width:100%;height:100%;object-fit:cover;
       transition:transform 500ms cubic-bezier(.16,1,.3,1)}
     .eim .eim-frame:hover > *{transform:scale(1.04)}
 
+    /* The caption sits under the picture and is read with it, so it keeps the
+       picture's width rather than the paragraph width of the page. */
+    .eim .eim-cap{
+      display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+      gap:.5rem 1.5rem;margin-top:.9rem;
+    }
+    .eim .eim-place{
+      font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+      color:rgb(var(--eim-accent));
+    }
+
     @media (max-width: 639px){
-      .eim .eim-frame{aspect-ratio:3 / 4}
+      .eim .eim-frame{aspect-ratio:4 / 3}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -766,6 +891,8 @@ tailwind.config = { theme: { extend: { colors: {
       .eim .eim-frame:hover > *{transform:none}
     }
   
+      
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -777,9 +904,8 @@ tailwind.config = { theme: { extend: { colors: {
       .eim blockquote, .eim dd, .eim dl, .eim figure, .eim h1, .eim h2, .eim h3, .eim h4, .eim h5, .eim h6, .eim hr, .eim p, .eim pre{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;}
       .eim audio, .eim canvas, .eim embed, .eim iframe, .eim img, .eim object, .eim svg, .eim video{display:block;vertical-align:middle;}
       .eim.mx-auto, .eim .mx-auto{margin-left:auto;margin-right:auto;}
-      .eim.mt-3, .eim .mt-3{margin-top:0.75rem;}
-      .eim.max-w-2xl, .eim .max-w-2xl{max-width:42rem;}
-      .eim.fill-muted, .eim .fill-muted{fill:rgb(246, 247, 249);}
+      .eim.max-w-5xl, .eim .max-w-5xl{max-width:64rem;}
+      .eim.fill-surface, .eim .fill-surface{fill:rgb(255, 255, 255);}
       .eim.px-5, .eim .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .eim.py-14, .eim .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .eim.text-sm, .eim .text-sm{font-size:0.875rem;line-height:1.25rem;}
@@ -788,21 +914,61 @@ tailwind.config = { theme: { extend: { colors: {
     }
   </style>
 
-  <figure class="eim-wrap mx-auto max-w-2xl">
+  <figure class="eim-wrap mx-auto max-w-5xl">
     <div class="eim-frame">
-      <svg viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="A finished bathroom with a walk in shower and a tiled floor">
-        <rect width="800" height="600" fill="#f6f7f9" class="fill-muted"/>
-        <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-          <path d="M120 470h560" fill="none"/>
-          <path d="M180 470V250h180v220" fill="none"/>
-          <path d="M180 300h180" fill="none"/>
-          <path d="M430 470V330h190v140" fill="none"/>
-          <circle cx="270" cy="215" r="26" fill="none"/>
-          <path d="M470 300h110" fill="none"/>
+      <svg viewBox="0 0 800 500" role="img" aria-label="A finished bathroom with a walk in shower, a vanity basin under a mirror and a heated towel rail">
+        <rect width="800" height="500" fill="#ffffff" class="fill-surface"/>
+
+        <!-- wall tiles -->
+        <g stroke="#e2e8f0" stroke-width="2">
+          <path d="M0 90h800M0 180h800M0 270h800M0 360h800"/>
+          <path d="M100 0v410M220 0v410M340 0v410M460 0v410M580 0v410M700 0v410"/>
+        </g>
+
+        <!-- floor -->
+        <rect y="410" width="800" height="90" fill="#eef2f7" class="fill-band"/>
+        <g stroke="#dbe3ee" stroke-width="2">
+          <path d="M0 452h800"/><path d="M120 410v90M300 410v90M480 410v90M660 410v90"/>
+        </g>
+
+        <!-- shower enclosure -->
+        <rect x="520" y="86" width="230" height="324" rx="10" fill="#2563eb" fill-opacity="0.07"/>
+
+        <g fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="520" y="86" width="230" height="324" rx="10"/>
+          <path d="M636 86v324"/>
+          <path d="M566 140h56M594 140v34"/>
+          <path d="M594 186v10M578 206v8M610 206v8M594 226v8"/>
+
+          <!-- vanity unit and basin -->
+          <rect x="92" y="304" width="212" height="106" rx="10" fill="#ffffff"/>
+          <path d="M198 304v106"/>
+          <path d="M140 360h28M228 360h28"/>
+          <rect x="106" y="262" width="184" height="46" rx="20" fill="#ffffff"/>
+          <path d="M198 224v38M198 224h30"/>
+
+          <!-- mirror -->
+          <rect x="120" y="96" width="156" height="112" rx="10" fill="#ffffff"/>
+
+          <!-- heated towel rail -->
+          <path d="M360 168v242"/>
+          <path d="M436 168v242"/>
+          <path d="M360 200h76M360 244h76M360 288h76M360 332h76"/>
+
+          <!-- floor line -->
+          <path d="M40 410h720"/>
+        </g>
+
+        <g fill="#2563eb" opacity="0.16">
+          <circle cx="690" cy="196" r="8"/><circle cx="712" cy="228" r="5"/><circle cx="668" cy="240" r="6"/>
+          <circle cx="700" cy="276" r="4"/>
         </g>
       </svg>
     </div>
-    <figcaption class="eim-soft mt-3 text-sm leading-relaxed">A full bathroom fit in Nottingham, stripped back and rebuilt by one team in eight working days.</figcaption>
+    <figcaption class="eim-cap">
+      <span class="eim-soft text-sm leading-relaxed">A full bathroom fit, stripped back to the joists and rebuilt by one team in eight working days.</span>
+      <span class="eim-place">Nottingham, March</span>
+    </figcaption>
   </figure>
 </section>
 

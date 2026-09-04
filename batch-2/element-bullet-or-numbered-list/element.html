@@ -23,8 +23,8 @@
       .elt ul,.elt ol{margin:0;padding:0;list-style:none}
       .elt img,.elt svg,.elt video{display:block;max-width:100%}
       .elt{background-color:rgb(var(--elt-surface));color:rgb(var(--elt-ink));padding:3.5rem 1.25rem}
-      .elt .elt-wrap{max-width:40rem;margin-inline:auto}
-      .elt .elt-list{display:grid;gap:.875rem}
+      .elt .elt-wrap{max-width:56rem;margin-inline:auto}
+      .elt .elt-list{display:grid;gap:1rem}
       .elt h2{font-size:1.5rem;font-weight:600}
       .elt p{font-size:1rem;line-height:1.6}
     }
@@ -39,15 +39,55 @@
       background-color:rgb(var(--elt-surface));
       color:rgb(var(--elt-ink));
     }
+    .elt .elt-soft{color:rgb(var(--elt-soft))}
     .elt .elt-tick{color:rgb(var(--elt-accent))}
 
+    /* Two treatments side by side, because the choice this element offers is
+       between them. One column below 768px, where two would leave four words
+       to a line. */
+    .elt .elt-cols{display:grid;gap:2.5rem 3rem}
+    @media (min-width: 768px){
+      .elt .elt-cols{grid-template-columns:1fr 1fr}
+    }
+    .elt .elt-kind{
+      font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+      color:rgb(var(--elt-soft));margin-bottom:1rem;
+    }
+
+    /* The mark sits in a tile so the rows line up down a single edge and the
+       text starts in the same place every time. */
+    .elt .elt-mark{
+      display:grid;place-items:center;flex:none;width:1.75rem;height:1.75rem;
+      border-radius:9999px;background-color:rgb(var(--elt-accent)/.10);
+      color:rgb(var(--elt-accent));
+    }
+    .elt .elt-mark svg{width:.95rem;height:.95rem}
+    /* The accent on a ten percent tint of itself measures 4.49 to 1, which is
+       a fail for text. A tick is a graphic and is judged at 3 to 1, but a
+       number is text. So the step marker is solid and the figure sits on it in
+       white, which measures 5.17 to 1, and it reads as a step rather than a
+       second kind of bullet. */
+    .elt .elt-num{
+      font-size:.8125rem;font-weight:700;font-variant-numeric:tabular-nums;
+      background-color:rgb(var(--elt-accent));color:#fff;
+    }
+
+    .elt .elt-item{
+      display:flex;gap:.85rem;align-items:flex-start;
+      padding-bottom:1rem;border-bottom:1px solid rgb(var(--elt-ink)/.08);
+    }
+    .elt .elt-item:last-child{border-bottom:0;padding-bottom:0}
+
     .elt .elt-item{animation:elt-rise 380ms cubic-bezier(.16,1,.3,1) both}
+    .elt .elt-item span{font-size:1rem;line-height:1.6}
     @keyframes elt-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
     @media (prefers-reduced-motion: reduce){
       .elt .elt-item{animation:none}
     }
   
+      
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -61,50 +101,73 @@
       .elt menu, .elt ol, .elt ul{list-style-position:initial;list-style-image:initial;list-style-type:none;margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;}
       .elt audio, .elt canvas, .elt embed, .elt iframe, .elt img, .elt object, .elt svg, .elt video{display:block;vertical-align:middle;}
       .elt.mx-auto, .elt .mx-auto{margin-left:auto;margin-right:auto;}
-      .elt.mb-6, .elt .mb-6{margin-bottom:1.5rem;}
-      .elt.mt-0\.5, .elt .mt-0\.5{margin-top:0.125rem;}
-      .elt.flex, .elt .flex{display:flex;}
-      .elt.grid, .elt .grid{display:grid;}
-      .elt.h-5, .elt .h-5{height:1.25rem;}
-      .elt.w-5, .elt .w-5{width:1.25rem;}
-      .elt.max-w-xl, .elt .max-w-xl{max-width:36rem;}
-      .elt.shrink-0, .elt .shrink-0{flex-shrink:0;}
-      .elt.gap-3, .elt .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
-      .elt.gap-3\.5, .elt .gap-3\.5{row-gap:0.875rem;column-gap:0.875rem;}
+      .elt.mb-2, .elt .mb-2{margin-bottom:0.5rem;}
+      .elt.mb-8, .elt .mb-8{margin-bottom:2rem;}
+      .elt.max-w-4xl, .elt .max-w-4xl{max-width:56rem;}
       .elt.px-5, .elt .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .elt.py-14, .elt .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .elt.text-2xl, .elt .text-2xl{font-size:1.5rem;line-height:2rem;}
-      .elt.text-base, .elt .text-base{font-size:1rem;line-height:1.5rem;}
       .elt.font-semibold, .elt .font-semibold{font-weight:600;}
-      .elt.leading-relaxed, .elt .leading-relaxed{line-height:1.625;}
       @media (min-width: 640px){.elt.sm\:px-8, .elt .sm\:px-8{padding-left:2rem;padding-right:2rem;}}
     }
   </style>
 
-  <div class="elt-wrap mx-auto max-w-xl">
-    <h2 id="elt-title" class="mb-6 text-2xl font-semibold">What is included in every quote</h2>
+  <div class="elt-wrap mx-auto max-w-4xl">
+    <h2 id="elt-title" class="mb-2 text-2xl font-semibold">What is included, and how it runs</h2>
+    <p class="elt-soft mb-8">A tick where the order does not matter. A number where it does.</p>
 
-    <ul class="elt-list grid gap-3.5">
-      <li class="elt-item flex gap-3" style="animation-delay:0ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">The boiler, the flue and every fitting the job needs</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:60ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Taking the old unit away and disposing of it</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:120ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">A system flush and every radiator balanced</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:180ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Registering the warranty in your name before we leave</span>
-      </li>
-      <li class="elt-item flex gap-3" style="animation-delay:240ms">
-        <svg width="20" height="20" class="elt-tick mt-0.5 h-5 w-5 shrink-0" viewBox="0 0 20 20" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg>
-        <span class="text-base leading-relaxed">Clearing up, including the bits you cannot see</span>
-      </li>
-    </ul>
+    <div class="elt-cols">
+      <div>
+        <p class="elt-kind">Included in every quote</p>
+        <ul class="elt-list">
+        <li class="elt-item" style="animation-delay:0ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>The boiler, the flue and every fitting the job needs</span>
+        </li>
+        <li class="elt-item" style="animation-delay:60ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Taking the old unit away and disposing of it</span>
+        </li>
+        <li class="elt-item" style="animation-delay:120ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>A system flush and every radiator balanced</span>
+        </li>
+        <li class="elt-item" style="animation-delay:180ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Registering the warranty in your name before we leave</span>
+        </li>
+        <li class="elt-item" style="animation-delay:240ms">
+          <span class="elt-mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 8 14.5 16 6"/></svg></span>
+          <span>Clearing up, including the bits you cannot see</span>
+        </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="elt-kind">How the day runs</p>
+        <ol class="elt-list">
+        <li class="elt-item" style="animation-delay:0ms">
+          <span class="elt-mark elt-num" aria-hidden="true">1</span>
+          <span>You send a photograph of the old boiler and the meter</span>
+        </li>
+        <li class="elt-item" style="animation-delay:60ms">
+          <span class="elt-mark elt-num" aria-hidden="true">2</span>
+          <span>We price it in writing, with nothing added later</span>
+        </li>
+        <li class="elt-item" style="animation-delay:120ms">
+          <span class="elt-mark elt-num" aria-hidden="true">3</span>
+          <span>An engineer arrives on the agreed morning</span>
+        </li>
+        <li class="elt-item" style="animation-delay:180ms">
+          <span class="elt-mark elt-num" aria-hidden="true">4</span>
+          <span>The system is flushed, balanced and tested with you there</span>
+        </li>
+        <li class="elt-item" style="animation-delay:240ms">
+          <span class="elt-mark elt-num" aria-hidden="true">5</span>
+          <span>The warranty is registered and the paperwork is emailed</span>
+        </li>
+        </ol>
+      </div>
+    </div>
   </div>
 </section>

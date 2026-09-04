@@ -75,6 +75,38 @@ The eyebrow text and whether it appears at all, the headline wording, the suppor
 
 The heading level must stay in sequence with the page. A section heading under a page h1 is an h2, and the supporting line is a paragraph, never a smaller heading. Do not use a heading tag because it is large, and do not use a div because you want it small.
 
+## How to write the headline
+
+This is the part of the element that fails most often, and it fails quietly: the layout is correct, the type is the right size, and the sentence says nothing. The headline is the only line most visitors read. Write it before you build the block.
+
+**The job of the line.** Make the reader recognise their own situation, then tell them what happens next. Not what the business is called, not what trade it belongs to, not how long it has been going.
+
+**Take the subject from the brief.** The customer's brief says what they sell, who to, where, and what they are known for. The headline comes out of that. If the brief does not say enough to write a specific line, ask for the one thing the business is known for rather than filling the gap with a phrase.
+
+**The swap test.** Put a competitor's name on the page. If the headline still fits, it is not a headline, it is a category label. "Heating and plumbing, done once" passes for every plumber in the country, so it says nothing about this one.
+
+**Rules that hold.**
+
+- One idea. A headline carrying two is carrying neither.
+- Around seven words. Long enough to say something, short enough to read at a glance.
+- Concrete over abstract. A named place, a real timescale, a real number.
+- The reader's situation, not the seller's history.
+- Say it the way a customer would say it out loud.
+- Never open with "Welcome to". Never write "Quality you can trust", "Your trusted partner", "We are passionate about", "Excellence in", "Solutions for". These are placeholders that survived into production.
+- No claim the business has not made. A headline that invents a guarantee is worse than a dull one.
+
+**Three lines and what is wrong with them.**
+
+| Written | Better | Why |
+| --- | --- | --- |
+| Heating and plumbing, done once | No heating this morning? Warm again by tonight. | The first names a trade. The second names the reader's morning and what they get. |
+| Quality dental care you can trust | Dentist appointments this week, including Saturdays | Trust is claimed by everyone. An appointment this week is a fact the reader wants. |
+| Your trusted accounting partner | Your books, closed by the fifth of the month | The first could sit on any accountant's site. The second is a promise with a date in it. |
+
+**The three lines work together.** The eyebrow places the business, so a qualification, a trade body or a town. The headline is the hook. The supporting line carries the proof the hook needs, and it is the right place for the price, the timescale or the guarantee. Do not put all three jobs in the headline.
+
+**Where the accent goes.** Colour the half of the headline that carries the outcome, not the half that names the problem. It should read as an answer.
+
 ## Settings and Controls
 
 - Set heading level, width, maximum lines, alignment, text size, line height, letter spacing, and mobile size.
