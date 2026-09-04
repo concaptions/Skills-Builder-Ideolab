@@ -97,6 +97,7 @@
       .evd .evd-play{transform:translate(-50%,-50%)}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -116,7 +117,6 @@
       .evd.h-4, .evd .h-4{height:1rem;}
       .evd.w-4, .evd .w-4{width:1rem;}
       .evd.max-w-3xl, .evd .max-w-3xl{max-width:48rem;}
-      .evd.fill-muted, .evd .fill-muted{fill:rgb(246, 247, 249);}
       .evd.px-5, .evd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .evd.py-14, .evd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .evd.text-2xl, .evd .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -133,13 +133,23 @@
 
     <figure id="evd-play" class="evd-stage">
       <div class="evd-poster">
-        <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="An engineer measuring a room during a survey">
-          <rect width="960" height="540" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45">
-            <path d="M120 420h720" fill="none"/>
-            <path d="M240 420V240h200v180" fill="none"/>
-            <path d="M560 420V300h180v120" fill="none"/>
-            <circle cx="340" cy="190" r="30" fill="none"/>
+        <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom measured up during a survey visit">
+          <rect width="960" height="540" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="2.4"><path d="M0 89h960M0 177h960M0 266h960M0 354h960M137 0v443M274 0v443M411 0v443M549 0v443M686 0v443M823 0v443"/></g>
+          <rect y="443" width="960" height="97" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="2.4"><path d="M0 491h960 M269 443v97 M653 443v97"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="614" y="86" width="278" height="356" rx="14" fill="#2563eb" fill-opacity="0.07" stroke="none"/>
+          <rect x="614" y="86" width="278" height="356" rx="14"/>
+          <path d="M754 86v356"/>
+          <path d="M653 151h67 M686 151v38"/>
+          <rect x="96" y="324" width="250" height="119" rx="13" fill="#ffffff"/>
+          <path d="M221 324v119"/>
+          <rect x="115" y="281" width="211" height="49" rx="38" fill="#ffffff"/>
+          <path d="M221 238v-43 h38"/>
+          <rect x="125" y="103" width="192" height="119" rx="13" fill="#ffffff"/>
+          <path d="M422 184v259 M528 184v259 M422 227h106 M422 286h106 M422 346h106"/>
+          <path d="M38 443h883"/>
           </g>
         </svg>
       </div>

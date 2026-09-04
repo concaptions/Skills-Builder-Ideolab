@@ -71,6 +71,7 @@
       .eit .eit-card:hover .eit-frame > *{transform:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -87,7 +88,6 @@
       .eit.mt-2, .eit .mt-2{margin-top:0.5rem;}
       .eit.mt-4, .eit .mt-4{margin-top:1rem;}
       .eit.max-w-2xl, .eit .max-w-2xl{max-width:42rem;}
-      .eit.fill-muted, .eit .fill-muted{fill:rgb(246, 247, 249);}
       .eit.px-5, .eit .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .eit.py-14, .eit .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .eit.text-base, .eit .text-base{font-size:1rem;line-height:1.5rem;}
@@ -103,12 +103,27 @@
     <article class="eit-card">
       <div class="eit-frame">
         <svg viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="An engineer checking a newly fitted boiler">
-          <rect width="600" height="450" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-            <rect x="200" y="120" width="200" height="230" rx="20" fill="none"/>
-            <circle cx="300" cy="210" r="38" fill="none"/>
-            <path d="M282 210h36M300 192v36" fill="none"/>
-            <path d="M240 300h120" fill="none"/>
+          <rect width="600" height="450" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 74h600M0 148h600M0 221h600M0 295h600M86 0v369M171 0v369M257 0v369M343 0v369M429 0v369M514 0v369"/></g>
+          <rect y="369" width="600" height="81" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 410h600 M168 369v81 M408 369v81"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="192" y="72" width="180" height="153" rx="12" fill="#ffffff"/>
+          <path d="M192 167h180"/>
+          <rect x="214" y="96" width="76" height="40" rx="6"/>
+          <circle cx="329" cy="118" r="14"/>
+          <circle cx="246" cy="197" r="11"/>
+          <circle cx="291" cy="197" r="11"/>
+          <path d="M232 225v45"/>
+          <path d="M268 225v45"/>
+          <path d="M304 225v45"/>
+          <path d="M336 225v45"/>
+          <path d="M232 270v72 h-84"/>
+          <path d="M336 270v72 h96"/>
+          <path d="M282 72v-54"/>
+          <path d="M36 369h528"/>
+          <rect x="420" y="234" width="132" height="135" rx="7" fill="#ffffff"/>
+          <path d="M453 234v135 M486 234v135 M519 234v135"/>
           </g>
         </svg>
       </div>

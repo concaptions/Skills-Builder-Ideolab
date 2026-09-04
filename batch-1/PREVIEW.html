@@ -2868,6 +2868,35 @@ tailwind.config = { theme: { extend: { colors: {
 <section class="i2p i2p-bg-surface px-5 py-20 i2p-text-ink sm:px-8 lg:py-28" aria-labelledby="i2p-title">
 
   <style>
+    
+    
+    
+    
+    /* Colour lives here, not in theme class names. Each page the builder
+       makes declares its own colour names, so a name borrowed from one page
+       resolves to nothing on the next. Rebrand the block by changing these
+       six values. They are channel triplets so an opacity suffix works. */
+    .i2p{
+      --i2p-surface:255 255 255;  /* card and panel faces */
+      --i2p-band:246 247 249;  /* the quiet band behind content */
+      --i2p-ink:15 23 42;  /* headings and primary copy */
+      --i2p-soft:100 116 139;  /* supporting copy */
+      --i2p-accent:37 99 235;  /* the one emphasis colour */
+      --i2p-deep:11 18 32;  /* the dark ground */
+    }
+    .i2p.i2p-bg-accent, .i2p .i2p-bg-accent{background-color:rgb(var(--i2p-accent))}
+    .i2p.i2p-bg-band, .i2p .i2p-bg-band{background-color:rgb(var(--i2p-band))}
+    .i2p.i2p-bg-surface, .i2p .i2p-bg-surface{background-color:rgb(var(--i2p-surface))}
+    .i2p.i2p-fill-band, .i2p .i2p-fill-band{fill:rgb(var(--i2p-band))}
+    .i2p.i2p-stroke-accent, .i2p .i2p-stroke-accent{stroke:rgb(var(--i2p-accent))}
+    .i2p.i2p-text-accent, .i2p .i2p-text-accent{color:rgb(var(--i2p-accent))}
+    .i2p.i2p-text-ink, .i2p .i2p-text-ink{color:rgb(var(--i2p-ink))}
+    .i2p.i2p-text-soft, .i2p .i2p-text-soft{color:rgb(var(--i2p-soft))}
+
+    .i2p .i2p-rise{animation:i2p-rise 440ms cubic-bezier(.16,1,.3,1) both}
+    @keyframes i2p-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion: reduce){ .i2p .i2p-rise{animation:none} }
+  
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -2937,34 +2966,6 @@ tailwind.config = { theme: { extend: { colors: {
       @media (min-width: 640px){.i2p.sm\:px-8, .i2p .sm\:px-8{padding-left:2rem;padding-right:2rem;}.i2p.sm\:text-5xl, .i2p .sm\:text-5xl{font-size:3rem;line-height:1;}}
       @media (min-width: 1024px){.i2p.lg\:absolute, .i2p .lg\:absolute{position:absolute;}.i2p.lg\:-bottom-8, .i2p .lg\:-bottom-8{bottom:-2rem;}.i2p.lg\:-left-8, .i2p .lg\:-left-8{left:-2rem;}.i2p.lg\:mt-0, .i2p .lg\:mt-0{margin-top:0px;}.i2p.lg\:w-56, .i2p .lg\:w-56{width:14rem;}.i2p.lg\:grid-cols-\[3fr_2fr\], .i2p .lg\:grid-cols-\[3fr_2fr\]{grid-template-columns:3fr 2fr;}.i2p.lg\:gap-16, .i2p .lg\:gap-16{row-gap:4rem;column-gap:4rem;}.i2p.lg\:py-28, .i2p .lg\:py-28{padding-top:7rem;padding-bottom:7rem;}}
     }
-
-    
-    
-    
-    /* Colour lives here, not in theme class names. Each page the builder
-       makes declares its own colour names, so a name borrowed from one page
-       resolves to nothing on the next. Rebrand the block by changing these
-       six values. They are channel triplets so an opacity suffix works. */
-    .i2p{
-      --i2p-surface:255 255 255;  /* card and panel faces */
-      --i2p-band:246 247 249;  /* the quiet band behind content */
-      --i2p-ink:15 23 42;  /* headings and primary copy */
-      --i2p-soft:100 116 139;  /* supporting copy */
-      --i2p-accent:37 99 235;  /* the one emphasis colour */
-      --i2p-deep:11 18 32;  /* the dark ground */
-    }
-    .i2p.i2p-bg-accent, .i2p .i2p-bg-accent{background-color:rgb(var(--i2p-accent))}
-    .i2p.i2p-bg-band, .i2p .i2p-bg-band{background-color:rgb(var(--i2p-band))}
-    .i2p.i2p-bg-surface, .i2p .i2p-bg-surface{background-color:rgb(var(--i2p-surface))}
-    .i2p.i2p-fill-band, .i2p .i2p-fill-band{fill:rgb(var(--i2p-band))}
-    .i2p.i2p-stroke-accent, .i2p .i2p-stroke-accent{stroke:rgb(var(--i2p-accent))}
-    .i2p.i2p-text-accent, .i2p .i2p-text-accent{color:rgb(var(--i2p-accent))}
-    .i2p.i2p-text-ink, .i2p .i2p-text-ink{color:rgb(var(--i2p-ink))}
-    .i2p.i2p-text-soft, .i2p .i2p-text-soft{color:rgb(var(--i2p-soft))}
-
-    .i2p .i2p-rise{animation:i2p-rise 440ms cubic-bezier(.16,1,.3,1) both}
-    @keyframes i2p-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-    @media (prefers-reduced-motion: reduce){ .i2p .i2p-rise{animation:none} }
   </style>
 
   <div class="mx-auto max-w-6xl">
@@ -3041,7 +3042,7 @@ tailwind.config = { theme: { extend: { colors: {
 
     </div>
 
-    <p class="mt-16 max-w-2xl text-sm leading-relaxed i2p-text-soft i2p-rise" style="animation-delay:200ms">Photograph position held from the reference layout. Your own workshop and installation photographs replace the placeholder.</p>
+    <p class="mt-16 max-w-2xl text-sm leading-relaxed i2p-text-soft i2p-rise" style="animation-delay:200ms">Our workshop in Sneinton, where every unit is checked and tested before it goes out on a van.</p>
 
   </div>
 </section>

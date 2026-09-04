@@ -740,6 +740,7 @@ tailwind.config = { theme: { extend: { colors: {
     .eic .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   
       
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -772,7 +773,7 @@ tailwind.config = { theme: { extend: { colors: {
   <div class="eic-wrap mx-auto max-w-2xl">
 
     <h2 id="eic-title" class="text-2xl font-semibold">One mark, five ways to set it</h2>
-    <p class="eic-soft mt-2">The icon does not change. What changes is the container it sits in, and that is the only decision this element asks you to make.</p>
+    <p class="eic-soft mt-2">The same mark in each of the five treatments. Pick one and use it everywhere on the site, so a reader learns what it means once.</p>
 
     <!-- A decorative mark is hidden from a screen reader, because the words
          beside it already say what it means. A mark that is the only thing
@@ -1046,6 +1047,7 @@ tailwind.config = { theme: { extend: { colors: {
       .eit .eit-card:hover .eit-frame > *{transform:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -1062,7 +1064,6 @@ tailwind.config = { theme: { extend: { colors: {
       .eit.mt-2, .eit .mt-2{margin-top:0.5rem;}
       .eit.mt-4, .eit .mt-4{margin-top:1rem;}
       .eit.max-w-2xl, .eit .max-w-2xl{max-width:42rem;}
-      .eit.fill-muted, .eit .fill-muted{fill:rgb(246, 247, 249);}
       .eit.px-5, .eit .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .eit.py-14, .eit .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .eit.text-base, .eit .text-base{font-size:1rem;line-height:1.5rem;}
@@ -1078,12 +1079,27 @@ tailwind.config = { theme: { extend: { colors: {
     <article class="eit-card">
       <div class="eit-frame">
         <svg viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="An engineer checking a newly fitted boiler">
-          <rect width="600" height="450" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-            <rect x="200" y="120" width="200" height="230" rx="20" fill="none"/>
-            <circle cx="300" cy="210" r="38" fill="none"/>
-            <path d="M282 210h36M300 192v36" fill="none"/>
-            <path d="M240 300h120" fill="none"/>
+          <rect width="600" height="450" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 74h600M0 148h600M0 221h600M0 295h600M86 0v369M171 0v369M257 0v369M343 0v369M429 0v369M514 0v369"/></g>
+          <rect y="369" width="600" height="81" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 410h600 M168 369v81 M408 369v81"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="192" y="72" width="180" height="153" rx="12" fill="#ffffff"/>
+          <path d="M192 167h180"/>
+          <rect x="214" y="96" width="76" height="40" rx="6"/>
+          <circle cx="329" cy="118" r="14"/>
+          <circle cx="246" cy="197" r="11"/>
+          <circle cx="291" cy="197" r="11"/>
+          <path d="M232 225v45"/>
+          <path d="M268 225v45"/>
+          <path d="M304 225v45"/>
+          <path d="M336 225v45"/>
+          <path d="M232 270v72 h-84"/>
+          <path d="M336 270v72 h96"/>
+          <path d="M282 72v-54"/>
+          <path d="M36 369h528"/>
+          <rect x="420" y="234" width="132" height="135" rx="7" fill="#ffffff"/>
+          <path d="M453 234v135 M486 234v135 M519 234v135"/>
           </g>
         </svg>
       </div>
@@ -1330,6 +1346,7 @@ tailwind.config = { theme: { extend: { colors: {
       .evd .evd-play{transform:translate(-50%,-50%)}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -1349,7 +1366,6 @@ tailwind.config = { theme: { extend: { colors: {
       .evd.h-4, .evd .h-4{height:1rem;}
       .evd.w-4, .evd .w-4{width:1rem;}
       .evd.max-w-3xl, .evd .max-w-3xl{max-width:48rem;}
-      .evd.fill-muted, .evd .fill-muted{fill:rgb(246, 247, 249);}
       .evd.px-5, .evd .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .evd.py-14, .evd .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .evd.text-2xl, .evd .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -1366,13 +1382,23 @@ tailwind.config = { theme: { extend: { colors: {
 
     <figure id="evd-play" class="evd-stage">
       <div class="evd-poster">
-        <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="An engineer measuring a room during a survey">
-          <rect width="960" height="540" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.45">
-            <path d="M120 420h720" fill="none"/>
-            <path d="M240 420V240h200v180" fill="none"/>
-            <path d="M560 420V300h180v120" fill="none"/>
-            <circle cx="340" cy="190" r="30" fill="none"/>
+        <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom measured up during a survey visit">
+          <rect width="960" height="540" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="2.4"><path d="M0 89h960M0 177h960M0 266h960M0 354h960M137 0v443M274 0v443M411 0v443M549 0v443M686 0v443M823 0v443"/></g>
+          <rect y="443" width="960" height="97" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="2.4"><path d="M0 491h960 M269 443v97 M653 443v97"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="614" y="86" width="278" height="356" rx="14" fill="#2563eb" fill-opacity="0.07" stroke="none"/>
+          <rect x="614" y="86" width="278" height="356" rx="14"/>
+          <path d="M754 86v356"/>
+          <path d="M653 151h67 M686 151v38"/>
+          <rect x="96" y="324" width="250" height="119" rx="13" fill="#ffffff"/>
+          <path d="M221 324v119"/>
+          <rect x="115" y="281" width="211" height="49" rx="38" fill="#ffffff"/>
+          <path d="M221 238v-43 h38"/>
+          <rect x="125" y="103" width="192" height="119" rx="13" fill="#ffffff"/>
+          <path d="M422 184v259 M528 184v259 M422 227h106 M422 286h106 M422 346h106"/>
+          <path d="M38 443h883"/>
           </g>
         </svg>
       </div>
@@ -1501,6 +1527,7 @@ tailwind.config = { theme: { extend: { colors: {
       .esv .esv-cta:hover{transform:none;box-shadow:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -1533,7 +1560,6 @@ tailwind.config = { theme: { extend: { colors: {
       .esv.gap-3, .esv .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
       .esv.gap-8, .esv .gap-8{row-gap:2rem;column-gap:2rem;}
       .esv.space-y-3 > :not([hidden]) ~ :not([hidden]), .esv .space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse));}
-      .esv.fill-bgdark, .esv .fill-bgdark{fill:rgb(11, 18, 32);}
       .esv.px-5, .esv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .esv.py-16, .esv .py-16{padding-top:4rem;padding-bottom:4rem;}
       .esv.text-center, .esv .text-center{text-align:center;}
@@ -1558,15 +1584,25 @@ tailwind.config = { theme: { extend: { colors: {
       <figure id="esv-play" class="esv-stage">
         <div class="esv-poster">
           <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom part way through installation">
-            <rect width="960" height="540" fill="#0b1220" class="fill-bgdark"/>
-            <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.28">
-              <path d="M120 430h720" fill="none"/>
-              <path d="M250 430V250h190v180" fill="none"/>
-              <path d="M250 300h190" fill="none"/>
-              <path d="M560 430V320h190v110" fill="none"/>
-              <circle cx="345" cy="215" r="26" fill="none"/>
-            </g>
-          </svg>
+          <rect width="960" height="540" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="2.4"><path d="M0 158h960M0 317h960M320 0v475M640 0v475"/></g>
+          <rect y="475" width="960" height="65" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="2.4"><path d="M0 508h960 M269 475v65 M653 475v65"/></g>
+          <g fill="#2563eb" opacity="0.08"><rect x="0" y="184" width="960" height="130"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="10.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 184h960 M0 313h960"/>
+          <path d="M192 184v130"/>
+          <path d="M384 184v130"/>
+          <path d="M576 184v130"/>
+          <path d="M768 184v130"/>
+          <path d="M0 248h960"/>
+          <rect x="96" y="335" width="499" height="140" rx="29" fill="#ffffff"/>
+          <path d="M595 324v-54 h58"/>
+          <rect x="710" y="378" width="154" height="97" fill="#ffffff"/>
+          <path d="M710 410h154 M710 443h154"/>
+          <path d="M38 475h883"/>
+          </g>
+        </svg>
         </div>
 
         <a href="#esv-play" class="esv-play">
@@ -1851,6 +1887,7 @@ tailwind.config = { theme: { extend: { colors: {
       .egl .egl-tile:hover > *{transform:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -1869,7 +1906,6 @@ tailwind.config = { theme: { extend: { colors: {
       .egl.grid, .egl .grid{display:grid;}
       .egl.max-w-5xl, .egl .max-w-5xl{max-width:64rem;}
       .egl.gap-3, .egl .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
-      .egl.fill-muted, .egl .fill-muted{fill:rgb(246, 247, 249);}
       .egl.px-5, .egl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .egl.py-14, .egl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .egl.text-2xl, .egl .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -1887,58 +1923,141 @@ tailwind.config = { theme: { extend: { colors: {
     <ul class="egl-grid grid gap-3 sm:gap-4">
       <li class="egl-tile" style="animation-delay:0ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A tiled walk in shower with a glass screen">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <rect x="90" y="90" width="220" height="240" rx="12" fill="none"/>
-            <path d="M200 90v240M90 200h220" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 66h400M0 131h400M0 197h400M0 262h400M57 0v328M114 0v328M171 0v328M229 0v328M286 0v328M343 0v328"/></g>
+          <rect y="328" width="400" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 364h400 M112 328v72 M272 328v72"/></g>
+          <rect x="120" y="64" width="184" height="264" rx="8" fill="#2563eb" fill-opacity="0.07"/>
+          <g fill="none" stroke="#2563eb" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="120" y="64" width="184" height="264" rx="8"/>
+          <path d="M216 64v264"/>
+          <path d="M148 101h40 M168 101v32"/>
+          <path d="M157 148v13"/>
+          <path d="M168 175v13"/>
+          <path d="M179 201v13"/>
+          <path d="M24 328h352"/>
+          <rect x="24" y="88" width="68" height="80" rx="6"/>
+          <path d="M34 184v144 M82 184v144 M34 208h48 M34 248h48"/>
           </g>
+          <g fill="#2563eb" opacity="0.15"><circle cx="264" cy="143" r="7"/><circle cx="278" cy="185" r="5"/><circle cx="252" cy="209" r="6"/></g>
         </svg>
       </li>
       <li class="egl-tile" style="animation-delay:50ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A newly fitted combi boiler on a kitchen wall">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <rect x="130" y="90" width="140" height="180" rx="16" fill="none"/>
-            <circle cx="200" cy="160" r="26" fill="none"/>
-            <path d="M160 320h80" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 66h400M0 131h400M0 197h400M0 262h400M57 0v328M114 0v328M171 0v328M229 0v328M286 0v328M343 0v328"/></g>
+          <rect y="328" width="400" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 364h400 M112 328v72 M272 328v72"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="128" y="64" width="120" height="136" rx="8" fill="#ffffff"/>
+          <path d="M128 148h120"/>
+          <rect x="142" y="86" width="50" height="35" rx="4"/>
+          <circle cx="219" cy="105" r="12"/>
+          <circle cx="164" cy="176" r="10"/>
+          <circle cx="194" cy="176" r="10"/>
+          <path d="M154 200v40"/>
+          <path d="M178 200v40"/>
+          <path d="M202 200v40"/>
+          <path d="M224 200v40"/>
+          <path d="M154 240v64 h-56"/>
+          <path d="M224 240v64 h64"/>
+          <path d="M188 64v-48"/>
+          <path d="M24 328h352"/>
+          <rect x="280" y="208" width="88" height="120" rx="5" fill="#ffffff"/>
+          <path d="M302 208v120 M324 208v120 M346 208v120"/>
           </g>
         </svg>
       </li>
       <li class="egl-tile" style="animation-delay:100ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A radiator fitted under a bay window">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <rect x="100" y="180" width="200" height="110" rx="10" fill="none"/>
-            <path d="M140 180v110M180 180v110M220 180v110M260 180v110" fill="none"/>
-            <path d="M110 120h180" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 66h400M0 131h400M0 197h400M0 262h400M57 0v328M114 0v328M171 0v328M229 0v328M286 0v328M343 0v328"/></g>
+          <rect y="328" width="400" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 364h400 M112 328v72 M272 328v72"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="96" y="40" width="208" height="136" rx="5" fill="#ffffff"/>
+          <path d="M200 40v136 M96 108h208"/>
+          <path d="M80 40h240"/>
+          <rect x="112" y="208" width="176" height="104" rx="4" fill="#ffffff"/>
+          <path d="M134 208v104"/>
+          <path d="M156 208v104"/>
+          <path d="M178 208v104"/>
+          <path d="M200 208v104"/>
+          <path d="M222 208v104"/>
+          <path d="M244 208v104"/>
+          <path d="M266 208v104"/>
+          <path d="M126 312v16 M274 312v16"/>
+          <circle cx="100" cy="286" r="7"/>
+          <path d="M24 328h352"/>
           </g>
         </svg>
       </li>
       <li class="egl-tile" style="animation-delay:150ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Copper pipework run neatly under a floor">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <path d="M80 140h140v120h140" fill="none"/>
-            <path d="M80 220h90v80" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 117h400M0 235h400M100 0v352M200 0v352M300 0v352"/></g>
+          <rect y="352" width="400" height="48" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 376h400 M112 352v48 M272 352v48"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="16" y="64" width="368" height="30" fill="#ffffff"/>
+          <rect x="16" y="168" width="368" height="30" fill="#ffffff"/>
+          <rect x="16" y="272" width="368" height="30" fill="#ffffff"/>
+          <path d="M40 94 h160 q36 0 36 36 v120"/>
+          <path d="M40 198 h248 q36 0 36 36 v64"/>
+          <rect x="189" y="76" width="22" height="36" rx="3" fill="#ffffff"/>
+          <rect x="277" y="180" width="22" height="36" rx="3" fill="#ffffff"/>
+          <rect x="225" y="230" width="22" height="36" rx="3" fill="#ffffff"/>
+          <path d="M16 352h368"/>
           </g>
         </svg>
       </li>
       <li class="egl-tile" style="animation-delay:200ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A finished kitchen with a fitted sink">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <path d="M80 240h240v70H80z" fill="none"/>
-            <rect x="150" y="200" width="100" height="40" rx="8" fill="none"/>
-            <path d="M200 200v-40" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 66h400M0 131h400M0 197h400M0 262h400M57 0v328M114 0v328M171 0v328M229 0v328M286 0v328M343 0v328"/></g>
+          <rect y="328" width="400" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 364h400 M112 328v72 M272 328v72"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="24" y="48" width="72" height="96" rx="4" fill="#ffffff"/>
+          <path d="M44 120h32"/>
+          <rect x="104" y="48" width="72" height="96" rx="4" fill="#ffffff"/>
+          <path d="M124 120h32"/>
+          <rect x="184" y="48" width="72" height="96" rx="4" fill="#ffffff"/>
+          <path d="M204 120h32"/>
+          <path d="M16 208h368"/>
+          <rect x="16" y="208" width="368" height="120" fill="#ffffff"/>
+          <path d="M104 208v120"/>
+          <path d="M200 208v120"/>
+          <path d="M296 208v120"/>
+          <path d="M40 232h32"/>
+          <path d="M136 232h32"/>
+          <path d="M232 232h32"/>
+          <path d="M328 232h32"/>
+          <rect x="224" y="186" width="88" height="22" rx="3"/>
+          <path d="M328 188v-56 q0 -20 -20 0"/>
+          <path d="M16 328h368"/>
           </g>
         </svg>
       </li>
       <li class="egl-tile" style="animation-delay:250ms">
         <svg viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="A cylinder fitted in an airing cupboard">
-          <rect width="400" height="400" fill="#f6f7f9" class="fill-muted"/>
-          <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.45">
-            <rect x="150" y="80" width="100" height="240" rx="50" fill="none"/>
-            <path d="M150 180h100" fill="none"/>
+          <rect width="400" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.5"><path d="M0 66h400M0 131h400M0 197h400M0 262h400M57 0v328M114 0v328M171 0v328M229 0v328M286 0v328M343 0v328"/></g>
+          <rect y="328" width="400" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.5"><path d="M0 364h400 M112 328v72 M272 328v72"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="116" y="72" width="104" height="256" rx="52" fill="#ffffff"/>
+          <path d="M116 136h104"/>
+          <path d="M116 192h104"/>
+          <path d="M116 248h104"/>
+          <circle cx="168" cy="104" r="14"/>
+          <path d="M220 120h64 v120"/>
+          <path d="M220 224h96 v56"/>
+          <path d="M76 64v264"/>
+          <path d="M24 96h64"/>
+          <path d="M24 176h64"/>
+          <path d="M24 256h64"/>
+          <path d="M16 328h368"/>
           </g>
         </svg>
       </li>
@@ -2022,6 +2141,7 @@ tailwind.config = { theme: { extend: { colors: {
       .esl .esl-slide:hover .esl-frame > *{transform:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -2039,7 +2159,6 @@ tailwind.config = { theme: { extend: { colors: {
       .esl.mb-6, .esl .mb-6{margin-bottom:1.5rem;}
       .esl.mt-2, .esl .mt-2{margin-top:0.5rem;}
       .esl.max-w-4xl, .esl .max-w-4xl{max-width:56rem;}
-      .esl.fill-muted, .esl .fill-muted{fill:rgb(246, 247, 249);}
       .esl.px-5, .esl .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .esl.py-14, .esl .py-14{padding-top:3.5rem;padding-bottom:3.5rem;}
       .esl.text-2xl, .esl .text-2xl{font-size:1.5rem;line-height:2rem;}
@@ -2060,11 +2179,22 @@ tailwind.config = { theme: { extend: { colors: {
         <figure>
           <div class="esl-frame">
             <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A bathroom stripped back to the joists">
-              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
-              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
-                <path d="M80 320h480" fill="none"/><path d="M160 320V160h160v160" fill="none"/><path d="M160 220h160" fill="none"/>
-              </g>
-            </svg>
+          <rect width="640" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.6"><path d="M0 115h640M0 229h640M213 0v344M427 0v344"/></g>
+          <rect y="344" width="640" height="56" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.6"><path d="M0 372h640 M179 344v56 M435 344v56"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M64 80v264"/>
+          <path d="M150 80v264"/>
+          <path d="M237 80v264"/>
+          <path d="M323 80v264"/>
+          <path d="M64 80h259 M64 208h259"/>
+          <rect x="384" y="64" width="179" height="280" rx="8" fill="#ffffff"/>
+          <path d="M474 64v280"/>
+          <path d="M282 344 l32 -80 l64 80 z" fill="#ffffff"/>
+          <path d="M26 344h589"/>
+          </g>
+        </svg>
           </div>
           <figcaption class="esl-soft mt-2 text-sm">Day one, West Bridgford</figcaption>
         </figure>
@@ -2073,11 +2203,22 @@ tailwind.config = { theme: { extend: { colors: {
         <figure>
           <div class="esl-frame">
             <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="First fix pipework run in a bathroom wall">
-              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
-              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
-                <path d="M120 120h200v160h200" fill="none"/><path d="M120 240h140v80" fill="none"/>
-              </g>
-            </svg>
+          <rect width="640" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.6"><path d="M0 117h640M0 235h640M160 0v352M320 0v352M480 0v352"/></g>
+          <rect y="352" width="640" height="48" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.6"><path d="M0 376h640 M179 352v48 M435 352v48"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="26" y="64" width="589" height="30" fill="#ffffff"/>
+          <rect x="26" y="168" width="589" height="30" fill="#ffffff"/>
+          <rect x="26" y="272" width="589" height="30" fill="#ffffff"/>
+          <path d="M64 94 h256 q58 0 58 36 v120"/>
+          <path d="M64 198 h397 q58 0 58 36 v64"/>
+          <rect x="302" y="76" width="36" height="36" rx="5" fill="#ffffff"/>
+          <rect x="443" y="180" width="36" height="36" rx="5" fill="#ffffff"/>
+          <rect x="360" y="230" width="36" height="36" rx="5" fill="#ffffff"/>
+          <path d="M26 352h589"/>
+          </g>
+        </svg>
           </div>
           <figcaption class="esl-soft mt-2 text-sm">First fix, day three</figcaption>
         </figure>
@@ -2086,12 +2227,25 @@ tailwind.config = { theme: { extend: { colors: {
         <figure>
           <div class="esl-frame">
             <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Tiling part way up a bathroom wall">
-              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
-              <g fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.4">
-                <path d="M120 120h400v200H120z" fill="none"/>
-                <path d="M120 186h400M120 253h400M253 120v200M386 120v200" fill="none"/>
-              </g>
-            </svg>
+          <rect width="640" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.6"><path d="M0 117h640M0 235h640M213 0v352M427 0v352"/></g>
+          <rect y="352" width="640" height="48" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.6"><path d="M0 376h640 M179 352v48 M435 352v48"/></g>
+          <g fill="#2563eb" opacity="0.08"><rect x="0" y="136" width="640" height="96"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="6.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 136h640 M0 232h640"/>
+          <path d="M128 136v96"/>
+          <path d="M256 136v96"/>
+          <path d="M384 136v96"/>
+          <path d="M512 136v96"/>
+          <path d="M0 184h640"/>
+          <rect x="64" y="248" width="333" height="104" rx="19" fill="#ffffff"/>
+          <path d="M397 240v-40 h38"/>
+          <rect x="474" y="280" width="102" height="72" fill="#ffffff"/>
+          <path d="M474 304h102 M474 328h102"/>
+          <path d="M26 352h589"/>
+          </g>
+        </svg>
           </div>
           <figcaption class="esl-soft mt-2 text-sm">Tiling, day five</figcaption>
         </figure>
@@ -2100,13 +2254,24 @@ tailwind.config = { theme: { extend: { colors: {
         <figure>
           <div class="esl-frame">
             <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="The finished bathroom handed back">
-              <rect width="640" height="400" fill="#f6f7f9" class="fill-muted"/>
-              <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.45">
-                <rect x="140" y="120" width="180" height="200" rx="14" fill="none"/>
-                <rect x="380" y="200" width="140" height="120" rx="12" fill="none"/>
-                <circle cx="230" cy="180" r="22" fill="none"/>
-              </g>
-            </svg>
+          <rect width="640" height="400" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="1.6"><path d="M0 66h640M0 131h640M0 197h640M0 262h640M91 0v328M183 0v328M274 0v328M366 0v328M457 0v328M549 0v328"/></g>
+          <rect y="328" width="640" height="72" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="1.6"><path d="M0 364h640 M179 328v72 M435 328v72"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="4.9" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="410" y="64" width="186" height="264" rx="10" fill="#2563eb" fill-opacity="0.07" stroke="none"/>
+          <rect x="410" y="64" width="186" height="264" rx="10"/>
+          <path d="M502 64v264"/>
+          <path d="M435 112h45 M458 112v28"/>
+          <rect x="64" y="240" width="166" height="88" rx="9" fill="#ffffff"/>
+          <path d="M147 240v88"/>
+          <rect x="77" y="208" width="141" height="36" rx="26" fill="#ffffff"/>
+          <path d="M147 176v-32 h26"/>
+          <rect x="83" y="76" width="128" height="88" rx="9" fill="#ffffff"/>
+          <path d="M282 136v192 M352 136v192 M282 168h70 M282 212h70 M282 256h70"/>
+          <path d="M26 328h589"/>
+          </g>
+        </svg>
           </div>
           <figcaption class="esl-soft mt-2 text-sm">Handed back, day eight</figcaption>
         </figure>
@@ -2912,6 +3077,7 @@ tailwind.config = { theme: { extend: { colors: {
       .emp .emp-dl:hover{transform:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -2961,7 +3127,14 @@ tailwind.config = { theme: { extend: { colors: {
           <g fill="none" stroke="#0f172a" stroke-width="4" opacity="0.14">
             <path d="M60 0v360M230 0v360M410 0v360M0 60h480M0 190h480M0 315h480" fill="none"/>
           </g>
-          <rect x="150" y="140" width="80" height="60" rx="6" fill="#2563eb" opacity="0.10"/>
+          <path d="M0 300 L200 210 L330 240 L480 170" stroke="#0f172a" stroke-width="12" opacity="0.09" fill="none"/>
+          <path d="M0 70 q120 40 210 10 t270 30" stroke="#2563eb" stroke-width="9" opacity="0.16" fill="none"/>
+          <rect x="20" y="200" width="100" height="120" rx="10" fill="#2563eb" opacity="0.07"/>
+          <rect x="355" y="30" width="105" height="80" rx="8" fill="#0f172a" opacity="0.05"/>
+          <rect x="360" y="205" width="95" height="60" rx="6" fill="#0f172a" opacity="0.05"/>
+          <rect x="70" y="30" width="55" height="70" rx="5" fill="#0f172a" opacity="0.05"/>
+          <rect x="255" y="270" width="60" height="70" rx="5" fill="#0f172a" opacity="0.05"/>
+          <rect x="150" y="140" width="80" height="60" rx="6" fill="#2563eb" opacity="0.14"/>
           <g class="emp-pin">
             <path d="M190 176c0-10 8-18 18-18s18 8 18 18c0 13-18 30-18 30s-18-17-18-30z" fill="#2563eb" class="fill-accent"/>
             <circle cx="208" cy="176" r="6" fill="#ffffff"/>

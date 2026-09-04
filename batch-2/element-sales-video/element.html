@@ -102,6 +102,7 @@
       .esv .esv-cta:hover{transform:none;box-shadow:none}
     }
   
+      
     @layer ideolab-fallback {
       /* Taken from Tailwind itself, so it cannot drift from what the
          classes mean. It sits in a layer, so a page that loads its own
@@ -134,7 +135,6 @@
       .esv.gap-3, .esv .gap-3{row-gap:0.75rem;column-gap:0.75rem;}
       .esv.gap-8, .esv .gap-8{row-gap:2rem;column-gap:2rem;}
       .esv.space-y-3 > :not([hidden]) ~ :not([hidden]), .esv .space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse));}
-      .esv.fill-bgdark, .esv .fill-bgdark{fill:rgb(11, 18, 32);}
       .esv.px-5, .esv .px-5{padding-left:1.25rem;padding-right:1.25rem;}
       .esv.py-16, .esv .py-16{padding-top:4rem;padding-bottom:4rem;}
       .esv.text-center, .esv .text-center{text-align:center;}
@@ -159,15 +159,25 @@
       <figure id="esv-play" class="esv-stage">
         <div class="esv-poster">
           <svg viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="A bathroom part way through installation">
-            <rect width="960" height="540" fill="#0b1220" class="fill-bgdark"/>
-            <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.28">
-              <path d="M120 430h720" fill="none"/>
-              <path d="M250 430V250h190v180" fill="none"/>
-              <path d="M250 300h190" fill="none"/>
-              <path d="M560 430V320h190v110" fill="none"/>
-              <circle cx="345" cy="215" r="26" fill="none"/>
-            </g>
-          </svg>
+          <rect width="960" height="540" fill="#ffffff"/>
+          <g stroke="#e2e8f0" stroke-width="2.4"><path d="M0 158h960M0 317h960M320 0v475M640 0v475"/></g>
+          <rect y="475" width="960" height="65" fill="#eef2f7"/>
+          <g stroke="#dbe3ee" stroke-width="2.4"><path d="M0 508h960 M269 475v65 M653 475v65"/></g>
+          <g fill="#2563eb" opacity="0.08"><rect x="0" y="184" width="960" height="130"/></g>
+          <g fill="none" stroke="#2563eb" stroke-width="10.1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 184h960 M0 313h960"/>
+          <path d="M192 184v130"/>
+          <path d="M384 184v130"/>
+          <path d="M576 184v130"/>
+          <path d="M768 184v130"/>
+          <path d="M0 248h960"/>
+          <rect x="96" y="335" width="499" height="140" rx="29" fill="#ffffff"/>
+          <path d="M595 324v-54 h58"/>
+          <rect x="710" y="378" width="154" height="97" fill="#ffffff"/>
+          <path d="M710 410h154 M710 443h154"/>
+          <path d="M38 475h883"/>
+          </g>
+        </svg>
         </div>
 
         <a href="#esv-play" class="esv-play">
